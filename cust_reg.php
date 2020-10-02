@@ -10,43 +10,43 @@
     <div class="center">
       <h1>Customer Registration</h1>
 
-      <form method="post" action="#" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }">
+      <form method="post" action="#">
         <div class="textfield">
-          <input type="text" required name="first_name">
+          <input type="text" required name="cusfirstname">
           <span></span>
           <label>First Name</label>
         </div>
 
         <div class="textfield">
-          <input type="text" required name="last_name">
+          <input type="text" required name="cuslastname">
           <span></span>
           <label>Last Name</label>
         </div>
 
         <div class="textfield">
-          <input type="email" required name="email">
+          <input type="email" required name="cusemail">
           <span></span>
           <label>Email Address</label>
         </div>
 
         <div class="textfield">
-          <input type="text" required name="tele_no">
+          <input type="text" required name="cusphonenum">
           <span></span>
           <label>Mobile Number</label>
         </div>
 
         <div class="textfield">
-          <input type="password" required name="password">
+          <input type="password" required name="cuspassword">
           <span></span>
           <label>Password</label>
         </div>
 
         <div class="textfield">
-          <input type="password" required name="repeat_password">
+          <input type="password" required name="cusconpassword">
           <span></span>
           <label>Confirm Password</label>
         </div>
-        <input type="checkbox" required name="checkbox" value="check" id="agree" /> I agree to the Terms and Conditions and Privacy Policy
+
         <input type="submit" value="Register">
       </form>
     </div>
