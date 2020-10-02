@@ -3,13 +3,12 @@ body{
   padding: 0;
   font-family:cursive;
   background-color: rgba(52,152,259,0.5);
-/*  background-image:linear-gradient(rgba(52,152,219,0.5),rgba(142,68,173,0.5));*/
   height:100vh;
   overflow:inherit;
 }
 
 .center{
-  position: absolute;
+  position:absolute;
   top: 60%;
   left: 50%;
   margin-bottom: 2%;
