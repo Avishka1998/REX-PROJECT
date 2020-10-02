@@ -21,6 +21,9 @@
       background-color: white;
       height: 40px;
       width: 100%;
+      position:fixed;
+      overflow: hidden;
+      z-index:1;
     }
 
     nav ul{
