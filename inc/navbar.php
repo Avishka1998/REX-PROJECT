@@ -60,6 +60,11 @@
     a.logo img{
       height: 40px;
     }
+      
+     a.active{
+      background-color: #3459e2;
+      color: white;
+    }  
     </style>
   </head>
 
@@ -67,11 +72,12 @@
     <nav>
       <a class="logo" href="index.php"><img src="inc/logo3.png"></a>
       <ul>
-        <li><a href="index.php">Home</a></li>
+        <?php $filename=basename($_SERVER['PHP_SELF'])?>
+        <li><a href="index.php" <?php if($filename=='index.php') echo "class=active"?>>Home</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">SignUp</a></li>
-        <li><a href="login.php">LogIn</a></li>
+        <li><a href="login.php" <?php if($filename=='login.php') echo "class=active"?>>LogIn</a></li>
       </ul>
     </nav>
   </body>
