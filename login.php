@@ -25,7 +25,7 @@
         </div>
 
         <input type="submit" value="Login">
-        <div class="pass1"><a class="pass" href="password_reset.php">Forgot Password?</a></div>
+        <div class="pass1"><a class="pass" href="password_reset1.php">Forgot Password?</a></div>
         <div class="signup_link">
           No Existing Account? <a href="#signup">Signup</a>
         </div>
