@@ -122,5 +122,21 @@ input[type="submit"]:hover{
 
 .signup_link a:hover{
   text-decoration: underline;
+}
 
+.error,.failed,.sent{
+  display: block;
+  color: white;
+  text-align:center;
+  font-weight: bold;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.error,.failed{
+  background: red;
+}
+
+.sent{
+  background: #0FC600;
 }
