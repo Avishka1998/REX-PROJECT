@@ -20,7 +20,7 @@
         <div class="textfield">
           <input type="email" required name="email">
           <span></span>
-          <label>Email Address</label>
+          <label>Enter Your Email Address</label>
         </div>
 
         <input type="submit" name="send" value="Send">
