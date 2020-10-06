@@ -2,25 +2,25 @@ body{
   margin: 0;
   padding: 0;
   font-family:cursive;
-/*  background: linear-gradient(120deg,#3498db,#8e44ad);*/
-  background-image:linear-gradient(rgba(52,152,219,0.5),rgba(142,68,173,0.5));
-  height: 100vh;
-  overflow: hidden;
+  background-color: rgba(52,152,259,0.5);
+  height:100vh;
+  overflow:inherit;
 }
 
 .center{
-  position: absolute;
-  top: 50%;
+  position:absolute;
+  top: 60%;
   left: 50%;
+  margin-bottom: 2%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 500px;
   background: white;
   border-radius: 10px;
 }
 
 .center h1{
   text-align: center;
-  padding: 20px 0 20px 0;
+  padding: 10px 0 20px 0;
   border-bottom: 1px solid silver;
 }
 
@@ -76,19 +76,6 @@ form .textfield{
   width: 100%;
 }
 
-.pass{
-  color: #a6a6a6;
-  cursor: pointer;
-}
-
-.pass1{
-  margin: 13px 5px 13px;;
-}
-
-.pass:hover{
-  text-decoration: underline;
-}
-
 input[type="submit"]{
   font-family: cursive;
   width: 100%;
@@ -101,42 +88,10 @@ input[type="submit"]{
   font-weight: 700;
   cursor: pointer;
   outline: none;
+  margin: 30PX 0;
 }
 
 input[type="submit"]:hover{
   border-color: #269ad9;
   transition: .5s;
-}
-
-.signup_link{
-  margin: 10px 0;
-  text-align: center;
-  font-size: 16px;
-  color: #666666;
-}
-
-.signup_link a{
-  color: #2691d9;
-  text-decoration: none;
-}
-
-.signup_link a:hover{
-  text-decoration: underline;
-}
-
-.error,.failed,.sent{
-  display: block;
-  color: white;
-  text-align:center;
-  font-weight: bold;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-.error,.failed{
-  background: red;
-}
-
-.sent{
-  background: #0FC600;
 }
