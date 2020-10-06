@@ -11,17 +11,32 @@
     <div class="center">
       <h1>Login</h1>
 
-      <form method="post" action="login.php">
+      <form method="post" action="../controller/login.php">
         <div class="textfield">
-          <input type="text" required name="username">
+          <!-- <input type="text" required name="username"> -->
+          <input type="text" name="username" placeholder="Enter email">
           <span></span>
           <label>Username</label>
         </div>
 
         <div class="textfield">
-          <input type="password" required name="password">
+          <!-- <input type="password" required name="password"> -->
+          <input type="password" name="password" placeholder="">
           <span></span>
           <label>Password</label>
+        </div>
+        <div class="">
+            <?php
+                if(isset($_GET['errors']) && !empty($_GET['errors'])){   
+                    $str_arr = unserialize(urldecode($_GET['errors']));         
+                     foreach($str_arr as $error){
+                        echo $error . '<br>';
+                    }
+                }
+                else{
+              
+                }
+            ?>
         </div>
 
         <input type="submit" value="Login" name="submit">
