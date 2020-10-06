@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
     <style media="screen">
     *{
       padding: 0;
@@ -60,6 +55,11 @@
     a.logo img{
       height: 40px;
     }
+	
+	a.active{
+      background-color: #3459e2;
+      color: white;
+    }
     </style>
   </head>
 
@@ -67,13 +67,12 @@
     <nav>
       <a class="logo" href="../view/home.php"><img src="../inc/logo3.png"></a>
       <ul>
-        <li><a href="../view/home.php">Home</a></li>
+	    <?php $filename=basename($_SERVER['PHP_SELF'])?>
+        <li><a href="../view/home.php" <?php if($filename=='home.php') echo "class=active"?>>Home</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">SignUp</a></li>
-        <li><a href="../view/cust_reg.php" class="">customer</a></li>
-        <li><a href="../view/studio_reg_1.php" class="">studio</a></li>
-        <li><a href="login.php">LogIn</a></li>
+        <li><a href="../view/sign_up.php" <?php if($filename=='sign_up.php' || $filename=='cust_reg.php' ||  $filename=='studio_reg_1.php' || $filename=='studio_reg_2.php') echo "class=active"?>>SignUp</a></li>
+        <li><a href="login.php" <?php if($filename=='login.php') echo "class=active"?>>LogIn</a></li>
       </ul>
     </nav>
   </body>
