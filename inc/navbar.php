@@ -1,4 +1,9 @@
-<head>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style media="screen">
     *{
       padding: 0;
