@@ -14,7 +14,7 @@
       <form method="post" action="../controller/login.php">
         <div class="textfield">
           <!-- <input type="text" required name="username"> -->
-          <input type="text" name="username" placeholder="Enter email">
+          <input type="text" name="username" placeholder="">
           <span></span>
           <label>Username</label>
         </div>
