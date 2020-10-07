@@ -1,4 +1,8 @@
-<?php $token=$_GET['token']; ?>
+<?php $token=$_GET['token'];
+  session_start();
+  $_SESSION['token']= $token;
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -13,10 +17,9 @@
   </head>
   <body>
     <?php require_once('../inc/navbar.php');?>
-
       <div class="center">
         <h1>Reset Password</h1>
-        <form class="" action="../controller/password_reset2_controller.php?token=$token" method="post">
+        <form class="" action="../controller/password_reset2_controller.php?" method="post">
           <div class="textfield">
             <input type="password" name="password" >
             <span></span>
@@ -29,7 +32,7 @@
             <label>Re-Enter Password</label>
           </div>
 
-          <input type="submit" value="Reset" name="Reset">
+          <input type="submit" value="reset" name="reset">
         </form>
       </div>
   </body>

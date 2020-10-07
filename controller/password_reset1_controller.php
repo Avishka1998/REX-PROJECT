@@ -19,7 +19,7 @@
       $subject="Password Reset";
       $message='We have got your request to reset your password.<br>';
       $message.='Please follow the URL to reset your password.<br>';
-      $message.='http://localhost/REX/view/password_reset2.php?token='.$token;
+      $message.='http://localhost/now/view/password_reset2.php?token='.$token;
       $header="From: {$from}\r\nContent-Type: text/html;";
 
       $send_result=mail($to,$subject,$message,$header);
