@@ -13,7 +13,7 @@ body{
   left: 50%;
   margin-bottom: 2%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 40%;
   background: white;
   border-radius: 10px;
 }
@@ -88,10 +88,19 @@ input[type="submit"]{
   font-weight: 700;
   cursor: pointer;
   outline: none;
-  margin: 30PX 0;
 }
 
 input[type="submit"]:hover{
   border-color: #269ad9;
   transition: .5s;
+}
+
+.error{
+  display: block;
+  text-align:center;
+  font-weight: bold;
+  padding: 0;
+  box-sizing: border-box;
+  color: red;
+  margin: 0 0 25PX 0;
 }

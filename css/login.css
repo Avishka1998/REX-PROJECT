@@ -126,7 +126,6 @@ input[type="submit"]:hover{
 
 .error,.failed,.sent{
   display: block;
-  color: white;
   text-align:center;
   font-weight: bold;
   padding: 5px;
@@ -134,9 +133,9 @@ input[type="submit"]:hover{
 }
 
 .error,.failed{
-  background: red;
+  color: red;
 }
 
 .sent{
-  background: #0FC600;
+  color: #0FC600;
 }

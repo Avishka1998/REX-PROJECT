@@ -50,22 +50,19 @@
           <!-- <input type="password" required name="repeat_password"> -->
           <input type="password" name="repeat_password" >
           <span></span>
-          <label>Confirm Password</label>
+          <label>Re-Enter Password</label>
         </div>
-        <div class="">
+        <div class="error">
             <?php
-                if(isset($_GET['errors']) && !empty($_GET['errors'])){   
-                    $str_arr = unserialize(urldecode($_GET['errors']));         
+                if(isset($_GET['errors']) && !empty($_GET['errors'])){
+                    $str_arr = unserialize(urldecode($_GET['errors']));
                      foreach($str_arr as $error){
                         echo $error . '<br>';
                     }
                 }
-                else{
-              
-                }
             ?>
         </div>
-        
+
 
 
         <input type="submit" value="Register" name="submit">

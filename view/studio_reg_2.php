@@ -16,7 +16,7 @@
         <div class="textfield">
           <!-- <input type="text" required name="studio_name"> -->
           <input type="text" name="studio_name">
-          
+
           <span></span>
           <label>Studio Name</label>
         </div>
@@ -84,16 +84,16 @@
           <span></span>
           <label>Confirm Password</label>
         </div>
-        <div class="">
+        <div class="error">
             <?php
-                if(isset($_GET['errors']) && !empty($_GET['errors'])){   
-                    $str_arr = unserialize(urldecode($_GET['errors']));         
+                if(isset($_GET['errors']) && !empty($_GET['errors'])){
+                    $str_arr = unserialize(urldecode($_GET['errors']));
                      foreach($str_arr as $error){
                         echo $error . '<br>';
                     }
                 }
                 else{
-              
+
                 }
             ?>
         </div>

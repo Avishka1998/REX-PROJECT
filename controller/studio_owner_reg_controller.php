@@ -11,16 +11,16 @@
         $errors= array(); //make an array of errors
         //check form validation
         if(!isset($_POST['first_name']) || strlen(trim($_POST['first_name']))<1){
-            $errors[]='firstname is missing or invalid';
+            $errors[]='firstname is missing or invalid!';
         }
         if(!isset($_POST['last_name']) || strlen(trim($_POST['last_name']))<1){
-            $errors[]='lastname is missing or invalid';
+            $errors[]='lastname is missing or invalid!';
         }
         if(!isset($_POST['h_email']) || strlen(trim($_POST['h_email']))<1){
-            $errors[]='owner email is missing or invalid';
+            $errors[]='owner email is missing or invalid!';
         }
         if(!isset($_POST['h_tele_no']) || strlen(trim($_POST['h_tele_no']))<1){
-            $errors[]='owner telephone number is missing or invalid';
+            $errors[]='owner telephone number is missing or invalid!';
         }
 
         if(empty($errors)){//if no errors
@@ -39,11 +39,11 @@
                 if(mysqli_num_rows($result_set1)>=1){
                     $query4 = "SELECT * FROM owner WHERE first_name='{$first_name}' AND last_name='{$last_name}' AND tp_number='{$h_tele_no}'";
                     $result_set4 = mysqli_query($connection,$query4);
-                    
+
                     if(mysqli_num_rows($result_set4)==1){
                         $query5 = "SELECT owner_id,first_name FROM owner WHERE e_mail='{$h_email}'";
                         $result_set5 = mysqli_query($connection,$query4);
-    
+
                         if($result_set5){
                                 $record = mysqli_fetch_assoc($result_set4);
                                 $_SESSION['user_id']=$record['owner_id'];
@@ -53,13 +53,13 @@
 
                     }
                     else{
-                        $errors[] = "The email is existing";
+                        $errors[] = "The email is already existing!";
                         //echo "error";
                     }
 
                 }
                 else{
-                    
+
                     $query2 = "INSERT INTO owner(first_name,last_name,e_mail,tp_number)
                     VALUES ('{$first_name}','{$last_name}','{$h_email}','{$h_tele_no}')";
 
@@ -78,7 +78,7 @@
                           }
                          else{
 
-                            $errors[]="invalid username/password";
+                            $errors[]="invalid username or password!";
                         }
 
                     }

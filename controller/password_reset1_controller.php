@@ -19,18 +19,18 @@
       $subject="Password Reset";
       $message='We have got your request to reset your password.<br>';
       $message.='Please follow the URL to reset your password.<br>';
-      $message.='http://localhost/password%20reset/password_reset_2.php?token='.$token;
+      $message.='http://localhost/REX/view/password_reset2.php?token='.$token;
       $header="From: {$from}\r\nContent-Type: text/html;";
 
       $send_result=mail($to,$subject,$message,$header);
 
       if($send_result)
-          $alert="<div class='sent'>Password request link sent to your email.<br>Please follow the link.</div>";
+          $alert="<div class='sent'>Password request link sent to your email.<br>Please follow the link!</div>";
       else
           $alert="<div class='failed'>Failed to send the mail!</div>";
   }
   else
-  $alert="<p class='error'>Email is not Valid!</p>";
+    $alert="<p class='error'>Email is not Valid!</p>";
     }
 
     // if(isset($_POST['send'])){
@@ -40,9 +40,4 @@
     session_start();
     $_SESSION['alert']=$alert;
     header('Location: ../view/password_reset1.php');
-
-
-       
-    
  ?>
- 

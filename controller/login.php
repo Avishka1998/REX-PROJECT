@@ -3,12 +3,10 @@
 <?php
     if(isset($_POST['submit'])){//check the submit button is pressed
         $errors= array();
-        if(!isset($_POST['username']) || strlen(trim($_POST['username']))<1){
-            $errors[]='username is missing or invalid';
+        if(!isset($_POST['username']) || strlen(trim($_POST['username']))<1 || !isset($_POST['password']) || strlen(trim($_POST['password']))<1){
+            $errors[]='username or password is missing or invalid';
         }
-        if(!isset($_POST['password']) || strlen(trim($_POST['password']))<1){
-            $errors[]="password is missing or invlid";
-        }
+
         if(empty($errors)){
             $username = mysqli_real_escape_string($connection,$_POST['username']);
             $password = mysqli_real_escape_string($connection,$_POST['password']);
@@ -36,11 +34,11 @@
                                 header('Location: ../view/studionext.php');
                             }
                             else{
-            
-                                $errors[]="invalid username/password";
+
+                                $errors[]="invalid username or password";
                                 header('Location: ../view/login.php?errors='.urlencode(serialize($errors)));
                             }
-            
+
                         }
 
                     }
@@ -49,9 +47,9 @@
         }
         else{
             header('Location: ../view/login.php?errors='.urlencode(serialize($errors)));
-                
+
         }
     }
 
-?>   
+?>
 <?php require_once('../inc/connection_close.php') ?>

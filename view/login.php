@@ -25,16 +25,16 @@
           <span></span>
           <label>Password</label>
         </div>
-        <div class="">
+        <div class="error">
             <?php
-                if(isset($_GET['errors']) && !empty($_GET['errors'])){   
-                    $str_arr = unserialize(urldecode($_GET['errors']));         
+                if(isset($_GET['errors']) && !empty($_GET['errors'])){
+                    $str_arr = unserialize(urldecode($_GET['errors']));
                      foreach($str_arr as $error){
                         echo $error . '<br>';
                     }
                 }
                 else{
-              
+
                 }
             ?>
         </div>

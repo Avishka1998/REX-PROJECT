@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <title>Customer Registration</title>
     <link rel="stylesheet" href="../css/cust_reg.css">
+	<style>
+		.center{
+			top:53%;
+		}
+	</style>
   </head>
   <body>
     <?php require_once('../inc/navbar.php');?>
@@ -40,16 +45,16 @@
           <span></span>
           <label>Mobile Number</label>
         </div>
-        <div class="">
+        <div class="error">
             <?php
-                if(isset($_GET['errors']) && !empty($_GET['errors'])){   
-                    $str_arr = unserialize(urldecode($_GET['errors']));         
+                if(isset($_GET['errors']) && !empty($_GET['errors'])){
+                    $str_arr = unserialize(urldecode($_GET['errors']));
                      foreach($str_arr as $error){
                         echo $error . '<br>';
                     }
                 }
                 else{
-              
+
                 }
             ?>
         </div>
