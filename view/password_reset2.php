@@ -19,7 +19,7 @@
     <?php require_once('../inc/navbar.php');?>
       <div class="center">
         <h1>Reset Password</h1>
-        <form class="" action="../controller/password_reset2_controller.php?" method="post">
+        <form class="" action="../controller/password_reset2_controller.php" method="post">
           <div class="textfield">
             <input type="password" name="password" >
             <span></span>
@@ -32,7 +32,18 @@
             <label>Re-Enter Password</label>
           </div>
 
-          <input type="submit" value="reset" name="reset">
+          <div class="error">
+              <?php
+                  if(isset($_GET['errors']) && !empty($_GET['errors'])){
+                      $str_arr = unserialize(urldecode($_GET['errors']));
+                      foreach ($str_arr as $error) {
+                        echo $error .'<br>';
+                      }
+                  }
+              ?>
+          </div>
+
+          <input type="submit" value="Reset" name="reset">
         </form>
       </div>
   </body>
