@@ -46,23 +46,25 @@
             //query to check already registered users
             $query1 = "SELECT * FROM customer WHERE email = '{$email}'";
             $result_set1 = mysqli_query($connection,$query1);
+            $query2 = "SELECT * FROM studio  WHERE s_email = '{$email}'";
+            $result_set2 = mysqli_query($connection,$query2);
 
-            if($result_set1){
-
-                if(mysqli_num_rows($result_set1)>=1){
-                    $errors[] = "The user is already registered";
+            if($result_set1 && $result_set2 ){
+                
+                if(mysqli_num_rows($result_set1)>=1 || mysqli_num_rows($result_set2)>=1){
+                    $errors[] = "The user is already registered or this is an existing email ";
                     header('Location: ../view/cust_reg.php?errors='.urlencode(serialize($errors)));
                 }
                 else{
                     //store form data in the database (scustomer table)
-                    $query2 = "INSERT INTO customer (first_name,last_name,email,tele_no,password) VALUES ('{$first_name}','{$last_name}','{$email}','{$tele_no}','{$hashed_password}')";
-                    $result_set2 = mysqli_query($connection,$query2);
-                    if($result_set2){
+                    $query3 = "INSERT INTO customer (first_name,last_name,email,tele_no,password) VALUES ('{$first_name}','{$last_name}','{$email}','{$tele_no}','{$hashed_password}')";
+                    $result_set3 = mysqli_query($connection,$query3);
+                    if($result_set3){
                         //query to take data to make session
-                        $query3 = "SELECT c_id,first_name FROM customer WHERE email ='{$email}' AND password ='{$hashed_password}'";
-                        $result_set3 = mysqli_query($connection,$query3);
-                         if($result_set3){
-                                $record =mysqli_fetch_assoc($result_set3);
+                        $query4 = "SELECT c_id,first_name FROM customer WHERE email ='{$email}' AND password ='{$hashed_password}'";
+                        $result_set4 = mysqli_query($connection,$query4);
+                         if($result_set4){
+                                $record =mysqli_fetch_assoc($result_set4);
                                 //make session
                                 $_SESSION['user_id']= $record['c_id'];
                                 $_SESSION['username']=$record['first_name'];
