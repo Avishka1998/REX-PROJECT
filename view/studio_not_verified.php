@@ -30,7 +30,7 @@
 
 		.button {
 
-			background-color: #4CAF50;
+			background-color: #1AB2E7;
 			border: none;
 			color: white;
 			padding: 2% 2%;
