@@ -1,5 +1,4 @@
-
-<?php session_start();?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -21,6 +20,7 @@
       <?php
         if(isset($_SESSION['alert'])){
           echo $_SESSION['alert'];
+          $_SESSION['alert']='';
         }
       ?>
         <div class="textfield">

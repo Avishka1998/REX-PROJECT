@@ -10,8 +10,19 @@
     $result2=mysqli_query($connection,$query2);
     if(mysqli_num_rows($result1)>0 || mysqli_num_rows($result2)>0){
       $token=uniqid(md5(time()));
-      $query="INSERT INTO tokens (email,token) VALUES ('$email','$token')";
-      $insert_result=mysqli_query($connection,$query);
+
+      $query3 = "SELECT email FROM tokens WHERE email='$email'";
+      $result3 = mysqli_query($connection,$query3);
+
+      if(mysqli_num_rows($result3)>0){
+        $query = "UPDATE tokens SET token='$token' WHERE email='$email'";
+        $insert_result = mysqli_query($connection,$query);
+      }
+      else{
+        $query = "INSERT INTO tokens (email,token) VALUES ('$email','$token')";
+        $insert_result = mysqli_query($connection,$query);
+      }
+
 
       //send token to the Email
       $to=$email;
@@ -37,7 +48,6 @@
     //     $_SESSION['alert']= $alert;
     //     header('Location: ../view/password_reset1.php');
     // }
-    session_start();
     $_SESSION['alert']=$alert;
     header('Location: ../view/password_reset1.php');
  ?>
