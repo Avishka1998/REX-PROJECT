@@ -1,47 +1,43 @@
-body {
-			background-image:linear-gradient(rgba(255,255,255,0.75),rgba(10,55,255,0.75)),url('../img/backimage.jpg');
-			background-color: #0E0F11;
-			color: #fff;
-			height:100vh;
-			overflow: hidden;
-			justify-content:center;
-			}
+body{
+	background-image: linear-gradient(rgba(255,255,255,0.9),rgba(10,55,255,0.9)),url('../img/studio.jpg');
+	height: 100vh;
+	overflow:auto;
+	box-sizing: border-box;
+	background-size: contain;
+}
 
-					#signupnav{
-						background-color: #3459e2;
-						color: white;
-					}
+.column{
+	width: 50%;
+	float: left;
+}
 
-          @media screen and (min-width: 500px) {
-                body {
-                grid-template-columns: 250px 2fr .5em;
-                }
+.cus a, .stu a{
+	display: block;
+	width: 450px;
+	height: 300px;
+	overflow: auto;
+	position: absolute;
+	top: 30%;
+	background-size: contain;
+	text-align: center;
+	box-sizing: border-box;
+	color: white;
+	padding: 120px 0;
+	font-size: 45px;
+	opacity: 0.9;
+}
 
-                a::before {
-                background-position: 0;
-                background-size: 250px;
-                height: 200px;
-                transform: translateY(200px);
-      	  display: flex;
-      	  flex-direction:row;
-      	  padding: 12px;
-                }
-                }
+.cus a{
+	left: 10%;
+	background-image: url('../img/2020.10.11.0h21m37s.jpg');
+}
 
-                @media screen and (min-width: 700px) {
-                body {
-                grid-template-columns: 350px 2fr 15px;
-                }
+.stu a{
+	right: 10%;
+	background-image: url('../img/2020.10.11.0h22m41s.jpg');
+}
 
-                a::before {
-                background-size: 300px;
-                height: 250px;
-                transform: translateY(250px);
-                }
-                }
-
-                @media screen and (min-width: 1200px) {
-                body {
-                justify-content:centre ;
-                }
-                }
+.cus a:hover, .stu a:hover{
+	font-size: 47px;
+	opacity: 1;
+}
