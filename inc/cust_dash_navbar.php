@@ -66,9 +66,9 @@
 
   <body>
     <nav>
-      <a class="logo" href="../view/cust_dash.php"><img src="../inc/logo3.png"></a>
+      <a class="logo" href="../customer/cust_dash.php"><img src="../../inc/logo3.png"></a>
       <ul>
-        <li><a href="../view/cust_dash.php">Dashboard</a></li>
+        <li><a href="../customer/cust_dash.php">Dashboard</a></li>
         <li><a href="#">Inbox</a></li>
         <li><a href="#">Logout</a></li>
         <li><a href="#">User</a></li>

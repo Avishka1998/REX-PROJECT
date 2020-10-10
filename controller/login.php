@@ -21,7 +21,7 @@
                         $_SESSION['user_id']= $record['c_id'];
                         $_SESSION['username']=$record['username'];
                         echo $_SESSION['user_id'];
-                        header('Location: ../view/customernext.php');
+                        header('Location: ../view/customer/cust_dash.php');
                     }
                     else{
                         $query2 = "SELECT * FROM studio WHERE s_email = '{$username}' AND password ='{$hashed_password}'";

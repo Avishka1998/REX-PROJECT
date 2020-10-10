@@ -70,7 +70,7 @@
                                 $_SESSION['username']=$record['first_name'];
 
                                 //go to next form page
-                                header('Location: ../view/customernext.php');
+                                header('Location: ../view/customer/cust_dash.php');
                           }
                          else{
                             //$errors[]="invalid username/password";
