@@ -7,6 +7,7 @@
   </head>
   <body>
     <?php require_once('../inc/navbar.php');?>
+    <h1></h1>
     <div class="slideshow-container">
 
       <div class="mySlides fade">
@@ -31,7 +32,6 @@
         <span class="dot" onclick="currentSlide(3)"></span>
       </div>
     </div>
-
     <script src="../assets/home.js"></script>
   </body>
 </html>

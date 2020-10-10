@@ -63,8 +63,6 @@
             ?>
         </div>
 
-
-
         <input type="submit" value="Register" name="submit">
       </form>
     </div>

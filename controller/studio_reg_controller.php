@@ -65,22 +65,20 @@
 
         $query1 = "SELECT * FROM studio WHERE  s_email = '{$s_email}'";
         $result_set1 = mysqli_query($connection,$query1);
-        $query2 ="SELECT * FROM customer WHERE email = '{$s_email}'";
-        $result_set2=mysqli_query($connection,$query2);
 
 
-        if($result_set1 && $result_set2 ){
-                if(mysqli_num_rows($result_set1)>=1 || mysqli_num_rows($result_set2)>=1){
-                    $errors[] = "The studio is already registered or this is an existing email ";
+            if($result_set1){
+                if(mysqli_num_rows($result_set1)>=1){
+                    $errors[] = "The studio is already registered";
                     header('Location: ../view/studio_reg_2.php?errors='.urlencode(serialize($errors)));
                 }
                 else{
 
-                    $query3 = "INSERT INTO studio(studio_name,s_address_line1,s_address_line2,s_city,distric,postalcode,s_email,password,s_tele_no,owner_id)
+                    $query2 = "INSERT INTO studio(studio_name,s_address_line1,s_address_line2,s_city,distric,postalcode,s_email,password,s_tele_no,owner_id)
                     VALUES ('{$studio_name}','{$s_address_line1}','{$s_address_line2}','{$s_city}','{$distric}','{$postalcode}','{$s_email}','{$hashed_password}','{$s_tele_no}','{$_SESSION['user_id']}')";
 
-                    $result_set3 = mysqli_query($connection,$query3);
-                    if($result_set3){
+                    $result_set2 = mysqli_query($connection,$query2);
+                    if($result_set2){
 
                         header('Location: ../view/studionext.php');
                   }

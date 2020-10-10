@@ -1,4 +1,5 @@
 <head>
+
     <style media="screen">
     *{
       padding: 0;
@@ -55,7 +56,7 @@
     a.logo img{
       height: 40px;
     }
-	
+
 	a.active{
       background-color: #3459e2;
       color: white;
@@ -63,7 +64,6 @@
     </style>
   </head>
 
-  <body>
     <nav>
       <a class="logo" href="../view/home.php"><img src="../inc/logo3.png"></a>
       <ul>
@@ -75,5 +75,3 @@
         <li><a href="login.php" <?php if($filename=='login.php') echo "class=active"?>>LogIn</a></li>
       </ul>
     </nav>
-  </body>
-</html>
