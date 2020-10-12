@@ -15,12 +15,10 @@
             $query1 = "SELECT * FROM customer WHERE email = '{$username}' AND password ='{$hashed_password}'";
             $result_set1 = mysqli_query($connection,$query1);
             if($result_set1){
-                    echo mysqli_num_rows($result_set1);
-                    if(mysqli_num_rows($result_set1)==1){
+                        if(mysqli_num_rows($result_set1)==1){
                         $record =mysqli_fetch_assoc($result_set1);
                         $_SESSION['user_id']= $record['c_id'];
-                        $_SESSION['username']=$record['username'];
-                        echo $_SESSION['user_id'];
+                        $_SESSION['username']=$record['first_name'];
                         header('Location: ../view/customer/cust_dash.php');
                     }
                     else{
@@ -30,8 +28,8 @@
                             if(mysqli_num_rows($result_set2)==1){
                                 $record =mysqli_fetch_assoc($result_set2);
                                 $_SESSION['user_id']= $record['studio_id'];
-                                $_SESSION['username']=$record['username'];
-                                header('Location: ../view/studionext.php');
+                                $_SESSION['username']=$record['studio_name'];
+                                header('Location: ../view/studio/studio_dash.php');
                             }
                             else{
 

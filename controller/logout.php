@@ -7,6 +7,6 @@
         setcookie(session_name(),'',time()-86400,'/');
     }
     session_destroy();
-    header('Location: Home.php?logout=yes');
+    header('Location: ../index.php?logout=yes');
 
 ?>
