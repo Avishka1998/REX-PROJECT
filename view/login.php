@@ -42,7 +42,7 @@
         <input type="submit" value="Login" name="submit">
 		<div class="pass1"><a class="pass" href="password_reset1.php">Forgot Password?</a></div>
         <div class="signup_link">
-          No Existing Account? <a href="#signup">Signup</a>
+          No Existing Account? <a href="sign_up.php">Signup</a>
         </div>
       </form>
     </div>

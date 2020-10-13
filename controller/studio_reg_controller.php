@@ -80,7 +80,7 @@
                     $result_set2 = mysqli_query($connection,$query2);
                     if($result_set2){
 
-                        header('Location: ../view/studionext.php');
+                        header('Location: ../view/login.php');
                   }
 
                 }

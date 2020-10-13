@@ -1,3 +1,4 @@
+
 <head>
     <style media="screen">
     *{
@@ -66,14 +67,18 @@
   </head>
 
   <body>
+    <?php  
+              $user_name=$_SESSION['username'];
+  ?>
     <nav>
       <a class="logo" href="../customer/cust_dash.php"><img src="../../inc/logo3.png"></a>
       <ul>
         <li><a href="../customer/cust_dash.php">Dashboard</a></li>
         <li><a href="#">Inbox</a></li>
-        <li><a href="#">Logout</a></li>
-        <li><a href="#">User</a></li>
+        <li><a href="../../controller/logout.php">Logout</a></li>
+        <li><a href="#"><?php echo $user_name?></a></li>
       </ul>
     </nav>
   </body>
 </html>
+
