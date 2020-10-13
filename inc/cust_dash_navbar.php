@@ -14,8 +14,9 @@
 
     nav{
       background-color: white;
-      height: 40px;
+      height: 50px;
       width: 100%;
+      padding-top: 5px;
       position:fixed;
       overflow: hidden;
       z-index:1;

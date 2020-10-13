@@ -7,11 +7,12 @@
 	<style>
 		
 		body{
-		  background-image:linear-gradient(rgba(255,255,255,0.25),rgba(51, 153, 255,0.25)), url('../img/studio-mic.jpg');
-		  background-size: cover;
-		  background-position: center center;
-		  background-repeat: no-repeat;
-		  background-attachment: fixed;
+			
+		    background-image:linear-gradient(rgba(255,255,255,0.25),rgba(51, 153, 255,0.25)), url('../img/studio-mic.jpg');
+		    background-size: cover;
+		    background-position: center center;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
 		}
 
 		.textbox{
