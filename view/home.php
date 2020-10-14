@@ -4,34 +4,22 @@
     <meta charset="utf-8">
     <title>RecordEx</title>
     <link rel="stylesheet" href="../css/home.css">
+    <?php require_once('../inc/navbar.php'); ?>
   </head>
   <body>
-    <?php require_once('../inc/navbar.php');?>
-    <h1></h1>
-    <div class="slideshow-container">
-
-      <div class="mySlides fade">
-        <img src="../img/44e009e8-0904-4c57-a681-e632575063f1.jpg" style="width:100%">
+    <div class="front">
+      <img src="../img/uokpl.rs-gold-mic-png-5131254.png" class="profile-img">
+      <h1>Find The Perfect Recording Experience</h1>
+      <div class="service clearfix">
+        <a href="#">Recording</a>
+        <a href="#">Mixing</a>
+        <a href="#">Masterring</a>
+        <a href="#">Dubbing</a>
       </div>
-
-      <div class="mySlides fade">
-        <img src="../img/b79b4b2f-0b08-4640-8b73-4d4176b2953c.jpg" style="width:100%">
-      </div>
-
-      <div class="mySlides fade">
-        <img src="../img/d0477967-c8e7-4640-90a8-57f72b51d1ae.jpg" style="width:100%">
-      </div>
-
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    <br>
-
-      <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
+      <div class="para">
+      <p>Are You Looking For a Studio? <span><a href="../view/cust_reg.php">Join With Us For FREE!</a></span></p>
       </div>
     </div>
-    <script src="../assets/home.js"></script>
-  </body>
+    <?php require_once('../inc/footer.php');?>
+</body>
 </html>
