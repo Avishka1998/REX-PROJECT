@@ -68,7 +68,10 @@
 
   <body>
     <?php  
+    $user_name="user";
+    if(isset($_SESSION['username'])){
               $user_name=$_SESSION['username'];
+            }
   ?>
     <nav>
       <a class="logo" href="../customer/cust_dash.php"><img src="../../inc/logo3.png"></a>
@@ -76,7 +79,7 @@
         <li><a href="../customer/cust_dash.php">Dashboard</a></li>
         <li><a href="#">Inbox</a></li>
         <li><a href="../../controller/logout.php">Logout</a></li>
-        <li><a href="#"><?php echo $user_name?></a></li>
+        <li><a href="../../view/customer/cust_profile.php"><?php echo $user_name?></a></li>
       </ul>
     </nav>
   </body>
