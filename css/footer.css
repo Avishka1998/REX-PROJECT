@@ -38,7 +38,7 @@ footer{
   top: -10px;
   height: 2px;
   width: 100%;
-  background: #1a1a1a rgb(63,68,69);
+  background: rgb(63,68,69);
 }
 
 .box .content:after{
@@ -66,7 +66,7 @@ footer{
   color: white;
   height: 40px;
   width: 40px;
-  background: #1a1a1a;
+  background: rgb(63,68,69);
   line-height: 40px;
   text-align: center;
   font-size: 18px;
@@ -80,7 +80,7 @@ footer{
 
 .cent .content .fas{
   font-size: 1.4375em;
-  background: #1a1a1a;
+  background: rgb(63,68,69);
   height: 45px;
   width: 45px;
   line-height: 45px;

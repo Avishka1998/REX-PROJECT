@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 03:29 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.2
+-- Generation Time: Oct 15, 2020 at 08:55 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -89,23 +90,24 @@ CREATE TABLE `customer` (
   `last_name` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL,
   `tele_no` int(10) NOT NULL,
-  `password` varchar(60) NOT NULL
+  `password` varchar(60) NOT NULL,
+  `email_verified` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`) VALUES
-(22, 'sasindu', 'sensly', 'sasindusubodhaka@gmail.com', 876575, '0ec09ef9836da03f1add21e3ef607627e687e790'),
-(23, 'nuwan', 'nuwan', 'nuwan@gmail.com', 1234, '12ea8d6a2aba2db083396f05b87a2254cf2402de'),
-(24, 'nimal', 'perera', 'sdfkjg@gmail.com', 75479, '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
-(25, 'nimal', 'perera', 'sdfkjgksjfhg@gmail.com', 75479, '6643521711328a1e282daf5a5da43970eb11a089'),
-(26, 'sasindu', 'sensly', 'yasasindusubodhaka@gmail.com', 455, '51eac6b471a284d3341d8c0c63d0f1a286262a18'),
-(27, 'sasindu', 'sensly', 'sasindusubodhakasensly@gmail.com', 98374, '0ec09ef9836da03f1add21e3ef607627e687e790'),
-(28, 'abc', 'dfd', 'abcd@gmail.com', 917646, '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
-(29, 'sasindu', 'sensly', 'senslym@gmail.com', 779726091, '53c7e6b7ac752f5c494b59018e2f3789a9629b9e'),
-(30, 'nimal', 'kumara', 'nimal@gmail.com', 3456, '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
+INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`, `email_verified`) VALUES
+(22, 'sasindu', 'sensly', 'sasindusubodhaka@gmail.com', 876575, '0ec09ef9836da03f1add21e3ef607627e687e790', 0),
+(23, 'nuwan', 'nuwan', 'nuwan@gmail.com', 1234, '12ea8d6a2aba2db083396f05b87a2254cf2402de', 0),
+(24, 'nimal', 'perera', 'sdfkjg@gmail.com', 75479, '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0),
+(25, 'nimal', 'perera', 'sdfkjgksjfhg@gmail.com', 75479, '6643521711328a1e282daf5a5da43970eb11a089', 0),
+(26, 'sasindu', 'sensly', 'yasasindusubodhaka@gmail.com', 455, '51eac6b471a284d3341d8c0c63d0f1a286262a18', 0),
+(27, 'sasindu', 'sensly', 'sasindusubodhakasensly@gmail.com', 98374, '0ec09ef9836da03f1add21e3ef607627e687e790', 0),
+(28, 'abc', 'dfd', 'abcd@gmail.com', 917646, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0),
+(29, 'sasindu', 'sensly', 'senslym@gmail.com', 779726091, '53c7e6b7ac752f5c494b59018e2f3789a9629b9e', 0),
+(30, 'nimal', 'kumara', 'nimal@gmail.com', 3456, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0);
 
 -- --------------------------------------------------------
 
@@ -117,6 +119,18 @@ CREATE TABLE `customer_studio_complain` (
   `c_id` int(100) NOT NULL,
   `studio_id` int(100) NOT NULL,
   `complain_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `email_verification`
+--
+
+CREATE TABLE `email_verification` (
+  `id` int(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `token` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -187,7 +201,11 @@ INSERT INTO `owner` (`owner_id`, `first_name`, `last_name`, `e_mail`, `tp_number
 (7, 'sasindu', 'sensly', 'hjk@gmail.com', 234),
 (8, 'nimal', 'sensly', 'nji@gmail.com', 234),
 (9, 'sasindu', 'sensly', 'abc@gmail.com', 123456),
-(10, 'chandana', 'liyanarchchi', 'chandana@gmail.com', 775610043);
+(10, 'chandana', 'liyanarchchi', 'chandana@gmail.com', 775610043),
+(11, 'addv', 'jjvj', 'jhvjhvjv@jbbh.com', 5445454),
+(13, 'jhjvjv', 'hbjjb', 'kkbjb@jhgjvh.com', 2111),
+(14, 'igiug', 'uggu', 'oihhoih@yfyfuyf.com', 455454),
+(15, 'jgyguyg', 'yguyguyg', 'gugygu@jjhv.com', 4545);
 
 -- --------------------------------------------------------
 
@@ -267,20 +285,22 @@ CREATE TABLE `studio` (
   `password` varchar(200) NOT NULL,
   `s_tele_no` int(10) NOT NULL,
   `owner_id` int(100) NOT NULL,
-  `verified` tinyint(4) NOT NULL DEFAULT '0'
+  `verified` tinyint(4) NOT NULL DEFAULT 0,
+  `email_verified` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `studio`
 --
 
-INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `owner_id`, `verified`) VALUES
-(26, 'ABC', 'DEF', 'GHI', 'JKL', 'JKL', '234', 'ABC@gmail.com', '', 55, 4, 1),
-(27, 'CDE', 'sdjhg', 'fkjh', 'kjhs', 'kjhs', '67', 'nimalstudio@gmail.com', '6643521711328a1e282daf5a5da43970eb11a089', 4569, 5, 0),
-(28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, 0),
-(29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, 0),
-(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, 0),
-(31, 'chandanastudios', '02', 'hettiweeiya', 'nugegoda', 'nugegoda', '123', 'chandanastudios@gmail.com', '6c3f5e05b273fece80a7e7d7c269701f365d43dd', 455610043, 10, 0);
+INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `owner_id`, `verified`, `email_verified`) VALUES
+(26, 'ABC', 'DEF', 'GHI', 'JKL', 'JKL', '234', 'ABC@gmail.com', '', 55, 4, 1, 0),
+(27, 'CDE', 'sdjhg', 'fkjh', 'kjhs', 'kjhs', '67', 'nimalstudio@gmail.com', '6643521711328a1e282daf5a5da43970eb11a089', 4569, 5, 0, 0),
+(28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, 0, 0),
+(29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, 0, 0),
+(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, 0, 0),
+(31, 'chandanastudios', '02', 'hettiweeiya', 'nugegoda', 'nugegoda', '123', 'chandanastudios@gmail.com', '6c3f5e05b273fece80a7e7d7c269701f365d43dd', 455610043, 10, 0, 0),
+(34, 'pll', 'plpl', 'plplp', 'plplplp', 'plplplp', '45454', 'pavinduavishka@gmail.com', '7b21848ac9af35be0ddb2d6b9fc3851934db8420', 545454, 15, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -391,6 +411,12 @@ ALTER TABLE `customer_studio_complain`
   ADD KEY `complain_id` (`complain_id`);
 
 --
+-- Indexes for table `email_verification`
+--
+ALTER TABLE `email_verification`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `instrument`
 --
 ALTER TABLE `instrument`
@@ -498,61 +524,79 @@ ALTER TABLE `tokens`
 --
 ALTER TABLE `advance_payment`
   MODIFY `adpayment_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `audio_gear`
 --
 ALTER TABLE `audio_gear`
   MODIFY `audio_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `complain`
 --
 ALTER TABLE `complain`
   MODIFY `complain_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `c_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `c_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `email_verification`
+--
+ALTER TABLE `email_verification`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `instrument`
 --
 ALTER TABLE `instrument`
   MODIFY `instrument_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `membership_payment`
 --
 ALTER TABLE `membership_payment`
   MODIFY `mpay_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
-  MODIFY `owner_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `owner_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `reserved _job`
 --
 ALTER TABLE `reserved _job`
   MODIFY `job_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
   MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `studio`
 --
 ALTER TABLE `studio`
-  MODIFY `studio_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `studio_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
 --
 -- AUTO_INCREMENT for table `time_slot`
 --
 ALTER TABLE `time_slot`
   MODIFY `t_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- Constraints for dumped tables
 --
@@ -638,6 +682,7 @@ ALTER TABLE `studio_service`
 --
 ALTER TABLE `time_slot`
   ADD CONSTRAINT `time_slot_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
