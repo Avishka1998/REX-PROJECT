@@ -15,11 +15,18 @@
             $query1 = "SELECT * FROM customer WHERE email = '{$username}' AND password ='{$hashed_password}'";
             $result_set1 = mysqli_query($connection,$query1);
             if($result_set1){
-                        if(mysqli_num_rows($result_set1)==1){
+                    if(mysqli_num_rows($result_set1)==1){
                         $record =mysqli_fetch_assoc($result_set1);
-                        $_SESSION['user_id']= $record['c_id'];
-                        $_SESSION['username']=$record['first_name'];
-                        header('Location: ../view/customer/cust_dash.php');
+                        if($record['email_verified']==1){
+                            $_SESSION['user_id']= $record['c_id'];
+                            $_SESSION['username']=$record['first_name'];
+                            header('Location: ../view/customer/cust_dash.php');
+                        }
+                        else{
+                            $errors[]="sorry! your email is not verified";
+                            header('Location: ../view/login.php?errors='.urlencode(serialize($errors)));
+                        }
+
                     }
                     else{
                         $query2 = "SELECT * FROM studio WHERE s_email = '{$username}' AND password ='{$hashed_password}'";
@@ -27,9 +34,16 @@
                         if($result_set2){
                             if(mysqli_num_rows($result_set2)==1){
                                 $record =mysqli_fetch_assoc($result_set2);
-                                $_SESSION['user_id']= $record['studio_id'];
-                                $_SESSION['username']=$record['studio_name'];
-                                header('Location: ../view/studio/studio_dash.php');
+                                if($record['email_verified']==1){
+                                    $_SESSION['user_id']= $record['studio_id'];
+                                    $_SESSION['username']=$record['studio_name'];
+                                    header('Location: ../view/studio/studio_dash.php');
+                                }
+                                else{
+                                    $errors[]="sorry! your email is not verified";
+                                    header('Location: ../view/login.php?errors='.urlencode(serialize($errors)));
+
+                                }
                             }
                             else{
 

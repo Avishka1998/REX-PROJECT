@@ -26,26 +26,25 @@ session_start();
 					$query="SELECT studio_name FROM studio WHERE studio_id =$s[0]"; //select studio name 
 					$result_set=mysqli_query($connection,$query);
 					if($result_set){
-						$record =mysqli_fetch_assoc($result_set);
-						foreach($record as $x){
+						while($record =mysqli_fetch_assoc($result_set)){
 							echo '<div class="column">'; 
-                                        echo '<img src="../../img/studio1.png">';
-                                        echo "<h3> $x <br></h1>";
-                                        echo '<div class="rating">';
-                                            echo '<span class="fa fa-star checked"></span>';
-                                            echo '<span class="fa fa-star checked"></span>';
-                                            echo '<span class="fa fa-star checked"></span>';
-                                            echo '<span class="fa fa-star checked"></span>';
+										echo '<img src="../../img/studio1.png">';
+										echo "<h4><a href='studio_prof.php'>$record[studio_name] </a><br></h4>";
+										echo '<div class="rating">';
+											echo '<span class="fa fa-star checked"></span>';
+											echo '<span class="fa fa-star checked"></span>';
+											echo '<span class="fa fa-star checked"></span>';
+											echo '<span class="fa fa-star checked"></span>';
 											echo '<span class="fa fa-star checked"></span>';
 										echo '</div>';
-                                
+								
 							echo '</div>';
-                                    }         
-                        }
+					}
                         
                     }
 					
-                }
+				}
+			}
                 else if(isset($_GET['error'])){
 				 echo '<div class="error">';
 					echo $_GET['error'];
