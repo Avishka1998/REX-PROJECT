@@ -34,7 +34,7 @@
                         if($result_set2){
                             if(mysqli_num_rows($result_set2)==1){
                                 $record =mysqli_fetch_assoc($result_set2);
-                                if($record['email_verified']==1){
+                                if($record['email_verified']==1 && $record['verified']==1){
                                     $_SESSION['user_id']= $record['studio_id'];
                                     $_SESSION['username']=$record['studio_name'];
                                     header('Location: ../view/studio/studio_dash.php');
