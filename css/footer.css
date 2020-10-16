@@ -112,6 +112,7 @@ footer{
 
 .right form .msg{
   margin-top: 10px;
+  color: #d9d9d9;
 }
 
 .right form input, .right form textarea{
@@ -120,6 +121,7 @@ footer{
   background:  rgb(63,68,69);;
   padding-left: 10px;
   border: 1px solid rgb(184,184,184);
+  color: #d9d9d9;
 }
 
 .right form input{

@@ -95,12 +95,14 @@ body{
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   text-shadow: 2px 2px 3px black;
+  animation: blink 0.2s linear infinite;
 }
 
-.para p span a{
-  color: white;
-  font-style: italic;
-} 
+@keyframes blink{
+  0%{color: orangered;}
+  /* 50%{opacity: .5;} */
+  100%{color: yellow;}
+}
 
 .clearfix{
   overflow: auto;

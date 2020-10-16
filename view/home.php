@@ -17,7 +17,8 @@
         <a href="#">Dubbing</a>
       </div>
       <div class="para">
-      <p>Are You Looking For a Studio? <span><a href="../view/cust_reg.php">Join With Us For FREE!</a></span></p>
+      <p>Are You Looking For a Studio? Join With Us For FREE!</p>
+      <p><br>FREE One Month Trial for all Newly Registered Studios!</p>
       </div>
     </div>
     <?php require_once('../inc/footer.php');?>
