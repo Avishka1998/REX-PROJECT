@@ -20,12 +20,12 @@
                     }
                     else{
                         $errors[]="invalid username or password";
-                        header('Location: login.php?errors='.urlencode(serialize($errors)));
+                        header('Location: index.php?errors='.urlencode(serialize($errors)));
                     }
 
             }
             else{
-               header('Location: login.php?errors='.urlencode(serialize($errors)));
+               header('Location: index.php?errors='.urlencode(serialize($errors)));
 
             }
     

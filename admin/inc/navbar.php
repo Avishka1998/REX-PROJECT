@@ -72,7 +72,7 @@
       <?php $filename=basename($_SERVER['PHP_SELF'])?>
         <li><a href="adminhome.php" <?php if($filename=='adminhome.php') echo "class=active"?>>pending studios</a></li>
         <li><a href="verified.php" <?php if($filename=='verified.php') echo "class=active"?>>Verified studios</a></li>
-        <li><a href="complain.php" <?php if($filename=='complain.php') echo "class=active"?>>Complains</a></li>
+        <li><a href="complaint.php" <?php if($filename=='complaint.php') echo "class=active"?>>Complaints</a></li>
         <li><a href="logout.php" <?php if($filename=='logout.php') echo "class=active"?>>Log out</a></li>
       </ul>
     </nav>

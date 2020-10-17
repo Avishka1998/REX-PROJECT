@@ -78,7 +78,6 @@
       <ul>
         <li><a href="../customer/cust_dash.php">Dashboard</a></li>
         <li><a href="#">Inbox</a></li>
-        <li><a href="../../view/customer/cust_complaint.php">Complaint</a></li>
         <li><a href="../../controller/logout.php">Logout</a></li>
         <li><a href="../../view/customer/cust_profile.php"><?php echo $user_name?></a></li>
       </ul>
