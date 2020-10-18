@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <title>Customer Registration</title>
     <link rel="stylesheet" href="../css/cust_reg.css">
+    <style>
+      .center{
+        margin-top: 200px;
+      }
+    </style>
   </head>
   <body>
     <?php require_once('../inc/navbar.php');?>
@@ -87,17 +92,15 @@
         <div class="error">
             <?php
                 if(isset($_GET['errors']) && !empty($_GET['errors'])){
-                    $str_arr = unserialize(urldecode($_GET['errors']));
-                     foreach($str_arr as $error){
-                        echo $error . '<br>';
-                    }
+                    $err = unserialize(urldecode($_GET['errors']));                     
+                      echo $err;
                 }
                 else{
 
                 }
             ?>
         </div>
-        <input type="submit" value="Regiter" name="submit2">
+        <input type="submit" value="Regisster" name="submit2">
       </form>
     </div>
   </body>

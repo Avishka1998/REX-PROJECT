@@ -46,11 +46,14 @@
             //query to check already registered users
             $query1 = "SELECT * FROM customer WHERE email = '{$email}'";
             $result_set1 = mysqli_query($connection,$query1);
+            $query12 = "SELECT * FROM studio WHERE s_email = '{$email}'";
+            $result_set12 = mysqli_query($connection,$query12);
+
 
             if($result_set1){
 
-                if(mysqli_num_rows($result_set1)>=1){
-                    $errors[] = "The user is already registered";
+                if((mysqli_num_rows($result_set1)==1)||(mysqli_num_rows($result_set12)==1)){
+                    $errors[] = "This Email is already registered";
                     header('Location: ../view/cust_reg.php?errors='.urlencode(serialize($errors)));
                 }
                 else{
@@ -67,8 +70,23 @@
                                 $_SESSION['user_id']= $record['c_id'];
                                 $_SESSION['username']=$record['first_name'];
 
-                                //go to next form page
-                                header('Location: ../view/login.php');
+                                $token=uniqid(md5(time()));
+
+                                $query1 = "INSERT INTO email_verification (email,token) VALUES ('$email','$token')";
+                                $result1 = mysqli_query($connection,$query1);
+
+                                //send token to the email
+                                $to=$email;
+                                $from='naaveenudara@gmail.com';
+                                $subject='Email Verification';
+                                $message.='Click This Link to Verify Your Email.<br>Thank You!';
+                                $message.='http://localhost/REX/view/email_success.php?token='.$token;
+                                $header="From: {$from}\r\nContent-Type: text/html;";
+
+                                $send_result=mail($to,$subject,$message,$header);
+
+                                //next page
+                                header('Location: ../view/customernext.php');
                           }
                          else{
                             //$errors[]="invalid username/password";

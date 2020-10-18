@@ -10,7 +10,7 @@
     <div class="center">
       <h1>Customer Registration</h1>
 
-      <form action="../controller/cust_reg_controller.php" method="post"       >
+      <form action="../controller/cust_reg_controller.php" method="post">
         <div class="textfield">
           <!-- <input type="text" required name="first_name"> -->
           <input type="text" name="first_name">

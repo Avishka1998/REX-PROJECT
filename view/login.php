@@ -33,10 +33,19 @@
                         echo $error . '<br>';
                     }
                 }
-                else{
-
-                }
             ?>
+        </div>
+
+        <div class="sent">
+            <?php
+                session_start();
+                if(isset($_SESSION['everified'])){
+                    echo $_SESSION['everified'];
+                    session_unset();
+                    session_destroy();
+                    $_SESSION['everified']=''; 
+                }
+            ?>          
         </div>
 
         <input type="submit" value="Login" name="submit">
