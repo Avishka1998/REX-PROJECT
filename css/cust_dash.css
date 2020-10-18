@@ -1,15 +1,11 @@
 body{
   margin: 0;
   padding: 0;
-  padding-top: 20px;
   font-family:cursive;
   background-color: rgb(255,255,255);
   height:100vh;
   overflow:inherit;
-}
-.nav{
-  margin: 0px;
-  padding: 0px;
+  background: linear-gradient(rgba(225,225,225,0.5),rgba(227,168,155,0.7));
 }
 
 .row{
@@ -30,6 +26,7 @@ body{
   text-align: center;
   font-size: 25px;
   cursor: pointer;  
+  background: rgba(0,0,0,0.2)
 }
 
 .column img{
@@ -43,56 +40,39 @@ body{
   color: orange;
 }
 
-input[type=text] {
-<<<<<<< HEAD
-  width: 60%;
-=======
-  float: left;
-  width: 50%;
->>>>>>> d6d0907b73d92348e04f0fefb0e7e83913ba4c29
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: white;
-  background-image: url('#');
-  background-position: 10px 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
-}
-
-input[type=text]:focus {
-  width: 60%;
-}
-
-form {
-  padding-left: 20%;
-  padding-right: 20%;
-  padding-top: 2.5%;
-  position: relative;
-  border-bottom: 0px ;
-  margin: 30px 0;
-}
-/* button{
-  width:75px;
-  height:45px;
-  font-size:22px;
-} */
-button{
-  width: 10%;
+form input[type=text] {
   padding: 10px;
-  box-sizing: border-box;
-  border-radius: 4px;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-radius: 5px 0 0 5px;
+  float: left;
+  width: 93%;
+  background: #f1f1f1;
+}
+
+form button {
+  float: left;
+  width: 7%;
+  padding: 10px;
   background: #2196F3;
   color: white;
-  font-size: 16px;
+  font-size: 17px;
   border: 1px solid grey;
-  border-right: none; /* Prevent double borders */
+  border-radius: 0 5px 5px 0;
+  border-left: none;
   cursor: pointer;
-  padding: 12px 20px 12px 40px;
-  background-position: 10px 10px; 
+}
+
+  form {  
+  margin-left: auto;
+  margin-right: auto;
+  display: block;  
+  width: 50%;  
+  padding-top: 5%;
+  position: relative;
+  border-bottom: 0px ;
+}
+
 }
 .error{
   display: block;
@@ -155,5 +135,3 @@ button{
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
-
-

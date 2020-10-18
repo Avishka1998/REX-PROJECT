@@ -15,9 +15,8 @@
 
     nav{
       background-color: white;
-      height: 50px;
+      height: 40px;
       width: 100%;
-      padding-top: 5px;
       position:fixed;
       overflow: hidden;
       z-index:1;
@@ -38,10 +37,9 @@
       font-family: sans-serif;
       color:black;
       font-size: 15px;
-      padding: 12px 13px;
+      padding: 13px 13px;
       text-transform: uppercase;
       font-weight: bold;
-      border-radius: 20px;
     }
 
     nav ul li a:hover{

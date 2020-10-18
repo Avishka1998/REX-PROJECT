@@ -4,7 +4,12 @@
 </head>
 <footer>
   <div class="main">
+
     <div class="left box">
+      <img src="../img/logo3.png">
+    </div>
+  
+    <div class="cent box">
       <h2>About Us</h2>
       <div class="content">
         <p>RecordEx is an Online Platform for Recording Studios and the Customers who need to Reserve the Best Recording Studio.</p>
@@ -15,9 +20,9 @@
           <a href="#"><span class="fab fa-youtube"></span></a>
         </div>
       </div>
-    </div>
+    </div> 
 
-    <div class="cent box">
+    <div class="right box">
         <h2>Address</h2>
         <div class="content">
           <div class="place">
@@ -34,26 +39,8 @@
           </div>
         </div>
     </div>
+  </div>  
 
-    <div class="right box">
-      <h2>Contact Us</h2>
-      <div class="content">
-        <form action="#">
-          <div class="email" required>
-            <div class="text">Email *</div>
-            <input type="email" required>
-          </div>
-            <div class="msg">
-              <div class="text">Message *</div>
-              <textarea rows="2" cols="25" required></textarea>
-            </div>
-            <div class="btn">
-              <button type="submit" name="button">Send</button>
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
   <div class="bottom">
     <center>
       <span class="credit">Copyright</span>

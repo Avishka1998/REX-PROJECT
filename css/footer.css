@@ -50,19 +50,27 @@ footer{
   top: -10px;
 }
 
-.left .content p{
+.left img{
+  width: 250px;
+  height: 250px;
+  position: relative;
+  left: 17%;
+  top: 10%;
+}
+
+.cent .content p{
   text-align: justify;
 }
 
-.left .content .social{
+.cent .content .social{
   margin: 20px 0 0 0;
 }
 
-.left .content .social a{
+.cent .content .social a{
   padding: 0 20px;
 }
 
-.left .content .social a span{
+.cent .content .social a span{
   color: white;
   height: 40px;
   width: 40px;
@@ -74,11 +82,11 @@ footer{
   transition: 0.3s;
 }
 
-.left .content .social a span:hover{
+.cent .content .social a span:hover{
   background: #3459e2;
 }
 
-.cent .content .fas{
+.right .content .fas{
   font-size: 1.4375em;
   background: rgb(63,68,69);
   height: 45px;
@@ -90,64 +98,18 @@ footer{
   cursor: pointer;
 }
 
-.cent .content .fas:hover{
+.right .content .fas:hover{
   background: #3459e2;
 }
 
-.cent .content .text{
+.right .content .text{
   font-size: 1.0625rem;
   font-weight: 500;
   padding-left: 10px;
 }
 
-.cent .content .phone{
+.right .content .phone{
   margin: 10px 0;
-}
-
-.right form .text{
-  font-size: 1.0625rem;
-  margin-bottom: 2px;
-  color: #d9d9d9;
-}
-
-.right form .msg{
-  margin-top: 10px;
-  color: #d9d9d9;
-}
-
-.right form input, .right form textarea{
-  width: 100%;
-  font-size: 1.0625rem;
-  background:  rgb(63,68,69);;
-  padding-left: 10px;
-  border: 1px solid rgb(184,184,184);
-  color: #d9d9d9;
-}
-
-.right form input{
-  height: 35px;
-  color: #d9d9d9;
-}
-
-.right form .btn{
-  margin-top: 10px;
-}
-
-.right form .btn button{
-  height: 40px;
-  width: 100%;
-  border: none;
-  outline: none;
-  background: #3459e2;
-  font-size: 1.0625rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s;
-  color: white;
-}
-
-.right form .btn button:hover{
-  background: rgb(133,142,143);
 }
 
 .bottom center{
