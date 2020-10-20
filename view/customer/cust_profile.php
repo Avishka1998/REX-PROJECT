@@ -1,3 +1,7 @@
+<?php 
+require_once('../../inc/connection.php');
+session_start(); 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,25 +10,44 @@
 </head>
 <body>
 	<div class="nav"><?php require_once('../../inc/cust_dash_navbar.php');?></div>
+	<?php 
+		
+		$query="SELECT * FROM customer WHERE c_id = $user_id"; //query to get data of the logged customer ($user id is included from cust_dash_navbar.php)
+		$result_set=mysqli_query($connection,$query);
+		if($result_set){
+						$record =mysqli_fetch_assoc($result_set);
+				
+		}
 
+		
+	?>
 	<div class="row">
 		<div class="pro-pic">
 			<img src="../../img/customer/studio1.png">
 		</div>
-		
-		<h1>Name - Sasindu Subodhaka
+		<div class="error">
+				<?php
+					if(isset($_GET['errors']) && !empty($_GET['errors'])){
+						$str_arr = unserialize(urldecode($_GET['errors']));
+						foreach($str_arr as $error){
+							echo $error . '<br>';
+						}
+					}
+				?>
+			</div>
+		<?php echo '<h1>Name: '. $record["first_name"];?>
 		<button class="open-button" onclick="openForm1()">Edit name</button>
 
 		<div class="form-popup" id="nameForm">
-		  <form action="#" class="form-container">
-		    
-		    <label for="f_name"><b>First Name</b></label>
-		    <input type="text" value="Sasindu" name="f_name" required>
+		  <form action=<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?> class="form-container" method="post">  
 
-		    <label for="l_name"><b>Last Name</b></label>
-		    <input type="text" value="Subodhaka"  name="l_name" required>
+		    <label for="first_name"><b>First Name</b></label>
+		    <input type="text" value=<?php echo $record['first_name']?> name="first_name" >
 
-		    <button type="submit" class="btn">Save</button>
+		    <label for="last_name"><b>Last Name</b></label>
+		    <input type="text" value=<?php echo $record['last_name']?>  name="last_name">
+
+		    <button type="submit_name" class="btn" name="submit_name">Save</button>
 		    <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
 		  </form>
 		</div>	
@@ -39,16 +62,16 @@
 		</script>
 		</h1>
 
-		<h1>Mobile Number - 1919
+		<?php echo '<h1>Mobile Number: '. $record["tele_no"];?>
 		<button class="open-button" onclick="openForm2()">Edit Mobile No.</button>
 
 		<div class="form-popup" id="myForm">
-		  <form action="#" class="form-container">
+		  <form action=<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?> class="form-container" method="post">
 		    
 		    <label for="text"><b>Email</b></label>
-		    <input type="text" value="1919" name="phoneno" required>
+		    <input type="text" value=<?php echo $record['tele_no']?> name="tele_no" >
 
-		    <button type="submit" class="btn">Save</button>
+		    <button type="submit_phone" class="btn" name="submit_phone">Save</button>
 		    <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
 		  </form>
 		</div>
@@ -67,18 +90,18 @@
 		<button class="open-button" onclick="openForm3()">Change Password</button>
 
 		<div class="form-popup" id="PWForm">
-		  <form action="#" class="form-container">
+		  <form action="<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?>" class="form-container" method="post">
 		    
-		    
-		    <input type="Password" placeholder="Old Password" name="oldPW" required>
+		  
+		    <input type="Password" placeholder="old Password"  name="old_password">
 
 		   
-		    <input type="Password" placeholder="New Password" name="newPW" required>
+		    <input type="Password" placeholder="New Password" name="password" >
 
 		   
-		    <input type="Password" placeholder="Re-Enter New Password"  name="re-newPW" required>
+		    <input type="Password" placeholder="Re-Enter New Password"  name="new_password" >
 
-		    <button type="submit" class="btn">Save</button>
+		    <button type="submit_password" class="btn" name="submit_password">Save</button>
 		    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
 		  </form>
 		</div>	
@@ -91,8 +114,6 @@
 		  document.getElementById("PWForm").style.display = "none";
 		}
 		</script>
-		<br>
-		<br>
 		</h1>
 
 

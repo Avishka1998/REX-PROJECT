@@ -46,7 +46,7 @@
             //query to check already registered users
             $query1 = "SELECT * FROM customer WHERE email = '{$email}'";
             $result_set1 = mysqli_query($connection,$query1);
-            $query12 = "SELECT * FROM studio WHERE s_email = '{$email}'";
+            $query12 = "SELECT * FROM studio WHERE s_email = '{$email}'";//customer email shouldn't exist in studio table 
             $result_set12 = mysqli_query($connection,$query12);
 
 
