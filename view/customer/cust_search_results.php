@@ -23,13 +23,14 @@ session_start();
 			if(isset($_GET['search_result']) && !empty($_GET['search_result'])){
 				$studio_id_arr = unserialize(urldecode($_GET['search_result']));//get the studio id array              
 				foreach($studio_id_arr as $s){ //for loop to get studio names
-					$query="SELECT studio_name FROM studio WHERE studio_id =$s[0]"; //select studio name 
+					$query="SELECT studio_id,studio_name FROM studio WHERE studio_id =$s[0]"; //select studio name 
 					$result_set=mysqli_query($connection,$query);
 					if($result_set){
 						while($record =mysqli_fetch_assoc($result_set)){
+	
 							echo '<div class="column">'; 
 										echo '<img src="../../img/studio1.png">';
-										echo "<h4><a href='studio_prof.php'>$record[studio_name] </a><br></h4>";
+										echo "<h4><a href='studio_prof.php?studio_id=$record[studio_id]'>$record[studio_name] </a><br></h4>";
 										echo '<div class="rating">';
 											echo '<span class="fa fa-star checked"></span>';
 											echo '<span class="fa fa-star checked"></span>';

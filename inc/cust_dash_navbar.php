@@ -1,4 +1,4 @@
-
+<?php  require_once('connection.php');?>
 <head>
     <style media="screen">
     *{
@@ -72,8 +72,15 @@
     if(isset($_SESSION['username']) && isset($_SESSION['user_id'])){
               $user_name=$_SESSION['username'];//store logged customer username and c_id
               $user_id=$_SESSION['user_id'];
-     }
-
+    }
+    $query="SELECT * FROM customer WHERE c_id = $user_id"; //query to get data of the logged customer ($user id is included from cust_dash_navbar.php)
+		$result_set=mysqli_query($connection,$query);
+		if($result_set){
+         $record =mysqli_fetch_assoc($result_set);
+         $user_name=$record['first_name'];
+         $user_id=$record['c_id'];
+           				
+		}
     ?>
     <nav>
       <a class="logo" href="../customer/cust_dash.php"><img src="../../inc/logo3.png"></a>

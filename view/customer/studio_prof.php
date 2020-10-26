@@ -1,3 +1,18 @@
+<?php
+require_once('../../inc/connection.php');
+session_start();
+
+if(isset($_GET['studio_id'])){
+	//echo $_GET['studio_id'];
+	$query="SELECT * FROM studio WHERE studio_id=$_GET[studio_id]";
+	$result_set=mysqli_query($connection,$query);
+	if($result_set){
+		$studio_record=mysqli_fetch_assoc($result_set);
+		$studio_id=$studio_record['studio_id'];
+		$_SESSION['studio_id']=$studio_id;
+	} 
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,21 +29,23 @@
 	<div class="container">
 		<div class="cover">
 			<div>
-				<div class="pic">		
-				</div>
+				<div class="pic"></div>
 			</div>
 			<div>
-				<h3>ABC Studio</h3>
+				<h3><?php echo $studio_record['studio_name']?></h3>
 			</div>
 			
 		</div>
 	</div>
 
 	<div class="container" style="border-bottom: 2px solid silver;">
-		<button class="button" style="padding-left: 5px"><span>Make A Reservation </span></button>
-		<button class="button" style="float: right;"><span>Message </span></button>
+	<form action="" class="">
+		<button type="submit" class="button" style="padding-left: 5px" formaction="/action_page2.php"><span>Make A Reservation </span></button>
+		<button type="submit" class="button" style="float: right;"  formaction="/action_page2.php"><span>Message </span></button>
+		<button type="submit" class="button" style="float: right;" formaction=<?php echo "cust_complaint.php"; ?>><span>Add a complaint </span></button>
+	</form>
 	</div>
-	</div>
+	
 
 	<div class="container" style="top: 5%; font-size: 20px; text-align: justify;">
 		Abbey Road Studios is the most famous recording studio in the world and a global music icon. Originally a nine-bedroom house built in 1829, it was purchased by the Gramophone Company in 1928 who went on to build the world’s first purpose-built recording studio. The St John’s Wood address was chosen for its large garden and ideal location – close enough to the performance spaces of the time, but away from the noise and vibrations of the traffic and trains.
