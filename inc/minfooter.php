@@ -6,7 +6,7 @@
         margin: 0;
         padding: 0;
         font-family: 'poppins', sans-serif;
-        position: absolute;
+        position: fixed;
         color: white;
         left: 0;
         right: 0;
