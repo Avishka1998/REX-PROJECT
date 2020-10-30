@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2020 at 06:54 PM
+-- Generation Time: Oct 30, 2020 at 07:09 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -69,30 +69,6 @@ CREATE TABLE `audio_gear` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `complaint`
---
-
-CREATE TABLE `complaint` (
-  `complaint_id` int(100) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `field` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `complaint`
---
-
-INSERT INTO `complaint` (`complaint_id`, `description`, `field`) VALUES
-(1, 'A', 0),
-(2, 'B', 0),
-(4, 'C', 0),
-(5, 'D', 0),
-(6, 'E', 1),
-(7, 'F', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `customer`
 --
 
@@ -111,12 +87,12 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`, `email_verified`) VALUES
-(23, 'nuwan', 'nuwan', 'nuwan@gmail.com', 1234, '12ea8d6a2aba2db083396f05b87a2254cf2402de', 0),
+(23, 'nuwan', 'nuwan', 'nuwan@gmail.com', 779726091, '12ea8d6a2aba2db083396f05b87a2254cf2402de', 1),
 (24, 'nimal', 'perera', 'sdfkjg@gmail.com', 75479, '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0),
 (25, 'nimal', 'perera', 'sdfkjgksjfhg@gmail.com', 75479, '6643521711328a1e282daf5a5da43970eb11a089', 0),
 (26, 'sasindu', 'sensly', 'yasasindusubodhaka@gmail.com', 455, '51eac6b471a284d3341d8c0c63d0f1a286262a18', 1),
 (27, 'sasindu', 'sensly', 'sasindusubodhakasensly@gmail.com', 98374, '0ec09ef9836da03f1add21e3ef607627e687e790', 0),
-(28, 'abc', 'dfd', 'abcd@gmail.com', 917646, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1),
+(28, 'alibaba', 'dfd', 'abcd@gmail.com', 917646, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1),
 (29, 'sasindu', 'sensly', 'senslym@gmail.com', 779726091, '53c7e6b7ac752f5c494b59018e2f3789a9629b9e', 0),
 (30, 'nimal', 'kumara', 'nimal@gmail.com', 3456, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0),
 (40, 'john', 'perera', 'john@gmail.com', 77259765, 'a51dda7c7ff50b61eaea0444371f4a6a9301e501', 0),
@@ -129,19 +105,23 @@ INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `
 --
 
 CREATE TABLE `customer_complaint` (
+  `complaint_id` int(100) NOT NULL,
   `c_id` int(100) NOT NULL,
   `studio_id` int(100) NOT NULL,
-  `complaint_id` int(100) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `flag` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer_complaint`
 --
 
-INSERT INTO `customer_complaint` (`c_id`, `studio_id`, `complaint_id`, `flag`) VALUES
-(26, 31, 1, 0),
-(28, 31, 2, 0);
+INSERT INTO `customer_complaint` (`complaint_id`, `c_id`, `studio_id`, `description`, `flag`) VALUES
+(9, 23, 28, 'sasindu', 1),
+(10, 23, 28, 'sasindu', 1),
+(11, 23, 28, 'sffdfdfsdf', 1),
+(12, 23, 28, 'dfdkfjdkjf', 0),
+(13, 23, 28, 'dfkjdhfjdhf', 0);
 
 -- --------------------------------------------------------
 
@@ -324,7 +304,7 @@ CREATE TABLE `studio` (
 
 INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `owner_id`, `verified`, `email_verified`) VALUES
 (26, 'ABC', 'DEF', 'GHI', 'JKL', 'JKL', '234', 'ABC@gmail.com', '', 55, 4, 1, 0),
-(27, 'CDE', 'sdjhg', 'fkjh', 'kjhs', 'kjhs', '67', 'nimalstudio@gmail.com', '6643521711328a1e282daf5a5da43970eb11a089', 4569, 5, 0, 0),
+(27, 'CDE', 'sdjhg', 'fkjh', 'kjhs', 'kjhs', '67', 'nimalstudio@gmail.com', '6643521711328a1e282daf5a5da43970eb11a089', 4569, 5, 1, 0),
 (28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, 0, 0),
 (29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, 0, 0),
 (30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, 0, 0),
@@ -338,9 +318,10 @@ INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_
 --
 
 CREATE TABLE `studio_complaint` (
+  `complaint_id` int(11) NOT NULL,
   `studio_id` int(100) NOT NULL,
   `c_id` int(100) NOT NULL,
-  `complaint_id` int(100) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `flag` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -348,9 +329,10 @@ CREATE TABLE `studio_complaint` (
 -- Dumping data for table `studio_complaint`
 --
 
-INSERT INTO `studio_complaint` (`studio_id`, `c_id`, `complaint_id`, `flag`) VALUES
-(31, 26, 5, 0),
-(31, 28, 6, 0);
+INSERT INTO `studio_complaint` (`complaint_id`, `studio_id`, `c_id`, `description`, `flag`) VALUES
+(1, 28, 23, 'sdsd', 0),
+(2, 28, 23, 'sddfjdhbf', 0),
+(3, 28, 23, 'sdfjdgfdjfgd', 0);
 
 -- --------------------------------------------------------
 
@@ -441,12 +423,6 @@ ALTER TABLE `audio_gear`
   ADD KEY `studio_id` (`studio_id`);
 
 --
--- Indexes for table `complaint`
---
-ALTER TABLE `complaint`
-  ADD PRIMARY KEY (`complaint_id`);
-
---
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -456,9 +432,9 @@ ALTER TABLE `customer`
 -- Indexes for table `customer_complaint`
 --
 ALTER TABLE `customer_complaint`
-  ADD PRIMARY KEY (`c_id`,`studio_id`,`complaint_id`),
-  ADD KEY `studio_id` (`studio_id`),
-  ADD KEY `complain_id` (`complaint_id`);
+  ADD PRIMARY KEY (`complaint_id`),
+  ADD KEY `c_id` (`c_id`,`studio_id`),
+  ADD KEY `studio_id` (`studio_id`);
 
 --
 -- Indexes for table `email_verification`
@@ -540,8 +516,8 @@ ALTER TABLE `studio`
 -- Indexes for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
-  ADD PRIMARY KEY (`studio_id`,`c_id`,`complaint_id`),
-  ADD KEY `complaint_id` (`complaint_id`),
+  ADD PRIMARY KEY (`complaint_id`),
+  ADD KEY `studio_id` (`studio_id`,`c_id`),
   ADD KEY `c_id` (`c_id`);
 
 --
@@ -588,15 +564,15 @@ ALTER TABLE `advance_payment`
 ALTER TABLE `audio_gear`
   MODIFY `audio_id` int(100) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `complaint`
---
-ALTER TABLE `complaint`
-  MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `c_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT for table `customer_complaint`
+--
+ALTER TABLE `customer_complaint`
+  MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `email_verification`
 --
@@ -633,6 +609,11 @@ ALTER TABLE `service`
 ALTER TABLE `studio`
   MODIFY `studio_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
+-- AUTO_INCREMENT for table `studio_complaint`
+--
+ALTER TABLE `studio_complaint`
+  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `time_slot`
 --
 ALTER TABLE `time_slot`
@@ -657,9 +638,8 @@ ALTER TABLE `advance_payment`
 -- Constraints for table `customer_complaint`
 --
 ALTER TABLE `customer_complaint`
-  ADD CONSTRAINT `customer_complaint_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`),
-  ADD CONSTRAINT `customer_complaint_ibfk_2` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `customer_complaint_ibfk_3` FOREIGN KEY (`complaint_id`) REFERENCES `complaint` (`complaint_id`);
+  ADD CONSTRAINT `customer_complaint_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`),
+  ADD CONSTRAINT `customer_complaint_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`);
 
 --
 -- Constraints for table `membership_payment`
@@ -711,9 +691,8 @@ ALTER TABLE `studio`
 -- Constraints for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
-  ADD CONSTRAINT `studio_complaint_ibfk_1` FOREIGN KEY (`complaint_id`) REFERENCES `complaint` (`complaint_id`),
-  ADD CONSTRAINT `studio_complaint_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`),
-  ADD CONSTRAINT `studio_complaint_ibfk_3` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`);
+  ADD CONSTRAINT `studio_complaint_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`),
+  ADD CONSTRAINT `studio_complaint_ibfk_2` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`);
 
 --
 -- Constraints for table `studio_reserved_sevice`

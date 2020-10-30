@@ -10,6 +10,7 @@ if(isset($_GET['studio_id'])){
 		$studio_record=mysqli_fetch_assoc($result_set);
 		$studio_id=$studio_record['studio_id'];
 		$_SESSION['studio_id']=$studio_id;
+	 // $_SESSION['user_id'];
 	} 
 }
 ?>

@@ -104,7 +104,7 @@ input[type="submit"]{
 }
 
 input[type="submit"]:hover{
-  border-color: #269ad9;
+  border-color: #d92644;
   transition: .5s;
 }
 
@@ -138,4 +138,6 @@ input[type="submit"]:hover{
 
 .sent{
   color: #0FC600;
+  font-size: 25px;
 }
+
