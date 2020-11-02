@@ -1,4 +1,4 @@
-<?php  require_once('connection.php');      ?>
+<?php  require_once('connection.php');?>
 <head>
     <style media="screen">
     *{
@@ -15,9 +15,8 @@
 
     nav{
       background-color: white;
-      height: 50px;
+      height: 40px;
       width: 100%;
-      padding-top: 5px;
       position:fixed;
       overflow: hidden;
       z-index:1;
@@ -41,11 +40,15 @@
       padding: 12px 13px;
       text-transform: uppercase;
       font-weight: bold;
-      border-radius: 20px;
+    }
+
+    nav ul li a.user{
+      font-style: italic;
+      text-transform: none;
     }
 
     nav ul li a:hover{
-      background: #9999ff;
+      background: rgb(129,0,250);
       color:white;
       transition: 0.5s;
     }
@@ -59,7 +62,7 @@
       height: 40px;
     }
 	
-	a.active{
+  	a.active{
       background-color: #3459e2;
       color: white;
     }
@@ -68,7 +71,7 @@
 
   <body>
     <?php  
-    $user_name="user";
+    $user_name="User";
     if(isset($_SESSION['username']) && isset($_SESSION['user_id'])){
               $user_name=$_SESSION['username'];//store logged customer username and c_id
               $user_id=$_SESSION['user_id'];
@@ -88,7 +91,7 @@
         <li><a href="../customer/cust_dash.php">Dashboard</a></li>
         <li><a href="#">Inbox</a></li>
         <li><a href="../../controller/logout.php">Logout</a></li>
-        <li><a href="../../view/customer/cust_profile.php"><?php echo $user_name;?></a></li>
+        <li><a class="user" href="../../view/customer/cust_profile.php"><?php echo $user_name;?></a></li>
       </ul>
     </nav>
   </body>

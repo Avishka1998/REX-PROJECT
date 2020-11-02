@@ -2,11 +2,9 @@ body{
   margin: 0;
   padding: 0;
   font-family:cursive;
-  background-color: rgb(255,255,255);
   height:100vh;
   overflow:inherit;
-  background: linear-gradient(rgba(225,225,225,0.5),rgba(227,168,155,0.7));
-  background-color: #004882; 
+  background: linear-gradient(rgba(225,225,225,0.5),rgba(129, 0, 250, 0.6));
 }
 
 .row{
@@ -21,13 +19,12 @@ body{
   float: left;
   width: 31%;
   padding: 50px;
-  border: 1px solid silver;
-  border-radius: 5px;
+  border: 1px solid black;
   margin: 1%;
   text-align: center;
   font-size: 25px;
   cursor: pointer;  
-  background: rgba(0,0,0,0.2)
+  background: rgba(255,255,255,0.2)
 }
 
 .column img{
@@ -45,7 +42,7 @@ form .textfield{
   border-bottom: 2px solid #adadad;
   margin: 30px 0;
 }
-
+   
 .textfield input{
   width: 100%;
   padding: 0 5px;
@@ -55,8 +52,8 @@ form .textfield{
   background: none;
   outline: none;
 }
+
 label{
-  
   top: 50%;
   left: 5px;
   color: #050000;
@@ -65,6 +62,7 @@ label{
   pointer-events: none;
   transition: .4s;
 }
+
 form input[type=text] {
   padding: 10px;
   font-size: 17px;
@@ -72,7 +70,7 @@ form input[type=text] {
   border-radius: 5px 0 0 5px;
   float: left;
   width: 93%;
-  font-family:cursive;
+  /* font-family:cursive; */
   background: #f1f1f1;
 }
 
@@ -80,7 +78,7 @@ form button[type=submit]{
   float: right;
   width: 7%;
   padding: 12px;
-  background: #2196F3;
+  background:#8100fa;
   color: white;
   font-size: 17px;
   border: 1px solid grey;
@@ -88,30 +86,18 @@ form button[type=submit]{
   border-left: none;
   cursor: pointer;
 }
-form button[type=submit1] {
-  float: left;
-  width: 40%;
-  padding: 11px;
-  background: #f32144;
-  color: white;
-  font-size: 18px;
-  border: 1px solid grey;
-  border-radius: 0x 0px 0px 0x;
-  border-left: none;
-  cursor: pointer;
-}
-  form {  
+
+form {  
   margin-left: auto;
   margin-right: auto;
-  display: block;  
+  display: block;
   width: 50%;  
   padding-top: 5%;
   position: relative;
   border-bottom: 0px ;
 }
 
-}
-.error{
+.error {
   display: block;
   text-align:left;
   font-weight: bold;
@@ -122,3 +108,47 @@ form button[type=submit1] {
   font-size: 16px;
 }
 
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.box select {
+  background-color: #af2860;
+  color: white;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+/* .box::before {
+  content: "\f13a";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+} */
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+}

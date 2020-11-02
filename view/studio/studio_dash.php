@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <?php require_once('../../inc/stu_dash_navbar.php');?>
-
+<?php require_once('../../inc/stu_dash_navbar.php');?>
     <div class="container">
       <div class="aaa"> 
       <form action="">

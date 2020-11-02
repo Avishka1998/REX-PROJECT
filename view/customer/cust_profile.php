@@ -15,7 +15,7 @@ session_start();
 		$query="SELECT * FROM customer WHERE c_id = $user_id"; //query to get data of the logged customer ($user id is included from cust_dash_navbar.php)
 		$result_set=mysqli_query($connection,$query);
 		if($result_set){
-						$record =mysqli_fetch_assoc($result_set);
+						$record = mysqli_fetch_assoc($result_set);
 				
 		}
 
@@ -23,7 +23,8 @@ session_start();
 	?>
 	<div class="row">
 		<div class="pro-pic">
-			<img src="../../img/customer/studio1.png">
+			<label for="myfile"><img src="../../img/customer/584abf432912007028bd9337.png" alt=""></label>
+			<input type="file" id="myfile" class="my_file" hidden="true">
 		</div>
 		<div class="error">
 				<?php
@@ -35,8 +36,8 @@ session_start();
 					}
 				?>
 			</div>
-		<?php echo '<h1>Name: '. $record["first_name"];?>
-		<button class="open-button" onclick="openForm1()">Edit name</button>
+		<?php echo '<h2>Name: '. $record["first_name"] . ' '. $record["last_name"];?>
+		<button class="open-button" onclick="openForm1()">Edit</button>
 
 		<div class="form-popup" id="nameForm">
 		  <form action=<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?> class="form-container" method="post">  
@@ -60,10 +61,10 @@ session_start();
 		  document.getElementById("nameForm").style.display = "none";
 		}
 		</script>
-		</h1>
+		</h2>
 
-		<?php echo '<h1>Mobile Number: '. $record["tele_no"];?>
-		<button class="open-button" onclick="openForm2()">Edit Mobile No.</button>
+		<?php echo '<h2>Mobile: '. $record["tele_no"];?>
+		<button class="open-button" onclick="openForm2()">Edit</button>
 
 		<div class="form-popup" id="myForm">
 		  <form action=<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?> class="form-container" method="post">
@@ -84,9 +85,9 @@ session_start();
 		  document.getElementById("myForm").style.display = "none";
 		}
 		</script>	
-		</h1>
+		</h2>
 
-		<h1>
+		<h2>
 		<button class="open-button" onclick="openForm3()">Change Password</button>
 
 		<div class="form-popup" id="PWForm">
@@ -114,7 +115,7 @@ session_start();
 		  document.getElementById("PWForm").style.display = "none";
 		}
 		</script>
-		</h1>
+		</h2>
 
 
 
@@ -122,6 +123,6 @@ session_start();
 	</div>
 
 
-	
+	<?php require_once('../../inc/minfooter.php'); ?>
 </body>
 </html>
