@@ -74,6 +74,6 @@ $user_name="User";
     <li><a href="#">Jobs</a></li>
     <li><a href="#">Inbox</a></li>
     <li><a href="../../controller/logout.php">Logout</a></li>
-    <li><a class="user" href="#">User</a></li>
+    <li><a class="user" href="../studio/studio_profile.php">User</a></li>
   </ul>  
 </nav>

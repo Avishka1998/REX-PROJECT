@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../css/studio_dash.css">
+    <title>Studio Dash</title>
+    <link rel="stylesheet" href="../../css/studio/studio_dash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
        </form>
       </div>
 
-      <div class="abc">
+      <div class="abc" style="text-align: center;">
          <h2>Recent Jobs</h2>
          <div class="jobs">
             <div id="job1">
