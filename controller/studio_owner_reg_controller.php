@@ -54,7 +54,7 @@
                     }
                     else{
                         $errors[] = "The email is already existing!";
-                        //echo "error";
+                        header('Location: ../view/studio_reg_1.php?errors='.urlencode(serialize($errors)));
                     }
 
                 }

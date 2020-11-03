@@ -17,15 +17,21 @@ session_start();
 		if($result_set){
 						$record = mysqli_fetch_assoc($result_set);
 				
-		}
-
-		
+		}		
 	?>
 	<div class="row">
 		<div class="pro-pic">
-			<label for="myfile"><img src="../../img/customer/584abf432912007028bd9337.png" alt=""></label>
-			<input type="file" id="myfile" class="my_file" hidden="true">
+		<?php $url = "../../img/customer/$record[image]";?>
+		<img src=<?php echo $url; ?> alt="" width="230px" height="230px">
 		</div>
+		<div class="upload">
+			
+				<form action="<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?>" class="form-container" method="post" enctype="multipart/form-data" style="background-color:rgba(255, 255, 255, 0);"> 
+					<label for="myfile"><img src="../../img/customer/584abf432912007028bd9337.png" alt=""></label>
+					<input type="file" id="myfile" class="my_file" hidden="true" name="image">
+					<button type="submit_image" class="image-button" name="submit_image" >Upload</button>
+				</form>	
+			
 		<div class="error">
 				<?php
 					if(isset($_GET['errors']) && !empty($_GET['errors'])){
@@ -35,7 +41,7 @@ session_start();
 						}
 					}
 				?>
-			</div>
+		</div>
 		<?php echo '<h2>Name: '. $record["first_name"] . ' '. $record["last_name"];?>
 		<button class="open-button" onclick="openForm1()">Edit</button>
 
@@ -116,10 +122,6 @@ session_start();
 		}
 		</script>
 		</h2>
-
-
-
-
 	</div>
 
 

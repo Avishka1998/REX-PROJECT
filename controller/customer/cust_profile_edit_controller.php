@@ -5,6 +5,28 @@ session_start();
 <?php 
 if(isset($_GET['c_id'])){//isset user_id which pass from form action 
     $c_id=$_GET['c_id'];//store user_id in a variable
+    if(isset($_POST['submit_image'])){//check whether user press the save button in edit name
+        $errors= array();  ////array of error
+       
+        if(empty($errors)){//if no errors
+             $image = $_FILES['image']['name'];
+             
+           $query="UPDATE customer SET image='$image' WHERE  c_id=$c_id ";//update the details 
+           $result_set=mysqli_query($connection,$query);   
+            if($result_set){//if query succes 
+                echo "yes";
+                move_uploaded_file($_FILES['image']['tmp_name'],"../../img/customer/$image");
+                header('Location: ../../view/customer/cust_profile.php');
+            }    
+            else{
+                echo "no";
+            }     
+   
+        }
+        else{
+            header('Location: ../../view/customer/cust_profile.php?errors='.urlencode(serialize($errors)));
+        }
+    }
     if(isset($_POST['submit_name'])){//check whether user press the save button in edit name
         $errors= array();  ////array of error
         if(!isset($_POST['first_name']) || strlen(trim($_POST['first_name']))<1){//form validation

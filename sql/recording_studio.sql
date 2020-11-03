@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2020 at 07:09 PM
+-- Generation Time: Nov 03, 2020 at 06:56 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -79,24 +79,17 @@ CREATE TABLE `customer` (
   `email` varchar(60) NOT NULL,
   `tele_no` int(10) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `email_verified` tinyint(1) NOT NULL DEFAULT '0'
+  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `image` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`, `email_verified`) VALUES
-(23, 'nuwan', 'nuwan', 'nuwan@gmail.com', 779726091, '12ea8d6a2aba2db083396f05b87a2254cf2402de', 1),
-(24, 'nimal', 'perera', 'sdfkjg@gmail.com', 75479, '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0),
-(25, 'nimal', 'perera', 'sdfkjgksjfhg@gmail.com', 75479, '6643521711328a1e282daf5a5da43970eb11a089', 0),
-(26, 'sasindu', 'sensly', 'yasasindusubodhaka@gmail.com', 455, '51eac6b471a284d3341d8c0c63d0f1a286262a18', 1),
-(27, 'sasindu', 'sensly', 'sasindusubodhakasensly@gmail.com', 98374, '0ec09ef9836da03f1add21e3ef607627e687e790', 0),
-(28, 'alibaba', 'dfd', 'abcd@gmail.com', 917646, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1),
-(29, 'sasindu', 'sensly', 'senslym@gmail.com', 779726091, '53c7e6b7ac752f5c494b59018e2f3789a9629b9e', 0),
-(30, 'nimal', 'kumara', 'nimal@gmail.com', 3456, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0),
-(40, 'john', 'perera', 'john@gmail.com', 77259765, 'a51dda7c7ff50b61eaea0444371f4a6a9301e501', 0),
-(41, 'sasindu', 'subodhaka', 'sasindusubodhaka@gmail.com', 779726091, '53c7e6b7ac752f5c494b59018e2f3789a9629b9e', 0);
+INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`, `email_verified`, `image`) VALUES
+(23, 'nuwan', 'fernando', 'nuwan@gmail.com', 765610043, '12ea8d6a2aba2db083396f05b87a2254cf2402de', 1, 'ford-mustang-apollo-edition-3840x2160-mustang-white-sport-cars-7638.jpg'),
+(43, 'sasindu', 'sensly', 'sasindusubodhaka@gmail.com', 779726091, '56dd6c6e807b49709b2812bba021489e93f7f817', 0, '');
 
 -- --------------------------------------------------------
 
@@ -111,17 +104,6 @@ CREATE TABLE `customer_complaint` (
   `description` varchar(500) NOT NULL,
   `flag` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `customer_complaint`
---
-
-INSERT INTO `customer_complaint` (`complaint_id`, `c_id`, `studio_id`, `description`, `flag`) VALUES
-(9, 23, 28, 'sasindu', 1),
-(10, 23, 28, 'sasindu', 1),
-(11, 23, 28, 'sffdfdfsdf', 1),
-(12, 23, 28, 'dfdkfjdkjf', 0),
-(13, 23, 28, 'dfkjdhfjdhf', 0);
 
 -- --------------------------------------------------------
 
@@ -140,7 +122,10 @@ CREATE TABLE `email_verification` (
 --
 
 INSERT INTO `email_verification` (`id`, `email`, `token`) VALUES
-(13, 'sasindusubodhaka@gmail.com', 'e3e0dcc71094a74a01910c1672b132265f89377803473');
+(13, 'sasindusubodhaka@gmail.com', 'e3e0dcc71094a74a01910c1672b132265f89377803473'),
+(14, 'sanathhome@gmail.com', '1f7a0cc68cbffa9d26f453eec0a747a95f9d9b24338b7'),
+(15, '123@gmail.com', '287cef6106486a6b9e65a8d2b3aaf9f55f9ee81d1e718'),
+(16, 'sasindusubodhaka@gmail.com', 'b9152bf75bca4121302ac6237d9a68dc5f9ee8ba2f40f');
 
 -- --------------------------------------------------------
 
@@ -307,9 +292,10 @@ INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_
 (27, 'CDE', 'sdjhg', 'fkjh', 'kjhs', 'kjhs', '67', 'nimalstudio@gmail.com', '6643521711328a1e282daf5a5da43970eb11a089', 4569, 5, 1, 0),
 (28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, 0, 0),
 (29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, 0, 0),
-(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, 0, 0),
+(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, 1, 0),
 (31, 'chandanastudios', '02', 'hettiweeiya', 'nugegoda', 'nugegoda', '123', 'chandanastudios@gmail.com', '6c3f5e05b273fece80a7e7d7c269701f365d43dd', 455610043, 10, 1, 1),
-(34, 'pll', 'plpl', 'plplp', 'plplplp', 'plplplp', '45454', 'pavinduavishka@gmail.com', '7b21848ac9af35be0ddb2d6b9fc3851934db8420', 545454, 15, 1, 1);
+(34, 'pll', 'plpl', 'plplp', 'plplplp', 'plplplp', '45454', 'pavinduavishka@gmail.com', '7b21848ac9af35be0ddb2d6b9fc3851934db8420', 545454, 15, 1, 1),
+(35, 'sanathhomestudio', 'abcd', 'a', 'colombo', 'colombo', '234', 'sanathhome@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 7645609, 6, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -330,9 +316,9 @@ CREATE TABLE `studio_complaint` (
 --
 
 INSERT INTO `studio_complaint` (`complaint_id`, `studio_id`, `c_id`, `description`, `flag`) VALUES
-(1, 28, 23, 'sdsd', 0),
-(2, 28, 23, 'sddfjdhbf', 0),
-(3, 28, 23, 'sdfjdgfdjfgd', 0);
+(1, 28, 23, 'sdsd', 1),
+(2, 28, 23, 'sddfjdhbf', 1),
+(3, 28, 23, 'sdfjdgfdjfgd', 1);
 
 -- --------------------------------------------------------
 
@@ -567,17 +553,17 @@ ALTER TABLE `audio_gear`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `c_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `c_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `customer_complaint`
 --
 ALTER TABLE `customer_complaint`
-  MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `email_verification`
 --
 ALTER TABLE `email_verification`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `instrument`
 --
@@ -607,7 +593,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `studio`
 --
 ALTER TABLE `studio`
-  MODIFY `studio_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `studio_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `studio_complaint`
 --
