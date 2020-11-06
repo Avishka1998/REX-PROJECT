@@ -64,6 +64,15 @@ $user_name="User";
  if(isset($_SESSION['username']) && isset($_SESSION['user_id'])){
       $user_name=$_SESSION['username'];//store logged customer username and c_id
       $user_id=$_SESSION['user_id'];
+
+      $query="SELECT * FROM studio WHERE studio_id = $user_id";
+      $result_set = mysqli_query($connection,$query);
+
+      if($result_set){
+        $record =mysqli_fetch_assoc($result_set);
+        $user_name=$record['studio_name'];
+        $user_id=$record['studio_id'];
+      }
    }
 ?>
 
@@ -74,6 +83,6 @@ $user_name="User";
     <li><a href="#">Jobs</a></li>
     <li><a href="#">Inbox</a></li>
     <li><a href="../../controller/logout.php">Logout</a></li>
-    <li><a class="user" href="../studio/studio_profile.php">User</a></li>
+    <li><a class="user" href="../studio/studio_profile.php"><?php echo $user_name ?></a></li>
   </ul>  
 </nav>
