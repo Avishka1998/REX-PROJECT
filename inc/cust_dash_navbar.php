@@ -89,7 +89,7 @@
       <a class="logo" href="../customer/cust_dash.php"><img src="../../inc/logo3.png"></a>
       <ul>
         <li><a href="../customer/cust_dash.php">Dashboard</a></li>
-        <li><a href="#">Inbox</a></li>
+        <li><a href="../../view/customer/cust_inbox.php">Inbox</a></li>
         <li><a href="../../controller/logout.php">Logout</a></li>
         <li><a class="user" href="../../view/customer/cust_profile.php"><?php echo $user_name;?></a></li>
       </ul>
