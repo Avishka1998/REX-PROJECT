@@ -81,7 +81,7 @@ $user_name="User";
   <ul>
     <li><a href="../studio/studio_dash.php">Dashboard</a></li>
     <li><a href="#">Jobs</a></li>
-    <li><a href="#">Inbox</a></li>
+    <li><a href="../../view/studio/studio_inbox.php">Inbox</a></li>
     <li><a href="../../controller/logout.php">Logout</a></li>
     <li><a class="user" href="../studio/studio_profile.php"><?php echo $user_name ?></a></li>
   </ul>  
