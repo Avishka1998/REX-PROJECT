@@ -66,8 +66,6 @@
             $s_city = mysqli_real_escape_string($connection,$_POST['s_city']);
             $distric = mysqli_real_escape_string($connection,$_POST['s_city']);
             $postalcode = mysqli_real_escape_string($connection,$_POST['postalcode']);
-            $latitude = mysqli_real_escape_string($connection,$_POST['latitude']);
-            $longitude = mysqli_real_escape_string($connection,$_POST['longitude']);
             $s_email = mysqli_real_escape_string($connection,$_POST['s_email']);
             $s_tele_no = mysqli_real_escape_string($connection,$_POST['s_tele_no']);
             $password = mysqli_real_escape_string($connection,$_POST['repeat_password']);
@@ -90,8 +88,8 @@
                 }
                 else{
 
-                    $query2 = "INSERT INTO studio(studio_name,s_address_line1,s_address_line2,s_city,distric,postalcode,latitude,longitude,s_email,password,s_tele_no,owner_id)
-                    VALUES ('{$studio_name}','{$s_address_line1}','{$s_address_line2}','{$s_city}','{$distric}','{$postalcode}','{$latitude}','{$longitude}',{$s_email}','{$hashed_password}','{$s_tele_no}','{$_SESSION['user_id']}')";
+                    $query2 = "INSERT INTO studio(studio_name,s_address_line1,s_address_line2,s_city,distric,postalcode,s_email,password,s_tele_no,owner_id)
+                    VALUES ('{$studio_name}','{$s_address_line1}','{$s_address_line2}','{$s_city}','{$distric}','{$postalcode}','{$s_email}','{$hashed_password}','{$s_tele_no}','{$_SESSION['user_id']}')";
 
                     $result_set2 = mysqli_query($connection,$query2);
                     if($result_set2){
@@ -102,7 +100,7 @@
 
                         //send token to the email
                         $to=$s_email;
-                        $from='naaveenudara@gmail.com';
+                        $from='recordexonline@gmail.com';
                         $subject='Email Verification';
                         $message.='Click This Link to Verify Your Email.<br>Thank You!';
                         $message.='http://localhost/REX/view/email_success.php?token='.$token;

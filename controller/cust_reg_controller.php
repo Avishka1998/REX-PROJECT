@@ -77,7 +77,7 @@
 
                                 //send token to the email
                                 $to=$email;
-                                $from='naaveenudara@gmail.com';
+                                $from='recordexonline@gmail.com';
                                 $subject='Email Verification';
                                 $message.='Click This Link to Verify Your Email.<br>Thank You!';
                                 $message.='http://localhost/REX/view/email_success.php?token='.$token;

@@ -22,65 +22,59 @@ if(isset($_GET['studio_id'])){
 </head>
 <body>
 	<div class="nav"><?php require_once('../../inc/cust_dash_navbar.php');?></div>
-
-	<form>
-  		<input type="text" name="search" placeholder="Search..">
-	</form>    
-
+	<main>
 	<div class="container">
 		<div class="cover">
-			<div>
-				<div class="pic"></div>
-			</div>
-			<div>
-				<h3><?php echo $studio_record['studio_name']?></h3>
-			</div>
-			
+		  <a class="button" href="https://www.youtube.com">Message</a>
+		  <div class="pic"></div>
+		  <p>JB Studios</p>
+		</div>
+	</div>
+	<div class="container" id="description">
+		JB Studios is the most famous recording studio in the world and a global music icon. Originally a nine-bedroom house built in 1829, it was purchased by the Gramophone Company in 1928 who went on to build the world’s first purpose-built recording studio. The St John’s Wood address was chosen for its large garden and ideal location – close enough to the performance spaces of the time, but away from the noise and vibrations of the traffic and trains.
+	</div>
+
+	<div class="container" style="top: 10%; padding-bottom: 5%">
+		<h2>Services</h2>
+		<div class="service clearfix">
+		  <a href="#">Recording</a>
+		  <a href="#">Mixing</a>
+		  <a href="#">Dubbing</a>
 		</div>
 	</div>
 
-	<div class="container" style="border-bottom: 2px solid silver;">
-	<form action="" class="">
-		<button type="submit" class="button" style="padding-left: 5px" formaction="/action_page2.php"><span>Make A Reservation </span></button>
-		<button type="submit" class="button" style="float: right;"  formaction="/action_page2.php"><span>Message </span></button>
-		<button type="submit" class="button" style="float: right;" formaction=<?php echo "cust_complaint.php"; ?>><span>Add a complaint </span></button>
-	</form>
-	</div>
-	
-
-	<div class="container" style="top: 5%; font-size: 20px; text-align: justify;">
-		Abbey Road Studios is the most famous recording studio in the world and a global music icon. Originally a nine-bedroom house built in 1829, it was purchased by the Gramophone Company in 1928 who went on to build the world’s first purpose-built recording studio. The St John’s Wood address was chosen for its large garden and ideal location – close enough to the performance spaces of the time, but away from the noise and vibrations of the traffic and trains.
-	</div>
-
-	<div class="container" style="top: 10%; padding-bottom: 10%">
-		<h2>Services</h2>
-	</div>
-
-	<div class="container" style="top: 10%;">
+	<div class="container portfolio">
 		<h2>Portfolio</h2>
 		<div class="video">
 			<video width="320" height="240" poster="../../img/studio-mic.jpg" controls>
-		   <source src="https://www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
-		   
+      		  <source src="https://www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
 			</video>
 		</div> 
 
 		<div class="video">
 			<video width="320" height="240" poster="../../img/studio-mic.jpg" controls>
-		   <source src="https://www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
-		   
+      		  <source src="https://www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
 			</video>
 		</div> 
 
 		<div class="video">
 			<video width="320" height="240" poster="../../img/studio-mic.jpg" controls>
-		   <source src="www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
-		   
+		      <source src="www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
 			</video>
 		</div> 
-		
 
+		<div class="video">
+			<video width="320" height="240" poster="../../img/studio-mic.jpg" controls>
+		      <source src="www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
+			</video>
+		</div> 
 	</div>
 
+	<div class="container botbtn">
+      <a id="bot1" class="button" href="/action_page2.php">Make a Reservation</a>
+	  <a id="bot2" class="button" href="cust_complaint.php">complaint</a>
+	</div>
+	</main>
+	<?php require_once('../../inc/minfooter.php');?>
 </body>
 </html>
