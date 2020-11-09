@@ -4,8 +4,46 @@ session_start();
 ?>
 
 <?php
-   if(isset($_GET['s_id'])){
+   if(isset($_GET['s_id'])){     
      $s_id = $_GET['s_id'];
+      if(isset($_POST['submit_profile'])){//check whether user press the save button in edit name         
+        $errors= array();  ////array of error
+        if(empty($errors)){//if no errors          
+          $profile = $_FILES['profile']['name'];             
+          $query="UPDATE studio SET profile='$profile' WHERE  studio_id=$s_id ";//update the details 
+          $result_set=mysqli_query($connection,$query);   
+            if($result_set){//if query succes 
+                move_uploaded_file($_FILES['profile']['tmp_name'],"../../img/studio/$profile");
+                header('Location: ../../view/studio/studio_profile.php');
+            }    
+            else{
+                echo "no";
+            }     
+  
+        }
+        else{
+            header('Location: ../../view/studio/studio_profile.php?errors='.urlencode(serialize($errors)));
+        }
+      }
+      if(isset($_POST['submit_cover'])){//check whether user press the save button in edit name        
+        $errors= array();  ////array of error
+        if(empty($errors)){//if no errors          
+          $cover = $_FILES['cover']['name'];            
+          $query="UPDATE studio SET cover='$cover' WHERE  studio_id=$s_id ";//update the details 
+          $result_set=mysqli_query($connection,$query);   
+            if($result_set){//if query succes                
+                move_uploaded_file($_FILES['cover']['tmp_name'],"../../img/studio/$cover");
+                header('Location: ../../view/studio/studio_profile.php');
+            }    
+            else{
+                echo "no";
+            }     
+  
+        }
+        else{            
+            header('Location: ../../view/studio/studio_profile.php?errors='.urlencode(serialize($errors)));
+        }
+      }
 
      if(isset($_POST['submit_name'])){
        $errors = array();
@@ -201,4 +239,5 @@ session_start();
         }
       }
     } 
+   
 ?>

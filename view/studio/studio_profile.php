@@ -28,10 +28,34 @@ session_start();
 	?>
 	
 	<div class="row">
-		<div class="pro-pic">
-			<label for="myfile"><img src="../../img/customer/584abf432912007028bd9337.png" alt=""></label>
-			<input type="file" id="myfile" class="my_file" hidden="true">
-		</div>
+	 
+			<?php $url1 = "../../img/studio/$record[cover]";?>
+		 	<div class="upper-container" style="background-image:url(<?php echo $url1?>);">                 
+            	<div class="image-container">
+					   <?php $url2 = "../../img/studio/$record[profile]";?>
+					   <img src=<?php echo $url2 ?> width="230px" height="230px" />		 
+					   
+				</div>	
+				<div class="profile_upload">
+								<form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>"  method="post" enctype="multipart/form-data"  > 
+									<label for="profile"><img src="../../img/studio/584abf432912007028bd9337.png" alt=""></label>
+									<input type="file" id="profile" class="my_file" hidden="true" name="profile">
+									<button type="submit_profile" class="profile-button" name="submit_profile" >Upload</button>
+								</form>	
+				</div>			
+				<div class="cover_upload">
+								<form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" method="post" enctype="multipart/form-data"  > 
+									<label for="cover"><img src="../../img/studio/584abf432912007028bd9337.png" alt=""></label>
+									<input type="file" id="cover" class="my_file" hidden="true" name="cover">
+									<button type="submit_cover" class="cover-button" name="submit_cover" >Upload</button>
+								</form>	
+				</div>
+
+
+			</div>	
+		
+				 
+	  
 
 		<div class="error">
 	      <?php

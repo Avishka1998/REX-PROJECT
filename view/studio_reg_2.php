@@ -60,7 +60,18 @@
           <span></span>
           <label>Postal Code</label>
         </div>
-
+        <div class="textfield">
+          <!-- <input type="text" required name="s_address_2"> -->
+          <input type="text" name="latitude">
+          <span></span>
+          <label>Latitude</label>
+        </div>
+        <div class="textfield">
+          <!-- <input type="text" required name="s_address_2"> -->
+          <input type="text" name="longitude">
+          <span></span>
+          <label>Longitude</label>
+        </div>
 
         <div class="textfield">
           <!-- <input type="email" required name="s_email"> -->

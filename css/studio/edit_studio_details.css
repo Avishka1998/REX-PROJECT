@@ -24,38 +24,6 @@ body{
   background: rgba(255, 255, 255, 0.4);
 }
 
-.pro-pic{
-  height: 230px;
-  width: 220px;
-  position: relative;
-  border: 2px solid #FFF;
-  border-radius: 50%;
-  background: url('../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg');
-  background-size: 100% 100%;
-  margin: 0px auto;
-  overflow: hidden;
-}
-
-.pro-pic label{
-  position: absolute;
-  bottom: 0;
-  left: 40%;
-  width: 45px;
-  outline: none;
-  box-sizing: border-box;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: 0.5s;
-}
-
-.pro-pic label:hover{
-  opacity: 1;
-}
-
-.pro-pic label img{
-  height: 35px;
-  width: 45px;
-}
 
 h1{
   font-size: 30px;
@@ -108,7 +76,7 @@ h2{
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-  background-color: white;
+  
 }
 
 
@@ -163,4 +131,96 @@ h2{
   box-sizing: border-box;
   color: red;
   margin: 0 0 25PX 0;
+}
+.upper-container{
+  height: 300px; 
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .image-container{
+  background: white;
+  border-radius: 50%;
+  padding: 0px;
+  transform: translate(100px,100px);
+  height: 200px;
+  width: 200px;
+  position: relative;
+  border: 2px solid #FFF;
+  border-radius: 50%;  
+  background-size: 100% 100%;
+  margin: 0px auto;
+  overflow: hidden;
+  }
+.profile-button{
+  background-color: #9d8f8f;
+  color: rgb(245, 231, 231);
+  padding: 6px 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.8;
+  float: right;
+  display: block;
+  position: relative;
+  top: 45px;
+  right:30%;
+}
+.profile_upload label{  
+  position: relative;
+  bottom: 0px;
+  top: 40px;
+  left: 55%;
+  width: 45px;
+  outline: none;  
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+.profile_upload label:hover{
+  opacity: 1;
+  }
+
+.profile_upload label img{  
+  height: 35px;
+  width: 45px;
+}
+.cover_upload label{  
+  position: relative;
+  outline: none;  
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.5s;
+  float:left;
+  left: 10%;
+  top: 26px;
+
+ 
+}
+.cover_upload label:hover{
+  opacity: 1;
+  }
+
+.cover_upload label img{   
+  height: 35px;
+  width: 45px; 
+ 
+}
+.cover-button{
+  background-color: #9d8f8f;
+  color: rgb(245, 231, 231);
+  padding: 6px 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.8;
+  float: left;
+  display: block;
+  right: 25%;
+  position: absolute;
+  top: 318px;
+  left: 25%;
+  
 }
