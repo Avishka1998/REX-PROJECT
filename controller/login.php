@@ -40,7 +40,7 @@
                                     header('Location: ../view/studio/studio_dash.php');
                                 }
                                 else{
-                                    $errors[]="sorry! your email is not verified";
+                                    $errors[]="sorry! Your Account is not verified";
                                     header('Location: ../view/login.php?errors='.urlencode(serialize($errors)));
 
                                 }

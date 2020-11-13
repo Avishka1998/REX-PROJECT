@@ -120,53 +120,6 @@ session_start();
         }
       }
 
-      $query_o="SELECT owner.owner_id FROM owner INNER JOIN studio ON owner.owner_id=studio.owner_id WHERE studio.studio_id=$s_id";
-      $result_set_o=mysqli_query($connection,$query_o);
-      $record_o= mysqli_fetch_assoc($result_set_o);
-      $o_id=$record_o['owner_id'];
-
-      if(isset($_POST['submit_ow_name'])){
-        $errors=array();
-        if(!isset($_POST['first_name']) || strlen(trim($_POST['first_name']))<1){
-          $errors[]='Something is missing or invalid format!';
-        }
-        else if(!isset($_POST['last_name']) || strlen(trim($_POST['last_name']))<1){
-          $errors[]='Something is missing or invalid format!';
-        }
-        if(empty($errors)){
-          $first_n= mysqli_real_escape_string($connection,$_POST['first_name']);
-          $last_n= mysqli_real_escape_string($connection,$_POST['last_name']);
-
-          $query="UPDATE owner SET first_name='$first_n', last_name='$last_n' WHERE owner_id= $o_id";//update owner name
-          $result_set=mysqli_query($connection,$query);
-          if($result_set){
-            header('Location: ../../view/studio/studio_profile.php');
-          }
-        }
-        else{
-          header('Location: ../../view/studio/studio_profile.php?errors='.urlencode(serialize($errors)));
-        }  
-      }
-
-      if(isset($_POST['submit_ow_phone'])){
-        $errors=array();
-        if(!isset($_POST['owtele_no']) || strlen(trim($_POST['owtele_no']))<1){
-          $errors[]='Telephone number is missing or invalid!';
-        }
-        if(empty($errors)){
-          $ow_tele= mysqli_real_escape_string($connection,$_POST['owtele_no']);
-
-          $query="UPDATE owner SET tp_number='$ow_tele' WHERE owner_id= $o_id";//update owner tele_no
-          $result_set=mysqli_query($connection,$query);
-          if($result_set){
-            header('Location: ../../view/studio/studio_profile.php');
-          }
-        }
-        else{
-          header('Location: ../../view/studio/studio_profile.php?errors='.urlencode(serialize($errors)));
-        }
-      }
-
       if(isset($_POST['submit_location'])){
         $errors=array();
         if(!isset($_POST['latitude']) || strlen(trim($_POST['latitude']))<1){

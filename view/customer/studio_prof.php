@@ -46,28 +46,24 @@ if(isset($_GET['studio_id'])){
 	<div class="container portfolio">
 		<h2>Portfolio</h2>
 		<div class="video">
-			<video width="320" height="240" poster="../../img/studio-mic.jpg" controls>
-      		  <source src="https://www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
-			</video>
+		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/pGCNVz4USLM" type="video/mp4">
+		</iframe>
 		</div> 
+		
+		<div class="video">
+		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/0dUMGM7cu88" type="video/mp4">
+		</iframe>
+		</div>  
+		
+		<div class="video">
+		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/QzBACI0YP84" type="video/mp4">
+		</iframe>  
+		</div>
 
 		<div class="video">
-			<video width="320" height="240" poster="../../img/studio-mic.jpg" controls>
-      		  <source src="https://www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
-			</video>
-		</div> 
-
-		<div class="video">
-			<video width="320" height="240" poster="../../img/studio-mic.jpg" controls>
-		      <source src="www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
-			</video>
-		</div> 
-
-		<div class="video">
-			<video width="320" height="240" poster="../../img/studio-mic.jpg" controls>
-		      <source src="www.youtube.com/watch?v=bNjFLv_73hk" type="video/mp4">
-			</video>
-		</div> 
+		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/taOtlyhftU4" type="video/mp4">
+		</iframe>
+		</div>  
 	</div>
 
 	<div class="container botbtn">

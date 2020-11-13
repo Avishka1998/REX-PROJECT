@@ -49,12 +49,11 @@
             $iserror = 1;
         }
         else{
-
-                        //check password and repeat password is equel
-                        if($_POST['repeat_password']!=$_POST['password']){
-                            $errors='Password is incorrect!!';
-                            $iserror=1;
-                        }
+          //check password and repeat password is equel
+            if($_POST['repeat_password']!=$_POST['password']){
+              $errors='Password is incorrect!!';
+              $iserror=1;
+           }
         }
 
         if($iserror==0){ //if no errors
@@ -64,8 +63,10 @@
             $s_address_line1 = mysqli_real_escape_string($connection,$_POST['s_address_1']);
             $s_address_line2 = mysqli_real_escape_string($connection,$_POST['s_address_2']);
             $s_city = mysqli_real_escape_string($connection,$_POST['s_city']);
-            $distric = mysqli_real_escape_string($connection,$_POST['s_city']);
+            $distric = mysqli_real_escape_string($connection,$_POST['distric']);
             $postalcode = mysqli_real_escape_string($connection,$_POST['postalcode']);
+            $latitude = mysqli_real_escape_string($connection,$_POST['latitude']);
+            $longitude = mysqli_real_escape_string($connection,$_POST['longitude']);
             $s_email = mysqli_real_escape_string($connection,$_POST['s_email']);
             $s_tele_no = mysqli_real_escape_string($connection,$_POST['s_tele_no']);
             $password = mysqli_real_escape_string($connection,$_POST['repeat_password']);
@@ -87,9 +88,8 @@
                     header('Location: ../view/studio_reg_2.php?errors='.urlencode(serialize($errors)));
                 }
                 else{
-
-                    $query2 = "INSERT INTO studio(studio_name,s_address_line1,s_address_line2,s_city,distric,postalcode,s_email,password,s_tele_no,owner_id)
-                    VALUES ('{$studio_name}','{$s_address_line1}','{$s_address_line2}','{$s_city}','{$distric}','{$postalcode}','{$s_email}','{$hashed_password}','{$s_tele_no}','{$_SESSION['user_id']}')";
+                    $query2 = "INSERT INTO studio(studio_name,s_address_line1,s_address_line2,s_city,distric,postalcode,latitude,longitude,s_email,password,s_tele_no,owner_id)
+                    VALUES ('{$studio_name}','{$s_address_line1}','{$s_address_line2}','{$s_city}','{$distric}','{$postalcode}','{$latitude}','{$longitude}','{$s_email}','{$hashed_password}','{$s_tele_no}','{$_SESSION['user_id']}')";
 
                     $result_set2 = mysqli_query($connection,$query2);
                     if($result_set2){
@@ -102,8 +102,8 @@
                         $to=$s_email;
                         $from='recordexonline@gmail.com';
                         $subject='Email Verification';
-                        $message.='Click This Link to Verify Your Email.<br>Thank You!';
-                        $message.='http://localhost/REX/view/email_success.php?token='.$token;
+                        $message.='Click This Link to Verify Your Email.';
+                        $message.='http://localhost/REX/view/s_email_success.php?token='.$token;
                         $header="From: {$from}\r\nContent-Type: text/html;";
 
                         $send_result=mail($to,$subject,$message,$header);
@@ -119,7 +119,9 @@
         else{
             header('Location: ../view/studio_reg_2.php?errors='.urlencode(serialize($errors)));
         }
-
     }
-}  
+    else{
+        header('Location: ../view/studio_reg_2.php?errors='.urlencode(serialize($errors)));  
+    }
+} 
 ?>

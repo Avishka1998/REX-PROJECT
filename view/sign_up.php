@@ -19,7 +19,7 @@
 
       <div class="column">
         <div class="stu">
-          <a href="../view/studio_reg_1.php">Studio</a>
+          <a href="../view/owner_existence.php">Studio</a>
         </div>
       </div>
     </div>

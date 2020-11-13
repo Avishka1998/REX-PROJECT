@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Customer Registration</title>
+    <title>Studio Registration</title>
     <link rel="stylesheet" href="../css/cust_reg.css">
     <style>
       .center{
-        margin-top: 200px;
+        margin-top: 240px;
       }
     </style>
   </head>
@@ -106,12 +106,9 @@
                     $err = unserialize(urldecode($_GET['errors']));                     
                       echo $err;
                 }
-                else{
-
-                }
             ?>
         </div>
-        <input type="submit" value="Regisster" name="submit2">
+        <input type="submit" value="Register" name="submit2">
       </form>
     </div>
   </body>

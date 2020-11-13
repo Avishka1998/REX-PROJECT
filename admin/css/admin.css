@@ -1,8 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    padding-top: 20px;
-    font-family:cursive;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(255,255,255);
     height:100vh;
     overflow:inherit;
@@ -13,12 +12,11 @@ body{
   }
   
   .row{
-    width: 100%;
+    width: 90%;
     position: absolute;
-    left: 10%;
-    top: 20%;
+    top:20%;
+    left:6%;
     display:block;  
-   
   }
   
   .column {
@@ -88,11 +86,10 @@ body{
     border-radius: 4px;
     background: #2196F3;
     color: white;
+    font-weight: bold;
     font-size: 16px;
-    border: 1px solid grey;
-    border-right: none; /* Prevent double borders */
+    border:none;
     cursor: pointer;
-    padding: 12px 20px 12px 40px;
     background-position: 10px 10px; 
   }
   .error{

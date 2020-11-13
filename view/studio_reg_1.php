@@ -53,9 +53,6 @@
                         echo $error . '<br>';
                     }
                 }
-                else{
-
-                }
             ?>
         </div>
 

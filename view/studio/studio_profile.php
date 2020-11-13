@@ -147,55 +147,6 @@ session_start();
 		}
 		</script>
 		
-		<h1>Owner Details</h1>
-		<button class="open-button" onclick="openForm4()">Edit</button>
-		<h2>Name : <?php echo $record2['first_name']. ' '. $record2['last_name']; ?></h2>
-
-		<div class="form-popup" id="ownameForm">
-		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container" method="post">  
-
-		    <label for="first_name"><b>First name</b></label>
-		    <input type="text" value="<?php echo $record2['first_name']; ?>"  name="first_name">
-		    <label for="last_name"><b>Last name</b></label>
-		    <input type="text" value="<?php echo $record2['last_name']; ?>"  name="last_name">
-
-		    <button type="submit_name" class="btn" name="submit_ow_name">Save</button>
-		    <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
-		  </form>
-		</div>	
-		<script>
-		function openForm4() {
-		  document.getElementById("ownameForm").style.display = "block";
-		}
-
-		function closeForm4() {
-		  document.getElementById("ownameForm").style.display = "none";
-		}
-		</script>
-
-
-		<button class="open-button" onclick="openForm5()">Edit</button>
-		<h2>Contact No : <?php echo $record2['tp_number']; ?></h2>
-		<div class="form-popup" id="ownoForm">
-		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container" method="post">
-		    
-		    <label for="text"><b>Contact No</b></label>
-		    <input type="text" value="<?php echo $record2['tp_number']; ?>" name="owtele_no" >
-
-		    <button type="submit_phone" class="btn" name="submit_ow_phone">Save</button>
-		    <button type="button" class="btn cancel" onclick="closeForm5()">Close</button>
-		  </form>
-		</div>
-		<script>
-		function openForm5() {
-		  document.getElementById("ownoForm").style.display = "block";
-		}
-
-		function closeForm5() {
-		  document.getElementById("ownoForm").style.display = "none";
-		}
-		</script>
-		
 		<button class="open-button2" onclick="openForm6()">Change Password</button>
 
 		<div class="form-popup" id="PWForm">

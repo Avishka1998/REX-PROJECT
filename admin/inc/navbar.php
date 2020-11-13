@@ -1,4 +1,3 @@
-
 <head>
     <style media="screen">
     *{
@@ -17,7 +16,6 @@
       background-color: white;
       height: 50px;
       width: 100%;
-      padding-top: 5px;
       position:fixed;
       overflow: hidden;
       z-index:1;
@@ -41,11 +39,10 @@
       padding: 12px 13px;
       text-transform: uppercase;
       font-weight: bold;
-      border-radius: 20px;
     }
 
     nav ul li a:hover{
-      background: #9999ff;
+      background: black;
       color:white;
       transition: 0.5s;
     }

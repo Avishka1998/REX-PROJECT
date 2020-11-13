@@ -9,27 +9,27 @@
         $errors= array();  ////array of errors
         //check form validation
         if(!isset($_POST['first_name']) || strlen(trim($_POST['first_name']))<1){
-            $errors[]='firstname is missing or invalid!';
+            $errors[]='Something is missing or invalid!';
         }
-        if(!isset($_POST['last_name']) || strlen(trim($_POST['last_name']))<1){
-            $errors[]='lastname is missing or invalid!';
+        else if(!isset($_POST['last_name']) || strlen(trim($_POST['last_name']))<1){
+            $errors[]='Sometihng is missing or invalid!';
         }
-        if(!isset($_POST['email']) || strlen(trim($_POST['email']))<1){
-            $errors[]='email is missing or invalid!';
+        else if(!isset($_POST['email']) || strlen(trim($_POST['email']))<1){
+            $errors[]='Something is missing or invalid!';
         }
-        if(!isset($_POST['tele_no']) || strlen(trim($_POST['tele_no']))<1){
-            $errors[]='telephone number is missing or invalid!';
+        else if(!isset($_POST['tele_no']) || strlen(trim($_POST['tele_no']))<1){
+            $errors[]='Something is missing or invalid!';
         }
-        if(!isset($_POST['password']) || strlen(trim($_POST['password']))<1){
-            $errors[]="password is missing or invlid!";
+        else if(!isset($_POST['password']) || strlen(trim($_POST['password']))<1){
+            $errors[]="Something is missing or invlid!";
         }
-        if(!isset($_POST['repeat_password']) || strlen(trim($_POST['repeat_password']))<1){
-            $errors[]='repeat password is missing or invalid!';
+        else if(!isset($_POST['repeat_password']) || strlen(trim($_POST['repeat_password']))<1){
+            $errors[]='Something is missing or invalid!';
         }
         else{
             //check password and repeat password is equel
             if($_POST['repeat_password']!=$_POST['password']){
-                $errors[]='Password is incorrect!';
+                $errors[]='Password is not matching!';
             }
 
         }
