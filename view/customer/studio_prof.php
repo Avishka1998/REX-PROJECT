@@ -67,7 +67,7 @@ if(isset($_GET['studio_id'])){
 	</div>
 
 	<div class="container botbtn">
-      <a id="bot1" class="button" href="/action_page2.php">Make a Reservation</a>
+      <a id="bot1" class="button" href="select_date.php">Make a Reservation</a>
 	  <a id="bot2" class="button" href="cust_complaint.php">complaint</a>
 	</div>
 	</main>
