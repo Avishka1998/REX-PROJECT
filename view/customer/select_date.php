@@ -82,7 +82,8 @@
 					      <option value="23">23.00</option>
 				           
 				    </select>
-				    <input type="submit" value="Submit">
+				    <a href="select_service.php" class="next" style="float: left;">Next</a>
+				    <a href="studio_prof.php" class="next" style="float: right;">Cancel</a>
 				</form>
 				
 			</div>
