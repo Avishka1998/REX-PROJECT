@@ -75,8 +75,6 @@ h3{
 	
 }
 
-
-
 .grid{
 	display: grid;
 	grid: 
@@ -113,11 +111,7 @@ h3{
 	text-align: center;
 }
 
-a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
-}
+
 
 .grid a:hover {
   background-color: rgb(0, 102, 255);
