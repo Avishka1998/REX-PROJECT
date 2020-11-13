@@ -1,4 +1,5 @@
 body{
+   
   background: linear-gradient(rgba(255, 255, 255, 0.5),rgba(255, 0, 140, 0.6));
   background-repeat: inherit;
   background-position: inherit;
@@ -14,7 +15,7 @@ body{
 
 form {
     display: block;  
-    width: 30%;  
+    width: 100%;  
     position: relative;
     border-bottom: 0px;
     margin-bottom: 100px;
@@ -79,7 +80,7 @@ form button {
     margin: 10px;
   }
 
-  .jobs button{
+  .jobs button {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -157,3 +158,36 @@ form button {
     background-color:#ff004c;
     color: white;
   }
+  .service {
+    
+    position: relative;  
+    float:right;  
+    right: 25%;      
+          
+  }
+  .instrument {
+    right:5%;  
+    position: relative;  
+    float:right;  
+          
+  }
+  .search {
+    position: relative;  
+    float: left;    
+    left: 10%;    
+  }
+  .service button, .instrument button{
+    /* margin-left: auto;
+    margin-right: auto; */
+    display: block;
+    background: linear-gradient(to right,rgb(74, 73, 92),rgb(66, 62, 74));
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    transition: 0.5s;
+    border: 0px;
+    font-family: sans-serif;  
+  }
+ 

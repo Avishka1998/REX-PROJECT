@@ -13,14 +13,19 @@
 </head>
 <body>
 <?php require_once('../../inc/stu_dash_navbar.php');?>
-    <div class="container">
-      <div class="aaa"> 
-      <form action="">
-         <input type="text" name="search" placeholder="Search..">
-         <button type="submit" name="submit-search"><i class="fa fa-search"></i></button>  
-       </form>
+    <div class="container">      
+      <div class="search"> 
+         <form action="">
+            <input type="text" name="search" placeholder="Search..">
+            <button type="submit" name="submit-search"><i class="fa fa-search"></i></button>  
+         </form>
       </div>
-
+      <div class="service">
+         <button onclick="window.location.href='add_services.php';">Add Services</button>
+      </div>
+      <div class="instrument">
+         <button>Add instruments</button>         
+      </div>
       <div class="abc" style="text-align: center;">
          <h2>Recent Jobs</h2>
          <div class="jobs">
