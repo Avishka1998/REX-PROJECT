@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <html>
-<head>
+<head> 
 	<meta charset="utf-8"/>
 	<title>Inbox</title>
 	<link rel="stylesheet" type="text/css" href="../../css/studio/studio_inbox.css">
@@ -283,6 +283,6 @@
 
 	</div>
 	</div>
-
+	<?php require_once('../../inc/minfooter.php'); ?>
 </body>
 </html>

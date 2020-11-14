@@ -21,6 +21,7 @@
       nav ul{
          float: right;
          margin-right: 20px; 
+         list-style: none;
       }      
 
       nav ul li{
@@ -80,7 +81,7 @@ $user_name="User";
   <a class="logo" href="#"><img src="../../inc/logo3.png"></a>
   <ul>
     <li><a href="../studio/studio_dash.php">Dashboard</a></li>
-    <li><a href="#">Jobs</a></li>
+    <li><a href="../../view/studio/cust_request.php">Jobs</a></li>
     <li><a href="../../view/studio/studio_inbox.php">Inbox</a></li>
     <li><a href="../../controller/logout.php">Logout</a></li>
     <li><a class="user" href="../studio/studio_profile.php"><?php echo $user_name ?></a></li>
