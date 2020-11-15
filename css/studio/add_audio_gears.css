@@ -1,6 +1,6 @@
 body {
 	/* background: #0f2027;  */
-	background: linear-gradient(to right,rgb(21, 45, 58),rgb(66, 62, 74));	
+	background: linear-gradient(to right,rgb(20, 6, 99),rgb(220, 217, 227));	
 	position: relative;
 }
 
@@ -232,13 +232,13 @@ table {
 	/* border: 1px solid black; */
   }
   th:nth-child(1) { background: hsl(247, 37%, 44%); }
-  th:nth-child(2) { background: hsl(150, 17%, 49%); }
-  td:nth-child(1) { background: hsl(150, 50%, 50%); }
-  td:nth-child(2) { background: hsl(160, 60%, 50%); }
-  td:nth-child(3) { background: hsl(170, 70%, 50%); }
-  td:nth-child(4) { background: hsl(180, 80%, 50%); }
-  td:nth-child(5) { background: hsl(190, 90%, 50%); }
-  td:nth-child(6) { background: hsl(200, 99%, 50%); }
+  th:nth-child(2) { background: hsl(253, 62%, 47%); }
+  td:nth-child(1) { background: hsl(250, 60%, 54%); }
+  td:nth-child(2) { background: hsl(256, 60%, 54%); }
+  td:nth-child(3) { background: hsl(238, 59%, 50%); }
+  td:nth-child(4) { background: hsl(244, 59%, 51%); }
+  td:nth-child(5) { background: hsl(255, 54%, 49%); }
+  td:nth-child(6) { background: hsl(261, 55%, 47%); }
  
 
 

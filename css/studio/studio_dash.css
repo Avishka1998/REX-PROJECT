@@ -1,6 +1,6 @@
 body{
    
-  background: linear-gradient(rgba(255, 255, 255, 0.5),rgba(255, 0, 140, 0.6));
+  background: linear-gradient(rgba(18, 18, 159, 0.5),rgba(5, 36, 189, 0.6));
   background-repeat: inherit;
   background-position: inherit;
   position: relative;
@@ -32,11 +32,11 @@ form input[type=text] {
   }  
 
 form button {
-    width: 10%;
+    width: 26px;    
     padding: 10px;
-    background: #ff008c;
+    background: #655c61;
     color: white;
-    font-size: 17px;
+    font-size: 18px;
     border: 1px solid grey;
     border-radius: 0 5px 5px 0;
     border-left: none;
@@ -57,7 +57,7 @@ form button {
     display: inline-block;
     width: 22%;
     max-width: 22%;
-    border: 1px solid black;
+    border: 1px solid rgb(83, 78, 78);
     margin: 18px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.4);
@@ -94,7 +94,7 @@ form button {
   }
 
   .jobs button:hover{
-    background-color: #ff004c;
+    background-color: #201d1e;
   }
 
   .thismonth, .nextmonth{
@@ -155,7 +155,7 @@ form button {
   }
 
   .days li:hover{
-    background-color:#ff004c;
+    background-color:#463f41;
     color: white;
   }
   .service {

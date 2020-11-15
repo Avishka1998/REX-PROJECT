@@ -2,8 +2,9 @@ body{
   margin: 0;
   padding: 0;
   font-family:cursive;
-  height:100vh;
+  height:500vh;
   overflow:auto;
+  background: linear-gradient(rgba(91, 59, 193, 0.5),rgba(129, 0, 250, 0.6));
 }
 .nav{
   margin: 0px;
@@ -14,6 +15,7 @@ body{
   /* width: 60%; */
   /* position: relative; */
   /* left: 20%; */
+  
 }
 
 main{
@@ -30,15 +32,17 @@ main{
 .cover{
   margin-top: 50px;
   float: left;
-  width: 100%;
-  height: 280px;
+  width: 100%; 
   border: 1px solid silver;
   border-radius: 5px;
   text-align: left;
-  font-size: 25px;
-  background-image: url(../../img/3dgraphics-musical-instrument-014730-facebook-cover-timeline-banner-for-fb.jpg);
-  background-size: cover;
+  font-size: 25px;    
   overflow: hidden;
+  height: 300px; 
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .pic{
@@ -49,10 +53,13 @@ main{
   height: 200px;
   border: 3px solid silver;
   border-radius: 2px;
-  bottom: 1px;
-  background-image: url(../../img/illustration-photo-studio-stamp-banner_53876-6842.jpg);
+  bottom: 1px;  
   position: relative;
   background-size: contain;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .cover p{

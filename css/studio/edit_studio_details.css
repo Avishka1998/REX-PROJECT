@@ -1,5 +1,5 @@
 body{
-  background: linear-gradient(rgba(255, 255, 255, 0.5),rgba(255, 0, 140, 0.6));
+  background: linear-gradient(rgba(77, 8, 215, 0.5),rgba(5, 36, 189, 0.6));
   background-position: inherit;
   background-repeat: inherit;
   background-attachment: fixed;
@@ -96,7 +96,7 @@ h2{
 
 
 .form-container .btn {
-  background-color: #ff008c;
+  background-color: #49495f;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -186,6 +186,7 @@ h2{
 .profile_upload label img{  
   height: 35px;
   width: 45px;
+  background-color: #9d8f8f;
 }
 .cover_upload label{  
   position: relative;
@@ -206,6 +207,7 @@ h2{
 .cover_upload label img{   
   height: 35px;
   width: 45px; 
+  background-color: #9d8f8f;
  
 }
 .cover-button{

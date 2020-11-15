@@ -15,7 +15,7 @@
 <?php require_once('../../inc/stu_dash_navbar.php');?>
     <div class="container">      
       <div class="search"> 
-         <form action="">
+         <form action="../../controller/studio/studio_dash_controller.php" method="post">
             <input type="text" name="search" placeholder="Search..">
             <button type="submit" name="submit-search"><i class="fa fa-search"></i></button>  
          </form>

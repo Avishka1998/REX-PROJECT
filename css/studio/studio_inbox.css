@@ -2,12 +2,13 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-
+	
 }
  
 html,
 body{
 	height: 100%;
+	background: linear-gradient(rgba(77, 8, 215, 0.5),rgba(5, 36, 189, 0.6));
 }
 
 html{
@@ -44,7 +45,7 @@ html{
 }
 
 .search-container, .conver-list, .new-message{
-	background: #D13E8C;
+	background: #4325b0;
 
 }
 
@@ -90,12 +91,12 @@ html{
 	grid-gap: 10px;
 	color: #DDD;
 	font-size: 1.3rem;
-	border-bottom: 1px solid #D138EE;
+	border-bottom: 1px solid #302eb5;
 	padding: 20px 20px 20px 15px;
 }
 
 .conversastion.active, .conversastion:hover{
-	background: #DF71AC;
+	background: #6129d2;
 
 }
 
@@ -119,7 +120,7 @@ html{
 	place-content: center center;
 	background: #EEE;
 	border-radius: 100%;
-	color: #DF71AC;
+	color: #4028bb;
 	text-decoration: none;
 	font-size: 3.6rem;
 }
@@ -134,7 +135,7 @@ html{
 	align-content: center;
 	align-items: center;
 	grid-area: chat-title;
-	color: #D13E8C;
+	color: #5732b7;
 	font-weight: bold;
 	font-size: 2.0rem;
 	border-radius: 0 10px 0 0;
@@ -230,9 +231,9 @@ html{
 }
 
 .you-message .message-text{
-	background: #DF71AC;
+	background: #5129c9;
 	color: #EEE;
-	border: 1px solid #DF71AC;
+	border: 1px solid #3a27b1;
 	border-radius: 14px 14px 0 14px;
 }
 

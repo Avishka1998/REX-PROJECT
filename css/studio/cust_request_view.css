@@ -8,13 +8,13 @@
 html,
 body{
 	height: auto;
-	
+	overflow:inherit;
+	background: linear-gradient(rgba(77, 8, 215, 0.5),rgba(5, 36, 189, 0.6));
 
 }
 
 html{
-	font-family: Arial, Helvetica, sans-serif;
-	background: linear-gradient(to bottom, rgba(225,225,225, 0.5) 0%, rgba(255, 0, 140, 0.6) 100%);
+	font-family: Arial, Helvetica, sans-serif;	
 	font-size: 10px;
 }
 
@@ -50,7 +50,6 @@ html{
 		'pro-pic details' 200px
 		/200px auto ;
 	grid-gap: 10px;
-	
 
 }
 
@@ -58,9 +57,7 @@ html{
 	display: grid;
 	grid-area: pro-pic;
 	align-content: center;
-	text-align: left;
-	
-	
+	text-align: left;	
 }
 
 .details{
@@ -155,7 +152,7 @@ ul{
 }
 
 li{
-	padding-left: 40px;
+	/* padding-left: 40px; */
 }
 
 .service ul li::before {

@@ -5,20 +5,19 @@
 
 }
  
-html,
-body{
+html,body{
 	height: auto;
+	overflow:inherit;
+	background: linear-gradient(rgba(55, 29, 170, 0.5),rgba(5, 36, 189, 0.6));
 }
 
 html{
-	font-family: Arial, Helvetica, sans-serif;
-	background: linear-gradient(to bottom, rgba(225,225,225, 0.5) 0%, rgba(255, 0, 140, 0.6) 100%);
+	font-family: Arial, Helvetica, sans-serif;	
 	font-size: 10px;
 }
 
 .body{
 	display: grid;		
-	
 	
 }
 

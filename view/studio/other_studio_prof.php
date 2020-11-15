@@ -10,7 +10,7 @@ if(isset($_GET['studio_id'])){
 		$studio_record=mysqli_fetch_assoc($result_set);
 		$studio_id=$studio_record['studio_id'];
 		$_SESSION['studio_id']=$studio_id;
-		// $_SESSION['user_id'];
+	 // $_SESSION['user_id'];
 		//get cover photo and profile photo if they are exist 
 		if($studio_record['cover']){
 			$cover_url="../../img/studio/$studio_record[cover]"; //get the cover path 	
@@ -28,28 +28,24 @@ if(isset($_GET['studio_id'])){
 		$studio_name=$studio_record['studio_name'];//ge studio name
 	} 
 }
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Studio</title>
-	<link rel="stylesheet" type="text/css" href="../../css/customer/studio_prof.css">
+	<title># Studio</title>
+	<link rel="stylesheet" type="text/css" href="../../css/studio/other_studio_prof.css">
 </head>
 <body>
-	<div class="nav"><?php require_once('../../inc/cust_dash_navbar.php');?></div>
+	<div class="nav"><?php require_once('../../inc/stu_dash_navbar.php');?></div>
 	<main>
-	<div class="container">
-		<div class="cover" style="background-image: url(<?php echo $cover_url?>);">
-		  <a class="button" href="https://www.youtube.com">Message</a>
+	<div class="container" >
+		<div class="cover" style="background-image: url(<?php echo $cover_url?>);" >		  
 		  <div class="pic" style="background-image: url(<?php echo $profile_url?>);"></div>
 		  <p><?php echo $studio_name ?></p>
 		</div>
 	</div>
 	<div class="container" id="description">
-	<?php echo $studio_name ?> is the most famous recording studio in the world and a global music icon. Originally a nine-bedroom house built in 1829, it was purchased by the Gramophone Company in 1928 who went on to build the world’s first purpose-built recording studio. The St John’s Wood address was chosen for its large garden and ideal location – close enough to the performance spaces of the time, but away from the noise and vibrations of the traffic and trains.
+		<?php echo $studio_name ?>  is the most famous recording studio in the world and a global music icon. Originally a nine-bedroom house built in 1829, it was purchased by the Gramophone Company in 1928 who went on to build the world’s first purpose-built recording studio. The St John’s Wood address was chosen for its large garden and ideal location – close enough to the performance spaces of the time, but away from the noise and vibrations of the traffic and trains.
 	</div>
 
 	<div class="container" style="top: 10%; padding-bottom: 5%">
@@ -84,10 +80,6 @@ if(isset($_GET['studio_id'])){
 		</div>  
 	</div>
 
-	<div class="container botbtn">
-      <a id="bot1" class="button" href="select_date.php">Make a Reservation</a>
-	  <a id="bot2" class="button" href="cust_complaint.php">complaint</a>
-	</div>
 	</main>
 	<?php require_once('../../inc/minfooter.php');?>
 </body>
