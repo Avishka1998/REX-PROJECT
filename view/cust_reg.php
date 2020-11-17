@@ -66,5 +66,6 @@
         <input type="submit" value="Register" name="submit">
       </form>
     </div>
+    <?php require_once('../inc/minfooter.php');?>
   </body>
 </html>

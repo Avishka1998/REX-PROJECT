@@ -9,7 +9,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="../../css/customer/select_date.css">
 </head>
 <body>
-	<div class="nav"><?php require_once('../../inc/cust_dash_navbar.php');?></div>
+  <?php require_once('../../inc/cust_dash_navbar.php');?>
 
 	<div class="row">
   		<div class="column">
@@ -19,7 +19,6 @@ session_start();
 					<h3>Location </h3>
 					<h3>Services</h3>
 					<p>Mixing <br>Mastering <br>Recording</p>
-
 				</div>
 		</div>
 	
@@ -86,8 +85,8 @@ session_start();
 					      <option value="23">23.00</option>
 				           
 				    </select>
-				    <a href="select_service.php" class="next" style="float: left;">Next</a>
-				    <a href="studio_prof.php" class="next" style="float: right;">Cancel</a>
+				    <a href="select_service.php" class="next">Next</a>
+				    <a href="studio_prof.php" class="cancel">Cancel</a>
 				</form>
 				
 			</div>
@@ -95,6 +94,6 @@ session_start();
 	</div>		
 
 	
-
+<?php require_once('../../inc/minfooter.php');?>
 </body>
 </html>

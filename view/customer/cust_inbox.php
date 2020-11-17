@@ -3,9 +3,9 @@ require_once('../../inc/connection.php');
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8"/>
+	<meta charset="utf-8">
 	<title>Inbox</title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/cust_inbox.css">
 </head>

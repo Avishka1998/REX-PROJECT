@@ -1,6 +1,7 @@
 <?php  require_once('connection.php');?>
 <head>
-    <style media="screen">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style media="screen">
     *{
       padding: 0;
       margin: 0;
@@ -42,13 +43,14 @@
       font-weight: bold;
     }
 
-    nav ul li a.user{
+    #user{
       font-style: italic;
-      text-transform: none;
+      text-transform: uppercase;
+      font-size: 1.4em;
     }
 
     nav ul li a:hover{
-      background: rgb(129,0,250);
+      background: #9c9595;
       color:white;
       transition: 0.5s;
     }
@@ -63,9 +65,10 @@
     }
 	
   	a.active{
-      background-color: #3459e2;
+      background-color: rgb(129,0,250);
       color: white;
     }
+
     </style>
   </head>
 
@@ -88,10 +91,11 @@
     <nav>
       <a class="logo" href="../customer/cust_dash.php"><img src="../../inc/logo3.png"></a>
       <ul>
-        <li><a href="../customer/cust_dash.php">Dashboard</a></li>
-        <li><a href="../../view/customer/cust_inbox.php">Inbox</a></li>
-        <li><a href="../../controller/logout.php">Logout</a></li>
-        <li><a class="user" href="../../view/customer/cust_profile.php"><?php echo $user_name;?></a></li>
+        <?php $filename=basename($_SERVER['PHP_SELF'])?>
+        <li><a href="../customer/cust_dash.php"  <?php if($filename=='cust_dash.php') echo "class=active"?>><i class="fa fa-fw fa-columns"></i> Dashboard</a></li>
+        <li><a href="../../view/customer/cust_inbox.php" <?php if($filename=='cust_inbox.php') echo "class=active"?>><i class="fa fa-fw fa-envelope-open"></i> Inbox</a></li>
+        <li><a href="../../controller/logout.php"><i class="fa fa-fw fa-lightbulb-o"></i> Logout</a></li>
+        <li><a id="user" title="<?php echo $user_name; ?>" href="../../view/customer/cust_profile.php" <?php if($filename=='cust_profile.php') echo "class=active"?>><i class="fa fa-fw fa-user-circle"></i></a></li>
       </ul>
     </nav>
   </body>

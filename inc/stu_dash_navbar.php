@@ -1,4 +1,5 @@
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
 
        *{
@@ -39,13 +40,12 @@
          font-weight: bold; 
       }
 
-      nav ul li a.user{
-         font-style: italic;
-         text-transform: none;
-      }
+      #user{
+         font-size:1.4em; 
+       }
 
       nav ul li a:hover{
-         background: rgb(56,57,68);
+         background: #9c9595;
          color: white;
          transition: 0.5s; 
       }
@@ -58,6 +58,11 @@
       nav a.logo img{
          height: 40px; 
       }
+
+      a.active{
+      background-color: rgb(56,57,68);
+      color: white;
+    }
     </style>
 </head>
 <?php
@@ -80,10 +85,11 @@ $user_name="User";
 <nav>
   <a class="logo" href="#"><img src="../../inc/logo3.png"></a>
   <ul>
-    <li><a href="../studio/studio_dash.php">Dashboard</a></li>
-    <li><a href="../../view/studio/cust_request.php">Jobs</a></li>
-    <li><a href="../../view/studio/studio_inbox.php">Inbox</a></li>
-    <li><a href="../../controller/logout.php">Logout</a></li>
-    <li><a class="user" href="../studio/studio_profile.php"><?php echo $user_name ?></a></li>
+  <?php $filename=basename($_SERVER['PHP_SELF'])?>
+    <li><a href="../studio/studio_dash.php" <?php if($filename=='studio_dash.php') echo "class=active"?>><i class="fa fa-fw fa-columns"></i> Dashboard</a></li>
+    <li><a href="../../view/studio/cust_request.php" <?php if($filename=='cust_request.php' || $filename=='cust_request_view.php') echo "class=active"?>><i class="fa fa-fw fa-briefcase"></i> Jobs</a></li>
+    <li><a href="../../view/studio/studio_inbox.php" <?php if($filename=='studio_inbox.php') echo "class=active"?>><i class="fa fa-fw fa-envelope-open"></i> Inbox</a></li>
+    <li><a href="../../controller/logout.php"><i class="fa fa-fw fa-lightbulb-o"></i> Logout</a></li>
+    <li><a id="user" title="<?php echo $user_name;?>" href="../studio/studio_profile.php" <?php if($filename=='studio_profile.php') echo "class=active"?>><i class="fa fa-fw fa-user-circle"></i></a></li>
   </ul>  
 </nav>

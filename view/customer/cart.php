@@ -8,15 +8,19 @@ session_start();
 	<meta charset="utf-8"/>
 	<title>Cart</title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/cart.css">
+	<script>
+  	  function target_popup(form) {
+      window.open('', 'formpopup', 'width=450,height=550,resizeable,scrollbars');
+      form.target = 'formpopup';
+	  }
+	</script>
 </head>
 <body>
-	<div class="nav body" style="padding-left: 0;">
-		<?php require_once('../../inc/cust_dash_navbar.php');?>
-	</div>
+	<?php require_once('../../inc/cust_dash_navbar.php');?>
 
-	<div class="body">
-		<div class="main-container">
-			<div class="sub-cont">
+		<div class="body">
+			<div class="main-container">
+				<div class="sub-cont">
 				<h1>Lowe Production Studio</h1>
 				<h2>Date & Time</h2>
 				<div class="grid">
@@ -59,17 +63,21 @@ session_start();
 				<h2>Total   :   LKR 44500/=</h2>
 
 				<div class="row grid">
-					
-						<a href="paypal.php" class="pay" >Pay</a>
-						<a href="studio_prof.php" class="cancel" >Cancel</a>
-					
+				  <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="business" value="recordexonline@gmail.com">
+					<input type="hidden" name="cmd" value="_xclick">
+					<input type="hidden" name="item_name" value="Instrument pack">
+					<input type="hidden" name="item_number" value="1255">
+					<input type="hidden" name="amount" value="2.2">
+					<input type='hidden' name='return' value="'http://localhost/Rex/view/customer/recipt.php'">	
+					<input type="hidden" name="currency_code" value="USD">
+					<input type="submit" name="submit" value="Pay">
+				  </form>	
+				  <a href="studio_prof.php" class="cancel" >Cancel</a>
 				</div>
-
-				
 			</div>
-		</div>
+		</div>	
 	</div>
-	
 	<?php require_once('../../inc/minfooter.php'); ?>
 </body>
 </html>

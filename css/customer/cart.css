@@ -2,35 +2,23 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-  font-family:cursive;
 }
 
-html,
 body{
-	height: 120%;
-  overflow: hidden;
-
-}
-
-html{
-	font-family:cursive;
-	background: linear-gradient(to bottom, rgba(225,225,225, 0.5) 0%, rgba(129, 0, 250, 0.6) 100%);
-	font-size: 10px;
+  /* height: 120%; */
+  overflow: auto;
+  background: linear-gradient(to bottom, rgba(225,225,225, 0.5) 0%, rgba(129, 0, 250, 0.6) 100%);
 }
 
 .body{
-
 	display: grid;		
 	align-items: center;
-	padding-left: 20%;
-
+	padding: 45px 0 20px 20%;
 }
 
-.nav{
-	margin-bottom: 70px;
-}
 
 .main-container{
+	font-family: sans-serif;
 	display: grid;
 	grid: 
 		'sub-cont' 
@@ -39,7 +27,7 @@ html{
 	max-width: 70%;
 	max-height: 700px;
 	width: 80%;
-	height: 580px;
+	height: 560px;
 	grid-gap: 10%;
 }
 
@@ -49,8 +37,7 @@ html{
 	background: rgba(255, 255, 255, 0.4);
 	border-radius: 10px;
 	box-shadow: 3px 8px 20px 3px rgba(10, 10, 10, 0.4);
-	
-	padding: 30px 30px;
+	padding: 20px 30px;
 }	
 
 ::-webkit-scrollbar{
@@ -60,7 +47,9 @@ html{
 h1{
 	text-align: center;
 	font-size: 30px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid grey;
 }
 
 h2{
@@ -69,10 +58,8 @@ h2{
 }
 
 h3{
-	font-size: 11px;
-	font-family: Arial, Helvetica, sans-serif;
-
-	
+	font-size: 15px;
+	font-family: sans-serif	
 }
 
 .grid{
@@ -83,7 +70,6 @@ h3{
 	grid-gap: 10%;
 	padding-left: 10%;
 	padding-right: 10%;
-
 }
 
 .box1{
@@ -104,59 +90,56 @@ h3{
 }
 
 .box3{
-	
 	display: grid;
 	grid-area: box3;
 	align-content: center;
 	text-align: center;
 }
 
-
-
-.grid a:hover {
-  background-color: rgb(0, 102, 255);
-  
-}
-
-
 .edit{
-  background-color: rgb(0, 153, 255);
+  background-color: rgb(124, 120, 120);
   color: white;
-  padding: 10px 20px;
+  padding: 8px 10px;
   border: none;
-  border-radius: 10px;
-  min-width: 50px;
+  /* min-width: 50px; */
   max-width: 80px;
 }
+
+.edit:hover  {
+	background-color: rgb(0, 102, 255);
+  }
 
 .row{
 	padding-top: 30px;
 	padding-left: 30%;
 }
 
-.pay{
-  background-color: rgb(0, 230, 77);
+input[type=submit]{
+  background-color: rgb(124, 120, 120);
+  color: white;
+  padding: 11px 25px;
+  border: none;
+  min-width: 50px;
+  max-width: 80px;
+  text-align: center;
+  font-size: 16px;
+}
+
+input[type=submit]:hover{
+  background-color: rgb(28, 185, 75);	
+}
+
+.cancel{
+  background-color: rgb(124,120,120);
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 10px;
-  min-width: 50px;
-  max-width: 80px;
+  width: 90px;
   text-align: center;
 }
 
-
-
-.cancel{
-  background-color: rgb(255, 51, 51);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  min-width: 50px;
-  max-width: 80px;
-  text-align: center;
-
+.cancel:hover{
+  background-color: rgb(218, 32, 32);	
 }
 
 

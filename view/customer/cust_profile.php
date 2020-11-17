@@ -9,7 +9,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="../../css/customer/edit_cust_details.css">
 </head>
 <body>
-	<div class="nav"><?php require_once('../../inc/cust_dash_navbar.php');?></div>
+	<?php require_once('../../inc/cust_dash_navbar.php');?>
 	<?php 
 		
 		$query="SELECT * FROM customer WHERE c_id = $user_id"; //query to get data of the logged customer ($user id is included from cust_dash_navbar.php)
@@ -76,7 +76,6 @@ session_start();
 		<div class="form-popup" id="myForm">
 		  <form action=<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?> class="form-container" method="post">
 		    
-		    <label for="text"><b>Email</b></label>
 		    <input type="text" value=<?php echo $record['tele_no']?> name="tele_no" >
 
 		    <button type="submit_phone" class="btn" name="submit_phone">Save</button>

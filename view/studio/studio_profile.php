@@ -8,7 +8,6 @@ session_start();
 	<title>Edit Details</title>
 	<link rel="stylesheet" type="text/css" href="../../css/studio/edit_studio_details.css">
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRPjxeL78zpFysY_Im4Me74oUEdH9-PFc&callback=initMap&libraries=&v=weekly" defer></script>
-
 </head>
 <body>
 	<div class="nav"><?php require_once('../../inc/stu_dash_navbar.php');?></div>

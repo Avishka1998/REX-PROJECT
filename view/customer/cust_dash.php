@@ -3,8 +3,9 @@ require_once('../../inc/connection.php');
 session_start(); 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
 	<title>Customer Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/cust_dash.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,7 +32,7 @@ session_start();
 							$profile = "studio1.png";
 						}
 						echo '<div class="column">'; 																			
-									echo "<img src='../../img/studio/$profile' height='180' width='200' >";
+									echo "<img src='../../img/studio/$profile' height='180' width='180' >";
 									echo "<h4><a href='studio_prof.php?studio_id=$record[studio_id]'>$record[studio_name] </a><br></h4>";
 									echo '<div class="rating">';
 										echo '<span class="fa fa-star checked"></span>';
@@ -44,12 +45,9 @@ session_start();
 						echo '</div>';
 					}
 					
-					}				
-		
-		
+					}					
 		?>
 	</div>
-
 
 </div>	
 <?php require_once('../../inc/minfooter.php'); ?>	

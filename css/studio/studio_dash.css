@@ -1,5 +1,4 @@
 body{
-   
   background: linear-gradient(rgba(18, 18, 159, 0.5),rgba(5, 36, 189, 0.6));
   background-repeat: inherit;
   background-position: inherit;
@@ -15,7 +14,7 @@ body{
 
 form {
     display: block;  
-    width: 100%;  
+    width: 140%;  
     position: relative;
     border-bottom: 0px;
     margin-bottom: 100px;
@@ -32,11 +31,11 @@ form input[type=text] {
   }  
 
 form button {
-    width: 26px;    
+    width: 10%;    
     padding: 10px;
     background: #655c61;
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     border: 1px solid grey;
     border-radius: 0 5px 5px 0;
     border-left: none;
@@ -159,20 +158,16 @@ form button {
     color: white;
   }
   .service {
-    
     position: relative;  
-    float:right;  
-    right: 33%;      
-          
+    float:right;   
+    margin-right: 10px;       
   }
   .instrument {
-    right:12%;  
     position: relative;  
     float:right;  
-          
+    margin-right: 10px;      
   }
   .audio-gears {
-    right:-10%;  
     position: relative;  
     float:right;  
           
@@ -180,7 +175,7 @@ form button {
   .search {
     position: relative;  
     float: left;    
-    left: 10%;    
+    left: 1%;    
   }
  
   .service button, .instrument button,.audio-gears button{

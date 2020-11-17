@@ -20,15 +20,16 @@
             <button type="submit" name="submit-search"><i class="fa fa-search"></i></button>  
          </form>
       </div>
-      <div class="service">
-         <button onclick="window.location.href='add_services.php';">Add Services</button>
+      <div class="audio-gears">
+         <button onclick="window.location.href='add_audio_gears.php';">Add Audio Gears</button>              
       </div>
       <div class="instrument">
          <button onclick="window.location.href='add_instruments.php';">Add Instruments</button>              
       </div>
-      <div class="audio-gears">
-         <button onclick="window.location.href='add_audio_gears.php';">Add Audio Gears</button>              
+      <div class="service">
+         <button onclick="window.location.href='add_services.php';">Add Services</button>
       </div>
+
       <div class="abc" style="text-align: center;">
          <h2>Recent Jobs</h2>
          <div class="jobs">

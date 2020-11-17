@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Studio Registration</title>
-    <link rel="stylesheet" href="../css/cust_reg.css">
+    <link rel="stylesheet" href="../css/customer/cust_reg.css">
     <style>
       .center{
         margin-top: 240px;
@@ -111,5 +111,6 @@
         <input type="submit" value="Register" name="submit2">
       </form>
     </div>
+    <?php require_once('../inc/minfooter.php');?>
   </body>
 </html>

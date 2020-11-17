@@ -37,19 +37,55 @@ if(isset($_GET['studio_id'])){
 <head>
 	<title>Studio</title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/studio_prof.css">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRPjxeL78zpFysY_Im4Me74oUEdH9-PFc&callback=initMap&libraries=&v=weekly" defer></script>
 </head>
 <body>
 	<div class="nav"><?php require_once('../../inc/cust_dash_navbar.php');?></div>
 	<main>
 	<div class="container">
 		<div class="cover" style="background-image: url(<?php echo $cover_url?>);">
-		  <a class="button" href="https://www.youtube.com">Message</a>
+		  <a class="button" href="../../view/customer/cust_inbox.php">Message</a>
+		  
 		  <div class="pic" style="background-image: url(<?php echo $profile_url?>);"></div>
 		  <p><?php echo $studio_name ?></p>
 		</div>
 	</div>
 	<div class="container" id="description">
 	<?php echo $studio_name ?> is the most famous recording studio in the world and a global music icon. Originally a nine-bedroom house built in 1829, it was purchased by the Gramophone Company in 1928 who went on to build the world’s first purpose-built recording studio. The St John’s Wood address was chosen for its large garden and ideal location – close enough to the performance spaces of the time, but away from the noise and vibrations of the traffic and trains.
+	</div>
+
+	<div class="container details">
+		  <h2>Details</h2>
+		  <div class="detailist">	  	
+          <div class="place">
+            <span class="fas fa-map-marker-alt"></span>
+            <span class="text"><?php echo $studio_record['s_address_line1'].', '.$studio_record['s_address_line2'].', '.$studio_record['s_city'].'.';?></span>
+		  </div>
+		  <div class="phone">
+            <span class="fas fa-phone-alt"></span>
+            <span class="text"><?php echo $studio_record['s_tele_no']; ?></span>
+		  </div>
+		  <div class="email">
+            <span class="fas fa-envelope"></span>
+            <span class="text"><?php echo $studio_record['s_email']; ?></span>
+		  </div>
+		  </div>
+	
+		  <script>
+		  function initMap() {
+  			const stu = {lat: <?php echo $studio_record['latitude'];?>, lng: <?php echo $studio_record['longitude'];?>};
+  			const map = new google.maps.Map(document.getElementById("map"), {
+    		  zoom: 20,
+    		  center: stu,
+  			});
+  			const marker = new google.maps.Marker({
+      		  position: stu,
+      		  map: map,
+  			});	  
+		  }
+		  </script>
+		  <div id="map"></div> 
 	</div>
 
 	<div class="container" style="top: 10%; padding-bottom: 5%">

@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="../css/login.css">
   </head>
   <body>
-    <?php require_once('../inc/navbar.php'); ?>
-
+  <?php require_once('../inc/navbar.php'); ?>
     <div class="center">
       <h1>Login</h1>
 

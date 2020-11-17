@@ -1,5 +1,5 @@
 <head>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style media="screen">
     *{
       padding: 0;
@@ -61,6 +61,7 @@
       background-color: #3459e2;
       color: white;
     }
+ 
     </style>
   </head>
 
@@ -68,10 +69,9 @@
       <a class="logo" href="../view/home.php"><img src="../inc/logo3.png"></a>
       <ul>
 	    <?php $filename=basename($_SERVER['PHP_SELF'])?>
-        <li><a href="../view/home.php" <?php if($filename=='home.php') echo "class=active"?>>Home</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="../view/sign_up.php" <?php if($filename=='sign_up.php' || $filename=='cust_reg.php' ||  $filename=='studio_reg_1.php' || $filename=='studio_reg_2.php') echo "class=active"?>>SignUp</a></li>
-        <li><a href="login.php" <?php if($filename=='login.php') echo "class=active"?>>LogIn</a></li>
+        <li><a href="../view/home.php" <?php if($filename=='home.php') echo "class=active"?>><i class="fa fa-fw fa-home"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-address-card"></i> About Us</a></li>
+        <li><a href="../view/sign_up.php" <?php if($filename=='sign_up.php' || $filename=='cust_reg.php' || $filename=='owner_existence.php' || $filename=='owner_existform.php' ||  $filename=='studio_reg_1.php' || $filename=='studio_reg_2.php') echo "class=active"?>><i class="fa fa-fw fa-user-plus"></i> SignUp</a></li>
+        <li><a href="login.php" <?php if($filename=='login.php') echo "class=active"?>><i class="fa fa-fw fa-user"></i> Login</a></li>
       </ul>
     </nav>

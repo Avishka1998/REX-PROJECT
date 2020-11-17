@@ -1,7 +1,12 @@
 body {
+	display: flex;
 	/* background: #0f2027;  */
-	background: linear-gradient(to right,rgb(20, 6, 99),rgb(220, 217, 227));	
-	position: relative;
+	background: linear-gradient(to right,rgb(20, 6, 99),rgb(220, 217, 227));
+	/* background: linear-gradient(rgba(18, 18, 159, 0.5),rgba(118, 121, 134, 0.6));	 */
+	/* position: relative;
+	background-repeat: inherit;
+	background-position: center;
+	overflow: auto; */
 }
 
 h1 {
@@ -209,19 +214,16 @@ h2{
     width: 100%; 
     table-layout: fixed; 
 	border-spacing: 5px; 
-	left: 20%;
-	
-    
-    
+	left: 20%;  
 }
+
 .column {
 	display: table-cell;	
 	position: relative;
 	top: 60px;
 	width: 55%;
 	padding: 0px;
-	padding-right: 100px;
-   
+	padding-right: 100px; 
 }
 
 table {

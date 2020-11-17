@@ -11,7 +11,7 @@ body{
 }
 
 .row{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 60%;
   position: absolute;
@@ -36,10 +36,7 @@ body{
   overflow: hidden;
  
 }
-.upload{
 
-    
-}
 .form-image{
   background-color: #ddd;
   outline: none;
@@ -57,8 +54,8 @@ body{
   right: 15%;
   position: relative;
 }
-.upload label{
-  
+
+.upload label{  
   position: relative;
   bottom: 0px;
   top: 0px;

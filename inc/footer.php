@@ -12,7 +12,7 @@
     <div class="cent box">
       <h2>About Us</h2>
       <div class="content">
-        <p>RecordEx is an Online Platform for Recording Studios and the Customers who need to Reserve the Best Recording Studio.</p>
+        <p>RecordEx is an Online Platform for Recording Studios and the Customers who need to Reserve the Best Recording Studio. It facilitate customers to choose the best place in the requested area.</p>
         <div class="social">
           <a href="#"><span class="fab fa-facebook-f"></span></a>
           <a href="#"><span class="fab fa-twitter"></span></a>
@@ -35,7 +35,7 @@
           </div>
           <div class="email">
             <span class="fas fa-envelope"></span>
-            <span class="text">recordex@gmial.com</span>
+            <span class="text">recordexonline@gmial.com</span>
           </div>
         </div>
     </div>

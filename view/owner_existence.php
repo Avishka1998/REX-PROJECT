@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Registration</title>
-    <link rel="stylesheet" href="../css/cust_reg.css">
+    <link rel="stylesheet" href="../css/customer/cust_reg.css">
     <style>
       .center{
         top: 55%;
@@ -27,6 +27,7 @@
       <input type="submit" value="Next" name="submit">
     </form>
     </div>  
+    <?php require_once('../inc/minfooter.php');?>
 </body>
 </html>
 

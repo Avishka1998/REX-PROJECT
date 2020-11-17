@@ -10,14 +10,13 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="../../css/customer/select_service.css">
 </head>
 <body>
-	<div class="nav body" style="padding-left: 0;">
-		<?php require_once('../../inc/cust_dash_navbar.php');?>
-	</div>
-	<div class="body">
+	<?php require_once('../../inc/cust_dash_navbar.php');?>
+	<main>
 	<div class="main-container">
 		
 		<div class="conver-list">
 			<h1>Select Services</h1>
+			<div class="serlist">
 			<label class="container">Recording   :   LKR 2500/= Per hour
 			  <input type="checkbox" checked="checked">
 			  <span class="checkmark"></span>
@@ -34,10 +33,11 @@ session_start();
 			  <input type="checkbox">
 			  <span class="checkmark"></span>
 			</label>
+			</div>
 
-			<div class="container">
+			<div class="container note">
 		      <div class="col1">
-		        <label for="subject">Additional Note</label>
+		        <label for="subject">Additional Note:</label>
 		      </div>
 		      <div class="col2">
 		        <textarea id="subject" name="subject" placeholder="ex:- Need final track within 5 days" style="height:100px"></textarea>
@@ -49,6 +49,7 @@ session_start();
 		
 		<div class="chat-message-list">
 			<h1>Select Audio Gears</h1>
+			<div class="serlist">
 			<label class="container">Neumann M 150 Tube 
 			  <input type="checkbox" checked="checked">
 			  <span class="checkmark"></span>
@@ -69,32 +70,28 @@ session_start();
 			  <input type="checkbox">
 			  <span class="checkmark"></span>
 			</label>
-
-			<div class="container">
+			</div>
+			<div class="container note">
 		      <div class="col1">
-		        <label for="subject">Additional Note</label>
+		        <label for="subject">Additional Note:</label>
 		      </div>
 		      <div class="col2">
 		        <textarea id="subject" name="subject" placeholder="ex:- Need 4 notation stands" style="height:100px"></textarea>
 		     </div>
     		</div>
 						
-		</div>
-		
- 
+		</div>	
 	</div>
-
 
 	<div class="row">
-        <a href="select_date.php" class="next" style="float: left;">Back</a>
-        <a href="cart.php" class="next" style="float: center;">Next</a>
-		<a href="studio_prof.php" class="previous" style="float: right;">Cancel</a>
-      
-    </div>
-    <div class="row">
-    	
-    </div>
+        <a href="select_date.php" class="previous">Back</a>
+        <a href="cart.php" class="next">Next</a>
+		<a href="studio_prof.php" class="cancel">Cancel</a> 
 	</div>
+	
+    <div class="row">	
+	</div>
+	</main>	
 
 	<?php require_once('../../inc/minfooter.php'); ?>
 </body>

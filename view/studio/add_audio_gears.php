@@ -12,7 +12,7 @@ session_start();
 </head>
 
 <body> 
- <div class="nav"><?php require_once('../../inc/stu_dash_navbar.php');?></div>                
+ ><?php require_once('../../inc/stu_dash_navbar.php');?>                
            
 <div class="column">
        <div class="row">

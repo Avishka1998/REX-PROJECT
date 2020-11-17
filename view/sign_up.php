@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <title>Sign Up</title>
-    <?php require_once('../inc/navbar.php');?>
     <link rel="stylesheet" href="../css/sign_up.css">
   </head>
   <body>
+  <?php require_once('../inc/navbar.php');?>
     <div class="row">
 
       <div class="column">
@@ -23,5 +23,6 @@
         </div>
       </div>
     </div>
+    <?php require_once('../inc/minfooter.php');?>
   </body>
 </html>
