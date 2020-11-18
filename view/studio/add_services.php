@@ -16,7 +16,7 @@ session_start();
            
 <div class="column">
        <div class="row">
-                <h1><center>Add Your Services</center></h1>
+                <center><h1>Add Your Services</h1></center>
                
        </div> 
         <form action="as.php" class="service_form" method="post">                       
@@ -34,7 +34,7 @@ session_start();
                                 <div class="column" >
                                         <div class="form-popup" id="dvservice1" >  
                                                 <div class="form__group">
-                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge" required=""  />
+                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge"  />
                                                 <label for="name" class="form__label">charge per hour</label>
                                                 </div>                               
                                                         
@@ -64,7 +64,7 @@ session_start();
                                 <div class="column" >
                                         <div class="form-popup" id="dvservice2" >  
                                                 <div class="form__group">
-                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge" required=""  />
+                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge"  />
                                                 <label for="name" class="form__label">charge per hour</label>
                                                 </div>                               
                                                         
@@ -93,7 +93,7 @@ session_start();
                                 <div class="column" >
                                         <div class="form-popup" id="dvservice3" >  
                                                 <div class="form__group">
-                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge" required=""  />
+                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge" />
                                                 <label for="name" class="form__label">charge per hour</label>
                                                 </div>                               
                                                         
@@ -122,7 +122,7 @@ session_start();
                                 <div class="column" >
                                         <div class="form-popup" id="dvservice4" >  
                                                 <div class="form__group">
-                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge" required=""  />
+                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge" />
                                                 <label for="name" class="form__label">charge per hour</label>
                                                 </div>                               
                                                         

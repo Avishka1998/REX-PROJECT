@@ -16,22 +16,35 @@ session_start();
 	  $query="SELECT * FROM studio WHERE studio_id = $user_id"; //query to get data of the logged studio ($user id is included from studio_dash_navbar.php)
 	  $result_set=mysqli_query($connection,$query);
 	  if($result_set){
-		$record = mysqli_fetch_assoc($result_set);		
+		$record = mysqli_fetch_assoc($result_set);
+			if($record['cover']){
+				$url1 = "../../img/studio/$record[cover]";
+				
+			}
+			else{
+				$url1 = "../../img/studio/studio_cover.jpg";
+			}
+			if($record['profile']){
+				$url2 = "../../img/studio/$record[profile]";
+				
+			}
+			else{
+				$url2 = "../../img/studio/studio_profile.jpg";
+			}		
 		}
 		
 	  $query2 = "SELECT * FROM owner INNER JOIN studio ON studio.owner_id = owner.owner_id WHERE studio.studio_id = $user_id";
 	  $result_set2 = mysqli_query($connection,$query2);
 	  if($result_set2){
 		$record2= mysqli_fetch_assoc($result_set2);
+
 	  }	
 	?>
 	
-	<div class="row">
-	 
-			<?php $url1 = "../../img/studio/$record[cover]";?>
+	<div class="row">	 
+			
 		 	<div class="upper-container" style="background-image:url(<?php echo $url1?>);">                 
-            	<div class="image-container">
-					   <?php $url2 = "../../img/studio/$record[profile]";?>
+            	<div class="image-container">					   
 					   <img src=<?php echo $url2 ?> width="230px" height="230px" />		 
 					   
 				</div>	

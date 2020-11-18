@@ -34,22 +34,22 @@
          <h2>Recent Jobs</h2>
          <div class="jobs">
             <div id="job1">
-               <img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg">
+               <img src="../../img/customer/profile.jpg">
                <p>John</p>
                <button>View</button>
             </div>
             <div id="job2">
-               <img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg">
+               <img src="../../img/customer/profile.jpg">
                <p>Paul</p>
                <button>View</button>
             </div>
             <div id="job3">
-               <img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg">
+               <img src="../../img/customer/profile.jpg">
                <p>Brendon</p>
                <button>View</button>
             </div>
             <div id="job4">
-               <img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg">
+               <img src="../../img/customer/profile.jpg">
                <p>Amir</p>
                <button>View</button>
             </div>

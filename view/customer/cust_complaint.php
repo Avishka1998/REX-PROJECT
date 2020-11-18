@@ -7,7 +7,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <title>Customer-Complaint</title>
-    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../css/customer/complaint.css">
   </head>
   <body style="background-color: #004882;background: linear-gradient(rgba(225,225,225,0.5),rgba(227,168,155,0.7));">
   <?php require_once('../../inc/cust_dash_navbar.php');?>
@@ -17,11 +17,10 @@ session_start();
       <h1 style="color:red;">Add your complaint</h1>
 
       <form method="post" action="../../controller/customer/cust_complaint_controller.php">
-        <div class="textfield">
-          <!-- <input type="text" required name="username"> -->
-          <input type="text" name="complaint" placeholder="Type here">
-          <span></span>
-          <label></label>
+        <div class="textarea">         
+          <!-- <input type="text" name="complaint" placeholder="Type here"> -->
+          <textarea id="complaint" name="complaint" rows="10" cols="50"></textarea>
+  
         </div>
         <div class="error">
             <?php
@@ -33,9 +32,9 @@ session_start();
                 }
             ?>
         </div>
-
-        <input style="background: linear-gradient(120deg,#9f353e,#730308);" type="submit" value="submit" name="submit">
-
+        <div class="button">
+          <input  type="submit" value="submit" name="submit">
+        </div>
 	  </form>
 	  <div class="sent">
             <?php

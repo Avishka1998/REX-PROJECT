@@ -16,12 +16,19 @@ session_start();
 		$result_set=mysqli_query($connection,$query);
 		if($result_set){
 						$record = mysqli_fetch_assoc($result_set);
+						if($record['image']){
+							$url = "../../img/customer/$record[image]";
+							
+					    }
+					    else{
+							$url = "../../img/customer/profile.jpg";
+					    }
 				
-		}		
+		}	
+	
 	?>
 	<div class="row">
 		<div class="pro-pic">
-		<?php $url = "../../img/customer/$record[image]";?>
 		<img src=<?php echo $url; ?> alt="" width="230px" height="230px">
 		</div>
 		<div class="upload">
