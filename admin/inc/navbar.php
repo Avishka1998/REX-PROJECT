@@ -56,10 +56,11 @@
       height: 40px;
     }
 	
-	a.active{
+	  a.active{
       background-color: #3459e2;
       color: white;
     }
+
     </style>
   </head>
 
@@ -70,6 +71,7 @@
         <li><a href="adminhome.php" <?php if($filename=='adminhome.php') echo "class=active"?>>pending studios</a></li>
         <li><a href="verified.php" <?php if($filename=='verified.php') echo "class=active"?>>Verified studios</a></li>
         <li><a href="customers.php" <?php if($filename=='customers.php') echo "class=active"?>>Customers</a></li>
+        <li><a href="jobs.php" <?php if($filename=='jobs.php') echo "class=active"?>>Jobs</a></li>
         <li><a href="complaint.php" <?php if($filename=='complaint.php') echo "class=active"?>>Complaints</a></li>
         <li><a href="logout.php" <?php if($filename=='logout.php') echo "class=active"?>>Log out</a></li>
       </ul>

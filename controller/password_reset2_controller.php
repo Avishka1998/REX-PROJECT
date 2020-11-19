@@ -33,6 +33,8 @@
                   $update_result2 = mysqli_query($connection,$update_query2);
                   $delete_query = "DELETE FROM tokens WHERE token='$token'";
                   $delete_result = mysqli_query($connection,$delete_query);
+                  session_start();
+                  $_SESSION['everified']="Password Reset Successfull!";
                   header('Location: ../view/login.php');
               }
               else{

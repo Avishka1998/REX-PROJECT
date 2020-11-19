@@ -17,17 +17,17 @@
     <div class="center">
       <h1>Verify Email</h1>
       <form action="../controller/password_reset1_controller.php" method="post">
-      <?php
-        if(isset($_SESSION['alert'])){
-          echo $_SESSION['alert'];
-          $_SESSION['alert']='';
-        }
-      ?>
         <div class="textfield">
           <input type="email" required name="email">
           <span></span>
           <label>Enter Your Email Address</label>
         </div>
+        <?php
+        if(isset($_SESSION['alert'])){
+          echo $_SESSION['alert'];
+          $_SESSION['alert']='';
+        }
+        ?>
         <input type="submit" name="send" value="Send">
     </div>
   </body>

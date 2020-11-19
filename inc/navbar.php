@@ -66,12 +66,12 @@
   </head>
 
     <nav>
-      <a class="logo" href="../view/home.php"><img src="../inc/logo3.png"></a>
+      <a class="logo" href="../view/home.php"><img src="../../../REX/inc/logo3.png"></a>
       <ul>
 	    <?php $filename=basename($_SERVER['PHP_SELF'])?>
-        <li><a href="../view/home.php" <?php if($filename=='home.php') echo "class=active"?>><i class="fa fa-fw fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-fw fa-address-card"></i> About Us</a></li>
-        <li><a href="../view/sign_up.php" <?php if($filename=='sign_up.php' || $filename=='cust_reg.php' || $filename=='owner_existence.php' || $filename=='owner_existform.php' ||  $filename=='studio_reg_1.php' || $filename=='studio_reg_2.php') echo "class=active"?>><i class="fa fa-fw fa-user-plus"></i> SignUp</a></li>
-        <li><a href="login.php" <?php if($filename=='login.php') echo "class=active"?>><i class="fa fa-fw fa-user"></i> Login</a></li>
+        <li><a href="../../../REX/view/home.php" <?php if($filename=='home.php') echo "class=active"?>><i class="fa fa-fw fa-home"></i> Home</a></li>
+        <li><a href="../../../REX/view/about.php" <?php if($filename=='about.php') echo "class=active"?>><i class="fa fa-fw fa-address-card"></i> About Us</a></li>
+        <li><a href="../../../REX/view/sign_up.php" <?php if($filename=='sign_up.php' || $filename=='cust_reg.php' || $filename=='owner_existence.php' || $filename=='owner_existform.php' ||  $filename=='studio_reg_1.php' || $filename=='studio_reg_2.php') echo "class=active"?>><i class="fa fa-fw fa-user-plus"></i> SignUp</a></li>
+        <li><a href="../../../REX/view/login.php" <?php if($filename=='login.php') echo "class=active"?>><i class="fa fa-fw fa-user"></i> Login</a></li>
       </ul>
     </nav>

@@ -7,7 +7,8 @@ if(isset($_GET['token'])){
       $ret_query = "SELECT email FROM tokens WHERE token='$token'";
       $ret_result = mysqli_query($connection,$ret_query);
       if(mysqli_num_rows($ret_result)<1){
-        $alert = 'Link not Existing. Please Try Again!';
+        $errors[] = 'Link not Existing. Please Try Again!';
+        header('Location: ../view/login.php?errors='.urlencode(serialize($errors)));
       }
       session_start();
       $_SESSION['token']= $token;
@@ -50,13 +51,15 @@ else{
 
         <div class="error">
           <?php
+          echo $alert;
+          $alert='';
+
           if(isset($_SESSION['alert'])){
             $alert = $_SESSION['alert'];
-        }
+          }
 
-        echo $alert;
-        $alert='';
-
+          echo $alert;
+          $alert='';
           ?>
         </div>
         <input type="submit" name="reset" value="reset">

@@ -14,9 +14,22 @@ body{
   .row{
     width: 100%;
     position: absolute;
-    top:20%;
-    left:9%;
+    top:15%;
+    /* left:9%; */
     display:block;  
+  }
+
+  input {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 50%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid rgb(110, 109, 109);
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
   
   .column {
@@ -38,33 +51,6 @@ body{
   .rating{
     max-width: 95%;
   }
-  .checked {
-    color: orange;
-  }
-  
-  input[type=text] {
-  <<<<<<< HEAD
-    width: 60%;
-  =======
-    float: left;
-    width: 50%;
-  >>>>>>> d6d0907b73d92348e04f0fefb0e7e83913ba4c29
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('#');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-  }
-  
-  input[type=text]:focus {
-    width: 60%;
-  }
   
   /* form {
     padding-left: 20%;
@@ -74,14 +60,10 @@ body{
     border-bottom: 0px ;
     margin: 30px 0;
   } */
-  button{
-    width:75px;
-    height:45px;
-    font-size:22px;
-  }
+
   button{
     width: 100%;
-    padding: 05px;
+    padding: 5px;
     box-sizing: border-box;
     border-radius: 4px;
     background: #2196F3;
@@ -103,13 +85,20 @@ body{
     font-size: 16px;
   }
 
-  table  {border-collapse : collapse;
-          width:50%;}
-  td,th {border: 2px solid black;
-          width:100%;
-          height:30px;
-          text-align:left;
-          padding: 15px;
+  table{
+    border-collapse : collapse;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  td,th{
+    border: 2px solid black;
+    width:100%;
+    /* height:20px; */
+    text-align:center;
+    padding: 10px;
   }
   
   

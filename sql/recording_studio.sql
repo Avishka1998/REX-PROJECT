@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2020 at 09:43 AM
+-- Generation Time: Nov 19, 2020 at 06:41 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -74,13 +74,14 @@ CREATE TABLE `audio_gear` (
 --
 
 CREATE TABLE `customer` (
-  `c_id` int(60) NOT NULL,
+  `c_id` int(6) NOT NULL,
   `first_name` varchar(60) NOT NULL,
   `last_name` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL,
   `tele_no` int(10) NOT NULL,
   `password` varchar(60) NOT NULL,
   `email_verified` tinyint(1) NOT NULL DEFAULT 0,
+  `blocked` int(1) NOT NULL DEFAULT 0,
   `image` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -88,9 +89,9 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`, `email_verified`, `image`) VALUES
-(23, 'nuwan', 'fernando', 'nuwan@gmail.com', 765610043, '6edf8b2bd1b6e03a535504401e6969c850269632', 1, 'ford-mustang-apollo-edition-3840x2160-mustang-white-sport-cars-7638.jpg'),
-(45, 'Ranjan', 'Ramanayaka', 'sasindusubodhaka@gmail.com', 745646546, '6303bec5a6070e70827a95d15977c407ceb400a8', 0, '');
+INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`, `email_verified`, `blocked`, `image`) VALUES
+(23, 'nuwan', 'fernando', 'nuwan@gmail.com', 765610043, '6edf8b2bd1b6e03a535504401e6969c850269632', 1, 0, 'ford-mustang-apollo-edition-3840x2160-mustang-white-sport-cars-7638.jpg'),
+(47, 'Pavindu', 'Avishka', 'pavinduavishka@gmail.com', 765845445, '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -218,6 +219,7 @@ INSERT INTO `owner` (`owner_id`, `first_name`, `last_name`, `e_mail`, `tp_number
 CREATE TABLE `owner_verification` (
   `id` int(5) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `st_email` varchar(50) NOT NULL,
   `token` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -225,8 +227,8 @@ CREATE TABLE `owner_verification` (
 -- Dumping data for table `owner_verification`
 --
 
-INSERT INTO `owner_verification` (`id`, `email`, `token`) VALUES
-(4, 'pavinduavishka@gmail.com', 'a10e84a0168c4b9f44cea2bb9d28765a5fae267f0071c');
+INSERT INTO `owner_verification` (`id`, `email`, `st_email`, `token`) VALUES
+(7, 'chandana@gmail.com', 'chandanastudios@gmail.com', '8d2952c557505b11a6cc1b34c761daae5fb6a03b1c0d4');
 
 -- --------------------------------------------------------
 
@@ -302,7 +304,7 @@ CREATE TABLE `studio` (
   `s_city` varchar(100) NOT NULL,
   `distric` varchar(100) NOT NULL,
   `postalcode` varchar(100) NOT NULL,
-  `s_email` varchar(200) NOT NULL,
+  `s_email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
   `s_tele_no` int(10) NOT NULL,
   `owner_id` int(100) NOT NULL,
@@ -312,22 +314,21 @@ CREATE TABLE `studio` (
   `longitude` varchar(50) NOT NULL,
   `verified` tinyint(4) NOT NULL DEFAULT 0,
   `email_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `owner_verified` tinyint(1) NOT NULL DEFAULT 0
+  `owner_verified` tinyint(1) NOT NULL DEFAULT 0,
+  `blocked` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `studio`
 --
 
-INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `owner_id`, `profile`, `cover`, `latitude`, `longitude`, `verified`, `email_verified`, `owner_verified`) VALUES
-(26, 'ABC', 'DEF', 'GHI', 'JKL', 'JKL', '234', 'ABC@gmail.com', '', 55, 4, '', '', '', '', 1, 0, 0),
-(27, 'CDE', 'sdjhg', 'fkjh', 'kjhs', 'kjhs', '67', 'nimalstudio@gmail.com', '6643521711328a1e282daf5a5da43970eb11a089', 4569, 5, '', '', '', '', 1, 0, 0),
-(28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, '', '', '', '', 1, 1, 0),
-(29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, '', '', '', '', 0, 1, 0),
-(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, '', '', '', '', 0, 1, 0),
-(31, 'chandanastudios', '396/B', 'Kandy Rd', 'Miriswatta', 'Gampaha', '184472', 'chandanastudios@gmail.com', '6c3f5e05b273fece80a7e7d7c269701f365d43dd', 455610043, 10, 'imageedit_1_7612725206.jpg', '4f513e2e6ebdd99d743b8925195f4bbf.jpg', '6.9022', '79.8612', 1, 1, 0),
-(35, 'sanathhomestudio', 'abcd', 'a', 'colombo', 'colombo', '234', 'sanathhome@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 7645609, 6, '', '', '', '', 1, 0, 0),
-(47, 'awi', 'awo', 'qqkk', 'kjn', 'kjbkjb', '4545', 'vishkaavinash@gmail.com', 'afc97ea131fd7e2695a98ef34013608f97f34e1d', 5454, 21, '', '', '6.261826', '80.4910', 1, 1, 0);
+INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `owner_id`, `profile`, `cover`, `latitude`, `longitude`, `verified`, `email_verified`, `owner_verified`, `blocked`) VALUES
+(26, 'ABC', 'DEF', 'GHI', 'JKL', 'JKL', '234', 'ABC@gmail.com', '', 55, 4, '', '', '', '', 1, 0, 0, 0),
+(28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, '', '', '6.261826', '80.4910', 0, 1, 1, 0),
+(29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, '', '', '', '', 0, 1, 0, 0),
+(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, '', '', '', '', 0, 1, 0, 0),
+(31, 'CSTUDIOS', '396/B', 'Kandy Rd', 'Miriswatta', 'Gampaha', '184472', 'chandanastudios@gmail.com', '6c3f5e05b273fece80a7e7d7c269701f365d43dd', 455610043, 10, 'imageedit_1_7612725206.jpg', '4f513e2e6ebdd99d743b8925195f4bbf.jpg', '6.9022', '79.8612', 1, 1, 0, 0),
+(35, 'sanathhomestudio', 'abcd', 'a', 'colombo', 'colombo', '234', 'sanathhome@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 7645609, 6, '', '', '', '', 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -403,23 +404,6 @@ CREATE TABLE `tokens` (
   `email` varchar(100) NOT NULL,
   `token` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tokens`
---
-
-INSERT INTO `tokens` (`id`, `email`, `token`) VALUES
-(1, 'sasindusubodhaka@gmail.com', '99a25872a83a6b45d5220070537a8d9f5f79718268399'),
-(2, 'sasindusubodhaka@gmail.com', 'aa1f83edeb71ea2aa2dd8947ce235b8c5f7973d8a223a'),
-(3, 'sasindusubodhaka@gmail.com', 'b81952fda83f402d033c3735e3de6fb75f797b47b2f2b'),
-(4, 'sasindusubodhaka@gmail.com', 'ff5e459a91a4356a000949461eb39d505f797b4fb1d6c'),
-(5, 'sdfkjg@gmail.com', '03d7c0f3ed38795399f7a3dcbf2ba81b5f7b745e4ccf7'),
-(6, 'sdfkjg@gmail.com', 'c513cdb55b95b98c49cb9ad2c4a9b0c45f7b74662a020'),
-(7, 'sasindusubodhaka@gmail.com', 'f6c8f8ee4a39326c6c6dd91fe6495e515f7b74a173588'),
-(8, 'sasindusubodhaka@gmail.com', '2c89bac2197c3520889b31dc9dd3ffb55f7b74cc4fcfb'),
-(9, 'sasindusubodhaka@gmail.com', '186a4c26e5822973b650f08b5476a4e55f7b750db02ef'),
-(10, 'sasindusubodhaka@gmail.com', '24718a3b154c80dd91c4a9321818b4dc5f7b7594b1561'),
-(11, 'sasindusubodhaka@gmail.com', '7b06a51c433383028e0b861475fdab775f7b76ad417f0');
 
 --
 -- Indexes for dumped tables
@@ -593,7 +577,7 @@ ALTER TABLE `audio_gear`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `c_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `c_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `customer_complaint`
@@ -605,7 +589,7 @@ ALTER TABLE `customer_complaint`
 -- AUTO_INCREMENT for table `email_verification`
 --
 ALTER TABLE `email_verification`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `instrument`
@@ -629,7 +613,7 @@ ALTER TABLE `owner`
 -- AUTO_INCREMENT for table `owner_verification`
 --
 ALTER TABLE `owner_verification`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `reserved _job`
@@ -665,7 +649,7 @@ ALTER TABLE `time_slot`
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
