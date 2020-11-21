@@ -32,11 +32,7 @@ input[type=checkbox] {
 	-webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
 	border-radius: 50px;
-	position: relative;
-
-	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
-	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
-	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	position: relative;	
 }
 /* line */
 .slideTwo:after {
@@ -51,10 +47,6 @@ input[type=checkbox] {
 	-moz-border-radius: 50px;
 	border-radius: 50px;
 	background: #111;
-
-	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
-	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
-	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
 }
 /* white round */
 .slideTwo label {    
@@ -82,12 +74,7 @@ input[type=checkbox] {
 	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
 	background: #fcfff4;
 
-	background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+	
 }
 /* miiddle round */
 .slideTwo label:after {
@@ -102,10 +89,6 @@ input[type=checkbox] {
 	background: #333;
 	left: 6px;
 	top: 6px;
-
-	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
-	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
-	box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
 }
 
 .slideTwo input[type=checkbox]:checked + label {
@@ -113,7 +96,7 @@ input[type=checkbox] {
 }
 
 .slideTwo input[type=checkbox]:checked + label:after {
-	background: #00bf00;
+	background: #2c22b7;
 }
 .description {
 	display: block;
@@ -192,7 +175,7 @@ input[type=checkbox] {
   }
   
   .form-container .service {
-	color: beige;
+	color: rgb(19, 19, 7);
 	font: 10px Arial, sans-serif;
   }
   
@@ -215,7 +198,6 @@ input[type=checkbox] {
 	display: table-cell;	
 	position: relative;
 	top: 60px;
-	width: 55%;
 	padding: 0px;
 	padding-right: 100px;
    
@@ -263,13 +245,13 @@ table {
 	display: inline-block;
 	transition: all 0.3s;
 	transform: translateY(0rem);
-	color: beige;
+	color: rgb(11, 11, 4);
   }
   
   .form__input {
 	padding: 0.4rem 1rem;
 	border-radius: 0.2rem;
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(239, 220, 220);
 	border: none;
 	width: 100%;
 	display: block;
@@ -287,7 +269,7 @@ table {
  
   .service_form .btn {
 	background: linear-gradient(to right,rgb(74, 73, 92),rgb(66, 62, 74));
-	color: rgb(241, 234, 234);
+	color: rgb(223, 213, 213);
 	padding: 10px 50px;
 	border: none;
 	cursor: pointer;	

@@ -14,138 +14,126 @@ session_start();
 <body> 
  <div class="nav"><?php require_once('../../inc/stu_dash_navbar.php');?></div>                
            
-<div class="column">
+<div class="column" style="width: 60%;">
        <div class="row">
                 <center><h1>Add Your Services</h1></center>
                
-       </div> 
-        <form action="as.php" class="service_form" method="post">                       
-                <div class="row" >                               
-                                <div class="column">
-                                                <lable class="description" name="service"><h2>Masterring</h2></lable> 
-                                </div>
-                                <div class="column">
-                                        <div class="slideTwo">	
-                                                <input type="checkbox"  id="service1"  onclick="openForm1(this)"  name="check1"  />
-                                                <label for="service1"></label>                  
-                                        </div>
-                                
-                                </div>  
-                                <div class="column" >
-                                        <div class="form-popup" id="dvservice1" >  
-                                                <div class="form__group">
-                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge"  />
-                                                <label for="name" class="form__label">charge per hour</label>
-                                                </div>                               
+       </div>        
+        <?php 
+                $query1="SELECT * FROM studio_service WHERE studio_id=$user_id";
+                $result_set1 = mysqli_query($connection,$query1);
+                if($result_set1){
+                        $rows=mysqli_num_rows($result_set1);
+                        if($rows>=1){
+                                $temp=1;                                        
+                                echo '<form action="../../controller/studio/add_services_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
+                                while($record = mysqli_fetch_assoc($result_set1)){
+                                        echo '<div class="row" >                               
+                                                <div class="column">
+                                                                <lable class="description" name="service'.$temp.'"><h2>'.$record['service_name'].'</h2></lable> 
+                                                </div>
+                                                <div class="column">
+                                                        <div class="slideTwo">	
+                                                                <input type="hidden"  id="unchecked_service'.$temp.'"  name="uncheck'.$temp.'"  value="'.$record['service_name'].'" />                                                                        
+                                                                <input type="checkbox"  id="service'.$temp.'"  onclick="openForm'.$temp.'(this)"  name="check'.$temp.'"  value="'.$record['service_name'].'"  checked/>
+                                                                <label for="service'.$temp.'"></label>                  
+                                                        </div>
+                                                
+                                                </div>  
+                                                <div class="column" >
+                                                        <div class="form-popup" id="dvservice'.$temp.'" >  
+                                                                <div class="form__group">
+                                                                <input type="text" class="form__input"  name="charge'.$temp.'" value="'.$record['service_charge'].'" />
+                                                                <label for="name" class="form__label">charge per hour</label>
+                                                                </div>                               
+                                                                        
+                                                        </div>	
+                                                        <script>
+                                                        function openForm'.$temp.'(service'.$temp.') {
+                                                                var dvservice'.$temp.' = document.getElementById("dvservice'.$temp.'");
+                                                                dvservice'.$temp.'.style.display = service'.$temp.'.checked ? "block" : "none";
                                                         
-                                        </div>	
-                                        <script>
-                                        function openForm1(service1) {
-                                                var dvservice1 = document.getElementById("dvservice1");
-                                                 dvservice1.style.display = service1.checked ? "block" : "none";
-                                               
-                                        }
-                                       
-                                
-                                        </script>
-                                </div>  
-                </div>
-                <div class="row">               
-                                <div class="column">
-                                                <lable class="description"><h2>Recording</h2></lable> 
-                                </div>
-                                <div class="column">
-                                        <div class="slideTwo">	
-                                                <input type="checkbox"  id="service2" onclick="openForm2(this)" name="check1" />
-                                                <label for="service2"></label>                  
+                                                        } 
+                                                
+                                                        </script>
+                                                </div>  
+                                        </div> 
+                                        ';
+                                        $temp++;
+                                }
+                                echo '
+                                <div class="row">
+   
+                                        <div class="column" style="padding: 15px 500px;">
+                                                <button type="submit_name" class="btn" name="submit_service2">Save</button>
                                         </div>
-
-                                </div> 
-                                <div class="column" >
-                                        <div class="form-popup" id="dvservice2" >  
-                                                <div class="form__group">
-                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge"  />
-                                                <label for="name" class="form__label">charge per hour</label>
-                                                </div>                               
-                                                        
-                                        </div>	
-                                        <script>
-                                        function openForm2(service2) {
-                                                var dvservice2 = document.getElementById("dvservice2");
-                                                 dvservice2.style.display = service2.checked ? "block" : "none";
-                                               
-                                        }
-                                
-                                        </script>
-                                </div>                    
-                </div>
-                <div class="row">                
-                                <div class="column">
-                                                <lable class="description"><h2>Mixing</h2></lable> 
-                                </div>
-                                <div class="column">
-                                        <div class="slideTwo">	
-                                                <input type="checkbox"  id="service3" onclick="openForm3(this)" name="check1" />
-                                                <label for="service3"></label>                  
-                                        </div>
-
-                                </div> 
-                                <div class="column" >
-                                        <div class="form-popup" id="dvservice3" >  
-                                                <div class="form__group">
-                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge" />
-                                                <label for="name" class="form__label">charge per hour</label>
-                                                </div>                               
-                                                        
-                                        </div>	
-                                        <script>
-                                        function openForm3(service3) {
-                                                var dvservice3 = document.getElementById("dvservice3");
-                                                 dvservice3.style.display = service3.checked ? "block" : "none";
-                                               
-                                        }
-                                
-                                        </script>
-                                </div>  
-                </div>
-                <div class="row">       
-                                <div class="column">
-                                                <lable class="description"><h2>Dubbing</h2></lable> 
-                                </div>
-                                <div class="column">
-                                        <div class="slideTwo">	
-                                                <input type="checkbox"  id="service4" onclick="openForm4(this)" name="check1" />
-                                                <label for="service4"></label>                  
-                                        </div>
-
-                                </div>
-                                <div class="column" >
-                                        <div class="form-popup" id="dvservice4" >  
-                                                <div class="form__group">
-                                                <input type="text" class="form__input" id="name" placeholder="Enter the charge" />
-                                                <label for="name" class="form__label">charge per hour</label>
-                                                </div>                               
-                                                        
-                                        </div>	
-                                        <script>
-                                        function openForm4(service4) {
-                                                var dvservice4 = document.getElementById("dvservice4");
-                                                 dvservice4.style.display = service4.checked ? "block" : "none";
-                                               
-                                        }
-                                
-                                        </script>
-                                </div>
                 
-                </div>
-                <div class="row">
-                        <div class="column" style="padding: 10px 500px;">
-                                <button type="submit_name" class="btn" name="submit_service">Save</button>
-                        </div>
+                                </div>
+                                </form>
+                                ';
+
+                        }
+                        else{
+                                $query2 = "SELECT * FROM service";
+                                $result_set2=mysqli_query($connection,$query2);
+                                if($result_set2){
+                                        $rows=mysqli_num_rows($result_set2);
+                                        echo '<form action="../../controller/studio/add_services_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
+                                        while($record = mysqli_fetch_assoc($result_set2)){
+                                                echo '<div class="row" >                               
+                                                        <div class="column">
+                                                                        <lable class="description" name="service'.$record['service_id'].'"><h2>'.$record['name'].'</h2></lable> 
+                                                        </div>
+                                                        <div class="column">
+                                                                <div class="slideTwo">	
+                                                                        <input type="checkbox"  id="service'.$record['service_id'].'"  onclick="openForm'.$record['service_id'].'(this)"  name="check'.$record['service_id'].'"  value="'.$record['name'].'" />
+                                                                        <label for="service'.$record['service_id'].'"></label>                  
+                                                                </div>
+                                                        
+                                                        </div>  
+                                                        <div class="column" >
+                                                                <div class="form-popup" id="dvservice'.$record['service_id'].'" >  
+                                                                        <div class="form__group">
+                                                                        <input type="text" class="form__input"  name="charge'.$record['service_id'].'" placeholder="Enter the charge" />
+                                                                        <label for="name" class="form__label">charge per hour</label>
+                                                                        </div>                               
+                                                                                
+                                                                </div>	
+                                                                <script>
+                                                                function openForm'.$record['service_id'].'(service'.$record['service_id'].') {
+                                                                        var dvservice'.$record['service_id'].' = document.getElementById("dvservice'.$record['service_id'].'");
+                                                                        dvservice'.$record['service_id'].'.style.display = service'.$record['service_id'].'.checked ? "block" : "none";
+                                                                
+                                                                }
+                                                        
+                                                        
+                                                                </script>
+                                                        </div>  
+                                                </div> 
+                                                ';
+                                        }
+                                        echo '
+                                        <div class="row">
+                                                <div class="column" style="padding: 10px 500px;">
+                                                        <button type="submit_name" class="btn" name="submit_service1">Save</button>
+                                                </div>
+                        
+                                        </div>
+                                        </form>
+                                        ';
+
+                                }
+                                else{
+                                        echo "erorr";
+                                }
+
+                        }
+                }
+
+                
+        ?>               
+
         
-                </div>
-           
-        </form>
          <div class="row">
                 <div class="column">
                         <button class="open-button" onclick="openForm()"><h4>Other Services</h4></button>
@@ -154,15 +142,15 @@ session_start();
         <div class="row"> 
                 <div class="column">
                         <div class="form-popup" id="nameForm">
-		        <form action="" class="form-container" method="post">  
+		        <form action='<?php echo "../../controller/studio/add_services_controller.php?studio_id=$user_id"?>' class="form-container" method="post">  
 
 		                <label for="service" class="service"><b>Service Name</b></label>
-		                <input type="text" value="" name="first_name" placeholder="Enter Your Service Name" >
+		                <input type="text" value="" name="service_name" placeholder="Enter Your Service Name" required>
 
 		                <label for="charge" class="service"><b>Service charge</b></label>
-		                <input type="text" value=""  name="charge" placeholder="per hour">
+		                <input type="text" value=""  name="charge" placeholder="per hour" required>
 
-		                <button type="submit_name" class="btn" name="submit_name">Save</button>
+		                <button type="submit_name" class="btn" name="submit_other_service">Save</button>
 		                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
 		         </form>
                         </div>	
@@ -178,42 +166,85 @@ session_start();
                 </div>
 
          </div>
-        
+
+                                                   
+        <?php  
+                if(isset($_GET['added'])){  
+                         $massage=$_GET['added']; 
+                         function function_alert1($message) { 
+                                // Display the alert box  
+                                echo "<script>alert('$message');</script>"; 
+                        }
+                        function_alert1($massage);                                                                         
+                                                                               
+                 }                             
+                else if(isset($_GET['deleted'])){
+                        $massage=$_GET['deleted'];
+                        function function_alert2($message) {                                  
+                                echo "<script>alert('$message');</script>"; 
+                        }
+                        function_alert2($massage);                                
+                }
+                if(isset($_GET['updated'])){
+                        $massage=$_GET['updated'];
+                        function function_alert3($message) {                                  
+                                echo "<script>alert('$message');</script>"; 
+                        }
+                        function_alert3($massage); 
+                         
+                }
+                if(isset($_GET['new_service'])){
+                        $massage=$_GET['new_service'];
+                        function function_alert4($message) {                                  
+                                echo "<script>alert('$message');</script>"; 
+                        }
+                        function_alert4($massage); 
+                         
+                }
+                if(isset($_GET['error'])){
+                        $massage=$_GET['error'];
+                        function function_alert4($message) {                                  
+                                echo "<script>alert('$message');</script>"; 
+                        }
+                        function_alert4($massage); 
+                         
+                }     
+        ?>     
 </div>  
-<div class="column">
+<div class="column" style="width: 40%;">
         <div class="row">
                 <h1>Your Services</h1>
+                <?php   
+                        $query="SELECT * FROM studio_service WHERE studio_id=$user_id";
+                        $result_set= mysqli_query($connection,$query1);
+                        if($result_set){
+                                if(mysqli_num_rows($result_set)==0){ //check whether the number of services from customers is 0
+                                //      $errors[]="There is no services from customers";
+                                }
+                                else{
+                                    //store data in the customer table which takes from database
+                                    $table = "<table>";                                    
+                                    $table .= "<tr><th>Service</th><th>Charge(Rs) per hour</th>";
+                                    while($record =mysqli_fetch_assoc($result_set)){                                    
+                                       $table .= "<tr>";
+                                       $table.= "<td>".$record['service_name']."</td>";
+                                       $table.= "<td>".$record['service_charge']."</td>";                                       
+                                       $table.= "</tr>";
+                                    }
+                                    $table.= "</table>";
+                                   
+                                }
+                                                   
+                            }           
+                ?>
                
        </div>
        <div class="row" >
-                        <table>
-                                <tr>
-                                        <th>Service</th>
-                                        <th>Charge(Rs) per hour</th>
-
-                                </tr>
-                                <tr>
-                                        <td>Recording</td>
-                                        <td>5500.00</td>
- 
-                                </tr>
-                                <tr>
-                                        <td>Mixing</td>
-                                        <td>5500.00</td>
- 
-                                </tr>
-                                <tr>
-                                        <td>Dubbing</td>
-                                        <td>5500.00</td>
- 
-                                </tr>
-                                <tr>
-                                        <td>Mastering</td>
-                                        <td>5500.00</td>
- 
-                                </tr>
-
-                        </table>
+                 <?php 
+                        if(isset($table)){
+                                echo $table;
+                        }
+                ?>
        </div>
 
 

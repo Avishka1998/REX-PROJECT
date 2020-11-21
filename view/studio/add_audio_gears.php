@@ -8,13 +8,13 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio Gears</title>
-    <link rel="stylesheet" href="../../css/studio/add_audio_gears.css">
+    <link rel="stylesheet" href="../../css/studio/add_services.css">
 </head>
 
 <body> 
- ><?php require_once('../../inc/stu_dash_navbar.php');?>                
+ <?php require_once('../../inc/stu_dash_navbar.php');?>                
            
-<div class="column">
+<div class="column" style="width: 60%;">
        <div class="row">
                 <h1><center>Add Your Audio Gears</center></h1>
                
@@ -22,7 +22,7 @@ session_start();
         <form action="as.php" class="service_form" method="post">                       
                 <div class="row" >                               
                                 <div class="column">
-                                                <lable class="description" name="service"><h2>Sennheiser HD280  </h2> </lable> 
+                                                <lable class="description" name="service" style="padding-left: 5px;width: 170%;"><h2>Sennheiser HD280  </h2> </lable> 
                                 </div>
                                 <div class="column">
                                         <div class="slideTwo">	
@@ -154,7 +154,7 @@ session_start();
         
 </div>  
 <div class="column">
-        <div class="row">
+        <div class="row" style="width: 40%;">
                 <h1>Audio Gears</h1>
                
        </div>
