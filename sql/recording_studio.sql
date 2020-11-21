@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2020 at 06:41 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Nov 21, 2020 at 07:16 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -80,8 +79,8 @@ CREATE TABLE `customer` (
   `email` varchar(60) NOT NULL,
   `tele_no` int(10) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `blocked` int(1) NOT NULL DEFAULT 0,
+  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `blocked` int(1) NOT NULL DEFAULT '0',
   `image` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -104,7 +103,7 @@ CREATE TABLE `customer_complaint` (
   `c_id` int(100) NOT NULL,
   `studio_id` int(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `flag` tinyint(4) NOT NULL DEFAULT 0
+  `flag` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -290,6 +289,16 @@ CREATE TABLE `service` (
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `service`
+--
+
+INSERT INTO `service` (`service_id`, `name`) VALUES
+(1, 'Recording'),
+(2, 'Mastering'),
+(3, 'Mixing'),
+(4, 'Dubbing');
+
 -- --------------------------------------------------------
 
 --
@@ -312,10 +321,10 @@ CREATE TABLE `studio` (
   `cover` varchar(500) NOT NULL,
   `latitude` varchar(50) NOT NULL,
   `longitude` varchar(50) NOT NULL,
-  `verified` tinyint(4) NOT NULL DEFAULT 0,
-  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `owner_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `blocked` int(1) NOT NULL DEFAULT 0
+  `verified` tinyint(4) NOT NULL DEFAULT '0',
+  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `owner_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `blocked` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -326,7 +335,7 @@ INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_
 (26, 'ABC', 'DEF', 'GHI', 'JKL', 'JKL', '234', 'ABC@gmail.com', '', 55, 4, '', '', '', '', 1, 0, 0, 0),
 (28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, '', '', '6.261826', '80.4910', 0, 1, 1, 0),
 (29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, '', '', '', '', 0, 1, 0, 0),
-(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, '', '', '', '', 0, 1, 0, 0),
+(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, '', '', '', '', 1, 1, 0, 0),
 (31, 'CSTUDIOS', '396/B', 'Kandy Rd', 'Miriswatta', 'Gampaha', '184472', 'chandanastudios@gmail.com', '6c3f5e05b273fece80a7e7d7c269701f365d43dd', 455610043, 10, 'imageedit_1_7612725206.jpg', '4f513e2e6ebdd99d743b8925195f4bbf.jpg', '6.9022', '79.8612', 1, 1, 0, 0),
 (35, 'sanathhomestudio', 'abcd', 'a', 'colombo', 'colombo', '234', 'sanathhome@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 7645609, 6, '', '', '', '', 1, 0, 0, 0);
 
@@ -341,7 +350,7 @@ CREATE TABLE `studio_complaint` (
   `studio_id` int(100) NOT NULL,
   `c_id` int(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `flag` tinyint(4) NOT NULL DEFAULT 0
+  `flag` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -374,9 +383,17 @@ CREATE TABLE `studio_reserved_sevice` (
 
 CREATE TABLE `studio_service` (
   `studio_id` int(100) NOT NULL,
-  `service_id` int(100) NOT NULL,
+  `service_name` varchar(100) NOT NULL,
   `service_charge` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `studio_service`
+--
+
+INSERT INTO `studio_service` (`studio_id`, `service_name`, `service_charge`) VALUES
+(31, 'Dubbind', 1200),
+(31, 'Mastering', 1230);
 
 -- --------------------------------------------------------
 
@@ -540,8 +557,7 @@ ALTER TABLE `studio_reserved_sevice`
 -- Indexes for table `studio_service`
 --
 ALTER TABLE `studio_service`
-  ADD PRIMARY KEY (`studio_id`,`service_id`),
-  ADD KEY `service_id` (`service_id`);
+  ADD PRIMARY KEY (`studio_id`,`service_name`);
 
 --
 -- Indexes for table `time_slot`
@@ -566,91 +582,76 @@ ALTER TABLE `tokens`
 --
 ALTER TABLE `advance_payment`
   MODIFY `adpayment_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `audio_gear`
 --
 ALTER TABLE `audio_gear`
   MODIFY `audio_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `c_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
 --
 -- AUTO_INCREMENT for table `customer_complaint`
 --
 ALTER TABLE `customer_complaint`
-  MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
+  MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `email_verification`
 --
 ALTER TABLE `email_verification`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `instrument`
 --
 ALTER TABLE `instrument`
   MODIFY `instrument_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `membership_payment`
 --
 ALTER TABLE `membership_payment`
   MODIFY `mpay_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
   MODIFY `owner_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
 --
 -- AUTO_INCREMENT for table `owner_verification`
 --
 ALTER TABLE `owner_verification`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `reserved _job`
 --
 ALTER TABLE `reserved _job`
   MODIFY `job_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `studio`
 --
 ALTER TABLE `studio`
-  MODIFY `studio_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
+  MODIFY `studio_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
   MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `time_slot`
 --
 ALTER TABLE `time_slot`
   MODIFY `t_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -734,7 +735,6 @@ ALTER TABLE `studio_reserved_sevice`
 -- Constraints for table `studio_service`
 --
 ALTER TABLE `studio_service`
-  ADD CONSTRAINT `studio_service_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `service` (`service_id`),
   ADD CONSTRAINT `studio_service_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`);
 
 --
@@ -742,7 +742,6 @@ ALTER TABLE `studio_service`
 --
 ALTER TABLE `time_slot`
   ADD CONSTRAINT `time_slot_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
