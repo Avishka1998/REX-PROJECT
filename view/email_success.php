@@ -57,19 +57,16 @@
         if(mysqli_num_rows($ret_result)==1){
           $record = mysqli_fetch_assoc($ret_result);
           $email = $record['email'];
-          $update_query1 = "UPDATE customer SET email_verified=1 WHERE email='$email'";
-          $update_result1 = mysqli_query($connection,$update_query1); 
-          $delete_query = "DELETE FROM email_verification WHERE token='$token'";
-          $delete_result = mysqli_query($connection,$delete_query);
-          $everified = 'Your Email is now Verified!';
           session_start();
-          $_SESSION['everified']=$everified; 
-          header('Location: ../view/login.php');
+          $_SESSION['ver_email'] = $email;
+          header('Location: ../view/email_ver_password.php');
         }
-        echo "<div class='textbox invalid'><h1>INVALID LINK!</h1></div>";
+        else{
+          echo "<div class='textbox invalid'><h1>INVALID LINK!</h1></div>";
+        }  
       }
       else{
-        echo  "<div class='textbox invalid'><h1>INVALID LINK!</h1></div>";
+        echo "<div class='textbox invalid'><h1>INVALID LINK!</h1></div>";
       }
     ?>
     <div class="button-container">

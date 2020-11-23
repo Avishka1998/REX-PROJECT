@@ -10,8 +10,8 @@
   $alert='';
   $isalert=0;
   if(isset($_POST['reset'])){
-      if((!isset($_POST['password'])) || (strlen(trim($_POST['password']))<1) || (!isset($_POST['re-password'])) || (strlen(trim($_POST['re-password'])))<1){
-        $alert = 'Some fields are Missing!';
+      if((!isset($_POST['password'])) || (strlen(trim($_POST['password']))<8) || (!isset($_POST['re-password'])) || (strlen(trim($_POST['re-password'])))<8){
+        $alert = 'Password must contain at least 8 characters!';
         $isalert=1;
     }
 
@@ -33,9 +33,8 @@
                   $update_result2 = mysqli_query($connection,$update_query2);
                   $delete_query = "DELETE FROM tokens WHERE token='$token'";
                   $delete_result = mysqli_query($connection,$delete_query);
-                  session_start();
-                  $_SESSION['everified']="Password Reset Successfull!";
-                  header('Location: ../view/login.php');
+                  $resuc="Password Reset Successfull!";
+                  header('Location: ../view/login.php?everified='.$resuc);
               }
               else{
                   $alert = 'Link not Existing. Please Try Again!';

@@ -1,17 +1,18 @@
 body{
-  margin: 0;
-  padding: 0;
   font-family:cursive;
   background-color: rgba(52,152,259,0.5);
-  height:100vh;
-  overflow:inherit;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  display: flex;
+  overflow: auto;
 }
 
 .center{
   position:absolute;
   top: 60%;
   left: 50%;
-  margin-bottom: 5%;
   transform: translate(-50%, -50%);
   width: 40%;
   background: white;
@@ -35,7 +36,7 @@ form .textfield{
   margin: 30px 0;
 }
 
-.textfield input{
+.textfield input, #disdop{
   width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -73,6 +74,15 @@ form .textfield{
 }
 
 .textfield input:focus ~ span::before, .textfield input:valid ~ span::before{
+  width: 100%;
+}
+
+.textfield #disdop:focus ~ label, .textfield #disdop:valid ~ label{
+  top: -5px;
+  color: #2691d9;
+}
+
+.textfield #disdop:focus ~ span::before, .textfield #disdop:valid ~ span::before{
   width: 100%;
 }
 

@@ -20,16 +20,16 @@
         else if(!isset($_POST['tele_no']) || strlen(trim($_POST['tele_no']))<1){
             $errors[]='Something is missing or invalid!';
         }
-        else if(!isset($_POST['password']) || strlen(trim($_POST['password']))<1){
-            $errors[]="Something is missing or invlid!";
+        else if(!isset($_POST['password']) || strlen(trim($_POST['password']))<8){
+            $errors[]='Password must contain at least 8 characters!';
         }
-        else if(!isset($_POST['repeat_password']) || strlen(trim($_POST['repeat_password']))<1){
-            $errors[]='Something is missing or invalid!';
+        else if(!isset($_POST['repeat_password']) || strlen(trim($_POST['repeat_password']))<8){
+            $errors[]='Password must contain at least 8 characters!';
         }
         else{
             //check password and repeat password is equel
             if($_POST['repeat_password']!=$_POST['password']){
-                $errors[]='Password is not matching!';
+                $errors[]='Passwords are not matching!';
             }
 
         }

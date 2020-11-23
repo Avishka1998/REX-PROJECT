@@ -40,18 +40,18 @@
             $errors='Something is missing or invalid';
             $iserror = 1;
         }
-        if(!isset($_POST['password']) || strlen(trim($_POST['password']))<1){
-            $errors='Something is missing or invalid';
+        if(!isset($_POST['password']) || strlen(trim($_POST['password']))<8){
+            $errors='Password must contain at least 8 characters';
             $iserror = 1;
         }
-        if(!isset($_POST['repeat_password']) || strlen(trim($_POST['repeat_password']))<1){
-            $errors='Something is missing or invalid';
+        if(!isset($_POST['repeat_password']) || strlen(trim($_POST['repeat_password']))<8){
+            $errors='Password must contain at least 8 characters';
             $iserror = 1;
         }
         else{
           //check password and repeat password is equel
             if($_POST['repeat_password']!=$_POST['password']){
-              $errors='Password is incorrect!!';
+              $errors='Passwords are not matching!';
               $iserror=1;
            }
         }

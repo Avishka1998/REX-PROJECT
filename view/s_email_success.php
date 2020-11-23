@@ -60,18 +60,23 @@
       if(mysqli_num_rows($ret_result)==1){
         $record = mysqli_fetch_assoc($ret_result);
         $email = $record['email'];
-        $update_query = "UPDATE studio SET email_verified=1 WHERE s_email='$email'";
-        $update_result = mysqli_query($connection,$update_query);
-        $delete_query = "DELETE FROM email_verification WHERE token='$token'";
-        $delete_result = mysqli_query($connection,$delete_query);
-        echo "<div class='textbox'>'<h1>Your Email Verified Successfully!<br>We will notify you when Your Account Details are Verified.</h1>'</div>";       
+        session_start();
+        $_SESSION['s_ver_email'] = $email;
+        header('Location: ../view/s_email_ver_password.php');
       }
       else{
         echo "<div class='textbox invalid'><h1 class='invalid'>INVALID LINK!</h1></div>";     
       }
     }
     else{
-      echo "<div class='textbox invalid'><h1 class='invalid'>INVALID LINK!</h1></div>";
+      if($_GET['sev']){
+        $sev = $_GET['sev'];
+        echo "<div class='textbox'><h1>$sev</h1></div>";
+      }
+      else{
+        echo "<div class='textbox invalid'><h1 class='invalid'>INVALID LINK!</h1></div>";  
+      }
+      
     }
   ?>
     <div class="button-container">

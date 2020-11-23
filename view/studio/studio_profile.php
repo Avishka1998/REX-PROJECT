@@ -138,13 +138,39 @@ session_start();
 		    <input type="text" value="<?php echo $record['s_address_line1']; ?>" name="add_1" >
 		    <label for="text"><b>Address Line 2</b></label>
 		    <input type="text" value="<?php echo $record['s_address_line2']; ?>" name="add_2" >
-		    <label for="text"><b>City</b></label>
+			<label for="text"><b>City</b></label>
 		    <input type="text" value="<?php echo $record['s_city']; ?>" name="City" >
-		    <label for="text"><b>District</b></label>
-		    <input type="text" value="<?php echo $record['distric']; ?>" name="dist" >
+		    <label for="disdop"><b>District</b></label>
+			<!-- <input type="text" value="<?php echo $record['distric']; ?>" name="dist" > -->
+			<select id = "disdop" name="distric">
+               <option value = "Ampara" <?php if($record['distric']=='Ampara'){echo 'selected';}?>>Ampara</option>
+               <option value = "Anuradhapura" <?php if($record['distric']=='Anuradhapura'){echo 'selected';}?>>Anuradhapura</option>
+               <option value = "Badulla" <?php if($record['distric']=='Badulla'){echo 'selected';}?>>Badulla</option>
+               <option value = "Batticaloa" <?php if($record['distric']=='Batticola'){echo 'selected';}?>>Batticaloa</option>
+               <option value = "Colombo" <?php if($record['distric']=='Colombo'){echo 'selected';}?>>Colombo</option>
+               <option value = "Galle" <?php if($record['distric']=='Galle'){echo 'selected';}?>>Galle</option>
+               <option value = "Gampaha" <?php if($record['distric']=='Gampaha'){echo 'selected';}?>>Gampaha</option>
+               <option value = "Hambantota" <?php if($record['distric']=='Hambantota'){echo 'selected';}?>>Hambantota</option>
+			   <option value = "Jaffna" <?php if($record['distric']=='Jaffna'){echo 'selected';}?>>Jaffna</option>
+               <option value = "Kalutara" <?php if($record['distric']=='Kalutara'){echo 'selected';}?>>Kalutara</option>
+               <option value = "Kandy" <?php if($record['distric']=='Kandy'){echo 'selected';}?>>Kandy</option>
+               <option value = "Kegalle" <?php if($record['distric']=='Kegalle'){echo 'selected';}?>>Kegalle</option>
+               <option value = "Kilinochchi" <?php if($record['distric']=='Kilinochchi'){echo 'selected';}?>>Kilinochchi</option>
+               <option value = "Kurunegala" <?php if($record['distric']=='Kurunegala'){echo 'selected';}?>>Kurunegala</option>
+               <option value = "Mannar" <?php if($record['distric']=='Mannar'){echo 'selected';}?>>Mannar</option>
+               <option value = "Matale" <?php if($record['distric']=='Matale'){echo 'selected';}?>>Matale</option>
+               <option value = "Matara" <?php if($record['distric']=='Matara'){echo 'selected';}?>>Matara</option>
+               <option value = "Monaragala" <?php if($record['distric']=='Monaragala'){echo 'selected';}?>>Monaragala</option>
+               <option value = "Mullaitivu" <?php if($record['distric']=='Mullaitivu'){echo 'selected';}?>>Mullaitivu</option>
+               <option value = "Nuwara Eliya" <?php if($record['distric']=='Nuwara Eliya'){echo 'selected';}?>>Nuwara Eliya</option>
+               <option value = "Polonnaruwa" <?php if($record['distric']=='Polonnaruwa'){echo 'selected';}?>>Polonnaruwa</option>
+               <option value = "Puttalam" <?php if($record['distric']=='Puttalam'){echo 'selected';}?>>Puttalam</option>
+               <option value = "Ratnapura" <?php if($record['distric']=='Ratnapura'){echo 'selected';}?>>Ratnapura</option>
+               <option value = "Trincomalee" <?php if($record['distric']=='Trincomalee'){echo 'selected';}?>>Trincomalee</option>
+               <option value = "Vavuniya" <?php if($record['distric']=='Vavuniya'){echo 'selected';}?>>Vavuniya</option>
+            </select>
 		    <label for="text"><b>Postal Code</b></label>
 		    <input type="text" value="<?php echo $record['postalcode']; ?>" name="post_code" >
-
 		    <button type="submit_address" class="btn" name="submit_address">Save</button>
 		    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
 		  </form>

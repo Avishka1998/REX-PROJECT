@@ -60,18 +60,22 @@
         $result_set = mysqli_query($connection,$query);
         
         if(mysqli_num_rows($result_set)==1){
-          $query2 = "UPDATE studio SET owner_verified=1 WHERE studio_id='$s_id'";
-          $result_set2 = mysqli_query($connection,$query2);
-          $query3 = "DELETE FROM owner_verification WHERE token='$token'";
-          $result_set3 = mysqli_query($connection,$query3);
-          echo "<div class='textbox'>'<h1>Verification Successfull as an Owner!</h1>'</div>"; 
+          session_start();
+          $_SESSION['own_stu_id'] = $s_id;
+          header('Location: ../view/owner_ver_password.php'); 
         }
         else{
           echo "<div class='textbox invalid'><h1 class='invalid'>INVALID LINK!</h1></div>";
         }
       }
       else{
+        if($_GET['owver']){
+          $owver = $_GET['owver'];
+          echo "<div class='textbox'><h1>$owver</h1></div>";  
+        }
+        else{
           echo "<div class='textbox invalid'><h1 class='invalid'>INVALID LINK!</h1></div>";
+        }
       }
     ?>
     <div class="button-container">

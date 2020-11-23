@@ -37,18 +37,15 @@
 
         <div class="sent">
             <?php
-                session_start();
-                if(isset($_SESSION['everified'])){
-                    echo $_SESSION['everified'];
-                    session_unset();
-                    session_destroy();
-                    $_SESSION['everified']=''; 
-                }
+              if(isset($_GET['everified'])){
+                $everified = $_GET['everified'];
+                echo $everified;
+              }  
             ?>          
         </div>
 
         <input type="submit" value="Login" name="submit">
-		<div class="pass1"><a class="pass" href="password_reset1.php">Forgot Password?</a></div>
+		    <div class="pass1"><a class="pass" href="password_reset1.php">Forgot Password?</a></div>
         <div class="signup_link">
           No Existing Account? <a href="sign_up.php">Signup</a>
         </div>

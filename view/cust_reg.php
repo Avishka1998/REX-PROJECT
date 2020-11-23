@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Customer Registration</title>
     <link rel="stylesheet" href="../css/customer/cust_reg.css">
+    <script src="../assets/pass_length.js"></script>
   </head>
   <body>
     <?php require_once('../inc/navbar.php');?>
@@ -41,17 +42,18 @@
 
         <div class="textfield">
           <!-- <input type="password" required name="password"> -->
-          <input type="password" name="password" >
+          <input type="password" name="password" id="pass1" onkeyup="checkPass(); return false;">
           <span></span>
-          <label>Password</label>
+          <label>Password <span id="error-nwl1"></span></label>
         </div>
 
         <div class="textfield">
           <!-- <input type="password" required name="repeat_password"> -->
-          <input type="password" name="repeat_password" >
+          <input type="password" name="repeat_password" id="pass2" onkeyup="checkPass(); return false;">
           <span></span>
-          <label>Re-Enter Password</label>
+          <label>Re-Enter Password <span id="error-nwl2"></span></label>
         </div>
+
         <div class="error">
             <?php
                 if(isset($_GET['errors']) && !empty($_GET['errors'])){
@@ -66,6 +68,6 @@
         <input type="submit" value="Register" name="submit">
       </form>
     </div>
-    <?php require_once('../inc/minfooter.php');?>
+    <!-- <?php require_once('../inc/minfooter.php');?> -->
   </body>
 </html>

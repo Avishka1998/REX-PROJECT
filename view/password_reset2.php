@@ -26,6 +26,7 @@ else{
     <meta charset="utf-8">
     <title>View</title>
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../assets/pass_length.js"></script>
     <style media="screen">
     input[type="submit"]{
       margin: 0 0 20px 0;
@@ -38,15 +39,15 @@ else{
       <h1>Verify Email</h1>
       <form class="" action="../controller/password_reset2_controller.php" method="post">
         <div class="textfield">
-          <input type="password" name="password">
+          <input type="password" name="password" id="pass1" onkeyup="checkPass(); return false;">
           <span></span>
-          <label>Password</label>
+          <label>Password <span id="error-nwl1"></span></label>
         </div>
 
         <div class="textfield">
-          <input type="password" name="re-password">
+          <input type="password" name="re-password" id="pass2" onkeyup="checkPass(); return false;">
           <span></span>
-          <label>Re-Password</label>
+          <label>Re-Password <span id="error-nwl2"></span></label>
         </div>
 
         <div class="error">

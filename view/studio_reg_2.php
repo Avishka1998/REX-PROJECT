@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Studio Registration</title>
     <link rel="stylesheet" href="../css/customer/cust_reg.css">
+    <script src="../assets/pass_length.js"></script>
     <style>
       .center{
         margin-top: 240px;
@@ -49,7 +50,33 @@
 
         <div class="textfield">
           <!-- <input type="text" required name="distric"> -->
-          <input type="text" name="distric">
+          <select id = "disdop" name="distric">
+               <option value = "Ampara">Ampara</option>
+               <option value = "Anuradhapura">Anuradhapura</option>
+               <option value = "Badulla">Badulla</option>
+               <option value = "Batticaloa">Batticaloa</option>
+               <option value = "Colombo">Colombo</option>
+               <option value = "Galle">Galle</option>
+               <option value = "Gampaha">Gampaha</option>
+               <option value = "Hambantota">Hambantota</option>
+               <option value = "Jaffna">Jaffna</option>
+               <option value = "Kalutara">Kalutara</option>
+               <option value = "Kandy">Kandy</option>
+               <option value = "Kegalle">Kegalle</option>
+               <option value = "Kilinochchi">Kilinochchi</option>
+               <option value = "Kurunegala">Kurunegala</option>
+               <option value = "Mannar">Mannar</option>
+               <option value = "Matale">Matale</option>
+               <option value = "Matara">Matara</option>
+               <option value = "Monaragala">Monaragala</option>
+               <option value = "Mullaitivu">Mullaitivu</option>
+               <option value = "Nuwara Eliya">Nuwara Eliya</option>
+               <option value = "Polonnaruwa">Polonnaruwa</option>
+               <option value = "Puttalam">Puttalam</option>
+               <option value = "Ratnapura">Ratnapura</option>
+               <option value = "Trincomalee">Trincomalee</option>
+               <option value = "Vavuniya">Vavuniya</option>
+              </select>
           <span></span>
           <label>District</label>
         </div>
@@ -89,16 +116,16 @@
 
         <div class="textfield">
           <!-- <input type="password" required name="password"> -->
-          <input type="password" name="password">
+          <input type="password" name="password" id="pass1" onkeyup="checkPass(); return false";>
           <span></span>
-          <label>Password</label>
+          <label>Password <span id="error-nwl1"></span></label>
         </div>
 
         <div class="textfield">
           <!-- <input type="password" required name="repeat_password"> -->
-          <input type="password" name="repeat_password">
+          <input type="password" name="repeat_password" id="pass2" onkeyup="checkPass(); return false";>
           <span></span>
-          <label>Confirm Password</label>
+          <label>Confirm Password <span id="error-nwl2"></span></label>
         </div>
         <div class="error">
             <?php
@@ -111,6 +138,6 @@
         <input type="submit" value="Register" name="submit2">
       </form>
     </div>
-    <?php require_once('../inc/minfooter.php');?>
+    <!-- <?php require_once('../inc/minfooter.php');?> -->
   </body>
 </html>
