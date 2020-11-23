@@ -87,6 +87,7 @@ $user_name="User";
   <ul>
   <?php $filename=basename($_SERVER['PHP_SELF'])?>
     <li><a href="../studio/studio_dash.php" <?php if($filename=='studio_dash.php') echo "class=active"?>><i class="fa fa-fw fa-columns"></i> Dashboard</a></li>
+    <li><a href="../studio/studio_schedule.php" <?php if($filename=='studio_schedule.php') echo "class=active"?>><i class="fa fa-clock-o"></i> Schedule</a></li>
     <li><a href="../../view/studio/cust_request.php" <?php if($filename=='cust_request.php' || $filename=='cust_request_view.php') echo "class=active"?>><i class="fa fa-fw fa-briefcase"></i> Jobs</a></li>
     <li><a href="../../view/studio/studio_inbox.php" <?php if($filename=='studio_inbox.php') echo "class=active"?>><i class="fa fa-fw fa-envelope-open"></i> Inbox</a></li>
     <li><a href="../../controller/logout.php"><i class="fa fa-fw fa-lightbulb-o"></i> Logout</a></li>

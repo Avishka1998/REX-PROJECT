@@ -1,0 +1,270 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ 
+html,
+body{
+	height: auto;
+
+} 
+
+html{
+	font-family: Arial, Helvetica, sans-serif;
+	background: linear-gradient(to bottom, rgba(77, 8, 215, 0.5) 0%, rgba(5, 36, 189, 0.6) 100%);
+	font-size: 10px;
+}
+
+.body{
+	display: grid;		
+	align-items: center;
+	padding-left: 15%;
+}
+
+.nav{
+	margin-bottom: 70px;
+}
+.calander{
+	text-align: center;
+}
+.thismonth, .nextmonth{
+    width: 40%;
+    max-width: 500px;
+    display: inline-block;
+    border: 1px solid blueviolet;
+  }
+
+  .month {
+    padding: 40px 25px;
+    width: 100%;
+    background: #6b5d61;
+    text-align: center;
+  }
+
+  .month ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+  }
+  
+  .weekdays li {
+    display: inline-block;
+    width: 12.5%;
+    color: #666;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+  }
+  
+  .days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 12.5%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:15px;
+    color: #777;
+    cursor: pointer;
+  }
+
+  .days li:hover{
+    background-color:#463f41;
+    color: white;
+  }
+.container{
+	display: inline-block;
+	text-align: center;
+	padding: 20px;
+
+}
+
+.row{
+	display: grid;
+	grid:
+		'time h2 slideTwo hh2' 50px
+		/150px 50px 80px 80px;
+	border-radius: 10px;
+	padding: 10px 2px;
+	margin: 20px 2px;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.4);
+	box-shadow: 3px 8px 20px 3px rgba(10, 10, 10, 0.4);
+
+
+}
+
+.h2{
+	
+}
+
+.hh2{
+	
+}
+
+.time{
+	
+	text-align: right;
+}
+
+  .slideTwo {
+	width: 80px;
+	height: 30px;
+	background: #333;
+	margin: 1px auto;
+ 
+	
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	position: relative;
+
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+/* line */
+.slideTwo:after {
+	content: '';
+	position: absolute;
+	top: 14px;
+	left: 14px;
+	height: 2px;
+	width: 52px;
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	background: #111;
+
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+/* white round */
+.slideTwo label {    
+	display: block;
+	width: 22px;
+	height: 22px;
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	-ms-transition: all .4s ease;
+	transition: all .4s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 4px;
+	z-index: 1;
+	left: 4px;
+
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+	background: #fcfff4;
+
+	background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+/* miiddle round */
+.slideTwo label:after {
+	content: '';
+	position: absolute;
+	width: 11px;
+	height: 11px;
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	background: #333;
+	left: 6px;
+	top: 6px;
+
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
+}
+
+.slideTwo input[type=checkbox]:checked + label {
+	left: 54px;
+}
+
+.slideTwo input[type=checkbox]:checked + label:after {
+	background: #00bf00;
+}
+
+input[type=checkbox] {
+	visibility: hidden;
+}
+
+
+form{
+  color: black;
+    font-size: 10px;
+}
+
+
+select {
+  width: 80px;
+  padding: 1px 2px;
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  
+}
+
+input{
+  width: 80%;
+  font-size: 12.5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5%;
+  margin: 10px;
+}
+
+.next:hover {
+  background-color: rgb(0, 102, 255);
+}
+
+
+
+.next{
+  background-color: rgb(127, 129, 129);
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 10px;
+  min-width: 100px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  display: block;
+}
