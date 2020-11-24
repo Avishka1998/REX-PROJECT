@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2020 at 07:16 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.2
+-- Generation Time: Nov 24, 2020 at 06:49 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -79,8 +80,8 @@ CREATE TABLE `customer` (
   `email` varchar(60) NOT NULL,
   `tele_no` int(10) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
-  `blocked` int(1) NOT NULL DEFAULT '0',
+  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
+  `blocked` int(1) NOT NULL DEFAULT 0,
   `image` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -103,7 +104,7 @@ CREATE TABLE `customer_complaint` (
   `c_id` int(100) NOT NULL,
   `studio_id` int(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `flag` tinyint(4) NOT NULL DEFAULT '0'
+  `flag` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -306,7 +307,7 @@ INSERT INTO `service` (`service_id`, `name`) VALUES
 --
 
 CREATE TABLE `studio` (
-  `studio_id` int(60) NOT NULL,
+  `studio_id` int(5) NOT NULL,
   `studio_name` varchar(100) NOT NULL,
   `s_address_line1` varchar(100) NOT NULL,
   `s_address_line2` varchar(100) NOT NULL,
@@ -319,25 +320,26 @@ CREATE TABLE `studio` (
   `owner_id` int(100) NOT NULL,
   `profile` varchar(500) NOT NULL,
   `cover` varchar(500) NOT NULL,
+  `description` text NOT NULL,
   `latitude` varchar(50) NOT NULL,
   `longitude` varchar(50) NOT NULL,
-  `verified` tinyint(4) NOT NULL DEFAULT '0',
-  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
-  `owner_verified` tinyint(1) NOT NULL DEFAULT '0',
-  `blocked` int(1) NOT NULL DEFAULT '0'
+  `verified` tinyint(4) NOT NULL DEFAULT 0,
+  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
+  `owner_verified` tinyint(1) NOT NULL DEFAULT 0,
+  `blocked` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `studio`
 --
 
-INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `owner_id`, `profile`, `cover`, `latitude`, `longitude`, `verified`, `email_verified`, `owner_verified`, `blocked`) VALUES
-(26, 'ABC', 'DEF', 'GHI', 'JKL', 'JKL', '234', 'ABC@gmail.com', '', 55, 4, '', '', '', '', 1, 0, 0, 0),
-(28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, '', '', '6.261826', '80.4910', 0, 1, 1, 0),
-(29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, '', '', '', '', 0, 1, 0, 0),
-(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, '', '', '', '', 1, 1, 0, 0),
-(31, 'CSTUDIOS', '396/B', 'Kandy Rd', 'Miriswatta', 'Gampaha', '184472', 'chandanastudios@gmail.com', '6c3f5e05b273fece80a7e7d7c269701f365d43dd', 455610043, 10, 'imageedit_1_7612725206.jpg', '4f513e2e6ebdd99d743b8925195f4bbf.jpg', '6.9022', '79.8612', 1, 1, 0, 0),
-(35, 'sanathhomestudio', 'abcd', 'a', 'colombo', 'colombo', '234', 'sanathhome@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 7645609, 6, '', '', '', '', 1, 0, 0, 0);
+INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `owner_id`, `profile`, `cover`, `description`, `latitude`, `longitude`, `verified`, `email_verified`, `owner_verified`, `blocked`) VALUES
+(26, 'ABC', 'DEF', 'GHI', 'JKL', 'JKL', '234', 'ABC@gmail.com', '', 55, 4, '', '', '', '', '', 1, 0, 0, 0),
+(28, 'sanathstudio', 'rathnaputa', 'rathnapura', 'rathnapura', 'rathnapura', '23', 'sanathstudio@gmail.com', 'd1e9e8ca064dafb40c71e7ff8d9161f4a2ef63de', 779726091, 6, '', '', '', '6.261826', '80.4910', 0, 1, 1, 0),
+(29, 'sanathbogodastudio', 'balangoda', 'balangoda', 'balangoda', 'balangoda', '23', 'sanathbodgo@gmail.com', '04326d95aad2ca113e57c3329e753c564e7f64b5', 4674, 6, '', '', '', '', '', 0, 1, 0, 0),
+(30, 'hjf', 'fdf', 'dfdf', 'fdfdfdf', 'fdfdfdf', '454', 'nimalstudiosen@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 234, 7, '', '', '', '', '', 1, 1, 0, 0),
+(31, 'CHASTUDIO', '396/B', 'Kandy Rd', 'Miriswatta', 'Gampaha', '184472', 'chandanastudios@gmail.com', '6c3f5e05b273fece80a7e7d7c269701f365d43dd', 455610043, 10, 'imageedit_1_7612725206.jpg', '4f513e2e6ebdd99d743b8925195f4bbf.jpg', 'World Wrestling Entertainment, WWE, is an American integrated media and entertainment company that is primarily known for professional wrestling. WWE has also branched out into other fields, including movies, football, and various other business ventures.', '6.9022', '79.8612', 1, 1, 0, 0),
+(35, 'sanathhomestudio', 'abcd', 'a', 'colombo', 'colombo', '234', 'sanathhome@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 7645609, 6, '', '', '', '', '', 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -350,7 +352,7 @@ CREATE TABLE `studio_complaint` (
   `studio_id` int(100) NOT NULL,
   `c_id` int(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `flag` tinyint(4) NOT NULL DEFAULT '0'
+  `flag` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -361,6 +363,28 @@ INSERT INTO `studio_complaint` (`complaint_id`, `studio_id`, `c_id`, `descriptio
 (1, 28, 23, 'sdsd', 1),
 (2, 28, 23, 'sddfjdhbf', 1),
 (3, 28, 23, 'sdfjdgfdjfgd', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studio_portfolio`
+--
+
+CREATE TABLE `studio_portfolio` (
+  `id` int(5) NOT NULL,
+  `studio_id` int(5) NOT NULL,
+  `port1` varchar(15) DEFAULT 'pGCNVz4USLM',
+  `port2` varchar(15) NOT NULL DEFAULT '0dUMGM7cu88',
+  `port3` varchar(15) NOT NULL DEFAULT 'QzBACI0YP84',
+  `port4` varchar(15) NOT NULL DEFAULT 'taOtlyhftU4'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `studio_portfolio`
+--
+
+INSERT INTO `studio_portfolio` (`id`, `studio_id`, `port1`, `port2`, `port3`, `port4`) VALUES
+(1, 31, 'Qc6otXqaL0I', 'w7gPF3kYJgA', '', 'v29rQgxF-FY');
 
 -- --------------------------------------------------------
 
@@ -546,6 +570,13 @@ ALTER TABLE `studio_complaint`
   ADD KEY `c_id` (`c_id`);
 
 --
+-- Indexes for table `studio_portfolio`
+--
+ALTER TABLE `studio_portfolio`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `studio_id` (`studio_id`);
+
+--
 -- Indexes for table `studio_reserved_sevice`
 --
 ALTER TABLE `studio_reserved_sevice`
@@ -582,76 +613,97 @@ ALTER TABLE `tokens`
 --
 ALTER TABLE `advance_payment`
   MODIFY `adpayment_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `audio_gear`
 --
 ALTER TABLE `audio_gear`
   MODIFY `audio_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `c_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
 --
 -- AUTO_INCREMENT for table `customer_complaint`
 --
 ALTER TABLE `customer_complaint`
   MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `email_verification`
 --
 ALTER TABLE `email_verification`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `instrument`
 --
 ALTER TABLE `instrument`
   MODIFY `instrument_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `membership_payment`
 --
 ALTER TABLE `membership_payment`
   MODIFY `mpay_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
   MODIFY `owner_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `owner_verification`
 --
 ALTER TABLE `owner_verification`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `reserved _job`
 --
 ALTER TABLE `reserved _job`
   MODIFY `job_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
   MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `studio`
 --
 ALTER TABLE `studio`
-  MODIFY `studio_id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `studio_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
   MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `studio_portfolio`
+--
+ALTER TABLE `studio_portfolio`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `time_slot`
 --
 ALTER TABLE `time_slot`
   MODIFY `t_id` int(100) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --
@@ -724,6 +776,12 @@ ALTER TABLE `studio_complaint`
   ADD CONSTRAINT `studio_complaint_ibfk_2` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`);
 
 --
+-- Constraints for table `studio_portfolio`
+--
+ALTER TABLE `studio_portfolio`
+  ADD CONSTRAINT `studio_portfolio_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`) ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `studio_reserved_sevice`
 --
 ALTER TABLE `studio_reserved_sevice`
@@ -742,6 +800,7 @@ ALTER TABLE `studio_service`
 --
 ALTER TABLE `time_slot`
   ADD CONSTRAINT `time_slot_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

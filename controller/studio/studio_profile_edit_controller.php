@@ -45,6 +45,53 @@ session_start();
         }
       }
 
+     if(isset($_POST['submit_des'])){
+       $errors=array();
+       if(!isset($_POST['description']) || strlen(trim($_POST['description']))<1){
+         $errors[]='Text is missing!';
+       }
+       if(empty($errors)){
+         $description = mysqli_real_escape_string($connection,$_POST['description']);
+         $query = "UPDATE studio SET description='$description' WHERE studio_id='$s_id'";
+         $result_set = mysqli_query($connection,$query);
+         if($result_set){
+           header('Location: ../../view/studio/studio_profile.php'); 
+         }
+       }
+       else{
+         header('Location: ../../view/studio/studio_profile.php?errors='.urlencode(serialize($errors)));  
+       }
+     }
+     
+     if(isset($_POST['submit_port'])){
+       $errors=array();
+       if(empty($errors)){
+         $port1 = mysqli_real_escape_string($connection,$_POST['port1']);
+         $port2 = mysqli_real_escape_string($connection,$_POST['port2']);
+         $port3 = mysqli_real_escape_string($connection,$_POST['port3']);
+         $port4 = mysqli_real_escape_string($connection,$_POST['port4']);
+         $query = "SELECT * FROM studio_portfolio WHERE studio_id = '$s_id'";
+         $result_set = mysqli_query($connection,$query);
+         if(mysqli_num_rows($result_set)==1){
+           $query1 = "UPDATE studio_portfolio SET port1='$port1',port2='$port2',port3='$port3',port4='$port4'";
+           $result_set1 = mysqli_query($connection,$query1);
+           if($result_set1){
+             header('Location: ../../view/studio/studio_profile.php');
+           }  
+         }
+         else{
+           $query1 = "INSERT INTO studio_portfolio (studio_id,port1,port2,port3,port4) VALUES ('$s_id','$port1','$port2','$port3','$port4')";
+           $result_set1 = mysqli_query($connection,$query1);
+           if($result_set1){
+             header('Location: ../../view/studio/studio_profile.php');  
+           }
+         }
+       }
+       else{
+         header('Location: ../../view/studio/studio_profile.php?errors='.urlencode(serialize($errors)));
+       }
+     }
+
      if(isset($_POST['submit_name'])){
        $errors = array();
        if(!isset($_POST['name']) || strlen(trim($_POST['name']))<1){//form validation

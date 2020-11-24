@@ -26,6 +26,11 @@ if(isset($_GET['studio_id'])){
 		}
 		
 		$studio_name=$studio_record['studio_name'];//ge studio name
+		$description = $studio_record['description'];
+
+		$query2 = "SELECT * FROM studio_portfolio WHERE studio_id = '$studio_id'";
+		$result_set2 = mysqli_query($connection,$query2);
+		$port_record = mysqli_fetch_assoc($result_set2);
 	} 
 }
 
@@ -52,7 +57,7 @@ if(isset($_GET['studio_id'])){
 		</div>
 	</div>
 	<div class="container" id="description">
-	<?php echo $studio_name ?> is the most famous recording studio in the world and a global music icon. Originally a nine-bedroom house built in 1829, it was purchased by the Gramophone Company in 1928 who went on to build the world’s first purpose-built recording studio. The St John’s Wood address was chosen for its large garden and ideal location – close enough to the performance spaces of the time, but away from the noise and vibrations of the traffic and trains.
+	  <p><?php echo $description;?></p>
 	</div>
 
 	<div class="container details">
@@ -100,22 +105,22 @@ if(isset($_GET['studio_id'])){
 	<div class="container portfolio">
 		<h2>Portfolio</h2>
 		<div class="video">
-		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/pGCNVz4USLM" type="video/mp4">
+		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port1']?>" type="video/mp4">
 		</iframe>
 		</div> 
 		
 		<div class="video">
-		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/0dUMGM7cu88" type="video/mp4">
+		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port2']?>" type="video/mp4">
 		</iframe>
 		</div>  
 		
 		<div class="video">
-		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/QzBACI0YP84" type="video/mp4">
+		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port3']?>" type="video/mp4">
 		</iframe>  
 		</div>
 
 		<div class="video">
-		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/taOtlyhftU4" type="video/mp4">
+		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port4']?>" type="video/mp4">
 		</iframe>
 		</div>  
 	</div>

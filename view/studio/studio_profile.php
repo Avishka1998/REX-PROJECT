@@ -37,7 +37,11 @@ session_start();
 	  $result_set2 = mysqli_query($connection,$query2);
 	  if($result_set2){
 		$record2= mysqli_fetch_assoc($result_set2);
-
+	  }
+	  $query3 = "SELECT * FROM studio_portfolio WHERE studio_id = '$user_id'";
+	  $result_set3 = mysqli_query($connection,$query3);
+	  if($result_set3){
+		$record3= mysqli_fetch_assoc($result_set3);  
 	  }	
 	?>
 	
@@ -80,59 +84,102 @@ session_start();
 		  ?>
 		</div>
 
+		<button class="open-button2" onclick="document.getElementById('description').style.display='block'">Add Description</button>
+		<div class="modal" id="description">
+		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post"> 
+		  <div class="textarea">         
+            <textarea id="description" placeholder="Type Here..." name="description" rows="13" cols="44"><?php echo $record['description']; ?></textarea>
+		  </div>
+            <button type="submit_des" class="btn" name="submit_des">Save</button>
+			<button type="button" class="btn cancel" onclick="document.getElementById('description').style.display='none'">Close</button>	
+		  </form>	
+		</div>
+		<script>
+		   var modal = document.getElementById('description');
+		   window.onclick = function(event) {
+    		 if (event.target == modal) {
+        	 modal.style.display = "none";
+    	     }
+		   } 	
+		</script>
+
+		<button class="open-button2" onclick="document.getElementById('portfolio').style.display='block'">Add Portfolios</button>
+		<div class="modal" id="portfolio">
+		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post">
+		    <p style="text-align:center; padding-bottom:5px;">Please Enter the Youtube <b>Video ID</b> only.<br><span style="font-style:italic; color:red;">Example: www.youtube.com/watch?v=vidID</span></p>
+			<label for="port1"><b>Link 1</b></label>
+			<input type="text" value="<?php echo $record3['port1']; ?>"  name="port1">
+			<label for="port2"><b>Link 2</b></label>
+			<input type="text" value="<?php echo $record3['port2']; ?>"  name="port2">
+			<label for="port3"><b>Link 3</b></label>
+			<input type="text" value="<?php echo $record3['port3']; ?>"  name="port3">
+			<label for="port4"><b>Link 4</b></label>
+			<input type="text" value="<?php echo $record3['port4']; ?>"  name="port4">
+			
+			<button type="submit_port" class="btn" name="submit_port">Save</button>
+			<button type="button" class="btn cancel" onclick="document.getElementById('portfolio').style.display='none'">Close</button>	  
+		  </form>   	
+		</div>
+		<script>
+		   var modal = document.getElementById('portfolio');
+		   window.onclick = function(event) {
+    		 if (event.target == modal) {
+        	 modal.style.display = "none";
+    	     }
+		   } 	
+		</script>   
+
 		<h1>Studio Details</h1>
 		
-		<button class="open-button" onclick="openForm1()">Edit</button>
+		<button class="open-button" onclick="document.getElementById('nameForm').style.display='block'">Edit</button>
 		<h2>Name : <?php echo $record['studio_name']; ?></h2>
 
-		<div class="form-popup" id="nameForm">
-		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container" method="post">  
+		<div class="modal" id="nameForm">
+		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post">  
 
 		    <label for="name"><b>Studio Name</b></label>
 		    <input type="text" value="<?php echo $record['studio_name']; ?>"  name="name">
 
 		    <button type="submit_name" class="btn" name="submit_name">Save</button>
-		    <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
+		    <button type="button" class="btn cancel" onclick="document.getElementById('nameForm').style.display='none'">Close</button>
 		  </form>
 		</div>	
 		<script>
-		function openForm1() {
-		  document.getElementById("nameForm").style.display = "block";
-		}
-
-		function closeForm1() {
-		  document.getElementById("nameForm").style.display = "none";
-		}
+		   var modal = document.getElementById('nameForm');
+		   window.onclick = function(event) {
+    		 if (event.target == modal) {
+        	 modal.style.display = "none";
+    	     }
+		   } 	
 		</script>
 
 		
-		<button class="open-button" onclick="openForm2()">Edit</button>
+		<button class="open-button" onclick="document.getElementById('noForm').style.display='block'">Edit</button>
 		<h2>Contact No : <?php echo $record['s_tele_no'] ?></h2>
-		<div class="form-popup" id="noForm">
-		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container" method="post">
+		<div class="modal" id="noForm">
+		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post">
 		    
 		    <label for="text"><b>Contact No</b></label>
 		    <input type="text" value="<?php echo $record['s_tele_no'];?>" name="tele_no" >
 
 		    <button type="submit_phone" class="btn" name="submit_phone">Save</button>
-		    <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+		    <button type="button" class="btn cancel" onclick="document.getElementById('noForm').style.display='none'">Close</button>
 		  </form>
 		</div>
 		<script>
-		function openForm2() {
-		  document.getElementById("noForm").style.display = "block";
-		}
-
-		function closeForm2() {
-		  document.getElementById("noForm").style.display = "none";
-		}
+		   var modal = document.getElementById('noForm');
+		   window.onclick = function(event) {
+    		 if (event.target == modal) {
+        	 modal.style.display = "none";
+    	     }
+		   }
 		</script>	
 
 
-		<button class="open-button" onclick="openForm3()">Edit</button>
+		<button class="open-button" onclick="document.getElementById('addForm').style.display='block'">Edit</button>
 		<h2>Address : <?php echo $record['s_address_line1']. ', '. $record['s_address_line2']. ', '. $record['s_city']. ', '. $record['distric']. '.'; ?></h2>
-		<div class="form-popup" id="addForm">
-		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container" method="post">
+		<div class="modal" id="addForm">
+		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post">
 		    
 		    <label for="text"><b>Address Line 1</b></label>
 		    <input type="text" value="<?php echo $record['s_address_line1']; ?>" name="add_1" >
@@ -172,39 +219,37 @@ session_start();
 		    <label for="text"><b>Postal Code</b></label>
 		    <input type="text" value="<?php echo $record['postalcode']; ?>" name="post_code" >
 		    <button type="submit_address" class="btn" name="submit_address">Save</button>
-		    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+		    <button type="button" class="btn cancel" onclick="document.getElementById('addForm').style.display='none'">Close</button>
 		  </form>
 		</div>
 		<script>
-		function openForm3() {
-		  document.getElementById("addForm").style.display = "block";
-		}
-
-		function closeForm3() {
-		  document.getElementById("addForm").style.display = "none";
-		}
+		   var modal = document.getElementById('addForm');
+		   window.onclick = function(event) {
+    		 if (event.target == modal) {
+        	 modal.style.display = "none";
+    	     }
+		   }
 		</script>
 		
-		<button class="open-button2" onclick="openForm6()">Change Password</button>
+		<button class="open-button2" onclick="document.getElementById('PWForm').style.display='block'">Change Password</button>
 
-		<div class="form-popup" id="PWForm">
-		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container" method="post">
+		<div class="modal" id="PWForm">
+		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post">
 		    <input type="Password" placeholder="old Password"  name="old_password">
 		    <input type="Password" placeholder="New Password" name="password" >		   
 		    <input type="Password" placeholder="Re-Enter New Password"  name="new_password" >
 
 		    <button type="submit_password" class="btn" name="submit_ow_password">Save</button>
-		    <button type="button" class="btn cancel" onclick="closeForm6()">Close</button>
+		    <button type="button" class="btn cancel" onclick="document.getElementById('PWForm').style.display='none'">Close</button>
 		  </form>
 		</div>	
 		<script>
-		function openForm6() {
-		  document.getElementById("PWForm").style.display = "block";
-		}
-
-		function closeForm6() {
-		  document.getElementById("PWForm").style.display = "none"; //end of main
-		}
+		   var modal = document.getElementById('PWForm');
+		   window.onclick = function(event) {
+    		 if (event.target == modal) {
+        	 modal.style.display = "none";
+    	     }
+		   }
 		</script>
 
 		<script>
@@ -225,29 +270,28 @@ session_start();
 		<button class="open-button2" title="1.open Google Maps.
 2.Right-click the place or area on the map.
 3.Select What's here? At the bottom.
-4.you’ll see a card with the coordinates." onclick="openForm7()">Change Location</button>
+4.you’ll see a card with the coordinates." onclick="document.getElementById('LocForm').style.display='block'">Change Location</button>
 
-		<div class="form-popup" id="LocForm">
-		<form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container" method="post">
+		<div class="modal" id="LocForm">
+		<form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post">
 			<label for="text"><b>Latitude</b></label>
 			<input type="text" value="<?php echo $record['latitude']; ?>" name="latitude">
 			<label for="text"><b>Longitude</b></label>
 			<input type="text" value="<?php echo $record['longitude']; ?>" name="longitude">
 
 			<button type="submit_location" class="btn" name="submit_location">Save</button>
-			<button type="button" class="btn cancel" onclick="closeForm7()">Close</button>
+			<button type="button" class="btn cancel" onclick="document.getElementById('LocForm').style.display='none'">Close</button>
 		</form>	
 		</div>
 		<script>
-
-		function openForm7() {
-	   	  document.getElementById("LocForm").style.display = "block";
-		}
-
-		function closeForm7() {
-		  document.getElementById("LocForm").style.display = "none";
-		}
-		</script>  
+		   var modal = document.getElementById('LocForm');
+		   window.onclick = function(event) {
+    		 if (event.target == modal) {
+        	 modal.style.display = "none";
+    	     }
+		   }
+		</script>
+		
 	</div>
 
 	<?php require_once('../../inc/minfooter.php'); ?>
