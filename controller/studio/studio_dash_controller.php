@@ -3,12 +3,8 @@
 require_once('../../inc/connection.php');
 session_start();
 
-        if(isset($_POST['submit-search']) ){
-            echo "yes";
+        if(isset($_POST['submit-search']) ){            
             search();
-        }
-        else{
-            echo "no";
         }
         function search(){
             if(!strlen(trim($_POST['search']))>0){
@@ -16,6 +12,7 @@ session_start();
             }
             else{
                 $search =mysqli_real_escape_string($GLOBALS['connection'],$_POST['search']);
+                //$query="SELECT studio_id FROM studio  JOIN studio_service ON studio.studio_id=studio_service.studio_id WHERE studio.studio_name LIKE '%$search%' OR studio.distric LIKE '%$search%' OR studio_service.service_name LIKE '%$search%' ";
                 $query="SELECT studio_id FROM studio WHERE studio_name LIKE '%$search%' ";
                 $result_set=mysqli_query($GLOBALS['connection'] ,$query);
                 if($result_set){

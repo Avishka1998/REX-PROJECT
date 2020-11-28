@@ -210,10 +210,11 @@ table {
 	
   }
   th{
+	padding: 2rem;	
 	border: 1px solid black;
   }
   td {
-	padding: 4rem;
+	padding: 1rem;	
 	border: 1px solid black;
   }
   th:nth-child(1) { background: hsl(234, 48%, 74%); }
@@ -242,10 +243,11 @@ table {
 	margin-left: 0rem;
 	margin-right: 0rem;
 	margin-top: 1rem;
-	display: inline-block;
+	/* display: inline-block; */
 	transition: all 0.3s;
 	transform: translateY(0rem);
 	color: rgb(11, 11, 4);
+	width: 80%;
   }
   
   .form__input {
@@ -253,9 +255,9 @@ table {
 	border-radius: 0.2rem;
 	background-color: rgb(239, 220, 220);
 	border: none;
-	width: 100%;
-	display: block;
-	margin-bottom:30px;
+	width: 80%;
+	/* display: inline-block; */
+	margin-bottom:20px;
 
   }
   
@@ -279,7 +281,7 @@ table {
 
   }
   
-  
+ 
   
   
   

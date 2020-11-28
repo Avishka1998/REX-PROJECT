@@ -5,7 +5,7 @@
         $studio_id=$_GET['studio_id']; //store the studio_id which passed from add_services.html file
             if(isset($_POST['submit_service1'])){ //if the user pressed the save button 
                     $rows=$_GET['rows'];                     
-                    for ($i=1; $i<$rows+1; ++$i){
+                    for ($i=1; $i<$rows+2; ++$i){
                         if(isset($_POST['check'.$i.'']) && isset($_POST['charge'.$i.''])){
                             $service_name=$_POST['check'.$i.'']; //store the service in service_name variable
                             $charge=$_POST['charge'.$i.''];//store the charge in charge variable                    

@@ -14,7 +14,7 @@ session_start();
 <body> 
  <div class="nav"><?php require_once('../../inc/stu_dash_navbar.php');?></div>                
            
-<div class="column" style="width: 60%;">
+<div class="column" style="width: 70%;">
        <div class="row">
                 <center><h1>Add Your Services</h1></center>
                
@@ -74,7 +74,7 @@ session_start();
 
                         }
                         else{
-                                $query2 = "SELECT * FROM service";
+                                $query2 = "SELECT * FROM sample_service";
                                 $result_set2=mysqli_query($connection,$query2);
                                 if($result_set2){
                                         $rows=mysqli_num_rows($result_set2);
@@ -94,7 +94,7 @@ session_start();
                                                         <div class="column" >
                                                                 <div class="form-popup" id="dvservice'.$record['service_id'].'" >  
                                                                         <div class="form__group">
-                                                                        <input type="text" class="form__input"  name="charge'.$record['service_id'].'" placeholder="Enter the charge" />
+                                                                        <input type="text" class="form__input"  name="charge'.$record['service_id'].'" placeholder="Charge per hour" />
                                                                         <label for="name" class="form__label">charge per hour</label>
                                                                         </div>                               
                                                                                 
@@ -211,7 +211,7 @@ session_start();
                 }     
         ?>     
 </div>  
-<div class="column" style="width: 40%;">
+<div class="column" style="width: 30%;">
         <div class="row">
                 <h1>Your Services</h1>
                 <?php   

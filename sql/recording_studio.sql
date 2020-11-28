@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 06:49 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Nov 28, 2020 at 11:56 AM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -56,20 +55,6 @@ CREATE TABLE `advance_payment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `audio_gear`
---
-
-CREATE TABLE `audio_gear` (
-  `audio_id` int(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  `studio_id` int(100) NOT NULL,
-  `available_qty` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `customer`
 --
 
@@ -80,8 +65,8 @@ CREATE TABLE `customer` (
   `email` varchar(60) NOT NULL,
   `tele_no` int(10) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `blocked` int(1) NOT NULL DEFAULT 0,
+  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `blocked` int(1) NOT NULL DEFAULT '0',
   `image` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -104,7 +89,7 @@ CREATE TABLE `customer_complaint` (
   `c_id` int(100) NOT NULL,
   `studio_id` int(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `flag` tinyint(4) NOT NULL DEFAULT 0
+  `flag` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -132,20 +117,6 @@ INSERT INTO `email_verification` (`id`, `email`, `token`) VALUES
 (23, 'vishkaavinash@gmail.com', '702ff56cb1716dff6b5d8588c487530c5fad66d3e2586'),
 (25, 'vishkaavinash@gmail.com', '7a3810f024dab70375543147e6a592535fae2119cf9ff'),
 (26, 'vishkaavinash@gmail.com', '894f9407e5d7d99aac8a18a5eb153a785fae24d1987bb');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `instrument`
---
-
-CREATE TABLE `instrument` (
-  `instrument_id` int(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  `studio_id` int(100) NOT NULL,
-  `available_qty` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -282,19 +253,43 @@ CREATE TABLE `reserved _job` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `service`
+-- Table structure for table `sample_equipment`
 --
 
-CREATE TABLE `service` (
+CREATE TABLE `sample_equipment` (
+  `id` int(100) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `type` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sample_equipment`
+--
+
+INSERT INTO `sample_equipment` (`id`, `name`, `type`) VALUES
+(1, 'Mitchell MD150PK', 0),
+(2, 'Fender telecaster electric guitar', 0),
+(3, 'Yamaha grand piano', 0),
+(4, 'Marshall guitar amp', 1),
+(5, 'Tube microphone', 1),
+(6, 'Neumann M 150 Tube', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sample_service`
+--
+
+CREATE TABLE `sample_service` (
   `service_id` int(100) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `service`
+-- Dumping data for table `sample_service`
 --
 
-INSERT INTO `service` (`service_id`, `name`) VALUES
+INSERT INTO `sample_service` (`service_id`, `name`) VALUES
 (1, 'Recording'),
 (2, 'Mastering'),
 (3, 'Mixing'),
@@ -323,10 +318,10 @@ CREATE TABLE `studio` (
   `description` text NOT NULL,
   `latitude` varchar(50) NOT NULL,
   `longitude` varchar(50) NOT NULL,
-  `verified` tinyint(4) NOT NULL DEFAULT 0,
-  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `owner_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `blocked` int(1) NOT NULL DEFAULT 0
+  `verified` tinyint(4) NOT NULL DEFAULT '0',
+  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `owner_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `blocked` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -344,6 +339,19 @@ INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `studio_audio_gear`
+--
+
+CREATE TABLE `studio_audio_gear` (
+  `studio_id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `qty` int(100) NOT NULL,
+  `charge` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `studio_complaint`
 --
 
@@ -352,7 +360,7 @@ CREATE TABLE `studio_complaint` (
   `studio_id` int(100) NOT NULL,
   `c_id` int(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `flag` tinyint(4) NOT NULL DEFAULT 0
+  `flag` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -363,6 +371,19 @@ INSERT INTO `studio_complaint` (`complaint_id`, `studio_id`, `c_id`, `descriptio
 (1, 28, 23, 'sdsd', 1),
 (2, 28, 23, 'sddfjdhbf', 1),
 (3, 28, 23, 'sdfjdgfdjfgd', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studio_instrument`
+--
+
+CREATE TABLE `studio_instrument` (
+  `studio_id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `qty` int(100) NOT NULL,
+  `charge` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -395,7 +416,7 @@ INSERT INTO `studio_portfolio` (`id`, `studio_id`, `port1`, `port2`, `port3`, `p
 CREATE TABLE `studio_reserved_sevice` (
   `job_id` int(100) NOT NULL,
   `studio_id` int(100) NOT NULL,
-  `service_id` int(100) NOT NULL,
+  `service_name` varchar(100) NOT NULL,
   `service_charge` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -410,14 +431,6 @@ CREATE TABLE `studio_service` (
   `service_name` varchar(100) NOT NULL,
   `service_charge` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `studio_service`
---
-
-INSERT INTO `studio_service` (`studio_id`, `service_name`, `service_charge`) VALUES
-(31, 'Dubbind', 1200),
-(31, 'Mastering', 1230);
 
 -- --------------------------------------------------------
 
@@ -459,13 +472,6 @@ ALTER TABLE `advance_payment`
   ADD KEY `studio_id` (`studio_id`);
 
 --
--- Indexes for table `audio_gear`
---
-ALTER TABLE `audio_gear`
-  ADD PRIMARY KEY (`audio_id`),
-  ADD KEY `studio_id` (`studio_id`);
-
---
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -484,13 +490,6 @@ ALTER TABLE `customer_complaint`
 --
 ALTER TABLE `email_verification`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `instrument`
---
-ALTER TABLE `instrument`
-  ADD PRIMARY KEY (`instrument_id`),
-  ADD KEY `studio_id` (`studio_id`);
 
 --
 -- Indexes for table `membership_payment`
@@ -549,9 +548,15 @@ ALTER TABLE `reserved _job`
   ADD KEY `adpayment_id` (`adpayment_id`);
 
 --
--- Indexes for table `service`
+-- Indexes for table `sample_equipment`
 --
-ALTER TABLE `service`
+ALTER TABLE `sample_equipment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sample_service`
+--
+ALTER TABLE `sample_service`
   ADD PRIMARY KEY (`service_id`);
 
 --
@@ -562,12 +567,26 @@ ALTER TABLE `studio`
   ADD KEY `owner_id` (`owner_id`);
 
 --
+-- Indexes for table `studio_audio_gear`
+--
+ALTER TABLE `studio_audio_gear`
+  ADD PRIMARY KEY (`studio_id`,`name`),
+  ADD KEY `studio_id` (`studio_id`);
+
+--
 -- Indexes for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
   ADD PRIMARY KEY (`complaint_id`),
   ADD KEY `studio_id` (`studio_id`,`c_id`),
   ADD KEY `c_id` (`c_id`);
+
+--
+-- Indexes for table `studio_instrument`
+--
+ALTER TABLE `studio_instrument`
+  ADD PRIMARY KEY (`studio_id`,`name`),
+  ADD KEY `studio_id` (`studio_id`);
 
 --
 -- Indexes for table `studio_portfolio`
@@ -580,15 +599,16 @@ ALTER TABLE `studio_portfolio`
 -- Indexes for table `studio_reserved_sevice`
 --
 ALTER TABLE `studio_reserved_sevice`
-  ADD PRIMARY KEY (`job_id`,`studio_id`,`service_id`),
+  ADD PRIMARY KEY (`job_id`,`studio_id`,`service_name`),
   ADD KEY `studio_id` (`studio_id`),
-  ADD KEY `service_id` (`service_id`);
+  ADD KEY `service_id` (`service_name`);
 
 --
 -- Indexes for table `studio_service`
 --
 ALTER TABLE `studio_service`
-  ADD PRIMARY KEY (`studio_id`,`service_name`);
+  ADD PRIMARY KEY (`studio_id`,`service_name`),
+  ADD KEY `service_name` (`service_name`);
 
 --
 -- Indexes for table `time_slot`
@@ -613,97 +633,71 @@ ALTER TABLE `tokens`
 --
 ALTER TABLE `advance_payment`
   MODIFY `adpayment_id` int(100) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `audio_gear`
---
-ALTER TABLE `audio_gear`
-  MODIFY `audio_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `c_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
 --
 -- AUTO_INCREMENT for table `customer_complaint`
 --
 ALTER TABLE `customer_complaint`
   MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `email_verification`
 --
 ALTER TABLE `email_verification`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `instrument`
---
-ALTER TABLE `instrument`
-  MODIFY `instrument_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `membership_payment`
 --
 ALTER TABLE `membership_payment`
   MODIFY `mpay_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
   MODIFY `owner_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
 --
 -- AUTO_INCREMENT for table `owner_verification`
 --
 ALTER TABLE `owner_verification`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `reserved _job`
 --
 ALTER TABLE `reserved _job`
   MODIFY `job_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT for table `service`
+-- AUTO_INCREMENT for table `sample_service`
 --
-ALTER TABLE `service`
+ALTER TABLE `sample_service`
   MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `studio`
 --
 ALTER TABLE `studio`
   MODIFY `studio_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
 --
 -- AUTO_INCREMENT for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
   MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `studio_portfolio`
 --
 ALTER TABLE `studio_portfolio`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `time_slot`
 --
 ALTER TABLE `time_slot`
   MODIFY `t_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
 --
 -- Constraints for dumped tables
 --
@@ -746,14 +740,12 @@ ALTER TABLE `rate`
 -- Constraints for table `reserved_audio_gear`
 --
 ALTER TABLE `reserved_audio_gear`
-  ADD CONSTRAINT `reserved_audio_gear_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`),
-  ADD CONSTRAINT `reserved_audio_gear_ibfk_2` FOREIGN KEY (`audio_id`) REFERENCES `audio_gear` (`audio_id`);
+  ADD CONSTRAINT `reserved_audio_gear_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`);
 
 --
 -- Constraints for table `reserved_instrument`
 --
 ALTER TABLE `reserved_instrument`
-  ADD CONSTRAINT `reserved_instrument_ibfk_1` FOREIGN KEY (`instrument_id`) REFERENCES `instrument` (`instrument_id`),
   ADD CONSTRAINT `reserved_instrument_ibfk_2` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`);
 
 --
@@ -769,11 +761,23 @@ ALTER TABLE `studio`
   ADD CONSTRAINT `studio_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `owner` (`owner_id`);
 
 --
+-- Constraints for table `studio_audio_gear`
+--
+ALTER TABLE `studio_audio_gear`
+  ADD CONSTRAINT `studio_audio_gear_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`);
+
+--
 -- Constraints for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
   ADD CONSTRAINT `studio_complaint_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`),
   ADD CONSTRAINT `studio_complaint_ibfk_2` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`);
+
+--
+-- Constraints for table `studio_instrument`
+--
+ALTER TABLE `studio_instrument`
+  ADD CONSTRAINT `studio_instrument_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`);
 
 --
 -- Constraints for table `studio_portfolio`
@@ -787,7 +791,7 @@ ALTER TABLE `studio_portfolio`
 ALTER TABLE `studio_reserved_sevice`
   ADD CONSTRAINT `studio_reserved_sevice_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`),
   ADD CONSTRAINT `studio_reserved_sevice_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`),
-  ADD CONSTRAINT `studio_reserved_sevice_ibfk_3` FOREIGN KEY (`service_id`) REFERENCES `service` (`service_id`);
+  ADD CONSTRAINT `studio_reserved_sevice_ibfk_3` FOREIGN KEY (`service_name`) REFERENCES `studio_service` (`service_name`);
 
 --
 -- Constraints for table `studio_service`
@@ -800,7 +804,6 @@ ALTER TABLE `studio_service`
 --
 ALTER TABLE `time_slot`
   ADD CONSTRAINT `time_slot_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
