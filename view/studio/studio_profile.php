@@ -161,7 +161,7 @@ session_start();
 		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post">
 		    
 		    <label for="text"><b>Contact No</b></label>
-		    <input type="text" value="<?php echo $record['s_tele_no'];?>" name="tele_no" >
+		    <input type="tel" value="<?php echo $record['s_tele_no'];?>" name="tele_no" pattern="[0-9]{10}">
 
 		    <button type="submit_phone" class="btn" name="submit_phone">Save</button>
 		    <button type="button" class="btn cancel" onclick="document.getElementById('noForm').style.display='none'">Close</button>

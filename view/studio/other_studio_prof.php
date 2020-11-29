@@ -47,7 +47,17 @@ if(isset($_GET['studio_id'])){
 </head>
 <body>
 	<div class="nav"><?php require_once('../../inc/stu_dash_navbar.php');?></div>
-	<main>
+	<div class="row">
+
+	<div class="secondary">
+	  <div class="btnbox">
+		<a href="#portfolio" id="portbtn">Watch Portfolios >></a>
+		<a href="#details">Location >></a>
+		<a href="#services" id="servicebtn">Available Services >></a>	
+	  </div>
+	</div>
+
+	<div class="primary">
 	<div class="container">
 		<div class="cover" style="background-image: url(<?php echo $cover_url?>);">
 		  
@@ -60,7 +70,7 @@ if(isset($_GET['studio_id'])){
 	  <p><?php echo $description;?></p>
 	</div>
 
-	<div class="container details">
+	<div class="container details" id="details">
 		  <h2>Details</h2>
 		  <div class="detailist">	  	
           <div class="place">
@@ -93,16 +103,20 @@ if(isset($_GET['studio_id'])){
 		  <div id="map"></div> 
 	</div>
 
-	<div class="container" style="top: 10%; padding-bottom: 5%">
+	<div id="services" class="container" style="top: 10%; padding-bottom: 5%">
 		<h2>Services</h2>
 		<div class="service clearfix">
 		  <a href="#">Recording</a>
 		  <a href="#">Mixing</a>
 		  <a href="#">Dubbing</a>
+		  <a href="#">Masterring</a>
+		  <a href="#">Editing</a>
+		  <a href="#">Audio Production</a>
+		  <a href="#">Video Production</a>
 		</div>
 	</div>
 
-	<div class="container portfolio">
+	<div class="container portfolio" id="portfolio">
 		<h2>Portfolio</h2>
 		<div class="video">
 		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port1']?>" type="video/mp4">
@@ -124,8 +138,8 @@ if(isset($_GET['studio_id'])){
 		</iframe>
 		</div>  
 	</div>
-
-	</main>
+	</div>
+	</div>
 	<?php require_once('../../inc/minfooter.php');?>
 </body>
 </html>

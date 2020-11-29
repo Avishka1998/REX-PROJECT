@@ -41,7 +41,7 @@
 
         <div class="textfield">
           <!-- <input type="Number" required name="h_tele_no"> -->
-          <input type="Number" name="h_tele_no">
+          <input type="tel" name="h_tele_no" pattern="[0-9]{10}">
           <span></span>
           <label>Mobile Number</label>
         </div>

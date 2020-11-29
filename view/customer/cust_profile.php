@@ -83,7 +83,7 @@ session_start();
 		<div class="modal" id="myForm">
 		  <form action=<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?> class="form-container animate" method="post">
 		    
-		    <input type="text" value=<?php echo $record['tele_no']?> name="tele_no" >
+		    <input type="tel" value=<?php echo $record['tele_no']?> name="tele_no" pattern="[0-9]{10}">
 
 		    <button type="submit_phone" class="btn" name="submit_phone">Save</button>
 		    <button type="button" class="btn cancel" onclick="document.getElementById('myForm').style.display='none'">Close</button>

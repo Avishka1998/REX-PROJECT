@@ -109,7 +109,7 @@
 
         <div class="textfield">
           <!-- <input type="Number" required name="s_tele_no"> -->
-          <input type="Number" name="s_tele_no">
+          <input type="tel" name="s_tele_no" pattern="[0-9]{10}">
           <span></span>
           <label>Telephone Number</label>
         </div>

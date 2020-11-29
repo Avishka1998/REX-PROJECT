@@ -35,7 +35,7 @@
 
         <div class="textfield">
           <!-- <input type="text" required name="tele_no"> -->
-          <input type="text" name="tele_no">
+          <input type="tel" name="tele_no" pattern="[0-9]{10}">
           <span></span>
           <label>Mobile Number</label>
         </div>
