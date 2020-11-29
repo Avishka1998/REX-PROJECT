@@ -46,7 +46,7 @@ if(isset($_GET['studio_id'])){
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRPjxeL78zpFysY_Im4Me74oUEdH9-PFc&callback=initMap&libraries=&v=weekly" defer></script>
 </head>
 <body>
-	<div class="nav"><?php require_once('../../inc/cust_dash_navbar.php');?></div>
+	<div class="nav"><?php require_once('../../inc/stu_dash_navbar.php');?></div>
 	<main>
 	<div class="container">
 		<div class="cover" style="background-image: url(<?php echo $cover_url?>);">

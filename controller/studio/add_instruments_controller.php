@@ -11,8 +11,7 @@
                             $charge=$_POST['charge'.$i.''];//store the charge in charge variable   
                             $qty=$_POST['qty'.$i.''];  //store the number of instruments               
                             $query ="INSERT INTO studio_instrument(studio_id,name,charge,qty) VALUES('{$studio_id}','{$instrument_name}','{$charge}','{$qty}')";
-                            $result_set=mysqli_query($connection,$query);
-                            if($result_set)                                   
+                            $result_set=mysqli_query($connection,$query);                                                              
                         }
                         else{
                               header('Location: ../../view/studio/add_instruments.php?added=instrumet added');//for loop break

@@ -1,6 +1,9 @@
 <?php 
 require_once('../../inc/connection.php');
 session_start();
+if(isset($_SESSION['type'])){
+	$type=$_SESSION['type']; //store radio type to set the radio button checked
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +18,18 @@ session_start();
 	<form action="../../controller/customer/cust_dash_controller.php" method="post">
   		<input type="text" name="search" placeholder="Search..">
 		<button type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+			<label class="type">
+               <input type="radio" id="all" name="type" value="all" class="option-input radio" <?php if($type=='all') echo "checked"  ?>>All
+            </label>
+            <label class="type">
+               <input type="radio" id="name" name="type" value="name" class="option-input radio" <?php if($type=='name') echo "checked"  ?>>Name
+            </label>
+            <label class="type">
+               <input type="radio" id="service" name="type" value="service" class="option-input radio"<?php if($type=='service') echo "checked"  ?>>Service
+            </label>
+            <label class="type">
+               <input type="radio" id="distric" name="type" value="distric" class="option-input radio" <?php if($type=='distric') echo "checked"  ?>>Distric
+            </label>
 	</form>
 	</div>
 	<div class="default">
