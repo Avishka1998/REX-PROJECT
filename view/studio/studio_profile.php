@@ -7,6 +7,7 @@ session_start();
 <head>
 	<title>Edit Details</title>
 	<link rel="stylesheet" type="text/css" href="../../css/studio/edit_studio_details.css">
+	<script src="../../assets/pass_change_length.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRPjxeL78zpFysY_Im4Me74oUEdH9-PFc&callback=initMap&libraries=&v=weekly" defer></script>
 </head>
 <body>
@@ -236,8 +237,8 @@ session_start();
 		<div class="modal" id="PWForm">
 		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post">
 		    <input type="Password" placeholder="old Password"  name="old_password">
-		    <input type="Password" placeholder="New Password" name="password" >		   
-		    <input type="Password" placeholder="Re-Enter New Password"  name="new_password" >
+		    <input type="Password" placeholder="New Password" name="password" id="pass1" onkeyup="checkPass(); return false">		   
+		    <input type="Password" placeholder="Re-Enter New Password"  name="new_password" id="pass2" onkeyup="checkPass(); return false">
 
 		    <button type="submit_password" class="btn" name="submit_ow_password">Save</button>
 		    <button type="button" class="btn cancel" onclick="document.getElementById('PWForm').style.display='none'">Close</button>

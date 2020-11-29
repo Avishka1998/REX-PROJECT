@@ -73,5 +73,6 @@
         <li><a href="../../../REX/view/about.php" <?php if($filename=='about.php') echo "class=active"?>><i class="fa fa-fw fa-address-card"></i> About Us</a></li>
         <li><a href="../../../REX/view/sign_up.php" <?php if($filename=='sign_up.php' || $filename=='cust_reg.php' || $filename=='owner_existence.php' || $filename=='owner_existform.php' ||  $filename=='studio_reg_1.php' || $filename=='studio_reg_2.php') echo "class=active"?>><i class="fa fa-fw fa-user-plus"></i> SignUp</a></li>
         <li><a href="../../../REX/view/login.php" <?php if($filename=='login.php') echo "class=active"?>><i class="fa fa-fw fa-user"></i> Login</a></li>
+        <li><a href="../../../REX/view/FAQ.php" <?php if($filename=='FAQ.php') echo "class=active"?>><i class="fa fa-fw fa-info-circle"></i> FAQ</a></li>
       </ul>
     </nav>

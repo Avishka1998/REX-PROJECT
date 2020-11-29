@@ -46,11 +46,20 @@ if(isset($_GET['studio_id'])){
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRPjxeL78zpFysY_Im4Me74oUEdH9-PFc&callback=initMap&libraries=&v=weekly" defer></script>
 </head>
 <body>
-	<div class="nav"><?php require_once('../../inc/cust_dash_navbar.php');?></div>
-	<main>
+	<?php require_once('../../inc/cust_dash_navbar.php');?>
+	<div class="row">
+	<div class="secondary">
+	  <div class="btnbox">
+		<a href="#portfolio" id="portbtn">Watch Portfolios >></a>
+		<a href="#details">Location >></a>
+		<a href="../../view/customer/cust_inbox.php" id="reservebtn">Send messages >></a>
+		<a href="#services" id="servicebtn">Available Services >></a>	
+		<a href="select_date.php" id="reservebtn">Make a Reservation >></a>
+	  </div>
+	</div>
+	<div class="primary">
 	<div class="container">
 		<div class="cover" style="background-image: url(<?php echo $cover_url?>);">
-		  <a class="button" href="../../view/customer/cust_inbox.php">Message</a>
 		  
 		  <div class="pic" style="background-image: url(<?php echo $profile_url?>);"></div>
 		  <p><?php echo $studio_name ?></p>
@@ -60,7 +69,7 @@ if(isset($_GET['studio_id'])){
 	  <p><?php echo $description;?></p>
 	</div>
 
-	<div class="container details">
+	<div id="details" class="container details">
 		  <h2>Details</h2>
 		  <div class="detailist">	  	
           <div class="place">
@@ -93,16 +102,20 @@ if(isset($_GET['studio_id'])){
 		  <div id="map"></div> 
 	</div>
 
-	<div class="container" style="top: 10%; padding-bottom: 5%">
-		<h2>Services</h2>
+	<div id="services" class="container" style="top: 10%; padding-bottom: 5%">
+		<h2>Available Services</h2>
 		<div class="service clearfix">
 		  <a href="#">Recording</a>
 		  <a href="#">Mixing</a>
 		  <a href="#">Dubbing</a>
+		  <a href="#">Masterring</a>
+		  <a href="#">Editing</a>
+		  <a href="#">Audio Production</a>
+		  <a href="#">Video Production</a>
 		</div>
 	</div>
 
-	<div class="container portfolio">
+	<div class="container portfolio" id="portfolio">
 		<h2>Portfolio</h2>
 		<div class="video">
 		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port1']?>" type="video/mp4">
@@ -124,12 +137,8 @@ if(isset($_GET['studio_id'])){
 		</iframe>
 		</div>  
 	</div>
-
-	<div class="container botbtn">
-      <a id="bot1" class="button" href="select_date.php">Make a Reservation</a>
-	  <a id="bot2" class="button" href="cust_complaint.php">complaint</a>
 	</div>
-	</main>
+	</div>
 	<?php require_once('../../inc/minfooter.php');?>
 </body>
 </html>

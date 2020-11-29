@@ -7,6 +7,7 @@ session_start();
 <head>
 	<title>Edit Details</title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/edit_cust_details.css">
+	<script src="../../assets/pass_change_length.js"></script>
 </head>
 <body>
 	<?php require_once('../../inc/cust_dash_navbar.php');?>
@@ -108,10 +109,9 @@ session_start();
 		    <input type="Password" placeholder="old Password"  name="old_password">
 
 		   
-		    <input type="Password" placeholder="New Password" name="password" >
+		    <input type="Password" placeholder="New Password" name="password" id="pass1" onkeyup="checkPass(); return false">
 
-		   
-		    <input type="Password" placeholder="Re-Enter New Password"  name="new_password" >
+		    <input type="Password" placeholder="Re-Enter New Password"  name="new_password" id="pass2" onkeyup="checkPass(); return false">
 
 		    <button type="submit_password" class="btn" name="submit_password">Save</button>
 		    <button type="button" class="btn cancel" onclick="document.getElementById('PWForm').style.display='none'">Close</button>

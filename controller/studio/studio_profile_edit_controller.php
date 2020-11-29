@@ -143,9 +143,9 @@ session_start();
         else if(!isset($_POST['City']) || strlen(trim($_POST['City']))<1){
           $errors[]='Something is missing or invalid format!';
         }
-        else if(!isset($_POST['dist']) || strlen(trim($_POST['dist']))<1){
-          $errors[]='Something is missing or invalid format!';
-        }
+        // else if(!isset($_POST['dist']) || strlen(trim($_POST['dist']))<1){
+        //   $errors[]='Something is missing or invalid format!';
+        // }
         else if(!isset($_POST['post_code']) || strlen(trim($_POST['post_code']))<1){
           $errors[]='Something is missing or invalid format!';
         }
@@ -153,10 +153,10 @@ session_start();
           $add_1= mysqli_real_escape_string($connection,$_POST['add_1']);
           $add_2= mysqli_real_escape_string($connection,$_POST['add_2']);
           $city= mysqli_real_escape_string($connection,$_POST['City']);
-          $dist= mysqli_real_escape_string($connection,$_POST['dist']);
+          $dist= mysqli_real_escape_string($connection,$_POST['distric']);
           $post_code= mysqli_real_escape_string($connection,$_POST['post_code']);
 
-          $query="UPDATE studio SET s_address_line1='$add_1', s_address_line2='$add_2', s_city='$city', distric='$dist', postalcode='$post_code' WHERE studio_id=$s_id";//update the details 
+          $query="UPDATE studio SET s_address_line1='$add_1', s_address_line2='$add_2', s_city='$city', distric='{$dist}', postalcode='$post_code' WHERE studio_id=$s_id";//update the details 
           $result_set=mysqli_query($connection,$query);
           if($result_set){
             header('Location: ../../view/studio/studio_profile.php');
@@ -207,11 +207,11 @@ session_start();
               }
             
             else{
-              if(!isset($_POST['password']) || strlen(trim($_POST['password']))<1){
-                $errors[]="password is missing or invlid!";
+              if(!isset($_POST['password']) || strlen(trim($_POST['password']))<8){
+                $errors[]="password must contain at least 8 characters.";
                 }
-              if(!isset($_POST['new_password']) || strlen(trim($_POST['new_password']))<1){
-                $errors[]="new password is missing or invlid!";
+              if(!isset($_POST['new_password']) || strlen(trim($_POST['new_password']))<8){
+                $errors[]="password must contain at least 8 characters.";
                 }
               else{
                 //check password and new password is equel

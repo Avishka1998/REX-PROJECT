@@ -39,7 +39,7 @@ require_once('../inc/connection.php');
         while($record =mysqli_fetch_assoc($result_set)){
           $table .= "<tr>";
           $table .= "<td>".$record['c_id']."</td>";
-          $table .= "<td>".$record['first_name']."_".$record['last_name']."</td>";
+          $table .= "<td>".$record['first_name']." ".$record['last_name']."</td>";
           $table .= "<td>".$record['email']."</td>";
           $table .= "<td>".$record['tele_no']."</td>";
           if($record['blocked']==0){

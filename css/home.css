@@ -10,27 +10,28 @@ body{
 
 *{
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 .front{
   display: block;
-  margin-top: 100px;
+  margin-top: 95px;
   box-sizing: border-box;
   width: 100%;
-  margin-bottom: 350px;
+  margin-bottom: 310px;
 }
 .front img{
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  height: 420px;
+  height: 400px;
 }
 
 .front h1{
   text-align: center;
   box-sizing: border-box;
-  padding-top: 60px;
+  padding-top: 15px;
   display: block;
   color: white;
   font-size: 3em;
@@ -38,13 +39,42 @@ body{
   text-shadow: 2px 2px 3px black;
 }
 
-.service{
-  width: 100%;
-  margin-top: 50px;
+.more{
+  text-decoration: none;
+  color: white;
+  padding: 12px 10px 12px 10px;
+  background-color: rgb(223, 82, 47);
+  border: none;
+  font-family: sans-serif;
+  font-weight: bold;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  padding: 25px 36px;
+  width: 90px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.more2{
+  text-decoration: none;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 25px;
+  background-color: rgb(223, 82, 47);
+  text-align: center;
+  margin-top: 100px;
+  margin-right: 60px;
+  float: right;
+  width: 60px;
+}
+
+.service{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 75px 36px 65px 36px;
   box-sizing: border-box;
   position: relative;
 }

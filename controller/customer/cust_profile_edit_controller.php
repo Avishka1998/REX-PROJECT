@@ -86,11 +86,11 @@ if(isset($_GET['c_id'])){//isset user_id which pass from form action
                                 $errors[]="password is incorrect";
                                 header('Location: ../../view/customer/cust_profile.php?errors='.urlencode(serialize($errors)));
                             }else{
-                                if(!isset($_POST['password']) || strlen(trim($_POST['password']))<1){
-                                    $errors[]="password is missing or invlid!";
+                                if(!isset($_POST['password']) || strlen(trim($_POST['password']))<8){
+                                    $errors[]="Password must contain at least 8 characters.";
                                 }
-                                if(!isset($_POST['new_password']) || strlen(trim($_POST['new_password']))<1){
-                                    $errors[]="new password is missing or invlid!";
+                                else if(!isset($_POST['new_password']) || strlen(trim($_POST['new_password']))<8){
+                                    $errors[]="Password must contain at least 8 characters.";
                                 }
                                 else{
                                     //check password and new password is equel

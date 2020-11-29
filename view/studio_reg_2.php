@@ -115,6 +115,13 @@
         </div>
 
         <div class="textfield">
+          <!-- <input type="Number" required name="s_tele_no"> -->
+          <input type="email" name="paypal">
+          <span></span>
+          <label>PayPal Account Email</label>
+        </div>
+
+        <div class="textfield">
           <!-- <input type="password" required name="password"> -->
           <input type="password" name="password" id="pass1" onkeyup="checkPass(); return false";>
           <span></span>

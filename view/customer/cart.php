@@ -64,16 +64,17 @@ session_start();
 
 				<div class="row grid">
 				  <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-					<input type="hidden" name="business" value="recordexonline@gmail.com">
+					<input type="hidden" name="business" value="recorexonline@gmail.com">
 					<input type="hidden" name="cmd" value="_xclick">
 					<input type="hidden" name="item_name" value="Instrument pack">
 					<input type="hidden" name="item_number" value="1255">
 					<input type="hidden" name="amount" value="2.2">
-					<input type='hidden' name='return' value="'http://localhost/Rex/view/customer/recipt.php'">	
+					<input type='hidden' name='return' value="http://localhost/Rex/view/customer/recipt.php">	
 					<input type="hidden" name="currency_code" value="USD">
 					<input type="submit" name="submit" value="Pay">
 				  </form>	
 				  <a href="studio_prof.php" class="cancel" >Cancel</a>
+				  <img src="../../img/580b57fcd9996e24bc43c530.png" style="display:inline; width:150px; height:50px;">
 				</div>
 			</div>
 		</div>	
