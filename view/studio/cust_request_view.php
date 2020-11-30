@@ -4,7 +4,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-<head> 
+<head>  
 	<meta charset="utf-8">
 	<title>Customer Request</title>
 	<link rel="stylesheet" type="text/css" href="../../css/studio/cust_request_view.css">
@@ -21,12 +21,12 @@ session_start();
 			</div>
 			<div class="details">
 				<div class="name">
-					<h1>Sasindu Subodhaka</h1>
-					<h2 style="align-content: center; padding-bottom: 0px;">sasindu@gmail.com</h2>
+					<h1>Michel Jackson</h1>
+					<h2 style="align-content: center; padding-bottom: 0px;">Jackson@gmail.com</h2>
 				</div>	
 				<div class="buton">
 
-					<a href="paypal.php" class="view" >Message</a>
+					<button class="view" onclick="openForm()">Message</button>
 				</div>			
 			</div>			
 		</div>
@@ -63,8 +63,29 @@ session_start();
 			
 		</div>
 		<a href="cust_request.php" class="view" >Ok</a>
+	<div class="chat-popup" id="myForm">
+		  <form action="/cust_request_view.php" class="form-container">
+		    <h1>Studio Name</h1>
+
+		    <label for="msg"><b>Message</b></label>
+		    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+		    <button type="submit" class="btn" onclick="closeForm()">Send</button>
+		    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+		  </form>
+		</div>
 	</div>
+
 	
+	<script>
+		function openForm() {
+		  document.getElementById("myForm").style.display = "block";
+		}
+
+		function closeForm() {
+		  document.getElementById("myForm").style.display = "none";
+		}
+	</script>
 
 
 		

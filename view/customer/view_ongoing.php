@@ -1,4 +1,6 @@
-
+<?php
+require_once('../../inc/connection.php');
+session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -23,7 +25,7 @@
 				</div>	
 				<div class="buton">
 
-					<a href="#" class="view" >Message</a>
+					<button class="view" onclick="openForm()">Message</button>
 				</div>			
 			</div>			
 		</div>
@@ -62,8 +64,27 @@
 			
 			<a href="cust_complaint.php" class="complaint" >Complaint</a>
 		</div>
+		<div class="chat-popup" id="myForm">
+		  <form action="/view_ongoing.php" class="form-container">
+		    <h1>Studio Name</h1>
+
+		    <label for="msg"><b>Message</b></label>
+		    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+		    <button type="submit" class="btn" onclick="closeForm()">Send</button>
+		    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+		  </form>
+		</div>
 	</div>
-			
+	<script>
+		function openForm() {
+		  document.getElementById("myForm").style.display = "block";
+		}
+
+		function closeForm() {
+		  document.getElementById("myForm").style.display = "none";
+		}
+	</script>	
 		
 	
 

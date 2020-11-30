@@ -4,7 +4,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 	<meta charset="utf-8">
 	<title>Customer Request</title>
 	<link rel="stylesheet" type="text/css" href="../../css/studio/cust_request.css">

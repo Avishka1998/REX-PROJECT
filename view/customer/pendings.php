@@ -1,3 +1,7 @@
+<?php
+require_once('../../inc/connection.php');
+session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +16,7 @@
 	</div>
 
 	<div class="outer">
+		<div class="secondary">
 		<div class="short-cut">
 
 
@@ -21,10 +26,11 @@
 				<a href="#upcoming">Up Coming >></a>
 			</div>
 		</div>
-
+		</div>
+		<div class="primary">
 		<div class="request">
 
-			<h1 id="finish">Finished</h1>
+			<h1 id="finish" style="margin-left: 40px;">Finished</h1>
 			<div class="main-container">
 				<div class="grid">
 					<div class="pro-pic">
@@ -124,7 +130,7 @@
 				</div>
 			
 			</div>
-			<h1 id="upcoming">Up Coming</h1>
+			<h1 id="upcoming" style="margin-left: 40px;">Up Coming</h1>
 			<div class="main-container">
 				<div class="grid">
 					<div class="pro-pic">
@@ -189,6 +195,7 @@
 					</div>
 				</div>
 			
+			</div>
 			</div>
 	</div>	
 	

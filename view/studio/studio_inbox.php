@@ -12,7 +12,7 @@ session_start();
 
 <body>
 	<div class="nav body" style="padding-left: 0;">
-		<?php require_once('../../inc/stu_dash_navbar.php');?>
+		<?php require_once('../../inc/cust_dash_navbar.php');?>
 	</div>
 	<div class="body">
 	<div class="chat-container">
@@ -21,119 +21,119 @@ session_start();
 		</div>
 		<div class="conver-list">
 			<div class="conversastion active">
-				<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="amal Recordings " />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Amal Recordings  giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
 			<div class="conversastion">
-				<img src="../../img/studio/blank-profile-picture-973460_1280.jpg" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/blank-profile-picture-973460_1280.jpg" alt="Mainda Production " />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Stargate giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
 			<div class="conversastion">
-				<img src="../../img/studio/studio1.png" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/studio1.png" alt="Eager Planet" />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Chanadana Studio giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
 			<div class="conversastion">
-				<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Stduio Nine" />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Stduio Nine giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
 			<div class="conversastion">
-				<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Stduio ABD" />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Stduio ABD giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
 			<div class="conversastion">
-				<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Stduio RTY" />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Stduio RTY giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
 			<div class="conversastion">
-				<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="NAmal perera  Recods" />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Sulina RECO giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
 			<div class="conversastion">
-				<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Jackson " />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Jackson  giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
 			<div class="conversastion">
-				<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Sasindu Subodhaka" />
+				<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="Anila perara" />
 				<div class="title-text">
-					Sasindu Subodhaka giyfi uiyhfu yhuyfhuiyhfuyhu
+					Anila perara giyfi uiyhfu yhuyfhuiyhfuyhu
 				</div>
 				<div class="createrd-date">
 					Apr 1
 				</div>
 				<div class="conversastion-message">
-					Hi sasindu ury7wryb76b 77 47 67 yugfyg 
+					Hi Amal perera ury7wryb76b 77 47 67 yugfyg 
 				</div>
 			</div>
 
@@ -147,14 +147,14 @@ session_start();
 			<a href="#">+</a>
 		</div>
 		<div class="chat-title">
-			<span>Sasindu Subodaka</span>
-			<img src="../../img/studio/delete-128.png" alt="Delete Conversastion" height="30px" width="auto" />
+			<span>Amal Records</span>
+			<img src="../../img/customer/delete-128.png" alt="Delete Conversastion" height="30px" width="auto" />
 		</div>
 		<div class="chat-message-list">
 			<div class="message-row you-message">
 				<div class="message-content">
 					<div class="message-text">
-					Hi brooooooooo... hhtgj uhu gg gygy ygy yt gyy
+					Hi max XXXX XXXX XXXXXXXX XXX XXX XXX XXXXX X  x X X X XXXXX
 					</div>
 					<div class="message-time">Apr 15</div>
 				</div>
@@ -162,9 +162,9 @@ session_start();
 			</div>
 			<div class="message-row other-message">
 				<div class="message-content">
-					<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
+					<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
 					<div class="message-text">
-						Hi bro...
+						Hi amal...
 					</div>
 					<div class="message-time">Apr 15</div>
 					
@@ -175,7 +175,7 @@ session_start();
 			<div class="message-row you-message">
 				<div class="message-content">
 					<div class="message-text">
-					Hi brooooooooo... hhtgj uhu gg gygy ygy yt gyy
+					Hi max XXXX XXXX XXXXXXXX XXX XXX XXX XXXXX X  x X X X XXXXX
 					</div>
 					<div class="message-time">Apr 15</div>
 				</div>
@@ -183,9 +183,9 @@ session_start();
 			</div>
 			<div class="message-row other-message">
 				<div class="message-content">
-					<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
+					<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
 					<div class="message-text">
-						Hi bro...
+						Hi amal...
 					</div>
 					<div class="message-time">Apr 15</div>
 					
@@ -196,7 +196,7 @@ session_start();
 			<div class="message-row you-message">
 				<div class="message-content">
 					<div class="message-text">
-					Hi brooooooooo... hhtgj uhu gg gygy ygy yt gyy
+					Hi max XXXX XXXX XXXXXXXX XXX XXX XXX XXXXX X  x X X X XXXXX
 					</div>
 					<div class="message-time">Apr 15</div>
 				</div>
@@ -204,9 +204,9 @@ session_start();
 			</div>
 			<div class="message-row other-message">
 				<div class="message-content">
-					<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
+					<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
 					<div class="message-text">
-						Hi bro...
+						Hi amal...
 					</div>
 					<div class="message-time">Apr 15</div>
 					
@@ -217,7 +217,7 @@ session_start();
 			<div class="message-row you-message">
 				<div class="message-content">
 					<div class="message-text">
-					Hi brooooooooo... hhtgj uhu gg gygy ygy yt gyy
+					Hi max XXXX XXXX XXXXXXXX XXX XXX XXX XXXXX X  x X X X XXXXX
 					</div>
 					<div class="message-time">Apr 15</div>
 				</div>
@@ -225,9 +225,9 @@ session_start();
 			</div>
 			<div class="message-row other-message">
 				<div class="message-content">
-					<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
+					<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
 					<div class="message-text">
-						Hi bro...
+						Hi amal...
 					</div>
 					<div class="message-time">Apr 15</div>
 					
@@ -238,7 +238,7 @@ session_start();
 			<div class="message-row you-message">
 				<div class="message-content">
 					<div class="message-text">
-					Hi brooooooooo... hhtgj uhu gg gygy ygy yt gyy
+					Hi max XXXX XXXX XXXXXXXX XXX XXX XXX XXXXX X  x X X X XXXXX
 					</div>
 					<div class="message-time">Apr 15</div>
 				</div>
@@ -246,9 +246,9 @@ session_start();
 			</div>
 			<div class="message-row other-message">
 				<div class="message-content">
-					<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
+					<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
 					<div class="message-text">
-						Hi bro...
+						Hi amal...
 					</div>
 					<div class="message-time">Apr 15</div>
 					
@@ -259,7 +259,7 @@ session_start();
 			<div class="message-row you-message">
 				<div class="message-content">
 					<div class="message-text">
-					Hi brooooooooo... hhtgj uhu gg gygy ygy yt gyy
+					Hi max XXXX XXXX XXXXXXXX XXX XXX XXX XXXXX X  x X X X XXXXX
 					</div>
 					<div class="message-time">Apr 15</div>
 				</div>
@@ -267,9 +267,9 @@ session_start();
 			</div>
 			<div class="message-row other-message">
 				<div class="message-content">
-					<img src="../../img/studio/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
+					<img src="../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg" alt="attachement" height="40px" width="auto"/>
 					<div class="message-text">
-						Hi bro...
+						Hi amal...
 					</div>
 					<div class="message-time">Apr 15</div>
 					
@@ -280,7 +280,7 @@ session_start();
 			
 		</div>
 		<div class="chat-form">
-			<img src="../../img/studio/clip-512.png" alt="attachement" height="30px" width="auto"/>
+			<img src="../../img/customer/clip-512.png" alt="attachement" height="30px" width="auto"/>
 			<input type="text" name="message" placeholder="type a message">
 		</div>
 
@@ -288,5 +288,8 @@ session_start();
 	</div>
 	</div>
 	<?php require_once('../../inc/minfooter.php'); ?>
+
 </body>
+	
+
 </html>
