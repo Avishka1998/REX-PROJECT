@@ -21,46 +21,52 @@ session_start();
 		<div class="body">
 			<div class="main-container">
 				<div class="sub-cont">
-				<h1>Lowe Production Studio</h1>
-				<h2>Date & Time</h2>
+				<h2>Lowe Production Studio</h2>
+				<div class="item">
+				<h3>Date & Time</h3>
 				<div class="grid">
-					<div class="box1"><h3>2020/12/15</h3></div>
-					<div class="box2"><h3>8.00 - 14.00</h3></div>
+					<div class="box1"><p>2020-12-15</p></div>
+					<div class="box2"><p>0800 - 1400</p></div>
 					<div class="box3">
 						<a href="select_date.php" class="edit" >Edit</a>
 					</div>
 				</div>
-				<h2>Services</h2>
-				<div class="grid">
-					<div class="box1"><h3>Recording</h3></div>
-					<div class="box2"><h3>LKR 2500/= Per hour</h3></div>
-				</div>
-				<div class="grid">
-					<div class="box1"><h3>Mixing</h3></div>
-					<div class="box2"><h3>LKR 10000/=</h3></div>
-				</div>
-				<div class="grid">
-					<div class="box1"><h3>Mastering</h3></div>
-					<div class="box2"><h3>LKR 7000/=</h3></div>
-					<div class="box3">
-						<a href="select_service.php" class="edit" >Edit</a>
-					</div>
 				</div>
 
-				<h2>Audio Gears</h2>
+				<div class="item">
+				<h3>Services</h3>
 				<div class="grid">
-					<div class="box1"><h3>Neumann M 150 Tube</h3></div>
-					<div class="box2"><h3>LKR 5000/=</h3></div>
+					<div class="box1"><p>Recording</p></div>
+					<div class="box2"><p>LKR2500 Per hour</p></div>
 				</div>
 				<div class="grid">
-					<div class="box1"><h3>Marshall DSL Series DSL40C 40 Watt Valve 2 Channel Combo</h3></div>
-					<div class="box2"><h3>LKR 7500/=</h3></div>
+					<div class="box1"><p>Mixing</p></div>
+					<div class="box2"><p>LKR10000</p></div>
+				</div>
+				<div class="grid">
+					<div class="box1"><p>Mastering</p></div>
+					<div class="box2"><p>LKR7000</p></div>
 					<div class="box3">
 						<a href="select_service.php" class="edit" >Edit</a>
 					</div>
 				</div>
-				<br>
-				<h2>Total   :   LKR 44500/=</h2>
+				</div>
+				  
+				<div class="item">
+				<h3>Audio Gears</h3>
+				<div class="grid">
+					<div class="box1"><p>Neumann M 150 Tube</p></div>
+					<div class="box2"><p>LKR5000</p></div>
+				</div>
+				<div class="grid">
+					<div class="box1"><p>Marshall DSL Series DSL40C 40 Watt Valve 2 Channel Combo</p></div>
+					<div class="box2"><p>LKR7500</p></div>
+					<div class="box3">
+						<a href="select_service.php" class="edit" >Edit</a>
+					</div>
+				</div>
+				</div>
+				<div class="item"><h3 style="margin-left:480px;">Total   :   LKR 44500/=</h3></div>
 
 				<div class="row grid">
 				  <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
@@ -74,7 +80,7 @@ session_start();
 					<input type="submit" name="submit" value="Pay">
 				  </form>	
 				  <a href="studio_prof.php" class="cancel" >Cancel</a>
-				  <img src="../../img/580b57fcd9996e24bc43c530.png" style="display:inline; width:150px; height:50px;">
+				  <img src="../../img/580b57fcd9996e24bc43c530.png" style="display:inline; width:150px; height:45px;">
 				</div>
 			</div>
 		</div>	

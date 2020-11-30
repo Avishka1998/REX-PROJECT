@@ -16,42 +16,42 @@
           <!-- <input type="text" required name="first_name"> -->
           <input type="text" name="first_name">
           <span></span>
-          <label>First Name</label>
+          <label>First Name*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="text" required name="last_name"> -->
           <input type="text" name="last_name" >
           <span></span>
-          <label>Last Name</label>
+          <label>Last Name*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="email" required name="email"> -->
           <input type="email" name="email" >
           <span></span>
-          <label>Email Address</label>
+          <label>Email Address*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="text" required name="tele_no"> -->
           <input type="tel" name="tele_no" pattern="[0-9]{10}">
           <span></span>
-          <label>Mobile Number</label>
+          <label>Mobile Number*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="password" required name="password"> -->
           <input type="password" name="password" id="pass1" onkeyup="checkPass(); return false;">
           <span></span>
-          <label>Password <span id="error-nwl1"></span></label>
+          <label>Password* <span id="error-nwl1"></span></label>
         </div>
 
         <div class="textfield">
           <!-- <input type="password" required name="repeat_password"> -->
           <input type="password" name="repeat_password" id="pass2" onkeyup="checkPass(); return false;">
           <span></span>
-          <label>Re-Enter Password <span id="error-nwl2"></span></label>
+          <label>Re-Enter Password* <span id="error-nwl2"></span></label>
         </div>
 
         <div class="error">

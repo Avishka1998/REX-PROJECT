@@ -1,7 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  font-family:cursive;
+  font-family:sans-serif;
 /*  background: linear-gradient(120deg,#3498db,#8e44ad);*/
   background-image:linear-gradient(rgba(52,152,219,0.5),rgba(142,68,173,0.5));
   height: 100vh;

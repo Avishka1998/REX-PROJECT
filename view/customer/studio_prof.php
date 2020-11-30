@@ -4,12 +4,19 @@ session_start();
 
 if(isset($_GET['studio_id'])){
 	//echo $_GET['studio_id'];
-	$query="SELECT * FROM studio WHERE studio_id=$_GET[studio_id]";
+	$_SESSION['studio_id']=$_GET['studio_id'];
+	$studio_id = $_SESSION['studio_id'];
+}
+
+else if(isset($_SESSION['studio_id'])){
+	$studio_id = $_SESSION['studio_id'];
+}
+
+	$query="SELECT * FROM studio WHERE studio_id=$studio_id";
 	$result_set=mysqli_query($connection,$query);
 	if($result_set){
 		$studio_record=mysqli_fetch_assoc($result_set);
 		$studio_id=$studio_record['studio_id'];
-		$_SESSION['studio_id']=$studio_id;
 		// $_SESSION['user_id'];
 		//get cover photo and profile photo if they are exist 
 		if($studio_record['cover']){
@@ -32,7 +39,6 @@ if(isset($_GET['studio_id'])){
 		$result_set2 = mysqli_query($connection,$query2);
 		$port_record = mysqli_fetch_assoc($result_set2);
 	} 
-}
 
 
 

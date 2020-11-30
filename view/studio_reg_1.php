@@ -22,28 +22,28 @@
           <!-- <input type="text" required name="first_name"> -->
           <input type="text"  name="first_name">
           <span></span>
-          <label>First Name</label>
+          <label>First Name*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="text" required name="last_name"> -->
           <input type="text" name="last_name">
           <span></span>
-          <label>Last Name</label>
+          <label>Last Name*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="email" required name="h_email"> -->
           <input type="email" name="h_email">
           <span></span>
-          <label>Personal Email Address</label>
+          <label>Personal Email Address*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="Number" required name="h_tele_no"> -->
           <input type="tel" name="h_tele_no" pattern="[0-9]{10}">
           <span></span>
-          <label>Mobile Number</label>
+          <label>Mobile Number*</label>
         </div>
         <div class="error">
             <?php

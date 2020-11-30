@@ -24,28 +24,28 @@
           <input type="text" name="studio_name">
 
           <span></span>
-          <label>Studio Name</label>
+          <label>Studio Name*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="text" required name="s_address_1"> -->
           <input type="text" name="s_address_1">
           <span></span>
-          <label>Address Line 1</label>
+          <label>Address Line 1*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="text" required name="s_address_2"> -->
           <input type="text" name="s_address_2">
           <span></span>
-          <label>Address Line 2</label>
+          <label>Address Line 2*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="text" required name="s_city"> -->
           <input type="text" name="s_city">
           <span></span>
-          <label>City</label>
+          <label>City*</label>
         </div>
 
         <div class="textfield">
@@ -78,24 +78,30 @@
                <option value = "Vavuniya">Vavuniya</option>
               </select>
           <span></span>
-          <label>District</label>
+          <label>District*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="Number" required name="postalcode"> -->
           <input type="Number" name="postalcode">
           <span></span>
-          <label>Postal Code</label>
+          <label>Postal Code*</label>
         </div>
         <div class="textfield">
           <!-- <input type="text" required name="s_address_2"> -->
-          <input type="text" name="latitude">
+          <input type="text" name="latitude" title="1.open Google Maps.
+2.Right-click the place or area on the map.
+3.Select What's here? At the bottom.
+4.you’ll see a card with the coordinates.">
           <span></span>
           <label>Latitude</label>
         </div>
         <div class="textfield">
           <!-- <input type="text" required name="s_address_2"> -->
-          <input type="text" name="longitude">
+          <input type="text" name="longitude" title="1.open Google Maps.
+2.Right-click the place or area on the map.
+3.Select What's here? At the bottom.
+4.you’ll see a card with the coordinates.">
           <span></span>
           <label>Longitude</label>
         </div>
@@ -104,35 +110,35 @@
           <!-- <input type="email" required name="s_email"> -->
           <input type="email" name="s_email">
           <span></span>
-          <label>Studio Email Address</label>
+          <label>Studio Email Address*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="Number" required name="s_tele_no"> -->
           <input type="tel" name="s_tele_no" pattern="[0-9]{10}">
           <span></span>
-          <label>Telephone Number</label>
+          <label>Telephone Number*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="Number" required name="s_tele_no"> -->
           <input type="email" name="paypal">
           <span></span>
-          <label>PayPal Account Email</label>
+          <label>PayPal Account Email*</label>
         </div>
 
         <div class="textfield">
           <!-- <input type="password" required name="password"> -->
           <input type="password" name="password" id="pass1" onkeyup="checkPass(); return false";>
           <span></span>
-          <label>Password <span id="error-nwl1"></span></label>
+          <label>Password* <span id="error-nwl1"></span></label>
         </div>
 
         <div class="textfield">
           <!-- <input type="password" required name="repeat_password"> -->
           <input type="password" name="repeat_password" id="pass2" onkeyup="checkPass(); return false";>
           <span></span>
-          <label>Confirm Password <span id="error-nwl2"></span></label>
+          <label>Confirm Password* <span id="error-nwl2"></span></label>
         </div>
         <div class="error">
             <?php
