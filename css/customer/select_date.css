@@ -11,6 +11,8 @@ body{
   position: relative;
   background: linear-gradient(rgba(225,225,225, 0.5), rgba(129, 0, 250, 0.6));
   overflow: auto;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 } 
 
 .column {
@@ -37,6 +39,7 @@ body{
   border-radius: 10px;
   margin-top: 10%;
   padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
   box-shadow: 3px 8px 20px 3px rgba(10, 10, 10, 0.4);
 }
 
@@ -83,26 +86,44 @@ option{
   font-size: 20px;
 }
 
+
+
+.next{
+  display: grid;
+  background-color: rgb(0, 153, 255);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  min-width: 80%;
+  max-width: 140px;
+  text-align: center;
+  font-size: 18px;
+  margin: 20px auto 5px auto;
+}
+.cancel{
+    display: grid;
+    background-color: rgb(232,62,62);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    min-width: 80%;
+    max-width: 140px;
+    text-align: center;
+    font-size: 18px;
+    margin: 10px auto 10px auto;
+}
 .next:hover {
-  background-color: rgb(0, 102, 255);
+    background-color: rgba(0, 102, 255, 0.5);
+    font-size: 17px;
 }
 
 .cancel:hover{
-  background-color: red;
-}
-
-.next, .cancel {
-  background-color: rgb(127, 129, 129);
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 10px;
-  min-width: 100px;
-  width: 40%;
-  margin-top: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+    background-color: rgba(217,5,5, 0.5);
+    font-size: 17px;
 }
 
 .thismonth, .nextmonth{

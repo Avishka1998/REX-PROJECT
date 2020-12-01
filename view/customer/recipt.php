@@ -100,7 +100,9 @@ session_start();
 						<h3>: LKR 44500/=</h3>
 					</div>
 				</div>
-				<a href="cust_dash.php" class="back" >Finish</a>
+				<div class="btn">
+					<a href="cust_dash.php" class="back" >Finish</a>
+				</div>
 			</div>
 		</div>
 	</div>

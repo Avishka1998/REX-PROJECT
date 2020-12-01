@@ -84,6 +84,7 @@ session_start();
 	</div>
 
 	<div class="row">
+
         <a href="select_date.php" class="previous">Back</a>
         <a href="cart.php" class="next">Next</a>
 		<a href="studio_prof.php" class="cancel">Cancel</a> 
