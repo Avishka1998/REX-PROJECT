@@ -1,11 +1,13 @@
 body{
     margin: 0;
     padding: 0;
-    font-family:sans-serif;
-   
+    font-family:sans-serif;    
     height: auto;
     overflow:inherit;
     background: linear-gradient(rgba(29, 43, 197, 0.5),rgba(100, 41, 160, 0.6));
+    background-repeat:no-repeat;
+    background-position: center;
+    background-attachment: fixed;
   }
   
   .row{

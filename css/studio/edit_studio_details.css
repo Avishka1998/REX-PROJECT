@@ -1,8 +1,9 @@
 body{
   background: linear-gradient(rgba(77, 8, 215, 0.5),rgba(5, 36, 189, 0.6));
   background-position: inherit;
-  background-repeat: inherit;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 80vh;
 }
 
 .nav{
@@ -15,7 +16,7 @@ body{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 60%;
   position: absolute;
-  top: 60%;
+  top: 40%;
   left: 50%;
   padding: 50px;
   margin-bottom: 100px;
@@ -269,7 +270,7 @@ textarea {
   border: 1px solid #ccc;
   box-shadow: 1px 1px 1px #999;
   width:100%;
-  height: 300px%;
+  height: 300%;
 }
 
 
