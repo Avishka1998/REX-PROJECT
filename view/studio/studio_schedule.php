@@ -137,8 +137,8 @@
 		 		</div> 		
 			 	<div class="slideTwo">
 			 		
-			 		<input type="checkbox"  id="service2" onclick="openForm2(this)" name="check1" />
-			 		<label for="service2"></label> 
+			 		<input type="checkbox"  id="service1" onclick="openForm2(this)" name="check1" />
+			 		<label for="service1"></label> 
 			  	</div>
 			  	<div class="hh2">
 			  		<h2>Available</h2>
@@ -288,8 +288,8 @@
 		 		</div> 		
 			 	<div class="slideTwo">
 			 		
-			 		<input type="checkbox"  id="service2" onclick="openForm2(this)" name="check1" />
-			 		<label for="service2"></label> 
+			 		<input type="checkbox"  id="service3" onclick="openForm2(this)" name="check1" />
+			 		<label for="service3"></label> 
 			  	</div>
 			  	<div class="hh2">
 			  		<h2>Available</h2>
@@ -299,7 +299,7 @@
 	    
     </div>
     <div class="calander">
-    	<a href="studio_schedule.php" class="next">save</a>
+    	<a href="studio_dash.php" class="next">save</a>
     </div>                                           
 
 

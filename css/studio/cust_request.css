@@ -6,10 +6,11 @@
 } 
  
 html,body{
-	height: 100vh;
+	min-height: 100vh;
+	max-height: auto;
 	overflow:inherit;
 	background: linear-gradient(rgba(18, 18, 159, 0.5),rgba(5, 36, 189, 0.6));
-    background-repeat: inherit;
+    
   }
  
 .body{

@@ -12,7 +12,7 @@ session_start();
 
 <body>
 	<div class="nav body" style="padding-left: 0;">
-		<?php require_once('../../inc/cust_dash_navbar.php');?>
+		<?php require_once('../../inc/stu_dash_navbar.php');?>
 	</div>
 	<div class="body">
 	<div class="chat-container">
