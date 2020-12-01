@@ -20,6 +20,12 @@ session_start();
 
                     if(isset($_GET['studio_remove'])){
                       $z = $_GET['studio_remove'];
+                      $query11 = "SELECT s_email FROM studio WHERE studio_id = $z";
+                      $result_set11 = mysqli_query($connection,$query11);
+                      $record = mysqli_fetch_assoc($result_set11);
+                      $email = $record['s_email'];
+                      $query12 = "INSERT INTO removed_users (email) VALUES ('{$email}')";
+                      $result_set12 = mysqli_query($connection,$query12);
                       $query4 = "DELETE FROM studio WHERE studio_id = $z";
                       $result_set4 = mysqli_query($connection,$query4);
                       header('Location: ../admin/verified.php');  

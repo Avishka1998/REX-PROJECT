@@ -48,7 +48,8 @@
             $result_set1 = mysqli_query($connection,$query1);
             $query12 = "SELECT * FROM studio WHERE s_email = '{$email}'";//customer email shouldn't exist in studio table 
             $result_set12 = mysqli_query($connection,$query12);
-
+            $query13 = "SELECT * FROM removed_users WHERE email = '{$email}'";
+            $result_set13 = mysqli_query($connection,$query13);
 
             if($result_set1){
 
@@ -56,6 +57,12 @@
                     $errors[] = "This Email is already registered";
                     header('Location: ../view/cust_reg.php?errors='.urlencode(serialize($errors)));
                 }
+
+                else if(mysqli_num_rows($result_set13)==1){
+                    $errors[] = "Email Blocked!";
+                    header('Location: ../view/cust_reg.php?errors='.urlencode(serialize($errors)));
+                }
+
                 else{
                     //store form data in the database (scustomer table)
                     $query2 = "INSERT INTO customer (first_name,last_name,email,tele_no,password) VALUES ('{$first_name}','{$last_name}','{$email}','{$tele_no}','{$hashed_password}')";

@@ -21,6 +21,12 @@ require_once('../inc/connection.php');
 
     if(isset($_GET['cust_remove'])){
       $z = $_GET['cust_remove'];
+      $query11 = "SELECT email FROM customer WHERE c_id = $z";
+      $result_set11 = mysqli_query($connection,$query11);
+      $record = mysqli_fetch_assoc($result_set11);
+      $email = $record['email'];
+      $query12 = "INSERT INTO removed_users (email) VALUES ('{$email}')";
+      $result_set12 = mysqli_query($connection,$query12);
       $query4 = "DELETE FROM customer WHERE c_id = $z";
       $result_set4 = mysqli_query($connection,$query4);
       header('Location: ../admin/customers.php');  
