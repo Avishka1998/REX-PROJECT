@@ -4,7 +4,7 @@ session_start(); ?>
 
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 	<meta charset="utf-8">
 	<title>Pending Jobs</title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/pendings.css">
