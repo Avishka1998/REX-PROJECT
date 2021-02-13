@@ -15,7 +15,7 @@ body{
 
 .front{
   display: block;
-  margin-top: 95px;
+  margin-top: 6%;
   box-sizing: border-box;
   width: 100%;
   margin-bottom: 310px;
@@ -82,8 +82,8 @@ body{
 .service a{
   display: block;
   float: left;
-  width: 300px;
-  height: 200px;
+  width: 23.5%;
+  height: 10%;
   padding: 85px 0;
   margin: 8px;
   border-radius: 5px;
@@ -137,6 +137,30 @@ body{
   0%{color: orangered;}
   /* 50%{opacity: .5;} */
   100%{color: yellow;}
+}
+
+@media(min-width:1920px){
+  .front{
+    margin-top: 8%;
+  }
+  .front img{
+    height: 500px;
+  }
+  .front h1{
+    font-size: 4em;
+    padding-top: 70px;
+  }
+  .more{
+    margin-top: 40px;
+    width: 110px;
+    padding: 14px 12px 14px 12px;
+    font-size: 1.3rem;
+  }
+  .service a{
+    height: 290px;
+    padding: 130px 0;
+    font-size: 35px;
+  }
 }
 
 .clearfix{

@@ -26,6 +26,12 @@
     .bottom center span{
         color: white;
     }
+
+    @media(min-width:1920px){
+        .bottom center{
+          font-size:1.2rem
+        }
+    }
    </style> 
 </head>
 

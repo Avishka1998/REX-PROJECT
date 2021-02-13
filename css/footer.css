@@ -123,18 +123,8 @@ footer{
   color: white;
 }
 
-@media screen and (max-width: 900px) {
-  footer{
-    position: relative;
-    bottom: 0;
-  }
-
-  .main{
-    flex-flow: wrap;
-    flex-direction: column;
-  }
-
-  .main .box{
-    margin: 5px 0;
+@media(min-width:1920px){
+  .bottom center{
+    font-size: 1.2rem;
   }
 }

@@ -63,3 +63,21 @@ body{
     font-size: 1.25em;
     margin: 3px 10px;
   }
+
+  @media(min-width:1920px){
+    .collapsible{
+      font-size: 23px;
+      width: 700px;
+    }
+    .content{
+      font-size: 20px;
+      width: 700px;
+    }
+    .secondary{
+      margin-left: 800px;
+      padding-top: 750px;
+    }
+    .socialab{
+      font-size: 1.45em;
+    }
+  }

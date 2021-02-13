@@ -12,7 +12,7 @@ main{
   margin-top: 150px;
   margin-left: 100px;
   font-family: cursive;
-  max-width: 600px;  
+  max-width: 40%;  
 }
 
 h1{
@@ -25,9 +25,18 @@ h1{
 p{
   color: white;
   padding-top: 40px;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1.6; 
   margin-bottom: 40px; 
+}
+
+@media(min-width: 1920px){
+  p{
+    font-size: 25px;
+  }
+  h1{
+    font-size: 50px;
+  }
 }
 
 .socialab{

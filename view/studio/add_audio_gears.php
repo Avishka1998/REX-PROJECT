@@ -13,12 +13,10 @@ session_start();
 
 <body> 
  <div class="nav"><?php require_once('../../inc/stu_dash_navbar.php');?></div>                
-           
+<main>           
 <div class="column" style="width: 70%;">
-       <div class="row">
-                <center><h1>Add Your Audio Gears</h1></center>
-               
-       </div>        
+        <div class="adds">
+                <center><h1 class="addtitle">UPDATE EXISTING AUDIO GEARS</h1></center>       
         <?php 
                 $query1="SELECT * FROM studio_audio_gear WHERE studio_id=$user_id";
                 $result_set1 = mysqli_query($connection,$query1);
@@ -29,27 +27,23 @@ session_start();
                                 echo '<form action="../../controller/studio/add_audio_gears_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
                                 while($record = mysqli_fetch_assoc($result_set1)){
                                         echo '<div class="row" >                               
-                                                <div class="column">
-                                                                <lable class="description" name="service'.$temp.'"><h2>'.$record['name'].'</h2></lable> 
+                                                <div class="column" style="width:50%;">
+                                                                <lable class="description" name="service'.$temp.'" style="padding-bottom:20px;"><h2 style="margin-left:0;">'.$record['name'].'</h2></lable> 
                                                 </div>
-                                                <div class="column">
+                                                <div class="column" style="width:20%;">
                                                         <div class="slideTwo">	
                                                                 <input type="hidden"  id="unchecked_service'.$temp.'"  name="uncheck'.$temp.'"  value="'.$record['name'].'" />                                                                        
-                                                                <input type="checkbox"  id="service'.$temp.'"  onclick="openForm'.$temp.'(this)"  name="check'.$temp.'"  value="'.$record['name'].'"  checked/>
+                                                                <input type="checkbox"  id="service'.$temp.'" name="check'.$temp.'"  value="'.$record['name'].'"  checked/>
                                                                 <label for="service'.$temp.'"></label>                  
                                                         </div>
                                                 
                                                 </div>  
-                                                <div class="column" >
+                                                <div class="column" style="width:30%; padding-left:10px; padding-right:60px;">
                                                         <div class="form-popup" id="dvservice'.$temp.'" >  
                                                                 <div class="form__group">
                                                                 <input type="text" class="form__input"  name="charge'.$temp.'" value="'.$record['charge'].'" />
-                                                                <label for="name" class="form__label">charge per hour</label>
                                                                 <input type="text" class="form__input"  name="qty'.$temp.'" value="'.$record['qty'].'" />
-                                                                <label for="name" class="form__label">Number of instruments</label>
-                                                               
-                                                                </div>                               
-                                                                        
+                                                                </div>                                             
                                                         </div>	
                                                         <script>
                                                         function openForm'.$temp.'(service'.$temp.') {
@@ -67,8 +61,8 @@ session_start();
                                 echo '
                                 <div class="row">
    
-                                        <div class="column" style="padding: 15px 500px;">
-                                                <button type="submit_name" class="btn" name="submit_add_audio_gear2">Save</button>
+                                        <div class="column" style="padding: 15px 575px;">
+                                                <button type="submit_name" class="btn save2" name="submit_add_audio_gear2">Save</button>
                                         </div>
                 
                                 </div>
@@ -84,32 +78,29 @@ session_start();
                                         echo '<form action="../../controller/studio/add_audio_gears_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
                                         while($record = mysqli_fetch_assoc($result_set2)){
                                                 echo '<div class="row" >                               
-                                                        <div class="column">
-                                                                        <lable class="description" name="service'.$record['id'].'" style="width: 150%; padding bottom:20px"><h2>'.$record['name'].'</h2></lable> 
+                                                        <div class="column" style="width:50%;">
+                                                                <lable class="description" name="service'.$record['id'].'" style="padding-bottom:20px;"><h2 style="margin-left:0;">'.$record['name'].'</h2></lable> 
                                                         </div>
-                                                        <div class="column">
+                                                        <div class="column" style="width:20%;">
                                                                 <div class="slideTwo">	
-                                                                        <input type="checkbox"  id="service'.$record['id'].'"  onclick="openForm'.$record['id'].'(this)"  name="check'.$record['id'].'"  value="'.$record['name'].'" />
+                                                                        <input type="checkbox"  id="service'.$record['id'].'"  onclick="rdonly'.$record['id'].'(this)"  name="check'.$record['id'].'"  value="'.$record['name'].'" />
                                                                         <label for="service'.$record['id'].'"></label>                  
                                                                 </div>
                                                         
                                                         </div>  
-                                                        <div class="column" >
+                                                        <div class="column" style="width:30%; padding-left:10px; padding-right:60px;">
                                                                 <div class="form-popup" id="dvservice'.$record['id'].'" >  
                                                                         <div class="form__group">
-                                                                        <input type="text" class="form__input"  name="charge'.$record['id'].'" placeholder="Charge per day" />
-                                                                        <label for="name" class="form__label">charge per hour</label>
-                                                                        <input type="text" class="form__input"  name="qty'.$record['id'].'" placeholder="Number of audio gears" />
-                                                                        <label for="name" class="form__label">Number of audio gears</label>
+                                                                        <input type="text" class="form__input"  name="charge'.$record['id'].'" placeholder="Charge per day" readonly />
+                                                                        <input type="text" class="form__input"  name="qty'.$record['id'].'" placeholder="Number of audio gears" readonly />
                                                                         </div>                               
                                                                                 
                                                                 </div>	
       
                                                                 <script>
-                                                                function openForm'.$record['id'].'(service'.$record['id'].') {
-                                                                        var dvservice'.$record['id'].' = document.getElementById("dvservice'.$record['id'].'");
-                                                                        dvservice'.$record['id'].'.style.display = service'.$record['id'].'.checked ? "block" : "none";
-                                                                
+                                                                function rdonly'.$record['id'].'(service'.$record['id'].') {
+                                                                        document.getElementById("charge'.$record['id'].'").removeAttribute("readonly");
+                                                                        document.getElementById("qty'.$record['id'].'").removeAttribute("readonly");
                                                                 }
                                                         
                                                         
@@ -120,8 +111,8 @@ session_start();
                                         }
                                         echo '
                                         <div class="row">
-                                                <div class="column" style="padding: 10px 500px;">
-                                                        <button type="submit_name" class="btn" name="submit_add_audio_gear1">Save</button>
+                                                <div class="column" style="padding: 10px 575px;">
+                                                        <button type="submit_name" class="btn save2" name="submit_add_audio_gear1">Save</button>
                                                 </div>
                         
                                         </div>
@@ -138,45 +129,8 @@ session_start();
 
                 
         ?>               
-
-        
-         <div class="row">
-                <div class="column">
-                        <button class="open-button" onclick="document.getElementById('nameForm').style.display='block'"><h4>Other Instrument</h4></button>
-                </div>
         </div>
-        <div class="row"> 
-                <div class="column">
-                        <div class="form-popup" id="nameForm">
-		        <form action='<?php echo "../../controller/studio/add_audio_gears_controller.php?studio_id=$user_id"?>' class="form-container" method="post">  
-
-		                <label for="service" class="service"><b>Audio Gear Name</b></label>
-		                <input type="text" value="" name="instrument_name" placeholder="Enter Audio Gear Name" required>
-
-		                <label for="charge" class="service"><b>Charge</b></label>
-                                <input type="text" value=""  name="charge" placeholder="per day" required>
-                                
-                                <label for="qty" class="service"><b>Number of Audio Gears</b></label>
-		                <input type="text" value=""  name="qty" placeholder="Enter the number of audio gears you have" required>
-
-		                <button type="submit_name" class="btn" name="submit_other_instrument">Save</button>
-		                <button type="button" class="btn cancel" onclick="document.getElementById('nameForm').style.display='none'">Close</button>
-		         </form>
-                        </div>	
-                        <script>
-                                var modal = document.getElementById('nameForm');
-                                window.onclick = function(event) {
-                                if (event.target == modal) {
-                                modal.style.display = "none";
-                                 }
-                                } 	
-		        </script>
-                </div>
-
-         </div>
- 
-
-                                                   
+                                      
         <?php  
                 if(isset($_GET['added'])){  
                          $massage=$_GET['added']; 
@@ -221,44 +175,24 @@ session_start();
         ?>     
 </div>  
 <div class="column" style="width: 30%;">
-        <div class="row">
-                <h1>Your Audio Gears</h1>
-                <?php   
-                        $query="SELECT * FROM studio_audio_gear WHERE studio_id=$user_id";
-                        $result_set= mysqli_query($connection,$query1);
-                        if($result_set){
-                                if(mysqli_num_rows($result_set)==0){ //check whether the number of services from customers is 0
-                                //      $errors[]="There is no services from customers";
-                                }
-                                else{
-                                    //store data in the customer table which takes from database
-                                    $table = "<table>";                                    
-                                    $table .= "<tr><th>Audio Gear</th><th>Charge(Rs) per day</th><th>Number of audiogears";
-                                    while($record =mysqli_fetch_assoc($result_set)){                                    
-                                       $table .= "<tr>";
-                                       $table.= "<td>".$record['name']."</td>";
-                                       $table.= "<td>".$record['charge']."</td>";  
-                                       $table.= "<td>".$record['qty']."</td>";                                      
-                                       $table.= "</tr>";
-                                    }
-                                    $table.= "</table>";
-                                   
-                                }
-                                                   
-                            }           
-                ?>
-               
-       </div>
-       <div class="row" >
-                 <?php 
-                        if(isset($table)){
-                                echo $table;
-                        }
-                ?>
-       </div>
+        <div class="form-popup mys" id="nameForm">
+        <center><h1 class="addtitle">ADD NEW AUDIO GEAR</h1></center>
+	        <form action='<?php echo "../../controller/studio/add_audio_gears_controller.php?studio_id=$user_id"?>' class="form-container" method="post">  
+                  <label for="service" class="service"><b>Audio Gear Name</b></label>
+                  <input type="text" value="" name="instrument_name" placeholder="Enter Audio Gear Name" required>
 
+                  <label for="charge" class="service"><b>Charge</b></label>
+                  <input type="text" value=""  name="charge" placeholder="per day" required>
+                                
+                  <label for="qty" class="service"><b>Number of Audio Gears</b></label>
+                  <input type="text" value=""  name="qty" placeholder="Enter the number of audio gears you have" required>
 
-</div>            
+                  <button type="submit_name" class="btn save" name="submit_other_instrument">Save</button>
+                  <button type="button" class="btn cancel" onclick="document.getElementById('nameForm').style.display='none'">Close</button>
+                </form>                
+        </div>            
 
+</main>
+<?php require_once('../../inc/minfooter.php');?>
 </body>
 </html>
