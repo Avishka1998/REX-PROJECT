@@ -187,7 +187,6 @@ session_start();
 	<input type="text" value=""  name="qty" placeholder="Enter the number of instruments you have" required>
 
 	<button type="submit_name" class="btn save" name="submit_other_instrument">Save</button>
-	<button type="button" class="btn cancel" onclick="document.getElementById('nameForm').style.display='none'">Close</button>
     </form>
   </div>  
 </div>            

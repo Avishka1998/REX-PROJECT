@@ -34,7 +34,7 @@ session_start();
 		</div>
 		<div class="upload">
 			
-				<form action="<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?>" class="form-container" method="post" enctype="multipart/form-data" style="background-color:rgba(255, 255, 255, 0);"> 
+				<form action="<?php echo "../../controller/customer/cust_profile_edit_controller.php?c_id=$user_id"?>" class="" method="post" enctype="multipart/form-data" style="background-color:rgba(255, 255, 255, 0);"> 
 					<label for="myfile"><img src="../../img/customer/584abf432912007028bd9337.png" alt=""></label>
 					<input type="file" id="myfile" class="my_file" hidden="true" name="image">
 					<button type="submit_image" class="image-button" name="submit_image" >Upload</button>

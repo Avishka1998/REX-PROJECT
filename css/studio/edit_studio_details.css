@@ -1,5 +1,6 @@
 body{
-  background: linear-gradient(rgba(77, 8, 215, 0.5),rgba(5, 36, 189, 0.6));
+  /* background: linear-gradient(rgba(77, 8, 215, 0.5),rgba(5, 36, 189, 0.6)); */
+  background: rgba(223, 223, 235, 0.5);
   background-position: inherit;
   background-repeat: inherit;
   background-attachment: fixed;
@@ -12,29 +13,65 @@ body{
 
 .row{
   font-family: sans-serif;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
   position: absolute;
-  top: 65%;
+  top: 22%;
   left: 50%;
   padding: 50px;
   margin-bottom: 100px;
   margin-top: 300px;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.4);
+  overflow: auto;
 }
 
+@media(min-width:1920px){
+  .row{
+    top:20%;
+  }
+  .column{
+    margin-top: 50px;
+  }
+  .form-container{
+	  max-width: 450px;	
+	}
+	.form-container .btn{
+	  padding: 15px 25px;
+    font-size: 15px;
+	}
+	.form-container input[type=text]{
+	  padding: 15px 25px;
+	  font-size: 17px;	
+	}
+  select{
+    font-size: 17px;
+  }
+}
+
+.column{
+  width: 49%;
+  float: left;
+  border: 2px solid black;
+}
+
+.col1{
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.col2{
+  margin-left: 10px;
+  padding: 5px;
+}
 
 h1{
   font-size: 30px;
-  font-family: sans-serif;
-  margin-top: 40px;
+  font: 30px Arial, Helvetica, sans-serif;
   margin-bottom: 40px;
+  text-align: center;
 }
 
 h2{
-  margin-left: 10%;
-  margin-right: 15%;
+  font: 30px Arial, Helvetica sans-serif;
   padding-bottom: 15px;
 	margin-bottom: 25px;
 	text-align: left;
@@ -74,31 +111,36 @@ h2{
 
 .form-container {
   max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #f1f1f1;
+  /* border: 3px solid white; */
   padding: 10px;
-  
-}
+  top: 35%;
+  left: 50%;
+  position:absolute;
+  margin-top:-65px;
+  margin-left:-150px;
+  z-index: 9002;
+} 
 
 select{
   display: block;
   width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+  padding: 5px;
+  margin: 5px 0 5px 0;
   border: none;
   background: #f1f1f1;
 }
 
 .form-container input[type=text],.form-container input[type=tel], .form-container input[type=password] {
   width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+  padding: 5px;
+  margin: 5px 0 5px 0;
   border: none;
   background: #f1f1f1;
 }
 
 
-.form-container input[type=text]:focus,.form-container input[type=tel]:focus, .form-container input[type=password]:focus, {
+.form-container input[type=text]:focus,.form-container input[type=tel]:focus,.form-container input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -107,17 +149,18 @@ select{
 .form-container .btn {
   background-color: #49495f;
   color: white;
-  padding: 16px 20px;
+  padding: 12px 20px;
   border: none;
   cursor: pointer;
   width: 100%;
-  margin-bottom:10px;
+  margin-bottom:0px;
+  margin-top: 10px;
   opacity: 0.8;
 }
 
 
 .form-container .cancel {
-  background-color: red;
+  background: linear-gradient(to right,rgb(61, 6, 30),rgb(87, 8, 34));
 }
 
 
@@ -126,9 +169,12 @@ select{
 }
 
 #map{
-  height: 400px;
-  width: 100%;
+  height: 250px;
+  width: 95%;
   border: 5px solid #575656;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 13px;
 }
 
 .error{
@@ -165,22 +211,27 @@ select{
 .profile-button{
   background-color: #9d8f8f;
   color: rgb(245, 231, 231);
-  padding: 6px 8px;
+  padding: 4px 6px;
   border: none;
   border-radius: 5px;
+  bottom: 0;
   cursor: pointer;
   opacity: 0.8;
-  float: right;
-  display: block;
+  /* float: right; */
   position: relative;
-  top: 45px;
-  right:30%;
+  top: 35px;
+  left:53.5%;
 }
+
+.profile-button:hover{
+  opacity: 1;
+}
+
 .profile_upload label{  
   position: relative;
   bottom: 0px;
-  top: 40px;
-  left: 55%;
+  top: 45px;
+  left: 52.5%;
   width: 45px;
   outline: none;  
   cursor: pointer;
@@ -205,10 +256,8 @@ select{
   opacity: 0.9;
   transition: 0.5s;
   float:left;
-  left: 10%;
-  top: 26px;
-
- 
+  left: 1%;
+  top: 20px;
 }
 .cover_upload label:hover{
   opacity: 1;
@@ -230,20 +279,24 @@ select{
   opacity: 0.8;
   float: left;
   display: block;
-  right: 25%;
   position: absolute;
-  top: 318px;
-  left: 25%;
+  top: 314px;
+  left: 10%;
   
 }
 
 .modal {
   display: none;
+  position: fixed;
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: 100%; 
+  height: 100%; 
   overflow: auto;
-
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
 }
 
 .animate {
@@ -269,7 +322,6 @@ textarea {
   border: 1px solid #ccc;
   box-shadow: 1px 1px 1px #999;
   width:100%;
-  height: 300px%;
 }
 
 

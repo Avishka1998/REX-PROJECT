@@ -5,39 +5,62 @@ body{
 }
 
 .row{
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   width: 60%;
   position: absolute;
   left: 20%;
   top: 30%;
+  padding-bottom: 50px;
 }
 
+.row2 {
+    float: left;
+    width: 100%;
+    padding: 20px;
+    margin: 1%;
+    font-size: 25px;
+    cursor: pointer;  
+    background: rgb(224, 221, 221, 0.7);
+}
 
-.column {
-  float: left;
+.col1 img{
+  width: 200px;
+  height: 200px;
+  border: 3px solid grey;
+  padding: 5px;
+}
+
+.col1{
   width: 30%;
-  padding: 40px;
-  margin: 1%;
+  float: left;
+}
+
+.col2{
+  padding-top: 50px;
+  width: 40%;
+  float: left;
   text-align: center;
-  font-size: 25px;
-  cursor: pointer;  
-  background: rgb(235, 208, 208);
-  box-shadow: 2px 2px 2px 2px rgba(75, 72, 72, 0.2); 
-  border-radius: 10px;
 }
 
-.column img{
-  max-width: 100%;
-  max-height: 100%;
+.col2 h4, .col2 h5, .col2 .rating{
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-h4 a{
-  color:black;
+.col3{
+  width: 30%;
+  padding-left: 90px;
+  float: right;
+  padding-top: 90px;
 }
 
-.rating{
-  max-width: 95%;
+.col3 a{
+  background-color: grey;
+  padding: 7px 12px;
+  color: rgb(214, 205, 205);
+  font-size: 1.5rem;
 }
+
 .checked {
   color: orange;
 }

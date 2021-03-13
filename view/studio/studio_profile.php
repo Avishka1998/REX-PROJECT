@@ -89,7 +89,7 @@ session_start();
 		<div class="modal" id="description">
 		  <form action="<?php echo "../../controller/studio/studio_profile_edit_controller.php?s_id=$user_id"?>" class="form-container animate" method="post"> 
 		  <div class="textarea">         
-            <textarea id="description" placeholder="Type Here..." name="description" rows="13" cols="44"><?php echo $record['description']; ?></textarea>
+            <textarea id="description" placeholder="Type Here..." name="description" rows="8" cols="44"><?php echo $record['description']; ?></textarea>
 		  </div>
             <button type="submit_des" class="btn" name="submit_des">Save</button>
 			<button type="button" class="btn cancel" onclick="document.getElementById('description').style.display='none'">Close</button>	
@@ -128,9 +128,10 @@ session_start();
         	 modal.style.display = "none";
     	     }
 		   } 	
-		</script>   
-
-		<h1>Studio Details</h1>
+		</script>
+	
+		<div class="column col1">
+		<h1>STUDIO DETAILS</h1>
 		
 		<button class="open-button" onclick="document.getElementById('nameForm').style.display='block'">Edit</button>
 		<h2>Name : <?php echo $record['studio_name']; ?></h2>
@@ -231,7 +232,7 @@ session_start();
     	     }
 		   }
 		</script>
-		
+
 		<button class="open-button2" onclick="document.getElementById('PWForm').style.display='block'">Change Password</button>
 
 		<div class="modal" id="PWForm">
@@ -252,7 +253,9 @@ session_start();
     	     }
 		   }
 		</script>
+		</div>  
 
+		<div class="column col2">
 		<script>
 		  function initMap() {
   			const stu = {lat: <?php echo $record['latitude'];?>, lng: <?php echo $record['longitude'];?>};
@@ -292,7 +295,7 @@ session_start();
     	     }
 		   }
 		</script>
-		
+		</div>	
 	</div>
 
 	<?php require_once('../../inc/minfooter.php'); ?>

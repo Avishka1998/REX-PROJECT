@@ -36,16 +36,21 @@ session_start();
 				$query="SELECT * FROM studio WHERE verified=1 AND email_verified=1";
 				$result_set=mysqli_query($connection,$query);
 				if($result_set){
-					while($record =mysqli_fetch_assoc($result_set)){
+					while($record = mysqli_fetch_assoc($result_set)){
 						if($record['profile']){
 							$profile =$record['profile'];
 						}
 						else{
 							$profile = "studio1.png";
 						}
-						echo '<div class="column">'; 																			
+								echo '<div class="row2">';
+								echo '<div class="col1">'; 																			
 									echo "<img src='../../img/studio/$profile' height='180' width='180' >";
-									echo "<h4><a href='studio_prof.php?studio_id=$record[studio_id]'>$record[studio_name] </a><br></h4>";
+								echo '</div>';	
+								
+									echo '<div class="col2">';
+									echo "<h4>$record[studio_name]<br></h4>"; 
+									echo "<h5>$record[distric]</h5>";	
 									echo '<div class="rating">';
 										echo '<span class="fa fa-star checked"></span>';
 										echo '<span class="fa fa-star checked"></span>';
@@ -53,11 +58,13 @@ session_start();
 										echo '<span class="fa fa-star checked"></span>';
 										echo '<span class="fa fa-star checked"></span>';
 									echo '</div>';
-							
-						echo '</div>';
-					}
-					
-					}					
+									echo '</div>';
+									echo '<div class="col3">';
+										echo "<a href='studio_prof.php?studio_id=$record[studio_id]'>View</a>";
+									echo '</div>';	
+								echo '</div>';
+					}	
+				}					
 		?>
 	</div>
 

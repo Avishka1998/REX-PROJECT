@@ -177,7 +177,6 @@ session_start();
           <input type="text" value=""  name="charge" placeholder="Per Hour" required>
 
           <button type="submit_name" class="btn save" name="submit_other_service">Save</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
 	</form>
     </div>         
   </div>
