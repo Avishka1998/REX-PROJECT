@@ -1,6 +1,11 @@
 <?php 
 require_once('../../inc/connection.php');
 session_start();
+$studio_id = $_SESSION['studio_id'];
+$query = "SELECT paypal FROM studio WHERE studio_id = $studio_id";
+$result_set = mysqli_query($connection,$query);
+$record = mysqli_fetch_assoc($result_set);
+$paypal = $record['paypal'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,7 +75,7 @@ session_start();
 
 				<div class="row grid">
 				  <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-					<input type="hidden" name="business" value="recorexonline@gmail.com">
+					<input type="hidden" name="business" value=<?php echo $paypal;?>>
 					<input type="hidden" name="cmd" value="_xclick">
 					<input type="hidden" name="item_name" value="Instrument pack">
 					<input type="hidden" name="item_number" value="1255">

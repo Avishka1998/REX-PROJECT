@@ -73,6 +73,7 @@
             $longitude = mysqli_real_escape_string($connection,$_POST['longitude']);
             $s_email = mysqli_real_escape_string($connection,$_POST['s_email']);
             $s_tele_no = mysqli_real_escape_string($connection,$_POST['s_tele_no']);
+            $paypal = mysqli_real_escape_string($connection,$_POST['paypal']);
             $password = mysqli_real_escape_string($connection,$_POST['repeat_password']);
             $hashed_password = sha1($password);
 
@@ -99,8 +100,8 @@
                 }    
 
                 else{
-                    $query2 = "INSERT INTO studio(studio_name,s_address_line1,s_address_line2,s_city,distric,postalcode,latitude,longitude,s_email,password,s_tele_no,owner_id)
-                    VALUES ('{$studio_name}','{$s_address_line1}','{$s_address_line2}','{$s_city}','{$distric}','{$postalcode}','{$latitude}','{$longitude}','{$s_email}','{$hashed_password}','{$s_tele_no}','{$_SESSION['user_id']}')";
+                    $query2 = "INSERT INTO studio(studio_name,s_address_line1,s_address_line2,s_city,distric,postalcode,latitude,longitude,s_email,password,s_tele_no,paypal,owner_id)
+                    VALUES ('{$studio_name}','{$s_address_line1}','{$s_address_line2}','{$s_city}','{$distric}','{$postalcode}','{$latitude}','{$longitude}','{$s_email}','{$hashed_password}','{$s_tele_no}','{$paypal}','{$_SESSION['user_id']}')";
 
                     $result_set2 = mysqli_query($connection,$query2);
                     if($result_set2){

@@ -15,7 +15,7 @@ body{
   border: 2px solid black;
   width: 60%;
   position: absolute;
-  top: 50%;
+  top: 48%;
   left: 50%;
   padding: 50px;
   margin-bottom: 100px;
@@ -28,7 +28,7 @@ body{
   height: 230px;
   width: 220px;
   position: relative;
-  border: 2px solid #FFF;
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 50%;
   /* background: url('../../img/customer/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg'); */
   background-size: 100% 100%;
@@ -41,6 +41,13 @@ body{
   background-color: #ddd;
   outline: none;
 }
+
+.upload{
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
 .image-button{
   background-color: #575656;
   color: rgb(245, 231, 231);
@@ -51,20 +58,18 @@ body{
   opacity: 0.8;
   top: 70%;
   position: relative;
-  left: 48%;
 }
 
 .upload label{  
   position: relative;
   bottom: 0px;
-  /* float: right; */
   top: 10px;
-  left: 43%;
   width: 45px;
   outline: none;
   cursor: pointer;
   opacity: 0.7;
   transition: 0.5s;
+  margin-left: 12%;
 }
 
 .upload label:hover{
@@ -74,11 +79,10 @@ body{
 .upload label img{  
   height: 35px;
   width: 45px;
-  
 }
 
 h2{
-  font-family: Arial, Helvetica, sans-serif;
+  font: 20px Arial, Helvetica sans-serif;
   margin-left: 20%;
   margin-right: 15%;
 	margin-bottom: 40px;

@@ -31,6 +31,12 @@ if(isset($_GET['studio_id'])){
 		$query2 = "SELECT * FROM studio_portfolio WHERE studio_id = '$studio_id'";
 		$result_set2 = mysqli_query($connection,$query2);
 		$port_record = mysqli_fetch_assoc($result_set2);
+
+		$query3="SELECT * FROM studio_service WHERE studio_id=$studio_id";
+		$result_set3=mysqli_query($connection,$query3);
+
+		$query4="SELECT * FROM studio_audio_gear WHERE studio_id=$studio_id";
+		$result_set4=mysqli_query($connection,$query4);
 	} 
 }
 
@@ -40,7 +46,7 @@ if(isset($_GET['studio_id'])){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Studio</title>
+	<title><?php echo $studio_name; ?></title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/studio_prof.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRPjxeL78zpFysY_Im4Me74oUEdH9-PFc&callback=initMap&libraries=&v=weekly" defer></script>
@@ -104,39 +110,87 @@ if(isset($_GET['studio_id'])){
 	</div>
 
 	<div id="services" class="container" style="top: 10%; padding-bottom: 5%">
-		<h2>Services</h2>
+		<h2>AVAILABLE SERVICES</h2>
 		<div class="service clearfix">
-		  <a href="#">Recording</a>
-		  <a href="#">Mixing</a>
-		  <a href="#">Dubbing</a>
-		  <a href="#">Masterring</a>
-		  <a href="#">Editing</a>
-		  <a href="#">Audio Production</a>
-		  <a href="#">Video Production</a>
+		<?php
+		  if(mysqli_num_rows($result_set3)>0){ 
+		 	echo "<table>
+			<tr>
+			<th>SERVICE</th>
+			<th>FEE/H (LKR)</th>
+			</tr>";
+			
+			while($row3 = mysqli_fetch_assoc($result_set3)){
+			  echo "<tr>";
+  			  echo "<td>" . $row3['service_name'] . "</td>";
+  			  echo "<td>" . $row3['service_charge'] . "</td>";
+			  echo "</tr>";		
+			}
+			echo "</table>";
+		  }
+		  else{
+		    echo "<p style='color:red;'><b><i>NO SERVICES AVAILABLE!</i></b></p>"; 		  
+		  }	 
+		  ?>
+		</div>
+	</div>
+
+	<div id="services" class="container" style="top: 10%; padding-bottom: 5%">
+		<h2>AVAILABLE AUDIO GEARS</h2>
+		<div class="service clearfix">
+		<?php
+		  if(mysqli_num_rows($result_set4)>0){ 
+		 	echo "<table>
+			<tr>
+			<th>AUDIO GEAR</th>
+			<th>FEE/H (LKR)</th>
+			</tr>";
+			
+			while($row4 = mysqli_fetch_assoc($result_set4)){
+			  echo "<tr>";
+  			  echo "<td>" . $row4['name'] . "</td>";
+			  echo "<td>" . $row4['charge'] . "</td>";
+			  echo "</tr>";		
+			}
+			echo "</table>";
+		  }
+		  else{
+		    echo "<p style='color:red;'><b><i>NO AUDIO GEARS AVAILABLE!</i></b></p>";  	  
+		  }	 
+		  ?>
 		</div>
 	</div>
 
 	<div class="container portfolio" id="portfolio">
-		<h2>Portfolio</h2>
-		<div class="video">
-		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port1']?>" type="video/mp4">
-		</iframe>
-		</div> 
+		<h2>PORTFOLIO</h2>
 		
-		<div class="video">
-		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port2']?>" type="video/mp4">
-		</iframe>
-		</div>  
-		
-		<div class="video">
-		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port3']?>" type="video/mp4">
-		</iframe>  
-		</div>
-
-		<div class="video">
-		<iframe width="320" height="240" poster="../../img/studio-mic.jpg" controls src="https://www.youtube.com/embed/<?php echo $port_record['port4']?>" type="video/mp4">
-		</iframe>
-		</div>  
+		<?php
+		if(mysqli_num_rows($result_set2)>0 && ($port_record['port1']!=NULL || $port_record['port2']!=NULL || $port_record['port3'] || $port_record['port4'])){
+		  echo
+		   "<div class='video'>
+			<iframe width='320' height='240' poster='../../img/studio-mic.jpg' controls src='https://www.youtube.com/embed/$port_record[port1]' type='video/mp4'>
+			</iframe>
+			</div> 
+		  
+		    <div class='video'>
+		    <iframe width='320' height='240' poster='../../img/studio-mic.jpg' controls src='https://www.youtube.com/embed/$port_record[port2]' type='video/mp4'>
+		    </iframe>
+		    </div>  
+		  
+		    <div class='video'>
+		    <iframe width='320' height='240' poster='../../img/studio-mic.jpg' controls src='https://www.youtube.com/embed/$port_record[port3]' type='video/mp4'>
+		    </iframe>
+		    </div>
+  
+		    <div class='video'>
+		    <iframe width='320' height='240' poster='../../img/studio-mic.jpg' controls src='https://www.youtube.com/embed/$port_record[port4]' type='video/mp4'>
+		    </iframe>
+		    </div>";	
+		}
+		else{
+			echo "<p style='color:red; padding-top:15px;'><b><i>NO PORTFOLIOS AVAILABLE!</i></b></p>"; 
+		}
+		?>
 	</div>
 	</div>
 	</div>

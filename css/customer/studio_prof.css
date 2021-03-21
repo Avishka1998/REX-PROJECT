@@ -3,7 +3,6 @@ body{
   padding: 0;
   font-family:sans-serif;
   overflow:auto;
-  background: rgba(129, 0, 250, 0.3);
   scroll-behavior: smooth;
 }
 
@@ -18,7 +17,7 @@ body{
 }
 
 .primary{
-  background-color: rgb(252, 242, 227);
+  background: rgba(223, 223, 235, 0.5);
   overflow: auto;
   width: 80%;
   float: right;
@@ -168,6 +167,7 @@ body{
 .video{
   float: left;  
   margin: 2% 7.5%;
+  border: 2px solid black;
   /* display: inline; */
 }
 
@@ -214,6 +214,17 @@ input[type=text]:focus {
   right: 16%;
   top:300px;
   overflow: hidden;
+}
+
+table,th,td{
+  text-align: center;
+  width: 50%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
 }
 
 .cover .button:hover{

@@ -82,7 +82,7 @@ session_start();
                                                         </div>
                                                         <div class="column">
                                                                 <div class="slideTwo">	
-                                                                        <input type="checkbox"  id="service'.$record['service_id'].'"  onclick="rdonly'.$record['service_id'].'(this)"  name="check'.$record['service_id'].'"  value="'.$record['name'].'" />
+                                                                        <input type="checkbox" id="service'.$record['service_id'].'"  onclick="rdonly'.$record['service_id'].'(this)"  name="check'.$record['service_id'].'"  value="'.$record['name'].'" />
                                                                         <label for="service'.$record['service_id'].'"></label>          
                                                                 </div>
                                                         </div>  

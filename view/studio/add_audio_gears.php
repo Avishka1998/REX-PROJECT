@@ -91,8 +91,8 @@ session_start();
                                                         <div class="column" style="width:30%; padding-left:10px; padding-right:60px;">
                                                                 <div class="form-popup" id="dvservice'.$record['id'].'" >  
                                                                         <div class="form__group">
-                                                                        <input type="text" class="form__input"  name="charge'.$record['id'].'" placeholder="Charge per day" readonly />
-                                                                        <input type="text" class="form__input"  name="qty'.$record['id'].'" placeholder="Number of audio gears" readonly />
+                                                                        <input type="text" class="form__input"  name="charge'.$record['id'].'" id="charge'.$record['id'].'" placeholder="Charge per day" readonly />
+                                                                        <input type="text" class="form__input"  name="qty'.$record['id'].'" id="qty'.$record['id'].'" placeholder="Number of audio gears" readonly />
                                                                         </div>                               
                                                                                 
                                                                 </div>	

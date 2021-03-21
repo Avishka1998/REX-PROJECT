@@ -1,5 +1,6 @@
 body{
-  background: linear-gradient(rgba(18, 18, 159, 0.5),rgba(5, 36, 189, 0.6));
+  /* background: linear-gradient(rgba(18, 18, 159, 0.5),rgba(5, 36, 189, 0.6)); */
+	background: rgba(223, 223, 235, 0.5);
   background-repeat: inherit;
   background-position: inherit;
   position: relative;

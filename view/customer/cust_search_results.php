@@ -38,7 +38,7 @@ if(isset($_SESSION['type'])){
 			if(isset($_GET['search_result']) && !empty($_GET['search_result'])){
 				$studio_id_arr = unserialize(urldecode($_GET['search_result']));//get the studio id array              
 				foreach($studio_id_arr as $s){ //for loop to get studio names
-					$query="SELECT studio_id,studio_name,profile FROM studio WHERE studio_id =$s[0]"; //select studio name 
+					$query="SELECT * FROM studio WHERE studio_id =$s[0] AND verified=1 AND email_verified=1"; //select studio name 
 					$result_set=mysqli_query($connection,$query);
 					if($result_set){
 						while($record =mysqli_fetch_assoc($result_set)){
@@ -48,17 +48,25 @@ if(isset($_SESSION['type'])){
 							else{
 								$profile = "studio1.png";
 							}
-							echo '<div class="column">'; 																			
-										echo "<img src='../../img/studio/$profile' height='180' width='200' >";
-										echo "<h4><a href='studio_prof.php?studio_id=$record[studio_id]'>$record[studio_name] </a><br></h4>";
-										echo '<div class="rating">';
-											echo '<span class="fa fa-star checked"></span>';
-											echo '<span class="fa fa-star checked"></span>';
-											echo '<span class="fa fa-star checked"></span>';
-											echo '<span class="fa fa-star checked"></span>';
-											echo '<span class="fa fa-star checked"></span>';
-										echo '</div>';
-								
+							echo '<div class="row2">';
+							echo '<div class="col1">'; 																			
+								echo "<img src='../../img/studio/$profile' height='180' width='180' >";
+							echo '</div>';	
+							
+								echo '<div class="col2">';
+								echo "<h4>$record[studio_name]<br></h4>"; 
+								echo "<h5>$record[distric]</h5>";	
+								echo '<div class="rating">';
+									echo '<span class="fa fa-star checked"></span>';
+									echo '<span class="fa fa-star checked"></span>';
+									echo '<span class="fa fa-star checked"></span>';
+									echo '<span class="fa fa-star checked"></span>';
+									echo '<span class="fa fa-star checked"></span>';
+								echo '</div>';
+								echo '</div>';
+								echo '<div class="col3">';
+									echo "<a href='studio_prof.php?studio_id=$record[studio_id]'>View</a>";
+								echo '</div>';	
 							echo '</div>';
 					}
                         
