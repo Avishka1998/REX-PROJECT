@@ -1,927 +1,316 @@
+<?php
+  require_once('../../inc/connection.php');
+  session_start();
+
+  $userid = $_SESSION['user_id'];
+
+  function build_calendar($month,$year,$array,$blocked_list){
+    $daysOfWeek = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
+
+    $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
+    $numberDays = date('t',$firstDayOfMonth);
+    $dateComponents = getdate($firstDayOfMonth);
+    $monthName = $dateComponents['month'];
+    $dayOfWeek = $dateComponents['wday'];
+
+    $datetoday = date('Y-m-d');
+
+    $calendar = "<table class='table'>";
+    $calendar .= "<center><h2>$monthName $year</h2>";
+    
+    $calendar.= "<a class='cbtn' href='?month=".date('m', mktime(0, 0, 0, $month-1, 1, $year))."&year=".date('Y', mktime(0, 0, 0, $month-1, 1, $year))."'>Previous Month</a> ";
+    $calendar.= " <a class='cbtn' href='?month=".date('m')."&year=".date('Y')."'>Current Month</a> ";
+    $calendar.= "<a class='cbtn' href='?month=".date('m', mktime(0, 0, 0, $month+1, 1, $year))."&year=".date('Y', mktime(0, 0, 0, $month+1, 1, $year))."'>Next Month</a></center><br>";
+    
+    $calendar .= "<tr>";
+    foreach($daysOfWeek as $day){
+      $calendar .= "<th class='header'>$day</th>"; 
+    }
+    
+    $currentDay = 1;
+
+    $calendar .= "</tr><tr>";
+    if($dayOfWeek>0){
+      for($k=0;$k<$dayOfWeek;$k++){ 
+          $calendar .= "<td class='empty'></td>"; 
+      } 
+    }
+    $month = str_pad($month, 2, "0", STR_PAD_LEFT);
+    while($currentDay<=$numberDays){
+      if ($dayOfWeek == 7){ 
+          $dayOfWeek = 0; 
+          $calendar .= "</tr><tr>"; 
+      }
+      $currentDayRel = str_pad($currentDay, 2, "0", STR_PAD_LEFT); 
+      $date = "$year-$month-$currentDayRel"; 
+      $dayname = strtolower(date('l', strtotime($date))); 
+      $eventNum = 0; 
+      $today = $date==date('Y-m-d')? "today" : "";
+
+      $isblocked = 0;
+      for($i=0; $i<count($blocked_list); $i++){
+        if($date==$blocked_list[$i]['dates']){
+          $isblocked = 1;
+          break;
+        }
+      }
+
+      if($date<date('Y-m-d')){
+        $calendar.="<td><h4>$currentDay</h4> <button class='nabtn'>N/A</button>"; 
+      }
+      else if($isblocked==1){
+        $calendar.="<td><h4>$currentDay</h4> <button class='holbtn'>HOL</button>"; 
+      }
+      else if($date>=date('Y-m-d') && $array['issatblocked']==1 && $dayname == 'saturday'){
+        $calendar.="<td><h4>$currentDay</h4> <button class='holbtn'>HOL</button>"; 
+      }
+      else if($date>=date('Y-m-d') && $array['issunblocked']==1 && $dayname == 'sunday'){
+        $calendar.="<td><h4>$currentDay</h4> <button class='holbtn'>HOL</button>"; 
+      }
+      else if($date>=date('Y-m-d') && $array['issatblocked']==1 && $dayname != 'saturday'){
+        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>"; 
+      }
+      else if($date>=date('Y-m-d') && $array['issunblocked']==1 && $dayname != 'sunday'){
+        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>"; 
+      }
+      else if($date>=date('Y-m-d') && $array['issatblocked']==0 && $dayname == 'saturday'){
+        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>";
+      }
+      else if($date>=date('Y-m-d') && $array['issunblocked']==0 && $dayname == 'sunday'){
+        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>";
+      }
+      else{
+        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>"; 
+      }
+  
+      $calendar .="</td>";
+      
+      $currentDay++; 
+      $dayOfWeek++; 
+    }
+
+    if ($dayOfWeek!=7){ 
+      $remainingDays = 7-$dayOfWeek; 
+      for($l=0;$l<$remainingDays;$l++){ 
+          $calendar .= "<td class='empty'></td>"; 
+      } 
+    }
+    $calendar .= "</tr>"; 
+    $calendar .= "</table>";
+    echo $calendar;
+}
+
+if(isset($_GET['blocksat'])){
+  $x = $_GET['blocksat'];
+  $query13 = "UPDATE studio_schedule SET issatblocked = 1 WHERE id = $x";
+  $res_set13 = mysqli_query($connection,$query13);
+  header('Location: ../../view/studio/studio_schedule.php'); 
+}
+if(isset($_GET['unblocksat'])){
+  $x = $_GET['unblocksat'];
+  $query13 = "UPDATE studio_schedule SET issatblocked = 0 WHERE id = $x";
+  $res_set13 = mysqli_query($connection,$query13);
+  header('Location: ../../view/studio/studio_schedule.php'); 
+}
+if(isset($_GET['blocksun'])){
+  $x = $_GET['blocksun'];
+  $query13 = "UPDATE studio_schedule SET issunblocked = 1 WHERE id = $x";
+  $res_set13 = mysqli_query($connection,$query13);
+  header('Location: ../../view/studio/studio_schedule.php'); 
+}
+if(isset($_GET['unblocksun'])){
+  $x = $_GET['unblocksun'];
+  $query13 = "UPDATE studio_schedule SET issunblocked = 0 WHERE id = $x";
+  $res_set13 = mysqli_query($connection,$query13);
+  header('Location: ../../view/studio/studio_schedule.php'); 
+}
+
+if(isset($_POST['submit'])){
+  if($_POST['date']!=NULL){
+    $blockedate = $_POST['date'];
+    $query15 = "INSERT INTO blocked_dates (sid,dates) VALUES ('$userid','$blockedate')";
+    $res_set15 = mysqli_query($connection,$query15);
+    header('Location: ../../view/studio/studio_schedule.php'); 
+  }
+}
+
+if(isset($_POST['submit2'])){
+  if(isset($_POST['date2'])){
+    $blockedate = $_POST['date2'];
+    $isblock = 0;
+    //Blocked date array creation
+    $block_list=[];
+    $query16 = "SELECT * FROM blocked_dates WHERE sid=$userid";
+    $res_set16 = mysqli_query($connection,$query16);
+    if(mysqli_num_rows($res_set16)>0){
+      while($row=mysqli_fetch_assoc($res_set16)){
+        array_push($block_list,$row);
+      }
+    }
+
+    for($i=0; $i<count($block_list); $i++){
+      if($block_list[$i]['dates']==$blockedate){
+        $isblock = 1;
+        break;
+      }
+    }
+
+    if($isblock==1){
+      $query17 = "DELETE FROM blocked_dates WHERE sid='$userid' AND dates='$blockedate'";
+      $res_set17 = mysqli_query($connection,$query17);
+    }
+    header('Location: ../../view/studio/studio_schedule.php'); 
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Studio Shedule</title>
 	<link rel="stylesheet" type="text/css" href="../../css/studio/studio_schedule.css">
+	<link rel="stylesheet" href="../../css/calendar.css">
+	<style>
+	  .container{
+		font-family: sans-serif;
+		width: 70%;
+		padding-right:15px;
+		padding-left:15px;
+      }
+	</style>
 </head>
 <body>
 	<div class="nav body" style="padding-left: 0;">
 		<?php require_once('../../inc/stu_dash_navbar.php');?>
 	</div>
-<div class="column" style="width:40%">
-		<div class="row" >
-			<div class="calander"> 
-     			 <div class="thismonth">
-       					<div class="month">      
-							<ul>
-								<li>
-									This Month<br>
-									<span style="font-size:18px">2020</span>
-								</li>
-							</ul>
-       					 </div>
+  
+  <?php   
+  $query11 = "SELECT * FROM studio_schedule WHERE id = $user_id";
+  $res_set11 = mysqli_query($connection,$query11);
+  if(mysqli_num_rows($res_set11)>0){
+    $record11 = mysqli_fetch_assoc($res_set11);
+  }
+  else{
+    $query12 = "INSERT INTO studio_schedule (id) VALUES ($user_id)";
+    $res_set12 = mysqli_query($connection,$query12);
+    $query11 = "SELECT * FROM studio_schedule WHERE id = $user_id";
+    $res_set11 = mysqli_query($connection,$query11);
+    $record11 = mysqli_fetch_assoc($res_set11);
+  }
+  //Blocked date array creation
+  $blocked_list=[];
+  $query16 = "SELECT * FROM blocked_dates WHERE sid=$user_id";
+  $res_set16 = mysqli_query($connection,$query16);
+  if(mysqli_num_rows($res_set16)>0){
+    while($row=mysqli_fetch_assoc($res_set16)){
+      array_push($blocked_list,$row);
+    }
+  }
+  ?>
 
-						<ul class="weekdays" style="text-align: left;">
-							<li>Mo</li>
-							<li>Tu</li>
-							<li>We</li>
-							<li>Th</li>
-							<li>Fr</li>
-							<li>Sa</li>
-							<li>Su</li>
-						</ul>
+	<div class="row1">
+	  <div class="col1">
+      <?php
+        if($record11['issatblocked']==0){
+          echo "<a href='studio_schedule.php?blocksat=$userid'>Block Saturdays</a>";
+        }
+        else{
+          echo "<a href='studio_schedule.php?unblocksat=$userid'>Unblock Saturdays</a>";
+        }
+        if($record11['issunblocked']==0){
+          echo "<a href='studio_schedule.php?blocksun=$userid'>Block Sundays</a>";
+        }
+        else{
+          echo "<a href='studio_schedule.php?unblocksun=$userid'>Unblock Sundays</a>";
+        }
+        ?>  
+          <button class="open-button" onclick="document.getElementById('dateForm').style.display='block'">Block a day</button>
+          <button class="open-button open-button-2" onclick="document.getElementById('dateForm2').style.display='block'">Unblock a day</button>
+          <button class="open-button open-button-3" onclick="document.getElementById('dateForm3').style.display='block'">VIEW BLOCKED LIST</button> 
+	  </div>
 
-						<ul class="days" style="text-align: left;">  
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">1</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">2</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">3</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">4</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">5</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">6</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">7</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">8</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">9</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">10</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">11</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">12</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">13</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">14</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">15</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">16</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">17</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">18</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">19</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">20</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">21</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">22</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">23</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">24</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">25</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">26</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">27</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">28</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">29</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">30</button></li>
-							<li><button  value='Show Layer'onclick="setVisibility('sub3', 'inline');">31</button></li>
-						</ul>
-  				</div>
-    
-		 </div> 
+	  <div class="col2">
+	  	<div class="container"> 
+    	<div class="row"> 
+      <?php 
+        $dateComponents = getdate(); 
+        if(isset($_GET['month']) && isset($_GET['year'])){
+        $month = $_GET['month']; 			     
+        $year = $_GET['year'];
+        }
+        else{
+        $month = $dateComponents['mon']; 			     
+        $year = $dateComponents['year'];
+        }
+        build_calendar($month,$year,$record11,$blocked_list); 
+      ?> 
+    </div> 
+    </div> 
+	  </div>
+    <?php $todate = date("Y-m-d");?>    
+    <div class="modal" id="dateForm">
+		  <form action="?" class="form-container animate" method="post">
+		    
+		    <label for="date" ><b>BLOCKING DATE</b></label><br>
+		    <input type="date" name="date" min="<?php echo $todate;?>">
+
+		    <button type="submit" class="btn submit" name="submit">BLOCK</button>
+        <button type="button" class="btn submit" onclick="document.getElementById('dateForm').style.display='none'">Cancel</button>
+		  </form>
+		</div>
+    <div class="modal" id="dateForm2">
+		  <form action="?" class="form-container animate" method="post">
+		    
+		    <label for="date2" ><b>UNBLOCKING DATE</b></label><br>
+		    <input type="date" name="date2" min="<?php echo $todate;?>">
+
+		    <button type="submit" class="btn submit" name="submit2">UNBLOCK</button>
+        <button type="button" class="btn submit" onclick="document.getElementById('dateForm2').style.display='none'">Cancel</button>
+		  </form>
+		</div>
+    <div class="modal" id="dateForm3">
+      <div class="modal-content">
+        <h3>BLOCKED DATES</h3>
+        <?php
+          if($record11['issatblocked']==1){
+            echo '<h5>* ALL SATURDAYS</h5>';
+          }
+          if($record11['issunblocked']==1){
+            echo '<h5>* ALL SUNDAYS</h5>';
+          }
+          if(count($blocked_list)>0){
+            for($n=0; $n<count($blocked_list); $n++){?>
+              <h5>* <?php echo $blocked_list[$n]['dates'];?></h5><?php
+            }
+          }
+          else{
+            echo 'NO BLOCKED DATES';
+          }
+        ?>
+      </div>
+    </div>
+    <script>
+		  var modal = document.getElementById('dateForm');
+		  window.onclick = function(event){
+    	  if(event.target == modal){
+          modal.style.display = "none";
+    	  }
+		  }
+      var modal = document.getElementById('dateForm2');
+		  window.onclick = function(event){
+    	  if(event.target == modal){
+          modal.style.display = "none";
+    	  }
+		  }
+      var modal = document.getElementById('dateForm3');
+		  window.onclick = function(event){
+    	  if(event.target == modal){
+          modal.style.display = "none";
+    	  }
+		  }    	
+		</script>    
 	</div>
-	
-	<script language="JavaScript">
-	function setVisibility(id, visibility) {
-	document.getElementById(id).style.display = visibility;
-	}
-	</script>
-	<div id="sub3" class="row">
- 		<div class="calander">
-	 		<div class="container">  
-		 		<div class="slot1">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-					<div class="slideTwo">
-						
-						<input type="checkbox"  id="service1" onclick="openForm2(this)" name="check1" />
-						<label for="service1"></label> 
-					</div>
-					<div class="hh2">
-						<h2>Available</h2>
-					</div>
-		 		</div>
-		 		<div class="slot1">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-					<div class="slideTwo">
-						
-						<input type="checkbox"  id="service2" onclick="openForm2(this)" name="check1" />
-						<label for="service2"></label> 
-					</div>
-					<div class="hh2">
-						<h2>Available</h2>
-					</div>
-		 		</div>
-		 	
-		 		<div class="slot1">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-			 		<div class="slideTwo">
-			 		
-			 		<input type="checkbox"  id="service3" onclick="openForm2(this)" name="check1" />
-			 		<label for="service3"></label> 
-			  	</div>
-			  	<div class="hh2">
-			  		<h2>Available</h2>
-			  	</div>
-		 	</div>
-	    </div> 
-	    
-</div>
-
-    <div class="calander">
-			<input type=button name=type value='Save'  class="next" onclick="setVisibility('sub3', 'none');"; /> 
-    </div>                                           
-
-</div>
-
-</div>
-<!-- next column aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
-<div class="column" style="width:60%">
-		<div class="row1" style="bottom: 280px;	right:10px">
-			<h1>Set Your Default Time Slots</h1>
-		</div>
-		<div class="row1" > 
-			<div class="column1" style="width: 30%;">
-				<h3>Monday</h3>
-			</div>
-			<div class="column1" style="width: 70%;">
-			<div class="container">  
-		 		<div class="slot">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-					<div class="slideTwo">
-						
-						<input type="checkbox"  id="service4" onclick="openForm2(this)" name="check1" />
-						<label for="service4"></label> 
-					</div>
-					<div class="hh2">
-						<h2>Available</h2>
-					</div>
-				 </div>
-			</div>
-		</div>
-
-			</div>		
-	 		
-		<div class="row1">
-			<div class="column1" style="width: 30%;">
-				<h3>Tuesday</h3>
-			</div>
-			<div class="column1" style="width: 70%;">
-			<div class="container">
-		 		<div class="slot">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-					<div class="slideTwo">
-						
-						<input type="checkbox"  id="service6" onclick="openForm2(this)" name="check1" />
-						<label for="service6"></label> 
-					</div>
-					<div class="hh2">
-						<h2>Available</h2>
-					</div>
-		 		</div>
-			</div>
-			</div>
-		</div>
-		<div class="row1" >
-		    <div class="column1" style="width: 30%;">
-				<h3>Wednesday</h3>
-			</div>
-			<div class="column1" style="width: 70%;">
-			<div class="container" >	
-		 		<div class="slot">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-			 		<div class="slideTwo">
-			 		
-			 		<input type="checkbox"  id="service7" onclick="openForm2(this)" name="check1" />
-			 		<label for="service7"></label> 
-			  	</div>
-			  	<div class="hh2">
-			  		<h2>Available</h2>
-			  	</div>
-		 	</div>   
-		</div>
-		</div>
-	</div>
-		<div class="row1">
-		    <div class="column1" style="width: 30%;">
-				<h3>Thursday</h3>
-			</div>
-			<div class="column1" style="width: 70%;">
-			<div class="container" >	
-		 		<div class="slot">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-			 		<div class="slideTwo">
-			 		
-			 		<input type="checkbox"  id="service8" onclick="openForm2(this)" name="check1" />
-			 		<label for="service8"></label> 
-			  	</div>
-			  	<div class="hh2">
-			  		<h2>Available</h2>
-			  	</div>
-		 	</div>   
-		</div>
-	</div>
-	</div>
-	<div class="row1" > 
-			<div class="column1" style="width: 30%;">
-				<h3>Friday</h3>
-			</div>
-			<div class="column1" style="width: 70%;">		
-	 		<div class="container">  
-		 		<div class="slot">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-					<div class="slideTwo">
-						
-						<input type="checkbox"  id="service9" onclick="openForm2(this)" name="check1" />
-						<label for="service9"></label> 
-					</div>
-					<div class="hh2">
-						<h2>Available</h2>
-					</div>
-				 </div>
-			</div>
-		</div>
-		</div>
-		<div class="row1" > 	
-			<div class="column1" style="width: 30%;">
-				<h3>Saturday</h3>
-			</div>
-			<div class="column1" style="width: 70%;">	
-	 		<div class="container">  
-		 		<div class="slot">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-					<div class="slideTwo">
-						
-						<input type="checkbox"  id="service10" onclick="openForm2(this)" name="check1" />
-						<label for="service10"></label> 
-					</div>
-					<div class="hh2">
-						<h2>Available</h2>
-					</div>
-				 </div>
-			</div>
-		</div>
-		</div>
-		<div class="row1" > 	
-		    <div class="column1" style="width: 30%;">
-				<h3>Sunday</h3>
-			</div>
-			<div class="column1" style="width: 70%;">	
-	 		<div class="container">  
-		 		<div class="slot">
-		 			<div class="time">
-		 				<form>
-							<label for="sttime">From</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-							<br>
-							<label for="sttime">To</label>
-						    <select id="sttime" name="sttime">
-						    	  <option value="0">00.00</option>
-							      <option value="1">01.00</option>
-							      <option value="2">02.00</option>
-							      <option value="3">03.00</option>
-							      <option value="4">04.00</option>
-							      <option value="5">05.00</option>
-							      <option value="6">06.00</option>
-							      <option value="7">07.00</option>
-							      <option value="8">08.00</option>
-							      <option value="9">09.00</option>
-							      <option value="10">10.00</option>
-							      <option value="11">11.00</option>
-							      <option value="12">12.00</option>
-							      <option value="13">13.00</option>
-							      <option value="14">14.00</option>
-							      <option value="15">15.00</option>
-							      <option value="16">16.00</option>
-							      <option value="17">17.00</option>
-							      <option value="18">18.00</option>
-							      <option value="19">19.00</option>
-							      <option value="20">20.00</option>
-							      <option value="21">21.00</option>
-							      <option value="22">22.00</option>
-							      <option value="23">23.00</option>
-						           
-						    </select>
-						    
-						</form>
-		 			</div>
-					<div class="h2">
-						<h2>Away</h2>
-					</div> 		
-					<div class="slideTwo">
-						
-						<input type="checkbox"  id="service11" onclick="openForm2(this)" name="check1" />
-						<label for="service11"></label> 
-					</div>
-					<div class="hh2">
-						<h2>Available</h2>
-					</div>
-				 </div>
-			</div>
-			</div>
-			</div> 
-			<div class="row1">
-				<div class="column1">
-				<div class="calander">
-					<input type=button name=type value='Save'  class="next" ; /> 
-				</div>
-			
-
-			</div>
-		</div>
-	
-
-
 
 	<?php require_once('../../inc/minfooter.php'); ?>
 </body>
