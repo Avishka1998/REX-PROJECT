@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2021 at 08:21 PM
+-- Generation Time: Mar 24, 2021 at 08:46 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -88,18 +88,19 @@ CREATE TABLE `customer` (
   `password` varchar(60) NOT NULL,
   `email_verified` tinyint(1) NOT NULL DEFAULT '0',
   `blocked` int(1) NOT NULL DEFAULT '0',
-  `image` varchar(500) NOT NULL
+  `image` varchar(500) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'Active now'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`, `email_verified`, `blocked`, `image`) VALUES
-(23, 'Dinindu', 'Navanjana', 'nuwan@gmail.com', 722345147, '6edf8b2bd1b6e03a535504401e6969c850269632', 1, 0, 'maxresdefault.jpg'),
-(48, 'Ariana', 'Grande', 'ariana@example.com', 412282222, '83c682f6086bd7654e46ea8e6ecf31a6b495bd75', 1, 0, '5bc79179fc7e160bf846da82.jfif'),
-(49, 'Charlie', 'Puth', 'charlie@example.com', 718822545, 'a498b9d11fa928bc649f5e2bf888d751a0620f81', 1, 0, 'charlie-puth-summertime-ball-2017-1-1497126768-custom-0.jpg'),
-(51, 'Jogn', 'Paul', 'paula@example.com', 742558744, '8604b5af9cf1d26ebd0ea6288c86f21756c5f49f', 1, 1, '');
+INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `password`, `email_verified`, `blocked`, `image`, `status`) VALUES
+(23, 'Dinindu', 'Navanjana', 'nuwan@gmail.com', 722345147, '7c222fb2927d828af22f592134e8932480637c0d', 1, 0, 'maxresdefault.jpg', 'Active now'),
+(48, 'Ariana', 'Grande', 'ariana@example.com', 412282222, '7c222fb2927d828af22f592134e8932480637c0d', 1, 0, '5bc79179fc7e160bf846da82.jfif', 'Active now'),
+(49, 'Charlie', 'Puth', 'charlie@example.com', 718822545, '7c222fb2927d828af22f592134e8932480637c0d', 1, 0, 'charlie-puth-summertime-ball-2017-1-1497126768-custom-0.jpg', 'Active now'),
+(51, 'Jogn', 'Paul', 'paula@example.com', 742558744, '7c222fb2927d828af22f592134e8932480637c0d', 1, 1, '', 'Active now');
 
 -- --------------------------------------------------------
 
@@ -338,20 +339,21 @@ CREATE TABLE `studio` (
   `verified` tinyint(4) NOT NULL DEFAULT '0',
   `email_verified` tinyint(1) NOT NULL DEFAULT '0',
   `owner_verified` tinyint(1) NOT NULL DEFAULT '0',
-  `blocked` int(1) NOT NULL DEFAULT '0'
+  `blocked` int(1) NOT NULL DEFAULT '0',
+  `status` varchar(10) NOT NULL DEFAULT 'Active now'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `studio`
 --
 
-INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `paypal`, `owner_id`, `profile`, `cover`, `description`, `latitude`, `longitude`, `verified`, `email_verified`, `owner_verified`, `blocked`) VALUES
-(31, 'InWave Music Studio', '396/B', 'Tangalle Rd', 'Weeraketiya', 'Hambantota', '184481', 'chandanastudios@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', 770866346, 'lakaisui@gmail.com', 10, 'man-profile-silhouette-with-headphone-music-vector-1305904.jpg', '0ec5c569226647.5b79b483096c1.jpg', 'Abbey Road studios are now regarded as the most iconic set of studios going, you can bet almost anyone has heard of them even if they’re not in the music industry. With their high-end gear and clientele boasting some of the most legendary names in the music business from The Beatles and Aretha Franklin to Kanye West and Lady Gaga, it’s no surprise they take the number one spot on our list.One of my favourite things about their online mastering service is they give you the option to handpick your own mastering engineer from a list of 5 Abbey Road approved mastering specialists included in their online mastering package starting at just £90.', '6.9022', '79.8612', 1, 1, 0, 0),
-(36, 'Lahiru Audio Vision', '19/2', 'Kottawa Rd', 'Piliyandala', 'Colombo', '45714', 'lahiruaudio@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 714568794, '', 21, '579ac30d06d7f66d701da57d_profile.jpg', '83ff029f775b748955df61a8805fdcee.jpg', 'Lahiru studios are now regarded as the most iconic set of studios going, you can bet almost anyone has heard of them even if they’re not in the music industry. With their high-end gear and clientele boasting some of the most legendary names in the music business from The Beatles and Aretha Franklin to Kanye West and Lady Gaga, it’s no surprise they take the number one spot on our list. You will be surprised that the price range can be fairly affordable considering what you get for your money and it’s worth noting that what’s charged to major clients is more than independent musicians and unsigned artists, so always ask if there’s wiggle room on their rates. ', '6.214754', '80.12547', 1, 1, 0, 0),
-(38, 'Vaanavil Studio', '654', 'Kandy Rd', 'Kannathiddy', 'Jaffna', '84721', 'vaanavil@example.com', '263b13a12a96eababc0c9c377c7711672b8e18d5', 714568977, '', 21, '', '', '', '9.6615', '80.0255', 0, 1, 0, 0),
-(39, 'Static Audio Productions', '53', 'Estate Rd', 'Wilgoda', 'Kurunegala', '80400', 'static@example.com', 'b67d0ef0ae8a0e5052065b6dfc1d8737de68ed49', 723778899, '', 16, '', '', '', '7.4818', '80.3609', 0, 1, 0, 0),
-(46, 'Paul Audio Productions', 'Lesly Ranagala Rd', 'Vanathamulla', 'Borella', 'Colombo', '52478', 'paulstudio@example.com', 'd7abb37b2b39f33ce64ad6259fd50a8dc4a6550d', 716542147, '', 22, 'profile-204302-1071312414840020034.png', 'music-review-blog-youtube-banner-design-template-0f6f36593959a5fe315a97e1b3e48534_screen.jpg', '', '', '', 1, 1, 0, 0),
-(52, 'Pavi Production', '396', 'Deniyaya Rd', 'Morawaka', 'Matara', '81470', 'naveenudara356@gmail.com', '8604b5af9cf1d26ebd0ea6288c86f21756c5f49f', 768404899, '', 21, '', '', '', '', '', 1, 1, 0, 0);
+INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_line2`, `s_city`, `distric`, `postalcode`, `s_email`, `password`, `s_tele_no`, `paypal`, `owner_id`, `profile`, `cover`, `description`, `latitude`, `longitude`, `verified`, `email_verified`, `owner_verified`, `blocked`, `status`) VALUES
+(31, 'InWave Music Studio', '396/B', 'Tangalle Rd', 'Weeraketiya', 'Hambantota', '184481', 'chandanastudios@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', 770866346, 'lakaisui@gmail.com', 10, 'man-profile-silhouette-with-headphone-music-vector-1305904.jpg', '0ec5c569226647.5b79b483096c1.jpg', 'Abbey Road studios are now regarded as the most iconic set of studios going, you can bet almost anyone has heard of them even if they’re not in the music industry. With their high-end gear and clientele boasting some of the most legendary names in the music business from The Beatles and Aretha Franklin to Kanye West and Lady Gaga, it’s no surprise they take the number one spot on our list.One of my favourite things about their online mastering service is they give you the option to handpick your own mastering engineer from a list of 5 Abbey Road approved mastering specialists included in their online mastering package starting at just £90.', '6.9022', '79.8612', 1, 1, 0, 0, 'Active now'),
+(36, 'Lahiru Audio Vision', '19/2', 'Kottawa Rd', 'Piliyandala', 'Colombo', '45714', 'lahiruaudio@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 714568794, '', 21, '579ac30d06d7f66d701da57d_profile.jpg', '83ff029f775b748955df61a8805fdcee.jpg', 'Lahiru studios are now regarded as the most iconic set of studios going, you can bet almost anyone has heard of them even if they’re not in the music industry. With their high-end gear and clientele boasting some of the most legendary names in the music business from The Beatles and Aretha Franklin to Kanye West and Lady Gaga, it’s no surprise they take the number one spot on our list. You will be surprised that the price range can be fairly affordable considering what you get for your money and it’s worth noting that what’s charged to major clients is more than independent musicians and unsigned artists, so always ask if there’s wiggle room on their rates. ', '6.214754', '80.12547', 1, 1, 0, 0, 'Active now'),
+(38, 'Vaanavil Studio', '654', 'Kandy Rd', 'Kannathiddy', 'Jaffna', '84721', 'vaanavil@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 714568977, '', 21, '', '', '', '9.6615', '80.0255', 0, 1, 0, 0, 'Active now'),
+(39, 'Static Audio Productions', '53', 'Estate Rd', 'Wilgoda', 'Kurunegala', '80400', 'static@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 723778899, '', 16, '', '', '', '7.4818', '80.3609', 0, 1, 0, 0, 'Active now'),
+(46, 'Paul Audio Productions', 'Lesly Ranagala Rd', 'Vanathamulla', 'Borella', 'Colombo', '52478', 'paulstudio@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 716542147, '', 22, 'profile-204302-1071312414840020034.png', 'music-review-blog-youtube-banner-design-template-0f6f36593959a5fe315a97e1b3e48534_screen.jpg', '', '', '', 1, 1, 0, 0, 'Active now'),
+(52, 'Pavi Production', '396', 'Deniyaya Rd', 'Morawaka', 'Matara', '81470', 'naveenudara356@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', 768404899, '', 21, '', '', '', '', '', 1, 1, 0, 0, 'Active now');
 
 -- --------------------------------------------------------
 
