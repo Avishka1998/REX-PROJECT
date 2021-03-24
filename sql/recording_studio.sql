@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2021 at 06:37 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Generation Time: Mar 24, 2021 at 08:21 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -87,8 +86,8 @@ CREATE TABLE `customer` (
   `email` varchar(60) NOT NULL,
   `tele_no` int(10) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `blocked` int(1) NOT NULL DEFAULT 0,
+  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `blocked` int(1) NOT NULL DEFAULT '0',
   `image` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -113,7 +112,7 @@ CREATE TABLE `customer_complaint` (
   `c_id` int(100) NOT NULL,
   `studio_id` int(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `flag` tinyint(4) NOT NULL DEFAULT 0
+  `flag` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -144,15 +143,17 @@ CREATE TABLE `membership_payment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Table structure for table `messages`
 --
 
-CREATE TABLE `message` (
-  `c_id` int(100) NOT NULL,
-  `studio_id` int(100) NOT NULL,
-  `date` datetime NOT NULL,
-  `content` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `messages` (
+  `msg_id` int(100) NOT NULL,
+  `c_id` int(10) NOT NULL,
+  `s_id` int(10) NOT NULL,
+  `incoming_msg` varchar(255) NOT NULL DEFAULT '0',
+  `outgoing_msg` varchar(255) NOT NULL DEFAULT '0',
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -334,10 +335,10 @@ CREATE TABLE `studio` (
   `description` text NOT NULL,
   `latitude` varchar(50) NOT NULL,
   `longitude` varchar(50) NOT NULL,
-  `verified` tinyint(4) NOT NULL DEFAULT 0,
-  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `owner_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `blocked` int(1) NOT NULL DEFAULT 0
+  `verified` tinyint(4) NOT NULL DEFAULT '0',
+  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `owner_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `blocked` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -385,7 +386,7 @@ CREATE TABLE `studio_complaint` (
   `studio_id` int(100) NOT NULL,
   `c_id` int(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `flag` tinyint(4) NOT NULL DEFAULT 0
+  `flag` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -444,8 +445,8 @@ CREATE TABLE `studio_reserved_sevice` (
 
 CREATE TABLE `studio_schedule` (
   `id` int(5) NOT NULL,
-  `issatblocked` int(1) NOT NULL DEFAULT 0,
-  `issunblocked` int(1) NOT NULL DEFAULT 0
+  `issatblocked` int(1) NOT NULL DEFAULT '0',
+  `issunblocked` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -550,11 +551,12 @@ ALTER TABLE `membership_payment`
   ADD KEY `studio_id` (`studio_id`);
 
 --
--- Indexes for table `message`
+-- Indexes for table `messages`
 --
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`c_id`,`studio_id`),
-  ADD KEY `studio_id` (`studio_id`);
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`msg_id`),
+  ADD KEY `c_id` (`c_id`),
+  ADD KEY `s_id` (`s_id`);
 
 --
 -- Indexes for table `owner`
@@ -696,97 +698,86 @@ ALTER TABLE `tokens`
 --
 ALTER TABLE `advance_payment`
   MODIFY `adpayment_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `blocked_dates`
 --
 ALTER TABLE `blocked_dates`
   MODIFY `bid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `c_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
-
 --
 -- AUTO_INCREMENT for table `customer_complaint`
 --
 ALTER TABLE `customer_complaint`
   MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `email_verification`
 --
 ALTER TABLE `email_verification`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-
 --
 -- AUTO_INCREMENT for table `membership_payment`
 --
 ALTER TABLE `membership_payment`
   MODIFY `mpay_id` int(100) NOT NULL AUTO_INCREMENT;
-
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `msg_id` int(100) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
   MODIFY `owner_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
 --
 -- AUTO_INCREMENT for table `owner_verification`
 --
 ALTER TABLE `owner_verification`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `removed_users`
 --
 ALTER TABLE `removed_users`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
 --
 -- AUTO_INCREMENT for table `reserved _job`
 --
 ALTER TABLE `reserved _job`
   MODIFY `job_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `sample_service`
 --
 ALTER TABLE `sample_service`
   MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `studio`
 --
 ALTER TABLE `studio`
   MODIFY `studio_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
-
 --
 -- AUTO_INCREMENT for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
   MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `studio_portfolio`
 --
 ALTER TABLE `studio_portfolio`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `time_slot`
 --
 ALTER TABLE `time_slot`
   MODIFY `t_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
 --
 -- Constraints for dumped tables
 --
@@ -818,11 +809,11 @@ ALTER TABLE `membership_payment`
   ADD CONSTRAINT `membership_payment_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`);
 
 --
--- Constraints for table `message`
+-- Constraints for table `messages`
 --
-ALTER TABLE `message`
-  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`),
-  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`);
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`s_id`) REFERENCES `studio` (`studio_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `rate`
@@ -905,7 +896,6 @@ ALTER TABLE `studio_service`
 --
 ALTER TABLE `time_slot`
   ADD CONSTRAINT `time_slot_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved _job` (`job_id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

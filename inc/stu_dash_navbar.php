@@ -78,6 +78,7 @@ $user_name="User";
         $record =mysqli_fetch_assoc($result_set);
         $user_name=$record['studio_name'];
         $user_id=$record['studio_id'];
+        $SESSION['user_id']=$user_id;
       }
    }
 ?>

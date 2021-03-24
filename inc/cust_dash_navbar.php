@@ -70,9 +70,7 @@
     }
 
     </style>
-  </head>
-
-  <body>
+  </head>  
     <?php  
     $user_name="User";
     if(isset($_SESSION['username']) && isset($_SESSION['user_id'])){
@@ -85,6 +83,7 @@
          $record =mysqli_fetch_assoc($result_set);
          $user_name=$record['first_name'];
          $user_id=$record['c_id'];
+         $SESSION['user_id']=$user_id;
            				
 		}
     ?>
@@ -99,6 +98,5 @@
         <li><a id="user" title="<?php echo $user_name; ?>" href="../../view/customer/cust_profile.php" <?php if($filename=='cust_profile.php') echo "class=active"?>><i class="fa fa-fw fa-user-circle"></i></a></li>
       </ul>
     </nav>
-  </body>
-</html>
+
 
