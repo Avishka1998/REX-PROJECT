@@ -6,6 +6,16 @@ session_start();
 	<title>Inbox</title>
 	<link rel="stylesheet"  href="../../css/inbox.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#chat").load(" #chat");
+            setInterval(function() {
+                $("#chat").load(" #chat");
+            }, 2000);
+        });
+ 
+    </script>
 </head>
 	<?php require_once('../../inc/stu_dash_navbar.php');?>	
 
@@ -39,7 +49,7 @@ session_start();
 				<span class="text"></span>
 		
 			</div>
-			<div class="users-list">
+			<div class="users-list" id="chat">
 				 <?php 				 			
 					$query2="SELECT DISTINCT customer.c_id,customer.first_name,customer.image FROM customer INNER JOIN  messages ON customer.c_id=messages.c_id WHERE messages.s_id=$user_id  ORDER BY messages.msg_id DESC ";
 					$result_set2=mysqli_query($connection,$query2);

@@ -6,6 +6,16 @@ session_start();
 	<title>Inbox</title>
 	<link rel="stylesheet"  href="../../css/inbox.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#chat").load(" #chat");
+            setInterval(function() {
+                $("#chat").load(" #chat");
+            }, 2000);
+        });
+ 
+    </script>
 </head>
 	<?php require_once('../../inc/cust_dash_navbar.php');?>	
 
@@ -41,7 +51,7 @@ session_start();
 				</div>
 			</div>
 			</form>
-			<div class="users-list">
+			<div class="users-list" id="chat">
 				 <?php 
 				
 						//query to get studios details which customer has message latest	
