@@ -65,7 +65,7 @@
     }
 	
   	a.active{
-      background-color: rgb(129,0,250);
+      background-color: #252526;
       color: white;
     }
 

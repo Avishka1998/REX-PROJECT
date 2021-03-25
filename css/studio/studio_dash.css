@@ -34,7 +34,7 @@ form input[type=text] {
 form button {
     width: 10%;    
     padding: 10px;
-    background: #655c61;
+    background: #3a3839;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
@@ -273,4 +273,48 @@ form button {
     font-family: sans-serif;
     font-weight: bold;
   }
-  
+  /* Reset Select */
+.searchSelect {
+ margin-left: 30px;
+}
+
+/* Remove IE arrow */
+.searchSelect{
+    position: relative;
+  display: flex;
+  width: 15em;
+  height: 2.8em;
+  line-height: 3;
+  background: #343637;
+  overflow: hidden;
+  border-radius: .25em;
+  padding-left: 40px;
+}
+select::-ms-expand {
+  display: none;
+}
+
+.searchSelect {
+   flex: 8; 
+   padding: 10 .8em; 
+  color: #fff;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #35383a;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}

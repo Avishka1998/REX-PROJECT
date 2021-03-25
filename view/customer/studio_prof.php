@@ -64,7 +64,7 @@ else if(isset($_SESSION['studio_id'])){
 	  <div class="btnbox">
 		<a href="#portfolio" id="portbtn">Watch Portfolios >></a>
 		<a href="#details">Location >></a>
-		<a href="../../view/customer/cust_inbox.php" id="reservebtn">Send messages >></a>
+		<a href="../../view/customer/cust_chat.php?studio_id=<?php echo $studio_id?>" id="reservebtn">Send messages >></a>
 		<a href="#services" id="servicebtn">Available Services >></a>	
 		<a href="select_date.php" id="reservebtn">Make a Reservation >></a>
 	  </div>

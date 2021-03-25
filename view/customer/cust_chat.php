@@ -58,7 +58,7 @@ if($_GET['studio_id']){
                     $result_set3=mysqli_query($connection,$query3);
                     $record3=mysqli_fetch_assoc($result_set3);
 
-                    
+                  
                     if(mysqli_num_rows($result_set2)>0){
                         while($record2=mysqli_fetch_assoc($result_set2)){
                             if($record2['outgoing_msg']){
