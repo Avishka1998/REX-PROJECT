@@ -4,7 +4,7 @@
 
   $userid = $_SESSION['user_id'];
 
-  function build_calendar($month,$year,$array,$blocked_list){
+  function build_calendar($month,$year,$array,$blocked_list,$booked_list){
     $daysOfWeek = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 
     $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
@@ -55,32 +55,48 @@
         }
       }
 
+      $isbooked = 0;
+      for($i=0; $i<count($booked_list); $i++){
+        if($date==$booked_list[$i]['date']){
+          $isbooked = 1;
+          break;
+        }
+      }
+
       if($date<date('Y-m-d')){
-        $calendar.="<td><h4>$currentDay</h4> <button class='nabtn'>N/A</button>"; 
+        if($isbooked==1){
+          $calendar.="<td style='background-color:rgba(247,90,32,0.4);'><h4 style='color:grey;'>$currentDay</h4>";
+        }
+        else{
+          $calendar.="<td><h4 style='color:grey;'>$currentDay</h4>";
+        }
       }
       else if($isblocked==1){
-        $calendar.="<td><h4>$currentDay</h4> <button class='holbtn'>HOL</button>"; 
+        $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
+      }
+      else if($isbooked==1){
+        $calendar.="<td style='background-color:rgba(247,90,32,0.4);'><h4 style='color:grey;'>$currentDay</h4>";
       }
       else if($date>=date('Y-m-d') && $array['issatblocked']==1 && $dayname == 'saturday'){
-        $calendar.="<td><h4>$currentDay</h4> <button class='holbtn'>HOL</button>"; 
+        $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
       }
       else if($date>=date('Y-m-d') && $array['issunblocked']==1 && $dayname == 'sunday'){
-        $calendar.="<td><h4>$currentDay</h4> <button class='holbtn'>HOL</button>"; 
+        $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
       }
       else if($date>=date('Y-m-d') && $array['issatblocked']==1 && $dayname != 'saturday'){
-        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>"; 
+        $calendar.="<td><h4>$currentDay</h4>"; 
       }
       else if($date>=date('Y-m-d') && $array['issunblocked']==1 && $dayname != 'sunday'){
-        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>"; 
+        $calendar.="<td><h4>$currentDay</h4>"; 
       }
       else if($date>=date('Y-m-d') && $array['issatblocked']==0 && $dayname == 'saturday'){
-        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>";
+        $calendar.="<td><h4>$currentDay</h4>";
       }
       else if($date>=date('Y-m-d') && $array['issunblocked']==0 && $dayname == 'sunday'){
-        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>";
+        $calendar.="<td><h4>$currentDay</h4>";
       }
       else{
-        $calendar.="<td><h4>$currentDay</h4> <button class='avbtn'>VIEW</button>"; 
+        $calendar.="<td><h4>$currentDay</h4>"; 
       }
   
       $calendar .="</td>";
@@ -128,9 +144,13 @@ if(isset($_GET['unblocksun'])){
 if(isset($_POST['submit'])){
   if($_POST['date']!=NULL){
     $blockedate = $_POST['date'];
-    $query15 = "INSERT INTO blocked_dates (sid,dates) VALUES ('$userid','$blockedate')";
-    $res_set15 = mysqli_query($connection,$query15);
-    header('Location: ../../view/studio/studio_schedule.php'); 
+    $query155 = "SELECT * FROM reserved_job WHERE date=$blockedate AND studio_id=$userid";
+    $res_set155 = mysqli_query($connection,$query155);
+    if(mysqli_num_rows($res_set155)){
+      $query15 = "INSERT INTO blocked_dates (sid,dates) VALUES ('$userid','$blockedate')";
+      $res_set15 = mysqli_query($connection,$query15);
+      header('Location: ../../view/studio/studio_schedule.php');   
+    }
   }
 }
 
@@ -174,7 +194,7 @@ if(isset($_POST['submit2'])){
 	<style>
 	  .container{
 		font-family: sans-serif;
-		width: 70%;
+		width: 80%;
 		padding-right:15px;
 		padding-left:15px;
       }
@@ -205,6 +225,15 @@ if(isset($_POST['submit2'])){
   if(mysqli_num_rows($res_set16)>0){
     while($row=mysqli_fetch_assoc($res_set16)){
       array_push($blocked_list,$row);
+    }
+  }
+
+  $booked_list=[];
+  $query17 = "SELECT date FROM reserved_job WHERE studio_id='$userid' AND isplaced = 1";
+  $res_set17 = mysqli_query($connection,$query17);
+  if(mysqli_num_rows($res_set17)>0){
+    while($row=mysqli_fetch_assoc($res_set17)){
+      array_push($booked_list,$row);
     }
   }
   ?>
@@ -243,7 +272,7 @@ if(isset($_POST['submit2'])){
         $month = $dateComponents['mon']; 			     
         $year = $dateComponents['year'];
         }
-        build_calendar($month,$year,$record11,$blocked_list); 
+        build_calendar($month,$year,$record11,$blocked_list,$booked_list); 
       ?> 
     </div> 
     </div> 

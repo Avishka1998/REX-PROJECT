@@ -1,6 +1,27 @@
-<?php 
+<?php
 require_once('../../inc/connection.php');
 session_start();
+$studio_id = $_SESSION['studio_id'];
+$userid = $_SESSION['user_id'];
+if(isset($_POST['book'])){
+  $date = $_POST['date'];
+  $choose_time = date('Y-m-d H:i:s');	    
+  $query2 = "SELECT * FROM reserved_job WHERE c_id = '$userid' AND studio_id = '$studio_id' AND date = '$date'";
+  $result_set2 = mysqli_query($connection,$query2);
+  if(mysqli_num_rows($result_set2)==0){
+	$query = "INSERT INTO reserved_job (c_id,studio_id,date,choose_time) VALUES ('$userid','$studio_id','$date','$choose_time')";
+	$result_set = mysqli_query($connection,$query);
+	$query5 = "SELECT job_id FROM reserved_job WHERE c_id = '$userid' AND studio_id = '$studio_id' AND date = '$date'";
+	$result_set5 = mysqli_query($connection,$query5);
+	$row5 = mysqli_fetch_assoc($result_set5);
+	$_SESSION['job'] = $row5['job_id'];	
+  }
+}
+  $job = $_SESSION['job'];
+  $query111 = "SELECT date FROM reserved_job WHERE job_id='$job'";
+  $result_set111 = mysqli_query($connection,$query111);
+  $row111 = mysqli_fetch_assoc($result_set111);
+  $date = $row111['date'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,90 +31,77 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="../../css/customer/select_service.css">
 </head>
 <body>
-	<?php require_once('../../inc/cust_dash_navbar.php');?>
-	<main>
-	<div class="main-container">
-		
-		<div class="conver-list">
-			<h1>Select Services</h1>
-			<div class="serlist">
-			<label class="container">Recording   :   LKR 2500/= Per hour
-			  <input type="checkbox" checked="checked">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container">Mixing   :   LKR 10,000/=
-			  <input type="checkbox">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container">Mastering   :   LKR 7000/=
-			  <input type="checkbox">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container">Instrument Hiring
-			  <input type="checkbox">
-			  <span class="checkmark"></span>
-			</label>
-			</div>
-
-			<div class="container note">
-		      <div class="col1">
-		        <label for="subject">Additional Note:</label>
-		      </div>
-		      <div class="col2">
-		        <textarea id="subject" name="subject" placeholder="ex:- Need final track within 5 days" style="height:100px"></textarea>
-		     </div>
-    		</div>
-
-
+  <?php require_once('../../inc/cust_dash_navbar.php');?>
+  
+  <div class="row1">
+	<div class="col1">
+		<h1><?php echo $date;?><br>SELECT SERVICES<br>>></h1>
+	</div>  
+	<div class="col2">
+	  <form action="select_service.php" method="post">
+		<div class="box">
+		<?php
+		$query1 = "SELECT * FROM studio_service WHERE studio_id = $studio_id";
+		$result_set1 = mysqli_query($connection,$query1);
+		while($row1=mysqli_fetch_assoc($result_set1)){
+			$ser = $row1['service_name'];
+			echo "<label class='cont'>$ser";
+			echo "<input type='checkbox' name='$ser'>";
+			echo "<span class='checkmark'></span>";
+			echo "</label>";	  
+		}
+		?>
 		</div>
-		
-		<div class="chat-message-list">
-			<h1>Select Audio Gears</h1>
-			<div class="serlist">
-			<label class="container">Neumann M 150 Tube 
-			  <input type="checkbox" checked="checked">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container">Marshall DSL Series DSL40C 40 Watt Valve 2 Channel Combo
-			  <input type="checkbox">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container">Fender Telecaster Electric guitar 
-			  <input type="checkbox">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container">SSL XLogic G Series Compressor
-			  <input type="checkbox">
-			  <span class="checkmark"></span>
-			</label>
-			<label class="container">Vox AC15HW1X 1x12" 15-watt Handwired Tube Combo Amp with Alnico Blue Speaker
-			  <input type="checkbox">
-			  <span class="checkmark"></span>
-			</label>
-			</div>
-			<div class="container note">
-		      <div class="col1">
-		        <label for="subject">Additional Note:</label>
-		      </div>
-		      <div class="col2">
-		        <textarea id="subject" name="subject" placeholder="ex:- Need 4 notation stands" style="height:100px"></textarea>
-		     </div>
-    		</div>
-						
-		</div>	
+		<button type="submit" name="sservice">NEXT</button>	
+	  </form>
 	</div>
+  </div>
 
-	<div class="row">
-
-        <a href="select_date.php" class="previous">Back</a>
-        <a href="cart.php" class="next">Next</a>
-		<a href="studio_prof.php" class="cancel">Cancel</a> 
-	</div>
-	
-    <div class="row">	
-	</div>
-	</main>	
-
-	<?php require_once('../../inc/minfooter.php'); ?>
+  <?php require_once('../../inc/minfooter.php'); ?>
 </body>
 </html>
+
+<?php
+  if(isset($_POST['sservice'])){
+	$query11 = "SELECT * FROM studio_service WHERE studio_id = $studio_id";
+	$result_set11 = mysqli_query($connection,$query11);
+	$serlist = [];
+	while($row11=mysqli_fetch_assoc($result_set11)){
+	  array_push($serlist,$row11);	
+	}
+
+	$ischecked = 0;  
+    for($i=0;$i<count($serlist);$i++){
+	  $ser = $serlist[$i]['service_name'];
+	  if(isset($_POST[$ser])){
+	    $ischecked = 1;
+		break;  	  
+	  }  	
+	}
+	if($ischecked==1){	
+	  for($j=0;$j<count($serlist);$j++){
+		$ser = $serlist[$j]['service_name'];
+		$chrg = $serlist[$j]['service_charge'];	
+		$query6 = "SELECT * FROM reserved_services WHERE job_id = '{$job}' AND service_name = '{$ser}'";
+		$result_set6 = mysqli_query($connection,$query6);
+		
+		if(mysqli_num_rows($result_set6)==0){
+		  if(isset($_POST[$ser])){	
+			$query8 = "INSERT INTO reserved_services (job_id,service_name,charge) VALUES ('$job','$ser','$chrg')";
+			$result_set8 = mysqli_query($connection,$query8);    	
+		  }	
+		}
+		else{
+		  if(!isset($_POST[$ser])){
+		    $query8 = "DELETE FROM reserved_services WHERE job_id='{$job}' AND service_name = '{$ser}'";
+			$result_set8 = mysqli_query($connection,$query8); 	  
+		  }	
+		}  	
+	  }
+	  header("Location: select_equipments.php"); 	
+	}
+	else{
+	  header("Location: select_service.php");  	
+	}
+  }	
+?>

@@ -2,12 +2,8 @@ body{
   background: rgba(223, 223, 235, 0.5);
 }
 
-h5{
-  font-size: 1rem;
-}
-
 .row1{
-  padding-top: 40px;
+  padding-top: 25px;
   font-family: sans-serif;	
 }
 

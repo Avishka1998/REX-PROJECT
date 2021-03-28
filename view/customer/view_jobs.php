@@ -1,38 +1,39 @@
-<?php 
+<?php
 require_once('../../inc/connection.php');
-session_start();
+session_start(); 
 
 if(isset($_GET['job'])){
-	$job = $_GET['job'];
-	
-	$query1 = "SELECT * FROM reserved_job WHERE job_id = $job";
-	$result_set1 = mysqli_query($connection,$query1);
-	$record1 = mysqli_fetch_assoc($result_set1);
-	
-	$c_id = $record1['c_id'];
-	
-	$query2 = "SELECT * FROM customer WHERE c_id = $c_id";
-	$result_set2 = mysqli_query($connection,$query2);
-	$record2 = mysqli_fetch_assoc($result_set2);
+  $job = $_GET['job'];
   
-	$query3 = "SELECT * FROM reserved_services WHERE job_id = $job";
-	$result_set3 = mysqli_query($connection,$query3);
+  $query1 = "SELECT * FROM reserved_job WHERE job_id = $job";
+  $result_set1 = mysqli_query($connection,$query1);
+  $record1 = mysqli_fetch_assoc($result_set1);
   
-	$query4 = "SELECT * FROM reserved_audio_gear WHERE job_id = $job";
-	$result_set4 = mysqli_query($connection,$query4);
+  $studio_id = $record1['studio_id'];
+  
+  $query2 = "SELECT * FROM studio WHERE studio_id = $studio_id";
+  $result_set2 = mysqli_query($connection,$query2);
+  $record2 = mysqli_fetch_assoc($result_set2);
+
+  $query3 = "SELECT * FROM reserved_services WHERE job_id = $job";
+  $result_set3 = mysqli_query($connection,$query3);
+
+  $query4 = "SELECT * FROM reserved_audio_gear WHERE job_id = $job";
+  $result_set4 = mysqli_query($connection,$query4);
 }
+
 ?>
 
 <!DOCTYPE html>
 <html>
-<head>  
+<head> 
 	<meta charset="utf-8">
-	<title>Job View</title>
+	<title></title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/view_pending.css">
 </head>
 <body>
-  <?php require_once('../../inc/stu_dash_navbar.php');?>
-    
+  <?php require_once('../../inc/cust_dash_navbar.php');?>
+	
   <div class="row">
     <div class="container">
       <div id="details">
@@ -40,20 +41,19 @@ if(isset($_GET['job'])){
         <?php
         echo "<p>$record1[choose_time]</p>";
         echo "<p>Job ID: $job</p>";
-        echo "<p>$record2[email]</p>";
-		echo "<p>$record2[tele_no]</p>";
-        echo "<p>Customer ID: $record2[c_id]</p>";
+        echo "<p>$record2[s_email]</p>";
+        echo "<p>Studio ID: $record2[studio_id]</p>";
         echo "<p>Booking Date: <b>$record1[date]</b></p>";
         ?>
       </div>
       <div id="col2">
         <?php
-        echo "<h2>$record2[first_name] $record2[last_name]</h2>";
+        echo "<h2>$record2[studio_name]<br>$record2[distric]</h2>";
         ?>
       </div>
       <div id="col3">
         <?php
-        echo "<img src='../../img/customer/$record2[image]' height='150' width='150'>";
+        echo "<img src='../../img/studio/$record2[profile]' height='150' width='150'>";
         ?>
       </div>  
       </div>
@@ -96,13 +96,14 @@ if(isset($_GET['job'])){
                 echo "<a href='#'>Complaint</a>";
               }
               if($_GET['status']==3){
+                echo "<a href='#'>Rate</a>";
                 echo "<a href='#'>Complaint</a>";
               }
             }
           ?>
       </div>    
 	  </div>
-  </div> 
+  </div>	
 
   <?php require_once('../../inc/minfooter.php'); ?>
 </body>

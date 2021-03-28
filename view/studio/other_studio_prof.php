@@ -35,7 +35,7 @@ if(isset($_GET['studio_id'])){
 		$query3="SELECT * FROM studio_service WHERE studio_id=$studio_id";
 		$result_set3=mysqli_query($connection,$query3);
 
-		$query4="SELECT * FROM studio_audio_gear WHERE studio_id=$studio_id";
+		$query4="SELECT name,charge FROM studio_audio_gear WHERE studio_id=$studio_id GROUP BY name";
 		$result_set4=mysqli_query($connection,$query4);
 	} 
 }

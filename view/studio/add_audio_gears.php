@@ -16,9 +16,9 @@ session_start();
 <main>           
 <div class="column" style="width: 70%;">
         <div class="adds">
-                <center><h1 class="addtitle">UPDATE EXISTING AUDIO GEARS</h1></center>       
+                <center><h1 class="addtitle">UPDATE EXISTING ADDITIONAL EQUIPMENTS</h1></center>       
         <?php 
-                $query1="SELECT * FROM studio_audio_gear WHERE studio_id=$user_id";
+                $query1 = "SELECT name,COUNT(audio_id) FROM studio_audio_gear WHERE studio_id=$user_id GROUP BY name";
                 $result_set1 = mysqli_query($connection,$query1);
                 if($result_set1){
                         $rows=mysqli_num_rows($result_set1);
@@ -26,6 +26,10 @@ session_start();
                                 $temp=1;                                        
                                 echo '<form action="../../controller/studio/add_audio_gears_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
                                 while($record = mysqli_fetch_assoc($result_set1)){
+                                        $name = $record['name'];
+                                        $query12 = "SELECT charge FROM studio_audio_gear WHERE name= '$name'";
+                                        $result_set12 = mysqli_query($connection,$query12);
+                                        $record12 = mysqli_fetch_assoc($result_set12);
                                         echo '<div class="row" >                               
                                                 <div class="column" style="width:50%;">
                                                                 <lable class="description" name="service'.$temp.'" style="padding-bottom:20px;"><h2 style="margin-left:0;">'.$record['name'].'</h2></lable> 
@@ -41,8 +45,8 @@ session_start();
                                                 <div class="column" style="width:30%; padding-left:10px; padding-right:60px;">
                                                         <div class="form-popup" id="dvservice'.$temp.'" >  
                                                                 <div class="form__group">
-                                                                <input type="text" class="form__input"  name="charge'.$temp.'" value="'.$record['charge'].'" />
-                                                                <input type="text" class="form__input"  name="qty'.$temp.'" value="'.$record['qty'].'" />
+                                                                <input type="text" class="form__input"  name="charge'.$temp.'" value="'.$record12['charge'].'" />
+                                                                <input type="text" class="form__input"  name="qty'.$temp.'" value="'.$record['COUNT(audio_id)'].'" />
                                                                 </div>                                             
                                                         </div>	
                                                         <script>
@@ -70,61 +74,61 @@ session_start();
                                 ';
 
                         }
-                        else{
-                                $query2 = "SELECT * FROM sample_equipment WHERE type=1";
-                                $result_set2=mysqli_query($connection,$query2);
-                                if($result_set2){
-                                        $rows=mysqli_num_rows($result_set2);
-                                        echo '<form action="../../controller/studio/add_audio_gears_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
-                                        while($record = mysqli_fetch_assoc($result_set2)){
-                                                echo '<div class="row" >                               
-                                                        <div class="column" style="width:50%;">
-                                                                <lable class="description" name="service'.$record['id'].'" style="padding-bottom:20px;"><h2 style="margin-left:0;">'.$record['name'].'</h2></lable> 
-                                                        </div>
-                                                        <div class="column" style="width:20%;">
-                                                                <div class="slideTwo">	
-                                                                        <input type="checkbox"  id="service'.$record['id'].'"  onclick="rdonly'.$record['id'].'(this)"  name="check'.$record['id'].'"  value="'.$record['name'].'" />
-                                                                        <label for="service'.$record['id'].'"></label>                  
-                                                                </div>
+                        // else{
+                        //         $query2 = "SELECT * FROM sample_equipment WHERE type=1";
+                        //         $result_set2=mysqli_query($connection,$query2);
+                        //         if($result_set2){
+                        //                 $rows=mysqli_num_rows($result_set2);
+                        //                 echo '<form action="../../controller/studio/add_audio_gears_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
+                        //                 while($record = mysqli_fetch_assoc($result_set2)){
+                        //                         echo '<div class="row" >                               
+                        //                                 <div class="column" style="width:50%;">
+                        //                                         <lable class="description" name="service'.$record['id'].'" style="padding-bottom:20px;"><h2 style="margin-left:0;">'.$record['name'].'</h2></lable> 
+                        //                                 </div>
+                        //                                 <div class="column" style="width:20%;">
+                        //                                         <div class="slideTwo">	
+                        //                                                 <input type="checkbox"  id="service'.$record['id'].'"  onclick="rdonly'.$record['id'].'(this)"  name="check'.$record['id'].'"  value="'.$record['name'].'" />
+                        //                                                 <label for="service'.$record['id'].'"></label>                  
+                        //                                         </div>
                                                         
-                                                        </div>  
-                                                        <div class="column" style="width:30%; padding-left:10px; padding-right:60px;">
-                                                                <div class="form-popup" id="dvservice'.$record['id'].'" >  
-                                                                        <div class="form__group">
-                                                                        <input type="text" class="form__input"  name="charge'.$record['id'].'" id="charge'.$record['id'].'" placeholder="Charge per day" readonly />
-                                                                        <input type="text" class="form__input"  name="qty'.$record['id'].'" id="qty'.$record['id'].'" placeholder="Number of audio gears" readonly />
-                                                                        </div>                               
+                        //                                 </div>  
+                        //                                 <div class="column" style="width:30%; padding-left:10px; padding-right:60px;">
+                        //                                         <div class="form-popup" id="dvservice'.$record['id'].'" >  
+                        //                                                 <div class="form__group">
+                        //                                                 <input type="text" class="form__input"  name="charge'.$record['id'].'" id="charge'.$record['id'].'" placeholder="Charge per day" readonly />
+                        //                                                 <input type="text" class="form__input"  name="qty'.$record['id'].'" id="qty'.$record['id'].'" placeholder="Number of audio gears" readonly />
+                        //                                                 </div>                               
                                                                                 
-                                                                </div>	
+                        //                                         </div>	
       
-                                                                <script>
-                                                                function rdonly'.$record['id'].'(service'.$record['id'].') {
-                                                                        document.getElementById("charge'.$record['id'].'").removeAttribute("readonly");
-                                                                        document.getElementById("qty'.$record['id'].'").removeAttribute("readonly");
-                                                                }
+                        //                                         <script>
+                        //                                         function rdonly'.$record['id'].'(service'.$record['id'].') {
+                        //                                                 document.getElementById("charge'.$record['id'].'").removeAttribute("readonly");
+                        //                                                 document.getElementById("qty'.$record['id'].'").removeAttribute("readonly");
+                        //                                         }
                                                         
                                                         
-                                                                </script>
-                                                        </div>  
-                                                </div> 
-                                                ';
-                                        }
-                                        echo '
-                                        <div class="row">
-                                                <div class="column" style="padding: 10px 575px;">
-                                                        <button type="submit_name" class="btn save2" name="submit_add_audio_gear1">Save</button>
-                                                </div>
+                        //                                         </script>
+                        //                                 </div>  
+                        //                         </div> 
+                        //                         ';
+                        //                 }
+                        //                 echo '
+                        //                 <div class="row">
+                        //                         <div class="column" style="padding: 10px 575px;">
+                        //                                 <button type="submit_name" class="btn save2" name="submit_add_audio_gear1">Save</button>
+                        //                         </div>
                         
-                                        </div>
-                                        </form>
-                                        ';
+                        //                 </div>
+                        //                 </form>
+                        //                 ';
 
-                                }
-                                else{
-                                        echo "erorr";
-                                }
+                        //         }
+                        //         else{
+                        //                 echo "erorr";
+                        //         }
 
-                        }
+                        // }
                 }
 
                 
@@ -176,7 +180,7 @@ session_start();
 </div>  
 <div class="column" style="width: 30%;">
         <div class="form-popup mys" id="nameForm">
-        <center><h1 class="addtitle">ADD NEW AUDIO GEAR</h1></center>
+        <center><h1 class="addtitle">ADD NEW EQUIPMENT</h1></center>
 	        <form action='<?php echo "../../controller/studio/add_audio_gears_controller.php?studio_id=$user_id"?>' class="form-container" method="post">  
                   <label for="service" class="service"><b>Audio Gear Name</b></label>
                   <input type="text" value="" name="instrument_name" placeholder="Enter Audio Gear Name" required>

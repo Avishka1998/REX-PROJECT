@@ -42,7 +42,7 @@ else if(isset($_SESSION['studio_id'])){
 		$query3="SELECT * FROM studio_service WHERE studio_id=$studio_id";
 		$result_set3=mysqli_query($connection,$query3);
 
-		$query4="SELECT * FROM studio_audio_gear WHERE studio_id=$studio_id";
+		$query4="SELECT name,charge FROM studio_audio_gear WHERE studio_id=$studio_id GROUP BY name";
 		$result_set4=mysqli_query($connection,$query4);
 	} 
 
@@ -141,13 +141,13 @@ else if(isset($_SESSION['studio_id'])){
 	</div>
 
 	<div id="services" class="container" style="top: 10%; padding-bottom: 5%">
-		<h2>AVAILABLE AUDIO GEARS</h2>
+		<h2>AVAILABLE ADDITIONAL EQUIPMENTS</h2>
 		<div class="service clearfix">
 		<?php
 		  if(mysqli_num_rows($result_set4)>0){
 			echo "<table>
 			<tr>
-			<th>AUDIO GEAR</th>
+			<th>EQUIPMENT</th>
 			<th>FEE/H (LKR)</th>
 			</tr>";
 			
@@ -160,7 +160,7 @@ else if(isset($_SESSION['studio_id'])){
 			echo "</table>"; 
 		  }
 		  else{
-			echo "<p style='color:red;'><b><i>NO AUDIO GEARS AVAILABLE!</i></b></p>";  
+			echo "<p style='color:red;'><b><i>NO ADDITIONAL EQUIPMENTS AVAILABLE!</i></b></p>";  
 		  } 
 
 		  ?>

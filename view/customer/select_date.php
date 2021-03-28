@@ -1,158 +1,193 @@
 <?php 
 require_once('../../inc/connection.php');
 session_start();
+$studio_id = $_SESSION['studio_id'];
+
+  function build_calendar($month,$year,$array,$blocked_list,$booked_list){
+      $daysOfWeek = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
+
+      $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
+      $numberDays = date('t',$firstDayOfMonth);
+      $dateComponents = getdate($firstDayOfMonth);
+      $monthName = $dateComponents['month'];
+      $dayOfWeek = $dateComponents['wday'];
+
+      $datetoday = date('Y-m-d');
+
+      $calendar = "<table class='table'>";
+      $calendar .= "<center><h2>$monthName $year</h2>";
+      
+      // $calendar.= "<a class='cbtn' href='?month=".date('m', mktime(0, 0, 0, $month-1, 1, $year))."&year=".date('Y', mktime(0, 0, 0, $month-1, 1, $year))."'>Previous Month</a> ";
+      $calendar.= " <a class='cbtn' href='?month=".date('m')."&year=".date('Y')."'>Current Month</a> ";
+      $calendar.= "<a class='cbtn' href='?month=".date('m', mktime(0, 0, 0, $month+1, 1, $year))."&year=".date('Y', mktime(0, 0, 0, $month+1, 1, $year))."'>Next Month</a></center><br>";
+      
+      $calendar .= "<tr>";
+      foreach($daysOfWeek as $day){
+        $calendar .= "<th class='header'>$day</th>"; 
+      }
+      
+      $currentDay = 1;
+
+      $calendar .= "</tr><tr>";
+      if($dayOfWeek>0){
+        for($k=0;$k<$dayOfWeek;$k++){ 
+            $calendar .= "<td class='empty'></td>"; 
+        } 
+      }
+      $month = str_pad($month, 2, "0", STR_PAD_LEFT);
+      while($currentDay<=$numberDays){
+        if ($dayOfWeek == 7){ 
+            $dayOfWeek = 0; 
+            $calendar .= "</tr><tr>"; 
+        }
+        $currentDayRel = str_pad($currentDay, 2, "0", STR_PAD_LEFT); 
+        $date = "$year-$month-$currentDayRel"; 
+        $dayname = strtolower(date('l', strtotime($date))); 
+        $eventNum = 0; 
+        $today = $date==date('Y-m-d')? "today" : "";
+
+		$isblocked = 0;
+		for($i=0; $i<count($blocked_list); $i++){
+		  if($date==$blocked_list[$i]['dates']){
+			$isblocked = 1;
+			break;
+		  }
+		}
+
+    $isbooked = 0;
+    for($i=0; $i<count($booked_list); $i++){
+      if($date==$booked_list[$i]['date']){
+        $isbooked = 1;
+        break;
+      }
+    }
+
+    if($date<=date('Y-m-d')){
+      $calendar.="<td style='background-color:rgba(255,204,203,0.4);'><h4 style='color:grey;'>$currentDay</h4>"; 
+        }
+		else if($isblocked==1){
+		  $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
+		}
+
+    else if($isbooked==1){
+      $calendar.="<td style='background-color:rgba(247,90,32,0.4);'><h4 style='color:grey;'>$currentDay</h4>";
+    }
+
+		else if($date>date('Y-m-d') && $array['issatblocked']==1 && $dayname == 'saturday'){
+		  $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
+		}
+		else if($date>date('Y-m-d') && $array['issunblocked']==1 && $dayname == 'sunday'){
+	    $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
+		}
+		else if($date>date('Y-m-d') && $array['issatblocked']==1 && $dayname != 'saturday'){
+		  $calendar.="<td><h4>$currentDay</h4> <form action='select_service.php' method='post'><input type='hidden' name='date' value= $date> <button type='submit' name='book' class='avbtn'>BOOK</button></form>"; 
+		}
+		else if($date>date('Y-m-d') && $array['issunblocked']==1 && $dayname != 'sunday'){
+		  $calendar.="<td><h4>$currentDay</h4> <form action='select_service.php' method='post'><input type='hidden' name='date' value= $date> <button type='submit' name='book' class='avbtn'>BOOK</button></form>"; 
+		}
+		else if($date>date('Y-m-d') && $array['issatblocked']==0 && $dayname == 'saturday'){
+		  $calendar.="<td><h4>$currentDay</h4> <form action='select_service.php' method='post'><input type='hidden' name='date' value= $date> <button type='submit' name='book' class='avbtn'>BOOK</button></form>"; 
+		}
+		else if($date>date('Y-m-d') && $array['issunblocked']==0 && $dayname == 'sunday'){
+		  $calendar.="<td><h4>$currentDay</h4> <form action='select_service.php' method='post'><input type='hidden' name='date' value= $date> <button type='submit' name='book' class='avbtn'>BOOK</button></form>";  
+		}
+    else{
+      $calendar.="<td><h4>$currentDay</h4> <form action='select_service.php' method='post'><input type='hidden' name='date' value= $date> <button type='submit' name='book' class='avbtn'>BOOK</button></form>"; 
+    }
+    
+        $calendar .="</td>";
+        
+        $currentDay++; 
+        $dayOfWeek++; 
+      }
+
+      if ($dayOfWeek!=7){ 
+        $remainingDays = 7-$dayOfWeek; 
+        for($l=0;$l<$remainingDays;$l++){ 
+            $calendar .= "<td class='empty'></td>"; 
+        } 
+      }
+      $calendar .= "</tr>"; 
+      $calendar .= "</table>";
+      
+      echo $calendar;
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Selcet Date & Time</title>
 	<link rel="stylesheet" type="text/css" href="../../css/customer/select_date.css">
+	<link rel="stylesheet" type="text/css" href="../../css//calendar.css">
+	<style>
+      .container{
+      font-family: sans-serif;
+      width: 100%;
+      padding-right:15px;
+      padding-left:15px;
+      }
+    </style>
 </head>
+
 <body>
-  <?php require_once('../../inc/cust_dash_navbar.php');?>
+<?php require_once('../../inc/cust_dash_navbar.php');?>
 
-	<div class="row">
-  		<div class="column">
-				<div class="center" style="float: left; margin-left: 40%">
-					<img src="../../img/profilpic.jpg" style="width: 100%">
-					<h1>ABC Studio</h1>
-					<h3>Location </h3>
-					<h3>Services</h3>
-					<p>Mixing <br>Mastering <br>Recording</p>
-				</div>
-		</div>
-	
-  		<div class="column" style="color: red">		
-			
-			<div class="center" style="float:right; margin-right: 40%">
-				<!-- <input type="date" name="date" value="2014-05-09"> -->
+<?php   
+  $query11 = "SELECT * FROM studio_schedule WHERE id = $studio_id";
+  $res_set11 = mysqli_query($connection,$query11);
+  if(mysqli_num_rows($res_set11)>0){
+    $record11 = mysqli_fetch_assoc($res_set11);
+  }
+  else{
+    $query12 = "INSERT INTO studio_schedule (id) VALUES ($studio_id)";
+    $res_set12 = mysqli_query($connection,$query12);
+    $query11 = "SELECT * FROM studio_schedule WHERE id = $studio_id";
+    $res_set11 = mysqli_query($connection,$query11);
+    $record11 = mysqli_fetch_assoc($res_set11);
+  }
+  //Blocked date array creation
+  $blocked_list=[];
+  $query16 = "SELECT * FROM blocked_dates WHERE sid=$studio_id";
+  $res_set16 = mysqli_query($connection,$query16);
+  if(mysqli_num_rows($res_set16)>0){
+    while($row=mysqli_fetch_assoc($res_set16)){
+      array_push($blocked_list,$row);
+    }
+  }
 
-			<div class="calander">
-			<div class="thismonth">
-			<div class="month">      
-			<ul>
-			  <li>
-				November<span style="font-size:15px"> 2020</span>
-			  </li>
-			</ul>
-			</div>
+  $booked_list=[];
+  $query17 = "SELECT date FROM reserved_job WHERE studio_id=$studio_id AND isplaced = 1";
+  $res_set17 = mysqli_query($connection,$query17);
+  if(mysqli_num_rows($res_set17)>0){
+    while($row=mysqli_fetch_assoc($res_set17)){
+      array_push($booked_list,$row);
+    }
+  }
+?>
 
-			<ul class="weekdays">
-			<li>Mo</li>
-			<li>Tu</li>
-			<li>We</li>
-			<li>Th</li>
-			<li>Fr</li>
-			<li>Sa</li>
-			<li>Su</li>
-			</ul>
+<div class="row1">
+  <div class="col1">
+    <h1>SELECT A DATE >></h1>  
+  </div>
 
-			<ul class="days"> 
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li> 
-			<li style="background-color:rgba(0,0,0,0.2);">1</li>
-			<li style="background-color:rgba(0,0,0,0.2);">2</li>
-			<li style="background-color:rgba(0,0,0,0.2);">3</li>
-			<li style="background-color:rgba(0,0,0,0.2);">4</li>
-			<li style="background-color:rgba(0,0,0,0.2);">5</li>
-			<li style="background-color:rgba(0,0,0,0.2);">6</li>
-			<li style="background-color:rgba(0,0,0,0.2);">7</li>
-			<li style="background-color:rgba(0,0,0,0.2);">8</li>
-			<li style="background-color:rgba(0,255,0,0.6);">9</li>
-			<li>10</li>
-			<li style="background-color:rgba(255,125,0,0.4);">11</li>
-			<li style="background-color:rgba(255,125,0,0.4);">12</li>
-			<li style="background-color:rgba(255,125,0,0.4);">13</li>
-			<li>14</li>
-			<li>15</li>
-			<li>16</li>
-			<li style="background-color:rgba(255,125,0,0.4);">17</li>
-			<li style="background-color:rgba(255,125,0,0.4);">18</li>
-			<li>19</li>
-			<li style="background-color:rgba(255,125,0,0.4);">20</li>
-			<li>21</li>
-			<li style="background-color:rgba(255,125,0,0.4);">22</li>
-			<li>23</li>
-			<li>24</li>
-			<li>25</li>
-			<li>26</li>
-			<li>27</li>
-			<li>28</li>
-			<li>29</li>
-			<li>30</li>
-			<li>31</li>
-			</ul>
-		</div>
-		</div>
-
-				<form>
-					<label for="sttime">Start Time</label>
-				    <select id="sttime" name="sttime">
-				    	  <option value="0">00.00</option>
-					      <option value="1">01.00</option>
-					      <option value="2">02.00</option>
-					      <option value="3">03.00</option>
-					      <option value="4">04.00</option>
-					      <option value="5">05.00</option>
-					      <option value="6">06.00</option>
-					      <option value="7">07.00</option>
-					      <option value="8">08.00</option>
-					      <option value="9">09.00</option>
-					      <option value="10">10.00</option>
-					      <option value="11">11.00</option>
-					      <option value="12">12.00</option>
-					      <option value="13">13.00</option>
-					      <option value="14">14.00</option>
-					      <option value="15">15.00</option>
-					      <option value="16">16.00</option>
-					      <option value="17">17.00</option>
-					      <option value="18">18.00</option>
-					      <option value="19">19.00</option>
-					      <option value="20">20.00</option>
-					      <option value="21">21.00</option>
-					      <option value="22">22.00</option>
-					      <option value="23">23.00</option>
-				           
-				    </select>
-					<br>
-					<label for="sttime">End Time</label>
-				    <select id="sttime" name="sttime">
-				    	  <option value="0">00.00</option>
-					      <option value="1">01.00</option>
-					      <option value="2">02.00</option>
-					      <option value="3">03.00</option>
-					      <option value="4">04.00</option>
-					      <option value="5">05.00</option>
-					      <option value="6">06.00</option>
-					      <option value="7">07.00</option>
-					      <option value="8">08.00</option>
-					      <option value="9">09.00</option>
-					      <option value="10">10.00</option>
-					      <option value="11">11.00</option>
-					      <option value="12">12.00</option>
-					      <option value="13">13.00</option>
-					      <option value="14">14.00</option>
-					      <option value="15">15.00</option>
-					      <option value="16">16.00</option>
-					      <option value="17">17.00</option>
-					      <option value="18">18.00</option>
-					      <option value="19">19.00</option>
-					      <option value="20">20.00</option>
-					      <option value="21">21.00</option>
-					      <option value="22">22.00</option>
-					      <option value="23">23.00</option>
-				           
-				    </select>
-				    <a href="select_service.php" class="next">Next</a>
-				    <a href="studio_prof.php" class="cancel">Cancel</a>
-				</form>
-				
-			</div>
-		</div>
-	</div>		
-
+  <div class="col2">
+  <div class="container"> 
+    <?php 
+      $dateComponents = getdate(); 
+      if(isset($_GET['month']) && isset($_GET['year'])){
+        $month = $_GET['month']; 			     
+        $year = $_GET['year'];
+      }
+      else{
+        $month = $dateComponents['mon']; 			     
+        $year = $dateComponents['year'];
+      }
+      build_calendar($month,$year,$record11,$blocked_list,$booked_list); 
+    ?> 
+  </div>
+  </div> 
+</div>
 	
 <?php require_once('../../inc/minfooter.php');?>
 </body>

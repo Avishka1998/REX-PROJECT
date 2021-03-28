@@ -5,164 +5,96 @@
 }
  
 body{
-  height: 100vh;
-  overflow: auto;
-  background: linear-gradient(to bottom, rgba(225,225,225, 0.5) 0%, rgba(129, 0, 250, 0.6) 100%);
+  background: rgba(223, 223, 235, 0.5);
 }
 
-.body{
-	display: grid;		
-	align-items: center;
-	padding: 45px 0 20px 20%;
+.row11{
+  padding-top: 40px;
+  font-family: sans-serif;
 }
 
-
-.main-container{
-	font-family: sans-serif;
-	display: grid;
-	grid: 
-		'sub-cont' 
-		/100%;
-	width: 60%;
-	max-width: 70%;
-	max-height: 700px;
-	width: 80%;
-	height: 560px;
-	grid-gap: 10%;
+.container{
+  margin-top: 40px;		
+  width: 60%;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid grey;
 }
 
-.sub-cont{
-	grid-area: sub-cont;
-	overflow-y: scroll;
-	background-color: white;
-	border-radius: 5px;
-	box-shadow: 3px 8px 20px 3px rgba(10, 10, 10, 0.4);
-	padding: 20px 30px;
-	margin: 50px 0px;
-	height: 700px;
-}	
-
-::-webkit-scrollbar{
-	display: none;
-}
-
-h2{
-	text-align: center;
-	font-size: 30px;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-	border-bottom: 1px solid grey;
-}
-
-/* h2{
-	font-size: 20px;
-	padding-bottom: 5px;
-	padding-top: 5px;
-} */
-
-h3{
-	font-size: 15px;
-	font-family: sans-serif	
-}
-
-.grid{
-	display: grid;
-	grid: 
-		'box1 box2 box3' 40px
-		/30% 30% 20%;
-	grid-gap: 10%;
-	padding-left: 10%;
-	padding-right: 10%;
-}
-
-.box1{
-	display: grid;
-	grid-area: box1;
-	align-content: center;
-	text-align: left;
-	
-}
-
-.box2{
-	
-	display: grid;
-	grid-area: box2;
-	align-content: center;
-	text-align: left;
-	
-}
-
-.box3{
-	display: grid;
-	grid-area: box3;
-	align-content: center;
-	text-align: center;
-}
-
-.edit{
-  background-color: rgb(124, 120, 120);
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border: 3px solid rgba(255, 255, 255, 0.6);
-  border-radius: 10px
-  padding: 8px 10px;
-  border: none;
-  /* min-width: 50px; */
-  max-width: 80px;
-}
-
-.edit:hover  {
-	background-color: rgb(0, 102, 255);
-  }
-
-.row{
-	padding-top: 30px;
-	padding-left: auto;
-	padding-right: auto;
-}
-
-input[type=submit]{
-  background-color: rgb(0, 153, 255);
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border: 3px solid rgba(255, 255, 255, 0.6);
-  border-radius: 10px;
-  min-width: 100%;
-  max-width: 100px;
+.container h2{
   text-align: center;
-  font-size: 18px;
-  margin: 0px 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid grey;
+  background-color: rgb(192, 189, 189);
+  font-weight: 300;
+  font-size: 170%;	
 }
 
-input[type=submit]:hover{
-  background-color: rgba(0, 102, 255, 0.8);
-  font-size: 17px;);	
+.row1, .row2, .row3{
+  padding-top: 20px;
+  padding-left: 70px;
+  padding-right: 50px;	
 }
 
-.cancel{
-  background-color: rgb(232,62,62);
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border: 3px solid rgba(255, 255, 255, 0.6);
-  border-radius: 10px;
-  min-width: 100%;
-  max-width: 100px;
-  text-align: center;
-  font-size: 18px;
-  margin: 0px 0px;
-  
+.row111,.row222{
+  overflow-y: scroll;
+  height: 100px;
 }
 
-.cancel:hover{
-  background-color: rgb(218, 32, 32);	
-}
-
-.item{
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+#col1{
+  width: 50%;
+  float: left;
+  margin-bottom: 20px;
   border-bottom: 1px solid grey;
 }
 
+#col2{
+  width: 50%;
+  float: left;
+  margin-bottom: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.row3 #col1 , .row3 #col2{
+  margin-bottom: 10px;
+}
+
+h3{
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
+p{
+  text-align: left;  	
+}
+
+#col2 p{
+  width: 55%;
+  text-align: right;
+}
+
+.grid{
+  line-height: 50px;
+}
+
+.grid img{
+  margin-left: 70px;
+  float: left;
+}
+
+.grid input[type="submit"]{
+  float: left;
+  padding: 0 11px;
+  margin-left: 20px;
+  color: rgb(235, 241, 241);
+  background-color: rgb(95, 95, 92);
+  border: none;
+  cursor: pointer;
+  height: 40px;
+}
+
+.grid .cancel{
+  float: left;
+}

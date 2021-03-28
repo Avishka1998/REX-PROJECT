@@ -14,7 +14,11 @@ table{
     vertical-align:top;
     border:1px solid #989b9e;
     border-top:1px solid #989b9e;
-  }  
+  }
+  
+  td{
+    height: 75px;
+  }
   
   h4{
     margin-top: 8px;
@@ -28,6 +32,7 @@ table{
   h2{
     font-weight:500;
     margin-bottom: 10px;
+    text-transform: uppercase;
   }
   
   .cbtn{

@@ -1,190 +1,27 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;  
-}
-
 body{
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: relative;
-  background: linear-gradient(rgba(225,225,225, 0.5), rgba(129, 0, 250, 0.6));
-  overflow: auto;
-  height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  background: rgba(223, 223, 235, 0.5);
 } 
 
-.column {
+.row1{
+  padding-top: 40px;
+}
+
+.col1{
   float: left;
-  width: 50%;
-  text-align: center; 
+  width: 55%;
+  padding-top: 250px;
 }
 
-.row{
-  margin-bottom: 80px;
-  overflow: auto;
+.col2{
+  padding-top: 5px;	
+  width: 45%;
+  padding-right: 50px;
+  float: left;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.center{
-  background: rgba(255, 255, 255, 0.4);
-  max-width: 40%;
+.col1 h1{
+  font-family: sans-serif;
+  color: rgba(0, 0, 0, 0.7);
   text-align: center;
-  border-radius: 10px;
-  margin-top: 10%;
-  padding: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  box-shadow: 3px 8px 20px 3px rgba(10, 10, 10, 0.4);
+  font-size: 3rem;
 }
-
-.left {
-  left: 0;
-  
-}
-
-.right {
-  right: 0;
- 
-}
-
-h3{
-  padding: 5px;
-}
-
-input{
-  width: 80%;
-  font-size: 12.5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5%;
-  margin: 10px;
-}
-
-form{
-  color: black;
-    font-size: 20px;
-}
-
-
-select {
-  width: 80%;
-  padding: 12px 20px;
-  margin: 10px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  
-}
- 
-option{
-  font-size: 20px;
-}
-
-
-
-.next{
-  display: grid;
-  background-color: rgb(0, 153, 255);
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border: 3px solid rgba(255, 255, 255, 0.6);
-  border-radius: 10px;
-  min-width: 80%;
-  max-width: 140px;
-  text-align: center;
-  font-size: 18px;
-  margin: 20px auto 5px auto;
-}
-.cancel{
-    display: grid;
-    background-color: rgb(232,62,62);
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border: 3px solid rgba(255, 255, 255, 0.6);
-    border-radius: 10px;
-    min-width: 80%;
-    max-width: 140px;
-    text-align: center;
-    font-size: 18px;
-    margin: 10px auto 10px auto;
-}
-.next:hover {
-    background-color: rgba(0, 102, 255, 0.5);
-    font-size: 17px;
-}
-
-.cancel:hover{
-    background-color: rgba(217,5,5, 0.5);
-    font-size: 17px;
-}
-
-.thismonth, .nextmonth{
-  width: 95%;
-  display: inline-block;
-  border: 1px solid blueviolet;
-}
-
-.month {
-  padding: 5px 20px 5px 20px;
-  width: 100%;
-  background: #6b5d61;
-  text-align: center;
-}
-
-.month ul {
-  margin: 0;
-  padding: 0;
-}
-
-.month ul li {
-  color: white;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-.weekdays {
-  margin: 0;
-  padding: 5px 0;
-  background-color: #ddd;
-}
-
-.weekdays li {
-  display: inline-block;
-  width: 12%;
-  color: #666;
-  text-align: center;
-  font-weight: bold;
-}
-
-.days {
-  padding: 5px 0;
-  background: #eee;
-}
-
-.days li {
-  list-style-type: none;
-  display: inline-block;
-  width: 12.5%;
-  text-align: center;
-  margin-bottom: 5px;
-  font-size:15px;
-  color: #777;
-  cursor: pointer;
-}
-
-.days li:hover{
-  background-color:#463f41;
-  color: white;
-}
-
-
-
-
