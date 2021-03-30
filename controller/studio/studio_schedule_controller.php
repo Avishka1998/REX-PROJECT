@@ -156,7 +156,7 @@ if(isset($_POST['submit'])){          //blocking an inputted date
     $blockedate = $_POST['date'];
     $query155 = "SELECT * FROM reserved_job WHERE date=$blockedate AND studio_id=$userid AND isplaced=1";
     $res_set155 = mysqli_query($connection,$query155);
-    if(mysqli_num_rows($res_set155)>0){
+    if(mysqli_num_rows($res_set155)==0){
       $query15 = "INSERT INTO blocked_dates (sid,dates) VALUES ('$userid','$blockedate')";
       $res_set15 = mysqli_query($connection,$query15);
       header('Location: ../../view/studio/studio_schedule.php');   

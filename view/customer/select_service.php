@@ -8,16 +8,19 @@ $userid = $_SESSION['user_id'];
 if(isset($_POST['book'])){
   $date = $_POST['date'];
   $choose_time = date('Y-m-d H:i:s');	    
-  $query2 = "SELECT * FROM reserved_job WHERE c_id = '$userid' AND studio_id = '$studio_id' AND date = '$date'";
+  $query2 = "SELECT * FROM reserved_job WHERE c_id = '$userid' AND studio_id = '$studio_id' AND date = '$date' AND isplaced=0";
   $result_set2 = mysqli_query($connection,$query2);
-  if(mysqli_num_rows($result_set2)==0){
-	$query = "INSERT INTO reserved_job (c_id,studio_id,date,choose_time) VALUES ('$userid','$studio_id','$date','$choose_time')";
+  if(mysqli_num_rows($result_set2)==1){
+	$query = "DELETE FROM reserved_job WHERE c_id = '$userid' AND studio_id = '$studio_id' AND date = '$date'";
 	$result_set = mysqli_query($connection,$query);
-	$query5 = "SELECT job_id FROM reserved_job WHERE c_id = '$userid' AND studio_id = '$studio_id' AND date = '$date'";
-	$result_set5 = mysqli_query($connection,$query5);
-	$row5 = mysqli_fetch_assoc($result_set5);
-	$_SESSION['job'] = $row5['job_id'];	
   }
+
+  $query = "INSERT INTO reserved_job (c_id,studio_id,date,choose_time) VALUES ('$userid','$studio_id','$date','$choose_time')";
+  $result_set = mysqli_query($connection,$query);
+  $query5 = "SELECT job_id FROM reserved_job WHERE c_id = '$userid' AND studio_id = '$studio_id' AND date = '$date'";
+  $result_set5 = mysqli_query($connection,$query5);
+  $row5 = mysqli_fetch_assoc($result_set5);
+  $_SESSION['job'] = $row5['job_id'];	
 }
   $job = $_SESSION['job'];
   $query111 = "SELECT date FROM reserved_job WHERE job_id='$job'";
@@ -59,11 +62,7 @@ if(isset($_POST['book'])){
 	</div>
   </div>
 
-  <?php require_once('../../inc/minfooter.php'); ?>
-</body>
-</html>
-
-<?php
+  <?php
   if(isset($_POST['sservice'])){
 	$query11 = "SELECT * FROM studio_service WHERE studio_id = $studio_id";
 	$result_set11 = mysqli_query($connection,$query11);
@@ -106,4 +105,8 @@ if(isset($_POST['book'])){
 	  header("Location: select_service.php");  	
 	}
   }	
-?>
+  ?>
+  
+  <?php require_once('../../inc/minfooter.php'); ?>
+</body>
+</html>

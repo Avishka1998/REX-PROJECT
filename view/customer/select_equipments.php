@@ -9,6 +9,50 @@ $row111 = mysqli_fetch_assoc($result_set111);
 $date = $row111['date'];
 ?>
 
+<?php
+  if(isset($_POST['seleqp'])){
+	$query11 = "SELECT * FROM studio_audio_gear WHERE studio_id = $studio_id";
+	$result_set11 = mysqli_query($connection,$query11);
+	$eqplist = [];
+	while($row11=mysqli_fetch_assoc($result_set11)){
+	  array_push($eqplist,$row11);	
+	}
+	
+	$ischecked = 0;  
+    for($i=0;$i<count($eqplist);$i++){
+	  $eqpid = $eqplist[$i]['audio_id']; 	
+	  if(isset($_POST[$eqpid])){
+	    $ischecked = 1;
+		break;  	  
+	  }  	
+	}
+
+	if($ischecked==1){
+	  for($j=0;$j<count($eqplist);$j++){
+	    $eqpid = $eqplist[$j]['audio_id'];
+		$chrg = $eqplist[$j]['charge'];
+		$audn = $eqplist[$j]['name'];
+		$query6 = "SELECT * FROM reserved_audio_gear WHERE job_id = '{$job}' AND audio_id = '{$eqpid}'";
+		$result_set6 = mysqli_query($connection,$query6);
+		
+		if(mysqli_num_rows($result_set6)==0){
+		  if(isset($_POST[$eqpid])){	
+		    $query8 = "INSERT INTO reserved_audio_gear (audio_id,job_id,charge,name) VALUES ('$eqpid','$job','$chrg','$audn')";
+			$result_set8 = mysqli_query($connection,$query8);    	
+		  }		
+		}
+		else{
+		  if(!isset($_POST[$eqpid])){
+		    $query8 = "DELETE FROM reserved_audio_gear WHERE job_id='{$job}' AND audio_id = '{$eqpid}'";
+			$result_set8 = mysqli_query($connection,$query8); 	  
+		  }	
+		} 
+	  } 
+	}
+	header("Location: cart.php");  
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,49 +98,6 @@ $date = $row111['date'];
 	  </form>
 	</div>
   </div>
-  <?php
-  if(isset($_POST['seleqp'])){
-	$query11 = "SELECT * FROM studio_audio_gear WHERE studio_id = $studio_id";
-	$result_set11 = mysqli_query($connection,$query11);
-	$eqplist = [];
-	while($row11=mysqli_fetch_assoc($result_set11)){
-	  array_push($eqplist,$row11);	
-	}
-	
-	$ischecked = 0;  
-    for($i=0;$i<count($eqplist);$i++){
-	  $eqpid = $eqplist[$i]['audio_id']; 	
-	  if(isset($_POST[$eqpid])){
-	    $ischecked = 1;
-		break;  	  
-	  }  	
-	}
-
-	if($ischecked==1){
-	  for($j=0;$j<count($eqplist);$j++){
-	    $eqpid = $eqplist[$j]['audio_id'];
-		$chrg = $eqplist[$j]['charge'];
-		$audn = $eqplist[$j]['name'];
-		$query6 = "SELECT * FROM reserved_audio_gear WHERE job_id = '{$job}' AND audio_id = '{$eqpid}'";
-		$result_set6 = mysqli_query($connection,$query6);
-		
-		if(mysqli_num_rows($result_set6)==0){
-		  if(isset($_POST[$eqpid])){	
-		    $query8 = "INSERT INTO reserved_audio_gear (audio_id,job_id,charge,name) VALUES ('$eqpid','$job','$chrg','$audn')";
-			$result_set8 = mysqli_query($connection,$query8);    	
-		  }		
-		}
-		else{
-		  if(!isset($_POST[$eqpid])){
-		    $query8 = "DELETE FROM reserved_audio_gear WHERE job_id='{$job}' AND audio_id = '{$eqpid}'";
-			$result_set8 = mysqli_query($connection,$query8); 	  
-		  }	
-		} 
-	  } 
-	}
-	header("Location: cart.php");  
-  }
-?>
   <?php require_once('../../inc/minfooter.php'); ?>
 </body>
 </html>

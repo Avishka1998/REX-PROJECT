@@ -13,7 +13,7 @@ $query2 = "SELECT * FROM studio WHERE studio_id = $studio_id";
 $result_set2 = mysqli_query($connection,$query2);
 $record2 = mysqli_fetch_assoc($result_set2);
 
-$query3 = "SELECT * FROM reserved_job WHERE studio_id = $studio_id";
+$query3 = "SELECT * FROM reserved_job WHERE job_id = $job";
 $result_set3 = mysqli_query($connection,$query3);
 $record3 = mysqli_fetch_assoc($result_set3);
 
@@ -56,11 +56,8 @@ while($record5=mysqli_fetch_assoc($result_set5)){
 	  	  <?php
 			$total = 0;
 			for($i=0;$i<count($array4);$i++){
-		      $sern = $array4[$i]['service_name'];  
-			  $query41 = "SELECT * FROM studio_service WHERE studio_id = '$studio_id' AND service_name = '$sern'";
-			  $result_set41 = mysqli_query($connection,$query41);
-			  $record41 = mysqli_fetch_assoc($result_set41);
-			  echo "<p>$record41[service_name]</p>";
+		      $sern = $array4[$i]['service_name'];
+			  echo "<p>$sern</p>";  
 			  echo '<br>'; 
 			}
 		  ?>  	
@@ -68,13 +65,10 @@ while($record5=mysqli_fetch_assoc($result_set5)){
 		  <div id="col2">
 		  <?php
 			for($i=0;$i<count($array4);$i++){
-				$sern = $array4[$i]['service_name'];  
-				$query41 = "SELECT * FROM studio_service WHERE studio_id = '$studio_id' AND service_name = '$sern'";
-				$result_set41 = mysqli_query($connection,$query41);
-				$record41 = mysqli_fetch_assoc($result_set41);
-				echo "<p>$record41[service_charge] LKR</p>";
+				$serc = $array4[$i]['charge'];  
+				echo "<p>$serc LKR</p>";
 				echo '<br>';
-				$total = $total + $record41['service_charge'];
+				$total = $total + $serc;
 			}
 		  ?>	
 		  </div>
@@ -87,11 +81,8 @@ while($record5=mysqli_fetch_assoc($result_set5)){
 		  <div id="col1">
 		  <?php
 			for($i=0;$i<count($array5);$i++){
-			  $audn = $array5[$i]['audio_id'];  
-			  $query51 = "SELECT * FROM studio_audio_gear WHERE audio_id = '$audn'";
-			  $result_set51 = mysqli_query($connection,$query51);
-			  $record51 = mysqli_fetch_assoc($result_set51);
-			  echo "<p>$record51[name]</p>";
+			  $audn = $array5[$i]['name'];  
+			  echo "<p>$audn</p>";
 		      echo '<br>';     	  
 			}
 		  ?>
@@ -99,13 +90,10 @@ while($record5=mysqli_fetch_assoc($result_set5)){
 		  <div id="col2">
 		  <?php
 			for($i=0;$i<count($array5);$i++){
-			  $audn = $array5[$i]['audio_id'];  
-			  $query51 = "SELECT * FROM studio_audio_gear WHERE audio_id = '$audn'";
-			  $result_set51 = mysqli_query($connection,$query51);
-			  $record51 = mysqli_fetch_assoc($result_set51);
-			  echo "<p>$record51[charge] LKR</p>";
+			  $audc = $array5[$i]['charge'];  
+			  echo "<p>$audc LKR</p>";
 			  echo '<br>';
-			  $total = $total + $record51['charge'];     	  
+			  $total = $total + $audc;     	  
 			}
 		  ?>
 		  </div>
@@ -122,6 +110,27 @@ while($record5=mysqli_fetch_assoc($result_set5)){
 		  </div>	
 		</div>
 
+		<div class="row4">
+		  <div id="col1">
+		    <?php echo "<h3>Advanced Payment Fee</h3>";?>
+		  </div>
+		  <div id="col2">
+		    <?php
+			  $advancedp = $total/5;
+			  echo "<h3 style='width:55%; text-align:right;'>$advancedp LKR</h3>";?>
+		  </div>
+		</div>
+
+		<?php
+		  $advancedp_usd = $advancedp/200;
+		  $query11 = "SELECT * FROM advanced_payment WHERE job_id = $job";
+		  $result_set11 = mysqli_query($connection,$query11);
+		  if(mysqli_num_rows($result_set11)==0){
+		    $query12 = "INSERT INTO advanced_payment (job_id,total,advanced_fee) VALUES ($job,$total,$advancedp_usd)";
+			$result_set12 = mysqli_query($connection,$query12);	   
+		  }    
+		?>
+
 	  <div class="row grid">
 	    <img src="../../img/580b57fcd9996e24bc43c530.png" style="display:inline; width:150px; height:45px;">   
 	    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
@@ -129,7 +138,7 @@ while($record5=mysqli_fetch_assoc($result_set5)){
 		  <input type="hidden" name="cmd" value="_xclick">
 		  <input type="hidden" name="item_name" value="Instrument pack">
 	  	  <input type="hidden" name="item_number" value=<?php echo $job;?>>
-		  <input type="hidden" name="amount" value="5">
+		  <input type="hidden" name="amount" value=<?php echo $advancedp/200;?>>
 		  <input type='hidden' name='return' value="http://localhost/Rex/view/customer/recipt.php?jobid=<?php echo $job;?>">	
 		  <input type="hidden" name="currency_code" value="USD">
 		  <input type="submit" name="submit" value="SUBMIT">

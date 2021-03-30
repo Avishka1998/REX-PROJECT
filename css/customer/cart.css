@@ -29,11 +29,12 @@ body{
   border-bottom: 2px solid grey;
   background-color: rgb(192, 189, 189);
   font-weight: 300;
-  font-size: 170%;	
+  font-size: 170%;
+  margin-bottom: 10px;	
 }
 
-.row1, .row2, .row3{
-  padding-top: 20px;
+.row1, .row2, .row3, .row4{
+  /* padding-top: 15px; */
   padding-left: 70px;
   padding-right: 50px;	
 }

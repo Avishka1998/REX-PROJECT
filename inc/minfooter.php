@@ -1,7 +1,6 @@
 <head>
    <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
    <style>
-
     footer{
         margin: 0;
         padding: 0;

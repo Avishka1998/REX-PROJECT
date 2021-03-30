@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2021 at 01:00 PM
+-- Generation Time: Mar 30, 2021 at 01:40 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -42,6 +42,27 @@ INSERT INTO `admin` (`user_name`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `advanced_payment`
+--
+
+CREATE TABLE `advanced_payment` (
+  `payment_id` int(1) NOT NULL,
+  `job_id` int(5) NOT NULL,
+  `total` int(10) NOT NULL,
+  `advanced_fee` double NOT NULL,
+  `ispaid` int(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `advanced_payment`
+--
+
+INSERT INTO `advanced_payment` (`payment_id`, `job_id`, `total`, `advanced_fee`, `ispaid`) VALUES
+(3, 57, 4650, 4.65, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `blocked_dates`
 --
 
@@ -57,7 +78,6 @@ CREATE TABLE `blocked_dates` (
 
 INSERT INTO `blocked_dates` (`bid`, `sid`, `dates`) VALUES
 (2, 31, '2021-03-25'),
-(6, 31, '2021-05-11'),
 (7, 31, '2021-07-13');
 
 -- --------------------------------------------------------
@@ -87,7 +107,8 @@ INSERT INTO `customer` (`c_id`, `first_name`, `last_name`, `email`, `tele_no`, `
 (23, 'Dinindu', 'Navanjana', 'nuwan@gmail.com', 722345147, '7c222fb2927d828af22f592134e8932480637c0d', 1, 0, 'maxresdefault.jpg', 'Active now'),
 (48, 'Ariana', 'Grande', 'ariana@example.com', 412282222, '7c222fb2927d828af22f592134e8932480637c0d', 1, 0, '5bc79179fc7e160bf846da82.jfif', 'Active now'),
 (49, 'Charlie', 'Puth', 'charlie@example.com', 718822545, '7c222fb2927d828af22f592134e8932480637c0d', 1, 0, 'charlie-puth-summertime-ball-2017-1-1497126768-custom-0.jpg', 'Active now'),
-(51, 'Jogn', 'Paul', 'paula@example.com', 742558744, '7c222fb2927d828af22f592134e8932480637c0d', 1, 1, '', 'Active now');
+(51, 'Jogn', 'Paul', 'paula@example.com', 742558744, '7c222fb2927d828af22f592134e8932480637c0d', 1, 1, '', 'Active now'),
+(52, 'Sasindu', 'Subodhaka', 'sasindusubodhaka@gmail.com', 779726091, '85e51519e28017e157cdb995d0071ad3deffb765', 1, 0, 'images.jpg', 'Active now');
 
 -- --------------------------------------------------------
 
@@ -114,6 +135,13 @@ CREATE TABLE `email_verification` (
   `email` varchar(100) NOT NULL,
   `token` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `email_verification`
+--
+
+INSERT INTO `email_verification` (`id`, `email`, `token`) VALUES
+(1, 'sasindusubodhaka@gmail.com', '9573f6b8a54889bdbc493e65e3b8792560628d36b862f');
 
 -- --------------------------------------------------------
 
@@ -142,6 +170,16 @@ CREATE TABLE `messages` (
   `outgoing_msg` varchar(255) NOT NULL DEFAULT '0',
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`msg_id`, `c_id`, `s_id`, `incoming_msg`, `outgoing_msg`, `date`) VALUES
+(16, 48, 31, '0', 'hai inwave', '2021-03-30'),
+(17, 52, 31, '0', 'hai Inwave', '2021-03-30'),
+(18, 52, 31, 'hai sasindu', '0', '2021-03-30'),
+(19, 48, 31, 'hai ariana', '0', '2021-03-30');
 
 -- --------------------------------------------------------
 
@@ -201,10 +239,19 @@ CREATE TABLE `owner_verification` (
 --
 
 CREATE TABLE `rate` (
-  `c_id` int(100) NOT NULL,
-  `studio_id` int(100) NOT NULL,
-  `rates` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `rate_id` int(10) NOT NULL,
+  `c_id` int(10) NOT NULL,
+  `studio_id` int(10) NOT NULL,
+  `rate` int(1) NOT NULL,
+  `comment` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rate`
+--
+
+INSERT INTO `rate` (`rate_id`, `c_id`, `studio_id`, `rate`, `comment`) VALUES
+(11, 48, 31, 1, '');
 
 -- --------------------------------------------------------
 
@@ -235,8 +282,15 @@ CREATE TABLE `reserved_audio_gear` (
 --
 
 INSERT INTO `reserved_audio_gear` (`audio_id`, `job_id`, `name`, `charge`) VALUES
-(4, 39, 'Tube Microphone', 1400),
-(6, 39, '2X Guitars', 450);
+(8, 42, 'fender guitar', 1200),
+(8, 43, 'fender guitar', 1200),
+(11, 45, 'fender guitar', 1200),
+(11, 57, 'fender guitar', 1200),
+(12, 43, 'telecaster guitar', 1200),
+(12, 45, 'telecaster guitar', 1200),
+(12, 57, 'telecaster guitar', 1200),
+(13, 42, 'telecaster guitar', 1200),
+(17, 44, 'fender guitar', 1200);
 
 -- --------------------------------------------------------
 
@@ -250,15 +304,23 @@ CREATE TABLE `reserved_job` (
   `studio_id` int(5) NOT NULL,
   `date` date NOT NULL,
   `choose_time` timestamp NULL DEFAULT NULL,
-  `isplaced` int(1) NOT NULL DEFAULT 0
+  `isplaced` int(1) NOT NULL DEFAULT 0,
+  `rated` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reserved_job`
 --
 
-INSERT INTO `reserved_job` (`job_id`, `c_id`, `studio_id`, `date`, `choose_time`, `isplaced`) VALUES
-(39, 23, 31, '2021-03-27', '2021-03-27 10:10:34', 1);
+INSERT INTO `reserved_job` (`job_id`, `c_id`, `studio_id`, `date`, `choose_time`, `isplaced`, `rated`) VALUES
+(39, 23, 31, '2021-03-27', '2021-03-27 10:10:34', 1, 1),
+(40, 48, 31, '2021-03-29', '2021-03-28 13:30:16', 0, 0),
+(41, 48, 31, '2021-04-01', '2021-03-28 15:17:31', 0, 0),
+(42, 48, 31, '2021-03-28', '2021-03-29 12:18:14', 1, 1),
+(43, 23, 31, '2021-03-31', '2021-03-29 18:11:26', 1, 0),
+(44, 52, 46, '2021-04-01', '2021-03-30 02:54:47', 0, 0),
+(45, 52, 31, '2021-04-01', '2021-03-30 03:26:45', 1, 0),
+(57, 23, 31, '2021-04-12', '2021-03-30 11:16:27', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -279,7 +341,21 @@ CREATE TABLE `reserved_services` (
 
 INSERT INTO `reserved_services` (`res_id`, `job_id`, `service_name`, `charge`) VALUES
 (80, 39, 'Dubbing', 3200),
-(81, 39, 'Mastering', 1500);
+(81, 39, 'Mastering', 1500),
+(82, 40, 'Mastering', 1500),
+(83, 40, 'Mixing', 1250),
+(85, 41, 'Mixing', 1250),
+(86, 41, 'Recording', 750),
+(87, 42, 'Dubbing', 1300),
+(88, 42, 'Mastering', 1500),
+(89, 43, 'Dubbing', 1300),
+(90, 43, 'Mixing', 1250),
+(91, 44, 'Dubbing', 650),
+(92, 44, 'Mastering', 1300),
+(93, 45, 'Dubbing', 1300),
+(94, 45, 'Mastering', 1500),
+(103, 57, 'Mastering', 1500),
+(104, 57, 'Recording', 750);
 
 -- --------------------------------------------------------
 
@@ -342,7 +418,7 @@ INSERT INTO `studio` (`studio_id`, `studio_name`, `s_address_line1`, `s_address_
 (36, 'Lahiru Audio Vision', '19/2', 'Kottawa Rd', 'Piliyandala', 'Colombo', '45714', 'lahiruaudio@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 714568794, '', 21, '579ac30d06d7f66d701da57d_profile.jpg', '83ff029f775b748955df61a8805fdcee.jpg', 'Lahiru studios are now regarded as the most iconic set of studios going, you can bet almost anyone has heard of them even if they’re not in the music industry. With their high-end gear and clientele boasting some of the most legendary names in the music business from The Beatles and Aretha Franklin to Kanye West and Lady Gaga, it’s no surprise they take the number one spot on our list. You will be surprised that the price range can be fairly affordable considering what you get for your money and it’s worth noting that what’s charged to major clients is more than independent musicians and unsigned artists, so always ask if there’s wiggle room on their rates. ', '6.214754', '80.12547', 1, 1, 0, 0, 'Active now'),
 (38, 'Vaanavil Studio', '654', 'Kandy Rd', 'Kannathiddy', 'Jaffna', '84721', 'vaanavil@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 714568977, '', 21, '', '', '', '9.6615', '80.0255', 0, 1, 0, 0, 'Active now'),
 (39, 'Static Audio Productions', '53', 'Estate Rd', 'Wilgoda', 'Kurunegala', '80400', 'static@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 723778899, '', 16, '', '', '', '7.4818', '80.3609', 0, 1, 0, 0, 'Active now'),
-(46, 'Paul Audio Productions', 'Lesly Ranagala Rd', 'Vanathamulla', 'Borella', 'Colombo', '52478', 'paulstudio@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 716542147, '', 22, 'profile-204302-1071312414840020034.png', 'music-review-blog-youtube-banner-design-template-0f6f36593959a5fe315a97e1b3e48534_screen.jpg', '', '', '', 1, 1, 0, 0, 'Active now'),
+(46, 'Paul Audio Productions', 'Lesly Ranagala Rd', 'Vanathamulla', 'Borella', 'Colombo', '52478', 'paulstudio@example.com', '7c222fb2927d828af22f592134e8932480637c0d', 716542147, '', 22, 'profile-204302-1071312414840020034.png', 'music-review-blog-youtube-banner-design-template-0f6f36593959a5fe315a97e1b3e48534_screen.jpg', 'we are paul stuios\r\n', '', '', 1, 1, 0, 0, 'Active now'),
 (52, 'Pavi Production', '396', 'Deniyaya Rd', 'Morawaka', 'Matara', '81470', 'naveenudara356@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', 768404899, '', 21, '', '', '', '', '', 1, 1, 0, 0, 'Active now');
 
 -- --------------------------------------------------------
@@ -355,21 +431,35 @@ CREATE TABLE `studio_audio_gear` (
   `audio_id` int(5) NOT NULL,
   `studio_id` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `charge` double NOT NULL
+  `charge` double NOT NULL,
+  `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `studio_audio_gear`
 --
 
-INSERT INTO `studio_audio_gear` (`audio_id`, `studio_id`, `name`, `charge`) VALUES
-(1, 31, 'Tube Microphone', 1400),
-(2, 31, 'Tube Microphone', 1400),
-(3, 31, 'Tube Microphone', 1400),
-(4, 31, 'Tube Microphone', 1400),
-(5, 31, '2X Guitars', 450),
-(6, 31, '2X Guitars', 450),
-(7, 31, '2X Guitars', 450);
+INSERT INTO `studio_audio_gear` (`audio_id`, `studio_id`, `name`, `charge`, `status`) VALUES
+(8, 31, 'fender guitar', 1200, 1),
+(9, 31, 'fender guitar', 1200, 1),
+(10, 31, 'fender guitar', 1200, 1),
+(11, 31, 'fender guitar', 1200, 1),
+(12, 31, 'telecaster guitar', 1200, 1),
+(13, 31, 'telecaster guitar', 1200, 1),
+(14, 31, 'telecaster guitar', 1200, 1),
+(15, 31, 'telecaster guitar', 1200, 1),
+(16, 46, 'fender guitar', 1200, 1),
+(17, 46, 'fender guitar', 1200, 1),
+(18, 46, 'fender guitar', 1200, 1),
+(19, 46, 'fender guitar', 1200, 1),
+(36, 31, 'mixer', 5000, 1),
+(37, 31, 'mixer', 5000, 1),
+(38, 31, 'mixer', 5000, 1),
+(39, 31, 'mixer', 5000, 1),
+(40, 31, 'mic', 200, 1),
+(41, 31, 'mic', 200, 1),
+(42, 31, 'mic', 200, 1),
+(43, 31, 'mic', 200, 1);
 
 -- --------------------------------------------------------
 
@@ -405,7 +495,9 @@ CREATE TABLE `studio_portfolio` (
 --
 
 INSERT INTO `studio_portfolio` (`id`, `studio_id`, `port1`, `port2`, `port3`, `port4`) VALUES
-(1, 31, 'HKgL-ZnKXYY', '0FuIX3yHmdo', 'TwXQYOlFKeY', 'Y6RzPqoEEJM');
+(1, 31, 'eVIozKR9p50', 'eVIozKR9p50', 'eVIozKR9p50', 'eVIozKR9p50'),
+(2, 36, 'eVIozKR9p50', 'eVIozKR9p50', 'eVIozKR9p50', 'eVIozKR9p50'),
+(3, 46, 'YjYjrd_ozQw', 'YjYjrd_ozQw', 'YjYjrd_ozQw', 'YjYjrd_ozQw');
 
 -- --------------------------------------------------------
 
@@ -425,7 +517,8 @@ CREATE TABLE `studio_schedule` (
 
 INSERT INTO `studio_schedule` (`id`, `issatblocked`, `issunblocked`) VALUES
 (31, 1, 1),
-(36, 0, 0);
+(36, 0, 0),
+(46, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -436,19 +529,29 @@ INSERT INTO `studio_schedule` (`id`, `issatblocked`, `issunblocked`) VALUES
 CREATE TABLE `studio_service` (
   `studio_id` int(100) NOT NULL,
   `service_name` varchar(100) NOT NULL,
-  `service_charge` double NOT NULL
+  `service_charge` double NOT NULL,
+  `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `studio_service`
 --
 
-INSERT INTO `studio_service` (`studio_id`, `service_name`, `service_charge`) VALUES
-(31, 'Dubbing', 3200),
-(31, 'Mastering', 1500),
-(31, 'Mixing', 1250),
-(31, 'Recording', 750),
-(31, 'Singing', 1450);
+INSERT INTO `studio_service` (`studio_id`, `service_name`, `service_charge`, `status`) VALUES
+(31, 'Dubbing', 1300, 1),
+(31, 'Mastering', 1500, 1),
+(31, 'Mixing', 1590, 0),
+(31, 'Recording', 750, 1),
+(31, 'singing', 1200, 0),
+(31, 'Track Editing', 1500, 1),
+(36, 'Dubbing', 1300, 1),
+(36, 'Mastering', 1500, 1),
+(36, 'Mixing', 450, 1),
+(36, 'Recording', 1200, 1),
+(46, 'Dubbing', 650, 0),
+(46, 'Mastering', 1300, 1),
+(46, 'Mixing', 1500, 1),
+(46, 'Recording', 1200, 1);
 
 -- --------------------------------------------------------
 
@@ -465,6 +568,13 @@ CREATE TABLE `tokens` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `advanced_payment`
+--
+ALTER TABLE `advanced_payment`
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `job_id` (`job_id`);
 
 --
 -- Indexes for table `blocked_dates`
@@ -524,7 +634,8 @@ ALTER TABLE `owner_verification`
 -- Indexes for table `rate`
 --
 ALTER TABLE `rate`
-  ADD PRIMARY KEY (`c_id`,`studio_id`),
+  ADD PRIMARY KEY (`rate_id`),
+  ADD KEY `c_id` (`c_id`),
   ADD KEY `studio_id` (`studio_id`);
 
 --
@@ -615,10 +726,16 @@ ALTER TABLE `tokens`
 --
 
 --
+-- AUTO_INCREMENT for table `advanced_payment`
+--
+ALTER TABLE `advanced_payment`
+  MODIFY `payment_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `blocked_dates`
 --
 ALTER TABLE `blocked_dates`
-  MODIFY `bid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `bid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -636,7 +753,7 @@ ALTER TABLE `customer_complaint`
 -- AUTO_INCREMENT for table `email_verification`
 --
 ALTER TABLE `email_verification`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `membership_payment`
@@ -648,7 +765,7 @@ ALTER TABLE `membership_payment`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `msg_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `msg_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `owner`
@@ -660,25 +777,31 @@ ALTER TABLE `owner`
 -- AUTO_INCREMENT for table `owner_verification`
 --
 ALTER TABLE `owner_verification`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rate`
+--
+ALTER TABLE `rate`
+  MODIFY `rate_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `removed_users`
 --
 ALTER TABLE `removed_users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reserved_job`
 --
 ALTER TABLE `reserved_job`
-  MODIFY `job_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `job_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `reserved_services`
 --
 ALTER TABLE `reserved_services`
-  MODIFY `res_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `res_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `sample_service`
@@ -696,19 +819,19 @@ ALTER TABLE `studio`
 -- AUTO_INCREMENT for table `studio_audio_gear`
 --
 ALTER TABLE `studio_audio_gear`
-  MODIFY `audio_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `audio_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `studio_complaint`
 --
 ALTER TABLE `studio_complaint`
-  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `studio_portfolio`
 --
 ALTER TABLE `studio_portfolio`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tokens`
@@ -719,6 +842,12 @@ ALTER TABLE `tokens`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `advanced_payment`
+--
+ALTER TABLE `advanced_payment`
+  ADD CONSTRAINT `advanced_payment_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `reserved_job` (`job_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `blocked_dates`
@@ -750,7 +879,7 @@ ALTER TABLE `messages`
 -- Constraints for table `rate`
 --
 ALTER TABLE `rate`
-  ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`),
+  ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `rate_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`) ON DELETE CASCADE;
 
 --

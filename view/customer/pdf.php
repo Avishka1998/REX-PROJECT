@@ -14,46 +14,17 @@ if(isset($_POST['receipt'])){
     $result_set2 = mysqli_query($connection,$query2);
     $record2 = mysqli_fetch_assoc($result_set2);
 
-    $total = 0;
-    $query3 = "SELECT charge FROM reserved_services WHERE job_id = $jobid";
+    $query3 = "SELECT total,advanced_fee FROM advanced_payment WHERE job_id = $jobid";
     $result_set3 = mysqli_query($connection,$query3);
-    while($record3 = mysqli_fetch_assoc($result_set3)){
-      $total = $total + $record3['charge'];    
-    }
-    $query4 = "SELECT charge FROM reserved_audio_gear WHERE job_id = $jobid";
+    $record3 = mysqli_fetch_assoc($result_set3);
+
+    $query4 = "SELECT * FROM reserved_audio_gear WHERE job_id= $jobid";
     $result_set4 = mysqli_query($connection,$query4);
-    while($record4 = mysqli_fetch_assoc($result_set4)){
-      $total = $total + $record4['charge'];    
-      }
 
     $query5 = "SELECT studio_name FROM studio WHERE studio_id = $studioid";
     $result_set5 = mysqli_query($connection,$query5);
     $record5 = mysqli_fetch_assoc($result_set5);  
   }
-//============================================================+
-// File name   : example_003.php
-// Begin       : 2008-03-04
-// Last Update : 2013-05-14
-//
-// Description : Example 003 for TCPDF class
-//               Custom Header and Footer
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
-
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Custom Header and Footer
- * @author Nicola Asuni
- * @since 2008-03-04
- */
 
 // Include the main TCPDF library (search for installation path).
 require_once('TCPDF-main/tcpdf.php');
@@ -222,7 +193,7 @@ $html = <<<EOD
 .topic{text-align:right;}
 </style>
 
-<p class="topic" style="color:green;"><br>$record5[studio_name]<br>Date: $record1[date]<br>Booking ID: $jobid<br></p>
+<p class="topic" style="color:green;"><br>$record1[choose_time]<br>$record5[studio_name]<br>Booking Date: $record1[date]<br>Booking ID: $jobid<br></p>
 EOD;
 
 // print a block of text using Write()
@@ -260,11 +231,25 @@ EOD;
 
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
-$header = array('TOTAL (LKR)',$total );
+$tots = $record3['total']. " LKR";
+$header = array('TOTAL',$tots);
 
 $data = NULL;
 
 $pdf->ColoredTable($header, $data);
+
+$html = <<<EOD
+<p></p>
+EOD;
+
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+$adp = $record3['advanced_fee']." USD";
+$header = array('ADVANCED FEE',$adp);
+    
+$data = NULL;
+
+$pdf->ColoredTable($header, $data); 
 
 //Close and output PDF document
 $pdf->Output('recordex.pdf', 'I');
