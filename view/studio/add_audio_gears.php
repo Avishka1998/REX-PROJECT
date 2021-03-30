@@ -18,7 +18,7 @@ session_start();
         <div class="adds">
                 <center><h1 class="addtitle">UPDATE EXISTING ADDITIONAL EQUIPMENTS</h1></center>       
         <?php 
-                $query1 = "SELECT name,COUNT(audio_id) FROM studio_audio_gear WHERE studio_id=$user_id GROUP BY name";
+                $query1 = "SELECT name,COUNT(audio_id),status FROM studio_audio_gear WHERE studio_id=$user_id GROUP BY name";
                 $result_set1 = mysqli_query($connection,$query1);
                 if($result_set1){
                         $rows=mysqli_num_rows($result_set1);
@@ -26,6 +26,12 @@ session_start();
                                 $temp=1;                                        
                                 echo '<form action="../../controller/studio/add_audio_gears_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
                                 while($record = mysqli_fetch_assoc($result_set1)){
+                                        if($record['status']==1){
+                                                $status="checked";
+                                        }
+                                        else{
+                                                $status="unchecked";
+                                        }
                                         $name = $record['name'];
                                         $query12 = "SELECT charge FROM studio_audio_gear WHERE name= '$name'";
                                         $result_set12 = mysqli_query($connection,$query12);
@@ -37,7 +43,7 @@ session_start();
                                                 <div class="column" style="width:20%;">
                                                         <div class="slideTwo">	
                                                                 <input type="hidden"  id="unchecked_service'.$temp.'"  name="uncheck'.$temp.'"  value="'.$record['name'].'" />                                                                        
-                                                                <input type="checkbox"  id="service'.$temp.'" name="check'.$temp.'"  value="'.$record['name'].'"  checked/>
+                                                                <input type="checkbox"  id="service'.$temp.'" name="check'.$temp.'"  value="'.$record['name'].'"  '.$status.'/>
                                                                 <label for="service'.$temp.'"></label>                  
                                                         </div>
                                                 

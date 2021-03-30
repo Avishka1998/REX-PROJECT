@@ -22,7 +22,7 @@
                               if(count($list)>$qty){
                                 $diff = (count($list)-$qty);
                                 for($k=0; $k<count($list);$k++){
-                                  $query4 = "UPDATE studio_audio_gear SET charge='{$charge}' WHERE audio_id='{$list[$k]['audio_id']}'";
+                                  $query4 = "UPDATE studio_audio_gear SET charge='{$charge}',status=1 WHERE audio_id='{$list[$k]['audio_id']}'";
                                   $result_set4 = mysqli_query($connection,$query4);
                                 } 
                                 for($j=0;$j<$diff;$j++){
@@ -33,7 +33,7 @@
                               else if(count($list)<$qty){
                                 $diff = ($qty - count($list));
                                 for($i=0;$i<count($list);$i++){
-                                  $query3 = "UPDATE studio_audio_gear SET charge='{$charge}' WHERE audio_id='{$list[$i]['audio_id']}'";
+                                  $query3 = "UPDATE studio_audio_gear SET charge='{$charge}',status=1 WHERE audio_id='{$list[$i]['audio_id']}'";
                                   $result_set3 = mysqli_query($connection,$query3); 
                                 }
                                 for($j=0;$j<$diff;$j++){
@@ -43,7 +43,7 @@
                               }
                               else if(count($list)==$qty){
                                 for($j=0;$j<$qty;$j++){
-                                  $query3 = "UPDATE studio_audio_gear SET charge='{$charge}' WHERE audio_id='{$list[$j]['audio_id']}'";
+                                  $query3 = "UPDATE studio_audio_gear SET charge='{$charge}',status=1 WHERE audio_id='{$list[$j]['audio_id']}'";
                                   $result_set3 = mysqli_query($connection,$query3);          
                                 }            
                               }
@@ -53,10 +53,10 @@
                         }
                         else if(isset($_POST['uncheck'.$i.''])){//get unchecked services for delete
                             $unchecked_instrument_name=$_POST['uncheck'.$i.'']; //store the instrumet in instrumet_name variable
-                            $query ="DELETE FROM studio_audio_gear WHERE studio_id=$studio_id AND name='$unchecked_instrument_name' ";
+                            $query ="UPDATE studio_audio_gear SET status=0 WHERE studio_id=$studio_id AND name='$unchecked_instrument_name' ";
                             $result_set = mysqli_query($connection,$query);                            
                             if($result_set){
-                                $deleted=$unchecked_instrument_name." deleted ";
+                                $deleted=$unchecked_instrument_name." Updated ";
                             }
                             
                         }                     

@@ -25,7 +25,7 @@
                         if(isset($_POST['check'.$i.'']) && isset($_POST['charge'.$i.''])){                   
                             $service_name=$_POST['check'.$i.'']; //store the service in service_name variable
                             $charge=$_POST['charge'.$i.''];//store the charge in charge variable                           
-                            $query ="UPDATE studio_service SET service_charge=$charge WHERE studio_id=$studio_id AND service_name='$service_name' ";
+                            $query ="UPDATE studio_service SET service_charge=$charge, status=1 WHERE studio_id=$studio_id AND service_name='$service_name' ";
                             $result_set=mysqli_query($connection,$query);
                             if($result_set){
                                 $updated="Service charge updated";
@@ -34,10 +34,10 @@
                         }
                         else if(isset($_POST['uncheck'.$i.''])){//get unchecked services for delete
                             $unchecked_service_name=$_POST['uncheck'.$i.'']; //store the service in service_name variable
-                            $query ="DELETE FROM studio_service WHERE studio_id=$studio_id AND service_name='$unchecked_service_name' ";
+                            $query ="UPDATE studio_service SET status=0 WHERE studio_id=$studio_id AND service_name='$unchecked_service_name' ";
                             $result_set = mysqli_query($connection,$query);                            
                             if($result_set){
-                                $deleted=$unchecked_service_name." deleted ";
+                                $deleted=$unchecked_service_name." updated ";
                             }
                             
                         }                     

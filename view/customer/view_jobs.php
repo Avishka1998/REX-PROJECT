@@ -4,7 +4,8 @@ session_start();
 
 if(isset($_GET['job'])){
   $job = $_GET['job'];
-  
+  $_SESSION['job_id']=$job;
+
   $query1 = "SELECT * FROM reserved_job WHERE job_id = $job";
   $result_set1 = mysqli_query($connection,$query1);
   $record1 = mysqli_fetch_assoc($result_set1);
@@ -92,11 +93,13 @@ if(isset($_GET['job'])){
                 echo "<a href='#'>Complaint</a>";
               }
               if($_GET['status']==2){
-                echo "<a href='#'>Message</a>";
+                echo "<a href='cust_chat.php?studio_id=$studio_id'>Message</a>";
                 echo "<a href='#'>Complaint</a>";
               }
               if($_GET['status']==3){
-                echo "<a href='#'>Rate</a>";
+                if($record1['rated']==0){
+                  echo "<a href='studio_rate.php?studio_id=$studio_id'>Rate</a>";
+                }
                 echo "<a href='#'>Complaint</a>";
               }
             }

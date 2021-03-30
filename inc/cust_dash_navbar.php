@@ -44,7 +44,7 @@
     }
 
     #user{
-      font-style: italic;
+      font-style: ;
       text-transform: uppercase;
       font-size: 1.4em;
     }
@@ -95,7 +95,8 @@
         <li><a href="../customer/pendings.php"  <?php if($filename=='pendings.php') echo "class=active"?>><i class="fa fa-calendar"></i> Jobs</a></li>
         <li><a href="../../view/customer/cust_inbox.php" <?php if($filename=='cust_inbox.php') echo "class=active"?>><i class="fa fa-fw fa-envelope-open"></i> Inbox</a></li>
         <li><a href="../../controller/logout.php"><i class="fa fa-fw fa-lightbulb-o"></i> Logout</a></li>
-        <li><a id="user" title="<?php echo $user_name; ?>" href="../../view/customer/cust_profile.php" <?php if($filename=='cust_profile.php') echo "class=active"?>><i class="fa fa-fw fa-user-circle"></i></a></li>
+        <li><a style='font-size:10px;' id="user" title="<?php echo $user_name;?>" href="../../view/customer/cust_profile.php" <?php if($filename=='cust_profile.php') echo "class=active"?>><i style='font-size:20px;' class="fa fa-fw fa-user-circle"></i><?php echo $user_name;?></a></li>
+ 
       </ul>
     </nav>
 

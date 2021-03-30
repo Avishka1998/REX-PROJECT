@@ -26,14 +26,20 @@ session_start();
                                 $temp=1;                                        
                                 echo '<form action="../../controller/studio/add_services_controller.php?studio_id='.$user_id.'&rows='.$rows.'" class="service_form" method="post">';
                                 while($record = mysqli_fetch_assoc($result_set1)){
+                                        if($record['status']==1){
+                                                $status="checked";
+                                        }
+                                        else{
+                                                $status="unchecked";
+                                        }
                                         echo '<div class="row serset" >                               
                                                 <div class="column">
                                                                 <lable class="description" name="service'.$temp.'"><h2>'.$record['service_name'].'</h2></lable> 
                                                 </div>
                                                 <div class="column">
-                                                        <div class="slideTwo">	
+                                                        <div class="slideTwo">                                                               
                                                                 <input type="hidden"  id="unchecked_service'.$temp.'"  name="uncheck'.$temp.'"  value="'.$record['service_name'].'"/>                                                                        
-                                                                <input type="checkbox"  id="service'.$temp.'"   name="check'.$temp.'"  value="'.$record['service_name'].'"  checked/>
+                                                                <input type="checkbox"  id="service'.$temp.'"   name="check'.$temp.'"  value="'.$record['service_name'].'"  '.$status.'/>
                                                                 <label for="service'.$temp.'"></label>                  
                                                         </div>
                                                 

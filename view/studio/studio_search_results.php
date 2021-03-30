@@ -106,6 +106,19 @@ session_start();
 							else{
 								$profile = "studio1.png";
 							}
+                     $query1="SELECT * FROM rate INNER JOIN studio ON rate.studio_id=studio.studio_id WHERE rate.studio_id=$record[studio_id]";
+                     $result_set1=mysqli_query($connection,$query1);
+                     $rate_value=0.0;      
+                     while($record1 = mysqli_fetch_assoc($result_set1)){
+                        $rate_value=$rate_value+$record1['rate'];
+                     }                                 
+                     if(mysqli_num_rows($result_set1)==0){
+                        $rate="-";
+                     } 
+                     else{
+                        $rate=$rate_value/mysqli_num_rows($result_set1);
+                        $rate=number_format($rate,1,'.','');
+                     }
 							echo '<div class="row2">';
 							echo '<div class="col1">'; 																			
 								echo "<img src='../../img/studio/$profile' height='180' width='180' >";
@@ -115,10 +128,7 @@ session_start();
 								echo "<h4>$record[studio_name]<br></h4>"; 
 								echo "<h5>$record[distric]</h5>";	
 								echo '<div class="rating">';
-									echo '<span class="fa fa-star checked"></span>';
-									echo '<span class="fa fa-star checked"></span>';
-									echo '<span class="fa fa-star checked"></span>';
-									echo '<span class="fa fa-star checked"></span>';
+                           echo  "<span><b>$rate  </b></span>";
 									echo '<span class="fa fa-star checked"></span>';
 								echo '</div>';
 								echo '</div>';
