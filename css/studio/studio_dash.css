@@ -49,130 +49,17 @@ form button {
     width: 15%;
   }
 
-  .jobs{
-    margin-top: 20px;
+  .buttons{
+    position: absolute;
+    left: 50%;
+    top: 300%;
+    transform: translate(-50%, -50%);
   }
 
-  #job1, #job2, #job3, #job4{
-    display: inline-block;
-    width: 22%;
-    max-width: 22%;
-    border: 1px solid rgb(83, 78, 78);
-    margin: 18px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.4);
+  .service,.audio-gears {
+   margin-bottom: 20px;       
   }
 
-  #job1{
-    margin-left: 0;
-  }
-
-  .jobs img{
-    width: 150px;
-    height: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-
-  .jobs p{
-    text-align: center;
-    margin: 10px;
-  }
-
-  .jobs button {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    background-color: #5e5b5b;
-    padding: 6px 10px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    transition: 0.5s;
-    border: 0px;
-  }
-
-  .jobs button:hover{
-    background-color: #201d1e;
-  }
-
-  .thismonth, .nextmonth{
-    width: 40%;
-    margin: 55px;
-    display: inline-block;
-    border: 1px solid blueviolet;
-  }
-
-  .month {
-    padding: 40px 25px;
-    width: 100%;
-    background: #6b5d61;
-    text-align: center;
-  }
-
-  .month ul {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .month ul li {
-    color: white;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-  }
-
-  .weekdays {
-    margin: 0;
-    padding: 10px 0;
-    background-color: #ddd;
-  }
-  
-  .weekdays li {
-    display: inline-block;
-    width: 12.5%;
-    color: #666;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .days {
-    padding: 10px 0;
-    background: #eee;
-    margin: 0;
-  }
-  
-  .days li {
-    list-style-type: none;
-    display: inline-block;
-    width: 12.5%;
-    text-align: center;
-    margin-bottom: 5px;
-    font-size:15px;
-    color: #777;
-    cursor: pointer;
-  }
-
-  .days li:hover{
-    background-color:#463f41;
-    color: white;
-  }
-  .service {
-    position: relative;  
-    float:right;   
-    margin-right: 10px;       
-  }
-  .instrument {
-    position: relative;  
-    float:right;  
-    margin-right: 10px;      
-  }
-  .audio-gears {
-    position: relative;  
-    float:right;  
-          
-  }
   .search {
     position: relative;  
     float: left;    
@@ -180,19 +67,25 @@ form button {
     width: 30%;   
   }
  
-  .service button, .instrument button,.audio-gears button{
-    margin-left: 0px;
-    margin-right: 0px;
+  .service button, .schedule button, .audio-gears button{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
     background: linear-gradient(to right,rgb(74, 73, 92),rgb(66, 62, 74));
-    padding: 10px 12px;
+    padding: 20px 25px;
     cursor: pointer;
     border-radius: 4px;
-    color: white;
+    color: rgb(204, 199, 199);
     font-weight: bold;
-    transition: 0.5s;
+    transition: 0.8s;
     border: 0px;
-    font-family: sans-serif;  
+    font-family: sans-serif;
+    font-size: 1rem;  
+  }
+
+  .buttons button:hover{
+    color: white;
   }
  
   @keyframes click-wave {

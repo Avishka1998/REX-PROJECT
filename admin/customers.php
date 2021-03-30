@@ -101,7 +101,7 @@ require_once('../inc/connection.php');
 </head>
 <body>
 <div class="row"> 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Studio Name.." title="Type in a Name">   
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Customer Name.." title="Type in a Name">   
     <?php 
          if(isset($_GET['error'])){
             echo '<div class="error">';

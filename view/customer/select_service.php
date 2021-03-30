@@ -1,8 +1,10 @@
 <?php
 require_once('../../inc/connection.php');
 session_start();
+
 $studio_id = $_SESSION['studio_id'];
 $userid = $_SESSION['user_id'];
+
 if(isset($_POST['book'])){
   $date = $_POST['date'];
   $choose_time = date('Y-m-d H:i:s');	    
