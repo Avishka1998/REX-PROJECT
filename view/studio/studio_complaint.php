@@ -1,27 +1,31 @@
 <?php 
 require_once('../../inc/connection.php');
 session_start();
-if(isset($_GET['studio_id'])){
-  $studio_id=$_GET['studio_id'];
+if(isset($_GET['c_id'])){
+  $c_id=$_GET['c_id'];
+  //echo "yes";
+}
+else{
+   echo "no";
 }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Customer-Complaint</title>
+    <title>Studio-Complaint</title>
     <link rel="stylesheet" href="../../css/customer/complaint.css">
   </head>
-  <body style="background-color: #004882;background: linear-gradient(rgba(225,225,225,0.5),rgba(227,168,155,0.7));">
-  <?php require_once('../../inc/cust_dash_navbar.php');?>
+  <body >
+  <?php require_once('../../inc/stu_dash_navbar.php');?>
     
 
     <div class="center">
       <h1 style="color:gray;">Add your complaint</h1>
 
-      <form method="post" action="../../controller/customer/cust_complaint_controller.php?studio_id=<?php echo $studio_id?>">
+      <form method="post" action="../../controller/customer/cust_complaint_controller.php?c_id=<?php echo $c_id?>">
         <div class="textarea">         
-          <!-- <input type="text" name="complaint" placeholder="Type here"> -->
+         
           <textarea id="complaint" name="complaint" rows="10" cols="50"></textarea>
   
         </div>
@@ -36,7 +40,7 @@ if(isset($_GET['studio_id'])){
             ?>
         </div>
         <div class="button">
-          <input  type="submit" value="submit" name="submit_customer"> 
+          <input  type="submit" value="submit" name="submit_studio">
         </div>
 	  </form>
 	  <div class="sent">

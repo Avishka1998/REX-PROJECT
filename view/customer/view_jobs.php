@@ -90,17 +90,17 @@ if(isset($_GET['job'])){
             if(isset($_GET['status'])){
               if($_GET['status']==1){
                 echo "<a href='#'>Message</a>";
-                echo "<a href='#'>Complaint</a>";
+                // echo "<a href='#'>Complaint</a>";
               }
               if($_GET['status']==2){
                 echo "<a href='cust_chat.php?studio_id=$studio_id'>Message</a>";
-                echo "<a href='#'>Complaint</a>";
+                // echo "<a href='#'>Complaint</a>";
               }
               if($_GET['status']==3){
                 if($record1['rated']==0){
                   echo "<a href='studio_rate.php?studio_id=$studio_id'>Rate</a>";
                 }
-                echo "<a href='#'>Complaint</a>";
+                echo "<a href='cust_complaint.php?studio_id=$studio_id'>Complaint</a>";
               }
             }
           ?>

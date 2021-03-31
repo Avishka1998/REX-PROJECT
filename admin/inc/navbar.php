@@ -72,7 +72,7 @@
         <li><a href="verified.php" <?php if($filename=='verified.php') echo "class=active"?>>Verified studios</a></li>
         <li><a href="customers.php" <?php if($filename=='customers.php') echo "class=active"?>>Customers</a></li>
         <li><a href="jobs.php" <?php if($filename=='jobs.php') echo "class=active"?>>Jobs</a></li>
-        <li><a href="complaint.php" <?php if($filename=='complaint.php') echo "class=active"?>>Complaints</a></li>
+        <li><a href="complaint.php" <?php if($filename=='complaint.php') echo "class=active"?>>Complaint</a></li>
         <li><a href="logout.php" <?php if($filename=='logout.php') echo "class=active"?>>Log out</a></li>
       </ul>
     </nav>

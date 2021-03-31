@@ -3,22 +3,24 @@ require_once('../inc/connection.php');
 session_start();
 ?>
 <?php 
+
                     if( isset($_GET['cus_complaint_id'])){//check whether admin press the solve btton on customer complaints    
                         $complaint_id=$_GET['cus_complaint_id'];                      
-                        $query="UPDATE customer_complaint SET flag='1' WHERE complaint_id=$complaint_id";//update the flag 0 to 1(then this row will not be view by admin)
+                        $query="UPDATE complaint SET flag=2 WHERE complaint_id=$complaint_id";//update the flag 0 to 1(then this row will not be view by admin)
                         $result_set=mysqli_query($connection,$query);
-                   }
+                    }
                     if( isset($_GET['stud_complaint_id'])){//check whether admin press the solve btton on studio complaints
                         $complaint_id=$_GET['stud_complaint_id'];
-                        $query="UPDATE studio_complaint SET flag='1' WHERE complaint_id=$complaint_id"; //update the flag 0 to 1 (then this row will not be view by admin)
+                        $query="UPDATE complaint SET flag=2 WHERE complaint_id=$complaint_id"; //update the flag 0 to 1 (then this row will not be view by admin)
                         $result_set=mysqli_query($connection,$query);
-                       
+                    
                     }
+ 
                    
                     $errors1= array();
                     $errors2= array();
                     //join customer_complaint with studio and customer
-                    $query1="SELECT * FROM customer_complaint JOIN studio ON  studio.studio_id = customer_complaint.studio_id JOIN customer ON customer.c_id=customer_complaint.c_id WHERE flag='0' "; 
+                    $query1="SELECT * FROM complaint JOIN studio ON  studio.studio_id = complaint.studio_id JOIN customer ON customer.c_id=complaint.c_id WHERE complaint.flag=1 "; 
                     $result_set1=mysqli_query($connection,$query1);
                             if($result_set1){
                                 if(mysqli_num_rows($result_set1)==0){ //check whether the number of complants from customers is 0
@@ -29,13 +31,13 @@ session_start();
                                     $table1 = "<table>";                                    
                                     $table1 .= "<tr><th>customer(from)</th><th>Studio(to)</th><th>customer-email</th><th>studio-email</th><th>description</th><th>slove</th>";
                                     while($record =mysqli_fetch_assoc($result_set1)){
-                                     $complaint_id=$record['complaint_id'];
+                                       $complaint_id=$record['complaint_id'];
                                        $table1 .= "<tr>";
                                        $table1.= "<td>".$record['first_name']."</td>";
                                        $table1.= "<td>".$record['studio_name']."</td>";
                                        $table1.= "<td>".$record['email']."</td>";
                                        $table1.= "<td>".$record['s_email']."</td>";
-                                       $table1.= "<td>".$record['description']."</td>";
+                                       $table1.= "<td>".$record['com_description']."</td>";
                                        $table1 .= "<td>"."<form action=complaint.php?cus_complaint_id=$complaint_id method='post' >'<button type='submit' name='solve'>solve</button></form>"."</td>";
                                        $table1.= "</tr>";
                                     }
@@ -49,7 +51,7 @@ session_start();
                             }
                     
                   
-                    $query2="SELECT * FROM studio_complaint JOIN studio ON  studio.studio_id = studio_complaint.studio_id JOIN customer ON customer.c_id=studio_complaint.c_id  WHERE flag='0'"; 
+                    $query2="SELECT * FROM complaint JOIN studio ON  studio.studio_id = complaint.studio_id JOIN customer ON customer.c_id=complaint.c_id  WHERE complaint.flag=0 "; 
                     $result_set2=mysqli_query($connection,$query2);
                             if($result_set2){
                                 if(mysqli_num_rows($result_set2)==0){//check whether the number of complants from studios is 0
@@ -66,7 +68,7 @@ session_start();
                                             $table2.= "<td>".$record['first_name']."</td>";
                                             $table2.= "<td>".$record['s_email']."</td>";
                                             $table2.= "<td>".$record['email']."</td>";
-                                            $table2.= "<td>".$record['description']."</td>";
+                                            $table2.= "<td>".$record['com_description']."</td>";
                                             $table2 .= "<td>"."<form action=complaint.php?stud_complaint_id=$complaint_id method='post' >'<button type='submit' name='solve'>solve</button></form>"."</td>";
                                         $table2.= "</tr>";
                                     }

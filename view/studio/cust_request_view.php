@@ -41,7 +41,8 @@ if(isset($_GET['job'])){
         echo "<p>$record1[choose_time]</p>";
         echo "<p>Job ID: $job</p>";
         echo "<p>$record2[email]</p>";
-		    echo "<p>$record2[tele_no]</p>";
+		echo "<p>$record2[tele_no]</p>";
+        echo "<p>Customer ID: $record2[c_id]</p>";
         echo "<p>Booking Date: <b>$record1[date]</b></p>";
         ?>
       </div>
@@ -77,10 +78,9 @@ if(isset($_GET['job'])){
             }
             echo "</p>";
           ?>
-          <h3>ADVANCED FEE</h3>
+          <h3>TOTAL FEE</h3>
             <?php
-              $total = $total/1000;
-              echo "<p>$total USD</p>";
+              echo "<p>$total LKR</p>";
             ?>  
       </div>
 
@@ -88,15 +88,15 @@ if(isset($_GET['job'])){
       <?php
             if(isset($_GET['status'])){
               if($_GET['status']==1){
-                echo "<a href='#'>Message</a>";
-                echo "<a href='#'>Complaint</a>";
+                echo "<a href='studio_chat.php?c_id=$c_id'>Message</a>";
+                // echo "<a href='#'>Complaint</a>";
               }
               if($_GET['status']==2){
-                echo "<a href='#'>Message</a>";
-                echo "<a href='#'>Complaint</a>";
+                echo "<a href='studio_chat.php?c_id=$c_id'>Message</a>";
+                // echo "<a href='#'>Complaint</a>";
               }
               if($_GET['status']==3){
-                echo "<a href='#'>Complaint</a>";
+                echo "<a href='studio_complaint.php?c_id=$c_id'>Complaint</a>";
               }
             }
           ?>
