@@ -55,7 +55,7 @@ session_start();
                <input type="radio" id="service" name="type" value="service" class="option-input radio"<?php if($type=='service') echo "checked"  ?>>Service
             </label>
             <label class="type">
-               <input type="radio" id="distric" name="type"  class="option-input radio" <?php if($type=='distric') echo "checked"  ?> value="myList" >Distric
+               <input type="radio" id="distric" name="type"  class="option-input radio" <?php if($type=='distric') echo "checked"  ?> value="myList" >District
             </label>
 
 			<label class="type">               

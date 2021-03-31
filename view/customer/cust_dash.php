@@ -85,7 +85,7 @@ session_start();
 	
 	<div class="row">
 		<?php 
-				$query="SELECT * FROM studio WHERE verified=1 AND email_verified=1";
+				$query="SELECT DISTINCT studio.studio_id,studio.profile,studio.studio_name,studio.distric,rate.rate FROM rate RIGHT JOIN studio ON rate.studio_id=studio.studio_id WHERE studio.verified=1  ORDER BY rate.rate DESC ";
 				$result_set=mysqli_query($connection,$query);
 				if($result_set){
 					while($record = mysqli_fetch_assoc($result_set)){

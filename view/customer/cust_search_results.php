@@ -51,7 +51,7 @@ if(isset($_SESSION['type'])){
                <input type="radio" id="service" name="type" value="service" class="option-input radio"<?php if($type=='service') echo "checked"  ?>>Service
             </label>
             <label class="type">
-               <input type="radio" id="distric" name="type" value="myList"" class="option-input radio" <?php if($type=='distric') echo "checked"  ?>>Distric
+               <input type="radio" id="distric" name="type" value="myList"" class="option-input radio" <?php if($type=='distric') echo "checked"  ?>>District
             </label>
 			<label class="type">               
                <select id='myList' onchange="favTutorial()" class="searchSelect">

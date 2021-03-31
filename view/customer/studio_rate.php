@@ -6,7 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../css/customer/rate.css">
+    <link rel="stylesheet" type="text/css" href="../../css/customer/rates.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@ session_start();
         <div class="container">    
             <h2><center>Review Studio</center></h2>
             <div id="details">
-                <div id="col1">
+                <div id="col1"> 
                     <?php                    
                         if(isset($_GET['studio_id']) ){
                             $studio_id=$_GET['studio_id'];
@@ -58,9 +58,12 @@ session_start();
                             <label for="star2" title="text">2 stars</label>
                             <input type="radio" id="star1" name="rate" value="1" />
                             <label for="star1" title="text">1 star</label>
+                            <div class="textfield"><input type="text" name="comment"></div>
+                            <div class="btn-submit"><input type="submit" value="Submit" name="submit"></div>
                     </div>
-                    <input type="text" name="comment">
-                    <input type="submit" value="submit" name="submit">
+                    
+                    
+                    
                 </form>
             <!-- </div> -->
 
