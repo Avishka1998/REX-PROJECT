@@ -207,7 +207,7 @@ form {
   cursor: pointer;
   display: inline-block;
   margin-right: 0.5rem;
-  margin-left: 2rem;
+  margin-left: 1.4rem;
   outline: none;
   position: relative;
   z-index: 1000;
@@ -258,13 +258,11 @@ form {
  .searchSelect{
      position: relative;
    display: flex;
-   width: 15em;
    height: 2.8em;
    line-height: 3;
    background: #343637;
    overflow: hidden;
    border-radius: .25em;
-   padding-left: 40px;
  }
  select::-ms-expand {
    display: none;

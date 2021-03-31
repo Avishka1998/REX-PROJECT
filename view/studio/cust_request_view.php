@@ -41,8 +41,7 @@ if(isset($_GET['job'])){
         echo "<p>$record1[choose_time]</p>";
         echo "<p>Job ID: $job</p>";
         echo "<p>$record2[email]</p>";
-		echo "<p>$record2[tele_no]</p>";
-        echo "<p>Customer ID: $record2[c_id]</p>";
+		    echo "<p>$record2[tele_no]</p>";
         echo "<p>Booking Date: <b>$record1[date]</b></p>";
         ?>
       </div>
@@ -78,9 +77,10 @@ if(isset($_GET['job'])){
             }
             echo "</p>";
           ?>
-          <h3>TOTAL FEE</h3>
+          <h3>ADVANCED FEE</h3>
             <?php
-              echo "<p>$total LKR</p>";
+              $total = $total/1000;
+              echo "<p>$total USD</p>";
             ?>  
       </div>
 

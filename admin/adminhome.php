@@ -17,7 +17,7 @@ session_start();
                     $message='';
 
                     $to=$appmail;
-                    $from='recordexonline@gmail.com';
+                    $from='recordexonlineres@gmail.com';
                     $subject='Account is Approved!';
                     $message.='Your Account is Approved.<br>Now You are fully verified to use RecordEx!<br>';
                     $message.='Log in Here. http://localhost/REX/view/login.php';
@@ -44,7 +44,7 @@ session_start();
 
                       //send token to the email
                       $to=$o_email;
-                      $from='recordexonline@gmail.com';
+                      $from='recordexonlineres@gmail.com';
                       $subject='Owner Verification';
                       $message.='You are required to Verify your personal email address. Please click the link to verify.<br>';
                       $message.='http://localhost/REX/view/owner_verified.php?token='.$token . '&s_id='.$y;
@@ -65,7 +65,7 @@ session_start();
                     $result_set8 = mysqli_query($connection,$query8);
                     if($result_set8){
                         $to=$rejmail;
-                        $from='recordexonline@gmail.com';
+                        $from='recordexonlineres@gmail.com';
                         $subject='Your Account is Rejected!';
                         $message.='Sorry! Your Account is Rejected by the Admin Team.<br>';
                         $message.='Thank You For Choosing RecorEx!';

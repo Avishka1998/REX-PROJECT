@@ -1,8 +1,29 @@
 <?php 
+
 require_once('../../inc/connection.php');
 session_start();
 $studio_id = $_SESSION['studio_id'];
 $job = $_SESSION['job'];
+
+$url1=$_SERVER['REQUEST_URI'];
+header("Refresh: 5; URL=$url1");
+
+$query55 = "SELECT choose_time FROM reserved_job WHERE job_id = $job";
+$result_set55 = mysqli_query($connection,$query55);
+$record55 = mysqli_fetch_assoc($result_set55);
+
+$choosetime = $record55['choose_time'];	
+$cutoff = date( "Y-m-d H:i:s", strtotime( $choosetime ) + 900);
+$cur_time = date("Y-m-d H:i:s");
+
+$cur_time2 = strtotime($cur_time);
+$cutoff2 = strtotime($cutoff);
+
+if($cur_time2>$cutoff2){
+  $query57 = "UPDATE reserved_job SET temp_blocked = 0 WHERE job_id = '$job'";
+  $result_set57 = mysqli_query($connection,$query57); 	
+  header("Location: time_out.php");	
+}
 
 $query = "SELECT paypal FROM studio WHERE studio_id = $studio_id";
 $result_set = mysqli_query($connection,$query);
@@ -145,10 +166,10 @@ while($record5=mysqli_fetch_assoc($result_set5)){
 		</form>	
 
 		<form action="studio_prof.php" method="post">
-		  <input type="submit" value="CANCEL">	
+		  <input type="submit" value="CANCEL">
 		</form>
+		<p style='float:left; padding-left:10px; color:red;'><i>*Pay the advanced payment in order to Place the booking.</i></p>	
 	  </div>
-
 	  </div>	
 	</div>
 

@@ -40,9 +40,10 @@ session_start();
                         }
                         else{
                             $table = "<table id='verified'>";
-                            $table .= "<tr><th>Studio name</th><th>Studio email</th><th>Studio contact</th><th>Owner</th><th>Owner email</th><th>Owner contact</th><th>Block</th><th>Remove</th></tr>";
+                            $table .= "<tr><th>Studio ID</th><th>Studio Name</th><th>Studio email</th><th>Studio contact</th><th>Owner</th><th>Owner email</th><th>Owner contact</th><th>Block</th><th>Remove</th></tr>";
                             while($record =mysqli_fetch_assoc($result_set)){
                                 $table .= "<tr>";
+                                    $table .= "<td>".$record['studio_id']."</td>";
                                     $table .= "<td>".$record['studio_name']."</td>";
                                     $table .= "<td>".$record['s_email']."</td>";
                                     $table .= "<td>".$record['s_tele_no']."</td>";
@@ -78,7 +79,7 @@ session_start();
         table = document.getElementById("verified");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
+          td = tr[i].getElementsByTagName("td")[1];
           if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {

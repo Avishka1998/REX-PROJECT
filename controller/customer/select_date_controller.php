@@ -1,6 +1,6 @@
 <?php
 
-  function build_calendar($month,$year,$array,$blocked_list,$booked_list){
+  function build_calendar($month,$year,$array,$blocked_list,$booked_list,$temp_blocked_list,$connection){
     
     $daysOfWeek = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 
@@ -57,39 +57,68 @@
 		}
 	  }
 
-      $isbooked = 0;
-      for($i=0; $i<count($booked_list); $i++){             //return completely booked job list
-        if($date==$booked_list[$i]['date']){
-          $isbooked = 1;
-          break;
-        }
+    $isbooked = 0;
+    for($i=0; $i<count($booked_list); $i++){             //return completely booked job list
+      if($date==$booked_list[$i]['date']){
+        $isbooked = 1;
+        break;
       }
+    }
 
-      if($date<=date('Y-m-d')){
-        $calendar.="<td style='background-color:rgba(255,204,203,0.4);'><h4 style='color:grey;'>$currentDay</h4>"; 
+    $istempblocked = 0;
+    for($i=0; $i<count($temp_blocked_list); $i++){             //return temporarily blocked job list
+      if($date==$temp_blocked_list[$i]['date']){
+        $istempblocked = 1;
+        $tempbid = $i;
+        break;
       }
+    }
+
+    if($date<=date('Y-m-d')){
+      $calendar.="<td style='background-color:rgba(255,204,203,0.4);'><h4 style='color:grey;'>$currentDay</h4>"; 
+    }
 
 	  else if($isblocked==1){
-		$calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
+		$calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4><p style='color:grey; font-size:0.9rem;'><i>Holiday</i></p>"; 
 	  }
 
-      else if($isbooked==1){
-        $calendar.="<td style='background-color:rgba(247,90,32,0.4);'><h4 style='color:grey;'>$currentDay</h4>";
-      }
+    else if($isbooked==1){
+      $calendar.="<td style='background-color:rgba(247,90,32,0.4);'><h4 style='color:grey;'>$currentDay</h4><p style='color:grey; font-size:0.9rem;'><i>Reserved</i></p>";
+    }
 
 	  else if($date>date('Y-m-d') && $array['issatblocked']==1 && $dayname == 'saturday'){
-		$calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
+		$calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4><p style='color:grey; font-size:0.9rem;'><i>Holiday</i></p>"; 
 	  }
 
 	  else if($date>date('Y-m-d') && $array['issunblocked']==1 && $dayname == 'sunday'){
-	    $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4>"; 
+	    $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4><p style='color:grey; font-size:0.9rem;'><i>Holiday</i></p>"; 
 	  }
+
+    else if($istempblocked==1){
+      $choosetime = $temp_blocked_list[$tempbid]['choose_time'];
+      $cutoff = date( "Y-m-d H:i:s", strtotime( $choosetime ) + 900);
+      $cur_time = date("Y-m-d H:i:s");
+
+      $cur_time2 = strtotime($cur_time);
+      $cutoff2 = strtotime($cutoff);
+
+      $jobid = $temp_blocked_list[$tempbid]['job_id'];
+
+      if($cur_time2>$cutoff2){
+        $query57 = "UPDATE reserved_job SET temp_blocked = 0 WHERE job_id = $jobid";
+        $result_set57 = mysqli_query($connection,$query57);
+        $calendar.="<td><h4>$currentDay</h4> <form action='select_service.php' method='post'><input type='hidden' name='date' value= $date> <button type='submit' name='book' class='avbtn'>BOOK</button></form>";     
+      }
+      else{
+        $calendar.="<td style='background-color:rgba(255,234,0,0.5);'><h4 style='color:grey;'>$currentDay</h4><p style='color:grey; font-size:0.9rem;'><i>N/A</i></p>";      
+      }     
+    }
 
 	  else if($date>date('Y-m-d') && $array['issatblocked']==1 && $dayname != 'saturday'){
 	    $calendar.="<td><h4>$currentDay</h4> <form action='select_service.php' method='post'><input type='hidden' name='date' value= $date> <button type='submit' name='book' class='avbtn'>BOOK</button></form>"; 
 	  }
 	
-      else if($date>date('Y-m-d') && $array['issunblocked']==1 && $dayname != 'sunday'){
+    else if($date>date('Y-m-d') && $array['issunblocked']==1 && $dayname != 'sunday'){
 	    $calendar.="<td><h4>$currentDay</h4> <form action='select_service.php' method='post'><input type='hidden' name='date' value= $date> <button type='submit' name='book' class='avbtn'>BOOK</button></form>"; 
 	  }
 
@@ -158,5 +187,15 @@
     while($row=mysqli_fetch_assoc($res_set17)){
       array_push($booked_list,$row);
     }
-  }  
+  }
+  
+  //temp_blocked list
+  $temp_blocked_list=[];
+  $query18 = "SELECT * FROM reserved_job WHERE temp_blocked=1";
+  $res_set18 = mysqli_query($connection,$query18);
+  if(mysqli_num_rows($res_set18)>0){
+    while($row=mysqli_fetch_assoc($res_set18)){
+      array_push($temp_blocked_list,$row);
+    }
+  }
 ?>

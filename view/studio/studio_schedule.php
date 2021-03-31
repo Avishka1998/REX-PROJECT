@@ -4,6 +4,16 @@
   $userid = $_SESSION['user_id'];
 
   include('../../controller/studio/studio_schedule_controller.php');
+
+  if(isset($_GET['error'])){
+    $error = $_GET['error'];
+    echo "<script>alert($error);</script>";
+  }
+  if(isset($_GET['answer'])){
+    $answer = $_GET['answer'];
+    echo "<script>alert($answer);</script>";
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +71,7 @@
         $month = $dateComponents['mon']; 			     
         $year = $dateComponents['year'];
         }
-        build_calendar($month,$year,$record11,$blocked_list,$booked_list); 
+        build_calendar($month,$year,$record11,$blocked_list,$booked_list,$temp_blocked_list,$connection); 
       ?> 
     </div> 
     </div> 

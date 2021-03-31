@@ -2,6 +2,9 @@
 require_once('../../inc/connection.php');
 session_start();
 
+$url1=$_SERVER['REQUEST_URI'];
+header("Refresh: 5; URL=$url1");
+
 $studio_id = $_SESSION['studio_id'];
 
 include("../../controller/customer/select_date_controller.php");
@@ -43,7 +46,8 @@ include("../../controller/customer/select_date_controller.php");
         $month = $dateComponents['mon']; 			     
         $year = $dateComponents['year'];
       }
-      build_calendar($month,$year,$record11,$blocked_list,$booked_list); 
+      //call the function in controller
+      build_calendar($month,$year,$record11,$blocked_list,$booked_list,$temp_blocked_list,$connection);
     ?> 
   </div>
   </div> 

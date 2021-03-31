@@ -26,7 +26,7 @@
 
       //send token to the Email
       $to=$email;
-      $from='recordexonline@gmail.com';
+      $from='recordexonlineres@gmail.com';
       $subject="Password Reset";
       $message='We have got your request to reset your password.<br>';
       $message.='Please follow the URL to reset your password.<br>';
