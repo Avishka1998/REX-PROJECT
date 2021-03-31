@@ -36,7 +36,7 @@ if(isset($_GET['jobid'])){
 
   <div class="container">
 	<h1>Booking Successful !</h1>
-  <form action="pdf.php" method="post">
+  <form action="pdf.php" method="post" target="_blank">
   <input type="text" name="jobid" value="<?php echo $jobid;?>" hidden>
   <input type="submit" name="receipt" value="E-Receipt">
   </form>

@@ -14,7 +14,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Studio Dashboard</title>
-      <link rel="stylesheet" href="../../css/studio/studio_dash.css">
+      <link rel="stylesheet" href="../../css/studio/studio_dash.css"> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
       <script>
@@ -52,7 +52,7 @@
                <input type="radio" id="service" name="type" value="service" class="option-input radio">Service
             </label>
             <label class="type">
-               <input type="radio" id="distric" name="type" class="option-input radio" value="myList">Distric
+               <input type="radio" id="distric" name="type" class="option-input radio" value="myList">District
             </label>
             
             <label class="type">               
@@ -98,7 +98,7 @@
          <button onclick="window.location.href='studio_schedule.php';">Edit My Schedule</button>              
       </div>
 
-      </div>   
+      </div> 
   </div>
   <?php require_once('../../inc/minfooter.php'); ?>
 </body>

@@ -28,7 +28,7 @@ session_start();
                                 }
                                 else{
                                     //store data in the customer table which takes from database
-                                    $table1 = "<table>";                                    
+                                    $table1 = "<table style='min-width:80%; max-width:80%;'>";                                    
                                     $table1 .= "<tr><th>customer(from)</th><th>Studio(to)</th><th>customer-email</th><th>studio-email</th><th>description</th><th>slove</th>";
                                     while($record =mysqli_fetch_assoc($result_set1)){
                                        $complaint_id=$record['complaint_id'];
@@ -38,7 +38,7 @@ session_start();
                                        $table1.= "<td>".$record['email']."</td>";
                                        $table1.= "<td>".$record['s_email']."</td>";
                                        $table1.= "<td>".$record['com_description']."</td>";
-                                       $table1 .= "<td>"."<form action=complaint.php?cus_complaint_id=$complaint_id method='post' >'<button type='submit' name='solve'>solve</button></form>"."</td>";
+                                       $table1 .= "<td>"."<form action='complaint.php?cus_complaint_id=$complaint_id' method='post' ><button type='submit' name='solve'>SOLVED</button></form>"."</td>";
                                        $table1.= "</tr>";
                                     }
                                     $table1.= "</table>";
@@ -59,7 +59,7 @@ session_start();
                                 }
                                 else{
                                     //store data in the studio complaints table which takes from database
-                                    $table2 = "<table>";                                  
+                                    $table2 = "<table style='min-width:80%; max-width:80%;'>";                                  
                                     $table2 .= "<tr><th>studio(from)</th><th>customer(to)</th><th>studio-email</th><th>customer-email</th><th>description</th><th>slove</th>";
                                     while($record =mysqli_fetch_assoc($result_set2)){                                                 
                                         $complaint_id=$record['complaint_id'];
@@ -69,7 +69,7 @@ session_start();
                                             $table2.= "<td>".$record['s_email']."</td>";
                                             $table2.= "<td>".$record['email']."</td>";
                                             $table2.= "<td>".$record['com_description']."</td>";
-                                            $table2 .= "<td>"."<form action=complaint.php?stud_complaint_id=$complaint_id method='post' >'<button type='submit' name='solve'>solve</button></form>"."</td>";
+                                            $table2 .= "<td>"."<form action=complaint.php?stud_complaint_id=$complaint_id method='post' ><button type='submit' name='solve'>SOLVED</button></form>"."</td>";
                                         $table2.= "</tr>";
                                     }
                                     $table2.= "</table>";
@@ -85,7 +85,7 @@ session_start();
 
 <!DOCTYPE html>
 <html>
-<title>admin dashboard</title>
+<title>Complaints</title>
 <head>
    <link rel="stylesheet" type="text/css" href="css/admin.css">  
    <?php  require_once('inc/navbar.php'); ?>
@@ -93,7 +93,7 @@ session_start();
 </head>
 <body>
     <div class="row" >
-         <div class="section" > 
+         <div class="section"> 
             
                 <?php 
                 
@@ -104,7 +104,7 @@ session_start();
                         echo '</div>';
                     }
                 }else{
-                    echo "<h2>Customers' Complaints</h2>";
+                    echo "<h2 style='padding:20px;'>Customers' Complaints</h2>";
                     echo $table1;
                 }       
                 
@@ -126,7 +126,7 @@ session_start();
                                     
                             }
                             else{
-                                echo "<h2>Studios' Complaints</h2>";
+                                echo "<h2 style='padding:20px;'>Studios' Complaints</h2>";
                                 echo $table2;
                             }
                             ?>

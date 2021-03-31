@@ -1,6 +1,8 @@
 <?php
+
   require_once('../../inc/connection.php');
   session_start();
+
   $userid = $_SESSION['user_id'];
 
   include('../../controller/studio/studio_schedule_controller.php');
